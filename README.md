@@ -1,4 +1,4 @@
-Protection Profile for File Encryption
+Protection Profile for File Encryption Enterprise Management
 ===========
 [![Build Status](https://travis-ci.org/commoncriteria/fileencryption.svg?branch=master)](https://travis-ci.org/commoncriteria/fileencryption)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/fileencryption.svg?maxAge=2592000)](https://github.com/commoncriteria/fileencryption/issues)
