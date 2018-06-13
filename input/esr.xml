@@ -4,19 +4,19 @@
 <ESR xmlns="http://common-criteria.rhcloud.com/ns/esr" name="File Encryption">
   
 	<intro>
-		<esrtitle>Extended Package for File Encryption</esrtitle>
+		<esrtitle>Extended Package for File Encryption Enterprise Management</esrtitle>
 		<maintainer>NIAP</maintainer>
 		<identifier>42</identifier>
 		<version>0.1</version>
 		<status>final</status>
-		<issuedate>30 June 2014</issuedate>
+		<issuedate>13 June 2018</issuedate>
 		<approver/>
 		<supercedes/>
 	</intro>
 
 	<section title="Background and Purpose" id="purpose">
 		This document describes the high-level security requirements for File 
-		Encryption (FE). It provides a minimal, baseline set of requirements 
+		Encryption Enterprise Management(FEEM). It provides a minimal, baseline set of requirements 
 		targeted at mitigating well defined and described threats. The ESR 
 		identifies aspects that are outside the required scope so as to limit
 		the final set of security functional requirements.  The File Encryption
