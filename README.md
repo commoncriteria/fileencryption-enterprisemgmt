@@ -12,11 +12,12 @@ A list of products that have passed evaluation against this Protection Profile c
 
 ## Draft Version
 
-* [Extended Package for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.html) (html)
-* [Extended Package for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.pdf) (pdf)
+* [Extended Package for Software File Encryption Enterprise Management Version 1.0](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.html) (html)
+* [Extended Package for Software File Encryption Enterprise Management Version 1.0](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.pdf) (pdf)
 
 ## Release Version
-* [Extended Package for Software File Encryption Version 1.0](https://www.niap-ccevs.org/Profile/Info.cfm?id=318)
+
+* [Extended Package for Software File Encryption Enterprise Management Version 1.0](https://www.niap-ccevs.org/Profile/INSERT)
 
 ## Contributing
 
