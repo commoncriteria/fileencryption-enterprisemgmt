@@ -235,30 +235,60 @@
     <section title="Use Cases" id="usecases">
       <subsection title="Usage and Major Security Features of the Target of Evaluation (TOE)"
         id="usagetoe"> 
-          The use case for a product conforming to the FE Module is to protect data at rest on a device
+          The use case for a product conforming to the FDE cPPs is to protect data at rest on a device
           that is lost or stolen while powered off without any prior access by an adversary. The use case
           where an adversary obtains a device that is in a powered state and is able to make modifications
-          to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. <h:br/>
-          
+          to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by these cPPs
+          (i.e., FDE - AA and FDE - EE).
           While that use case is still true for the Enterprise Management Module, this PP-module also
           expands the use case to include protecting the communications between the Enterprise
           Management Server and the client device through the use of a trusted channel. It also expands
-          the use case to include the optional abilities of the EM to interact with the FE Client
-          to direct it to perform sanitation of keys and material on the device or to issue a
+          the use case to include the optional abilities of the EM to interact with the AA (with proper
+          authorization) to direct it to perform sanitation of keys and material on the device or to issue a
           recovery credential to reset the authentication factor if it has been lost.
       </subsection>
       
-        <subsection title="The TOE and Its Supporting Environment" id="supenv"> 
-            The environment in which the EM functions is expected to exist is on a back end server, not
-            on the system that contains the Client. It is expected to have secure access to a certified LDAP
-            (e.g. Active Directory) and access to a certified means of storing key material when not in use.
-            The EM shall not have the ability to access the secured stored key material without verification
-            of access authority by the LDAP. <h:br/>
-            The Operating System environment may make a full range of services available to the
-            Enterprise Management Module, including hardware drivers, cryptographic libraries, and
-            perhaps other services external to the TOE. <h:br/>
-            The EM TOE may include or leverage features and functions within the operational
-            environment. </subsection>
+      <subsection title="The TOE and Its Supporting Environment" id="supenv"> Since the TOE is
+        purely a software solution, it must rely on the TOE Operational Environment (system
+        hardware, firmware, and operating system) for its execution domain and its proper usage. The
+        vendor is expected to provide sufficient installation and configuration instructions (for
+        each platform listed in the ST) to identify Operational Environment(s) with the necessary
+        features and to provide instructions for how to configure it correctly and securely. <h:br/> <h:br/>
+        
+        The EP contains requirements (Section 4) that must be met by either the TOE or the platform
+        on which it operates. A “platform” is defined as a separate entity whose functions may be
+        used by the TOE, but is not part of the TOE. A third-party library used by the TOE is not
+        considered part of the TOE’s “platform”, but (for instance) cryptographic functionality that
+        is built into an Operating System on which the TOE executes can be considered part of the
+        platform. <h:br/> <h:br/> Likewise, an external entity (such as a smartcard) that performs
+        cryptographic operations with respect to the FEK would also be considered a part of the “TOE
+        Platform."<h:br/> The ST author will make the appropriate selection based on where
+        that element is implemented. It is allowable for some elements in a component to be
+        implemented by the TOE, while other elements in that same component may be implemented by
+        the platform; in these cases, further guidance is given in the application notes and
+        assurance activities.<h:br/>  <h:br/> In some cases, the TOE vendor will have to provide specific
+        configuration guidance for the Operational Environment to enable the TOE to meet its
+        security objectives. These include:<h:br/> For non-mobile systems:<h:br/>
+        <h:ul>
+          <h:li>Instructions for how to configure the operational environment so that the system
+            powers down completely after a period of user inactivity for every operating system that
+            the product supports;</h:li>
+          <h:li>Instructions for how to disable power managed state (e.g., hibernate/sleep)
+            capabilities </h:li>
+        </h:ul> For mobile systems:<h:br/>
+        <h:ul>
+          <h:li>Instructions for how to configure the operational environment to provide necessary
+            behavior in support of TOE functionality when transition to a locked state after
+            inactivity period and manually engaging the lock functionality.</h:li>
+          <h:li>Instructions on how to configure the operational environment such that it is compliant
+            with the Mobile Device Fundamentals Protection Profile.</h:li>
+        </h:ul> It should be noted that if the TOE possesses the capability to correctly protect
+        information in one or more of an underlying platform's power managed modes, they can use the
+        FDP_PM_EXT.1 requirement in Appendix B.<h:br/> Authorized users of the TOE are those users
+        possessing valid authorization factors for the TOE. While some of these functions specified
+        in the EP might be considered “administrative” functions for other types of TOEs, for file
+        encryption products it is the expectation that all of these functions can be performed by
+        the end user of the software. </subsection>
     </section>
     
   </chapter>
