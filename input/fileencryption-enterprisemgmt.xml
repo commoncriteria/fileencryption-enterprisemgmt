@@ -1499,7 +1499,9 @@
         </f-component>
         
         
-        <f-component id="FCS_IPSEC_EXT.1" name="IPsec Protocol">
+        <f-component id="FCS_IPSEC_EXT.1" name="IPsec Protocol" status="sel-based">
+          <selection-depends req="FPT_ITT.1.1" ids="IPSEC"/>
+          <selection-depends req="FPT_TRP.1.1" ids="IPSEC"/>
           <f-element id="FCS_IPSEC_EXT.1.1">
             <title>The TSF shall implement the IPsec architecture as specified in RFC 4301. </title>
             
@@ -2678,7 +2680,7 @@
         </f-component>
         
         <f-component id="FPT_TRP.1" name="Trusted Path">
-          <f-element id="FPT_ITT.1.1">
+          <f-element id="FPT_TRP.1.1">
             <title>The TSF shall be capable of using 
               <selectables>
                 <selectable id="IPSEC">IPsec as defined in FCS_IPSEC_EXT.1</selectable>
@@ -2691,12 +2693,12 @@
             </title>
           </f-element>
           
-          <f-element id="FPT_ITT.1.2">
+          <f-element id="FPT_TRP.1.2">
             <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
             </title>
           </f-element>
           
-          <f-element id="FPT_ITT.1.3">
+          <f-element id="FPT_TRP.1.3">
             <title>The TSF shall require the use of the trusted path for initial administrator authentication and all remote administration actions.
           </title>
             
