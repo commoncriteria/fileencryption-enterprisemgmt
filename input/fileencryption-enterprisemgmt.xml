@@ -502,14 +502,7 @@
           <component-refer ref="FPT_ITT.1"/>
           <component-refer ref="FCS_CKM.1(a)"/>
           <component-refer ref="FCS_COP.1(a)"/>
-          <component-refer ref="FCS_HTTPS_EXT.1"/>
           <component-refer ref="FCS_IPSEC_EXT.1"/>
-          <component-refer ref="FCS_SSHC_EXT.1"/>
-          <component-refer ref="FCS_SSHS_EXT.1"/>
-          <component-refer ref="FCS_TLSC_EXT.1"/>
-          <component-refer ref="FCS_TLSC_EXT.3"/>
-          <component-refer ref="FCS_TLSS_EXT.1"/>
-          <component-refer ref="FCS_TLSS_EXT.3"/>
         </SO>
         <SO id="O.VERIFIED_ADMIN">
           <description>
