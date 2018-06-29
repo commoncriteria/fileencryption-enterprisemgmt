@@ -410,10 +410,10 @@
           <component-refer ref="FIA_UID.1"/>
           <component-refer ref="FMT_MTD.1"/>
           <component-refer ref="FMT_SMR.2"/>
-          <component-refer ref="FCS_COP.1(f)"/>
+          <component-refer ref="FCS_COP.1(1)"/>
           <component-refer ref="FCS_VAL_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.1"/>
-          <component-refer ref="FIA_X509_EXT.2"/>
+          <component-refer ref="FIA_X509_EXT.2)"/>
         </SO>
         
         <SO id="O.KEY_MATERIAL_SERVER">
@@ -469,9 +469,7 @@
             endpoint, keys distributed by the server are given to the correct endpoint for the purpose of delivering a key.
             
           </description>
-          <component-refer ref="FCS_AFA_EXT.1"/>
-          <component-refer ref="FCS_KYC_EXT.1"/>
-          <component-refer ref="FPT_KYP_EXT.1"/>
+          <component-refer ref="FIA_AUT_EXT.2"/>
           <component-refer ref="FPT_KYP_EXT.2"/>
           <component-refer ref="FPT_KYP_EXT.3"/>
           <component-refer ref="FCS_SMC_EXT.1"/>
@@ -479,22 +477,14 @@
           <component-refer ref="FPT_ITT.1"/>
           <component-refer ref="FCS_CKM.1(a)"/>
           <component-refer ref="FCS_VAL_EXT.2"/>
-          <component-refer ref="FCS_CKM.4(a)"/>
+          <component-refer ref="FCS_CKM_EXT.4"/>
           <component-refer ref="FCS_RBG_EXT.1"/>
-          <component-refer ref="FCS_CKM.2"/>
-          <component-refer ref="FCS_CKM.2"/>
-          <component-refer ref="FCS_COP.1(b)"/>
-          <component-refer ref="FCS_COP.1(c)"/>
-          <component-refer ref="FCS_COP.1(d)"/>
-          <component-refer ref="FCS_COP.1(g)"/>
+          <component-refer ref="FCS_COP.1(2)"/>
+          <component-refer ref="FCS_COP.1(4)"/>
+          <component-refer ref="FCS_COP.1(5)"/>
+          <component-refer ref="FCS_COP.1(7)"/>
           <component-refer ref="FCS_KDF_EXT.1"/>
-          <component-refer ref="FCS_SNI_EXT.1"/>
-          <component-refer ref="FCS_HTTPS_EXT.1"/>
           <component-refer ref="FCS_IPSEC_EXT.1"/>
-          <component-refer ref="FCS_SSHC_EXT.1"/>
-          <component-refer ref="FCS_SSHS_EXT.1"/>
-          <component-refer ref="FCS_TLSC_EXT.1"/>
-          <component-refer ref="FCS_TLSS_EXT.1"/>
           <component-refer ref="FMT_MOF.1"/>
         </SO>
         <SO id="O.SECURE_CHANNEL">
@@ -544,18 +534,13 @@
             If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
-          <component-refer ref="FTP_TRP.1"/>
-          <component-refer ref="FCS_COP.1(a)"/>
-          <component-refer ref="FCS_PCC_EXT.1"/>
+          <component-refer ref="FPT_TRP.1"/>
+          <component-refer ref="FCS_COP.1(3)"/>
+          <component-refer ref="FCS_CKM.1(a)"/>
           <component-refer ref="FCS_RBG_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.2"/>
-          <component-refer ref="FIA_X509_EXT.3"/>
-          <component-refer ref="FCS_HTTPS_EXT.1"/>
           <component-refer ref="FCS_IPSEC_EXT.1"/>
-          <component-refer ref="FCS_SSHS_EXT.1"/>
-          <component-refer ref="FCS_TLSS_EXT.1"/>
-          <component-refer ref="FCS_TLSS_EXT.3"/>
         </SO>
       </SOs>
     </section>
