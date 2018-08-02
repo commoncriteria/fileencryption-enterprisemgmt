@@ -201,7 +201,7 @@
       </subsection>
       
       <subsection title="The TOE and Its Supporting Environment" id="supenv"> The environment in which the EM functions is expected to exist is on a back end server, not
-        on the system that contains the EE. It is expected to have secure access to a certified LDAP
+        on the endpoint system. It is expected to have secure access to a certified LDAP
         (e.g. Active Directory) and access to a certified means of storing key material when not in use.
         The EM shall not have the ability to access the secured stored key material without verification
         of access authority by the LDAP.
@@ -226,7 +226,7 @@
           Activities are the actions that the evaluator performs in order to determine an email
           client’s compliance to the SFRs.<h:br/> This EP conforms to Common Criteria <cite
             linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
-          4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
+          5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
           EP, the ST must include all components in this EP and the associated App PP that are:
               <h:ul><h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
@@ -253,33 +253,12 @@
     that has been compromised by an unauthorized user. This section addresses threats to the TOE
     only. 
     
-    <section title="Threats" id="threats"> This section provides a narrative that describes how the requirements mitigate the mapped threats.
-      A requirement may mitigate aspects of multiple threats. A requirement may only mitigate a threat in a limited way. Some requirements are
-      optional, either because the TSF fully mitigates the threat without the additional requirement(s) being claimed or because the TSF relies
-      on its Operational Environment to provide the functionality that is described by the optional requirement(s). <h:br/>
-      
-      A threat consists of a threat agent, an asset and an adverse action of that threat agent on that asset. 
-      The threat agents are the entities that put the assets at risk if an adversary obtains a lost or stolen storage device.
-      Threats drive the functional requirements for the target of evaluation (TOE). <h:br/>
-      
-      For instance, one threat below is T.UNAUTHORIZED_DATA_ACCESS. The threat agent is a malicious actor that is attempting
-      to access the Management Server component of the TOE (i.e. the component defined by this Module). The asset is the data on
-      the Management Server, while the adverse action is to attempt to obtain data from the Management Server which could lead to the
-      compromise of one or more drives that are managed by the TSF. This threat drives the functional requirements for the encrypted
-      storage device (TOE) to authorize who can use the TOE to access the data used to interact with one or more encrypted drives.
-      Since possession of the KEK, FEK(s), intermediate keys, authorization factors, submasks, and random numbers or any other values
-      that contribute to the creation of keys or authorization factors could allow an unauthorized user to defeat the encryption,
-      this SPD considers keying material equivalent to the data in importance and they appear among the other assets addressed below. <h:br/>
-      
-      It is important to reemphasize at this point that this Module does not expect the product (TOE) to defend against a malicious
-      agent that has unrestricted logical access to the system on which the Management Server resides. Security of the TOE, which includes
-      the files(s) to be protected as well as the capability for the drive(s) to be managed, requires appropriate physical and logical
-      protections as part of a defense-in-depth strategy.
+    <section title="Threats" id="threats"> 
       
       <threats>
         <threat id="T.UNAUTHORIZED_DATA_ACCESS">
           <description>
-            <h:b>Unauthorized Data Access:</h:b> The threat of an attacker
+             An attacker
             accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
             by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
             the primary threat of unauthorized disclosure of recovery material protected by the drive(s); this addresses the attribution of the key material to the drive. </description>
@@ -290,7 +269,7 @@
         </threat>
         <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
           <description>
-            <h:b>Unauthorized Data Access:</h:b> The threat of an attacker accessing the Management Server. 
+            An attacker accessing the Management Server. 
             The File Encryption Module addresses the primary threat of unauthorized disclosure of recovery material protected by the drive(s);
             this adds the Management Server to the scope of the threat. </description>
           <objective-refer ref="O.RECOVERY_PROTECTION">
@@ -300,9 +279,9 @@
         </threat>
         <threat id="T.KEYING_MATERIAL_COMPROMISE_SERVER">
           <description>
-            <h:b>Keying Material Compromise:</h:b> Possession of any of the keys, authorization factors, submasks, and random numbers
+            Possession of any of the keys, authorization factors, submasks, and random numbers
             or any other values that contribute to the creation of keys or authorization factors could allow an unauthorized user to defeat
-            the encryption. This cPP-Module considers possession of key material of equal importance to the data itself. Threat agents may
+            the encryption. This PP-Module considers possession of key material of equal importance to the data itself. Threat agents may
             look for key material in unencrypted storage on the Management Server and in external databases in the operating environment (OE), e.g. SQL database. </description>
           <objective-refer ref="O.KEY_MATERIAL_SERVER">
             <rationale>The threat T.KEYING_MATERIAL_COMPROMISE_SERVER is countered by O.KEY_MATERIAL_SERVER as this
@@ -311,7 +290,7 @@
         </threat>
         <threat id="T.MAN_IN_THE_MIDDLE">
           <description>
-            <h:b>Man in the Middle:</h:b> The Module addresses the threat of an attacker listening on the 
+            An attacker listening on the 
             communication between the Management Server and the Client(s) to obtain the user’s credential, keys, or recovery material.
           </description>
           <objective-refer ref="O.SECURE_CHANNEL">
@@ -321,7 +300,7 @@
         </threat>
         <threat id="T.UNAUTHORIZED_ADMINISTRATOR_ACCESS">
           <description>
-            <h:b>Unauthorized Administrator Access:</h:b> The Module addresses the threat of an attacker masquerading as an administrator to the Management Server.
+            An attacker masquerading as an administrator to the Management Server.
           </description>
           <objective-refer ref="O.VERIFIED_ADMIN">
             <rationale>The threat T.UNAUTHORIZED_ADMINISTRATOR_ACCESS is countered by O.VERIFIED_ADMIN as this
@@ -330,7 +309,7 @@
         </threat>
         <threat id="T.UNTRUSTED_COMMUNICATION_CHANNELS">
           <description>
-            <h:b>Untrusted Communication Channels:</h:b> The Module address the threat of an attacker targeting the Management Server
+            An attacker targeting the Management Server
             using insecure tunneling protocols or the presence of an unencrypted path to disclose keys, key material, or recovery
             material transferred between the endpoint and the Management Server.
           </description>
@@ -345,19 +324,19 @@
         <assumptions>
          
           <assumption id="A.SECURED_CONFIGURATION">
-            <description>The Management Server and the remote endpoints are assumed to be installed and configured in accordance with their evaluated configuration. </description>
+            <description>The Management Server and the remote endpoints are installed and configured in accordance with their evaluated configuration. </description>
             <objective-refer ref="OE.SECURED_CONFIGURATION">
               <rationale>The operational environment objective OE.SECURED_CONFIGURATION is realized through A.SECURED_CONFIGURATION.</rationale>
               </objective-refer>
           </assumption>
           <assumption id="A.SECURED_ENVIRONMENT">
-            <description>Any environmental components required to support the functionality of the Management Server (e.g. underlying operating system, firewall, database) are assumed to be installed and configured in accordance with its evaluated configuration.</description>
+            <description>Any environmental components required to support the functionality of the Management Server (e.g. underlying operating system, firewall, database) are installed and configured in accordance with its evaluated configuration.</description>
             <objective-refer ref="OE.SECURED_ENVIRONMENT">
               <rationale>The operational environment objective OE.SECURED_ENVIRONMENT is realized through A.SECURED_ENVIRONMENT.</rationale>
             </objective-refer>
           </assumption>
           <assumption id="A.PHYSICAL_SERVER">
-            <description>This assumption extends the A.PHYSICAL assumption in the Base-PP to assume that the platform on which the Management Server resides is assumed to be physically protected in its Operational Environment and not subject to physical attacks that compromise the security and/or interfere with the platform’s correct operation.</description>
+            <description>The platform on which the Management Server resides is physically protected in its Operational Environment and not subject to physical attacks that compromise the security and/or interfere with the platform’s correct operation.</description>
             <objective-refer ref="OE.PHYSICAL_SERVER">
               <rationale>The operational environment objective OE.PHYSICAL_SERVER is realized through A.PHYSICAL_SERVER.</rationale>
             </objective-refer>
@@ -419,9 +398,7 @@
         <SO id="O.KEY_MATERIAL_SERVER">
           <description>
             <h:b>Key Material Server:</h:b>
-            The keying material that threat agents may attempt to compromise are generated by the TOE as specified by FCS_CKM.1(a) 
-            (or by the Operational Environment if this optional SFR is not claimed). One or more submasks [FCS_AFA_EXT.1] may be chained 
-            [FCS_KYC_EXT.1] to produce the FEK or a KEK. The server key chain can be maintained by several methods, including: <h:br/>
+            The keying material that threat agents may attempt to compromise are generated by the TOE as specified by FCS_CKM.1(a) . One or more submasks may be utilized on the endpoint to protect the FEK or a KEK, part of the keychain to protect that is stored on teh server for additional authorization or recovery. The server key chain can be maintained by several methods, including: <h:br/>
             
             •	Key generation [FCS_CKM.1(a)]
             •	Key establishment [FCS_CKM.2]
@@ -461,7 +438,7 @@
             •	FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites).
             
             The various iterations of FCS_COP.1 as well as FCS_RBG_EXT.1 all validate that the cryptography used to initiate and protect
-            the communication channel protocols between the Enterprise Server and the AA, if remote management is supported by the TSF. If implemented
+            the communication channel protocols between the Enterprise Server and the endpoint, if remote management is supported by the TSF. If implemented
             on the server, FCS_CKM.4(a) ensures proper destruction of keys and key material on the server when no longer needed.
             
             In order to ensure that a key is only released to the appropriate endpoint, FCS_KYP_EXT.3 ensures that there is attribution of the endpoint
@@ -620,7 +597,7 @@
               </selectables> 
             </title>
           
-          <note role="application">The EM Module performs validation of any administrator credential used to log in to the EM in accordance with this SFR.</note>
+          <note role="application">The EM Module performs validation of any administrator credential, as described in FIA_AUT_EXT.2.1, used to log in to the EM in accordance with this SFR.</note>
             <aactivity>
               <h:h4>TSS</h:h4>
               The evaluator shall examine the TSS to determine which authorization factors support validation.
@@ -707,7 +684,6 @@
             <title>
               <h:b>Refinement:</h:b> The application shall 
               <selectables>
-                <selectable>not perform data encryption</selectable>
                 <selectable>implement 
                   <selectables>
                     <selectable>platform-provided AES encryption</selectable>
@@ -1473,6 +1449,84 @@
               required to derive key material from passwords and how the TOE increases the computation
               time for password-based key derivation (including but not limited to increasing the
               iteration count). </aactivity>
+          </f-element>
+        </f-component>
+        
+        
+         <f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
+          <f-element id="FCS_KYC_EXT.1.1">
+            <title> The TSF shall maintain a key chain ofintermediate keys originating from one or more initial
+                  <selectables>
+                    <selectable>submask(s)</selectable>
+                    <selectable>recovery value(s)</selectable>
+                  </selectables> to the final value returned to the endpoint
+                 using the following method(s): 
+                  <selectables linebreak="yes">
+                    <selectable>utilization of the platform key storage</selectable>
+                    <selectable>utilization of platform key storage that performs key wrap with a
+                      TSF provided key</selectable>
+                    <selectable id="USEKEYDER">implement key derivation as specified in FCS_KDF_EXT.1</selectable>
+                    <selectable id="USEKEYWRA">implement key wrapping as specified in FCS_COP.1(5)</selectable>
+                    <selectable id="USEKEYCOM">implement key combining as specified in FCS_SMC_EXT.1</selectable>
+                    <selectable id="USEKEYENC">implement key encryption as specified in FCS_COP.1(7)</selectable>
+                    <selectable id="USEKEYTRA">implement key transport as specified in FCS_COP.1(8)</selectable>
+                  </selectables> while maintaining an effective strength of 
+                    <selectables>
+                      <selectable>
+                        <selectables>
+                          <selectable>128 bits</selectable>
+                          <selectable>256 bits</selectable>
+                        </selectables> for symmetric keys;
+                      </selectable>
+                      <selectable>
+                        <selectables>
+                          <selectable>112 bits</selectable>
+                          <selectable>128 bits</selectable>
+                          <selectable>192 bits</selectable>
+                          <selectable>256 bits</selectable>
+                        </selectables> for asymmetric keys;
+                      </selectable>
+                    </selectables> commensurate with the strength of the FEK.
+                </selectable>
+              </selectables> 
+             
+            </title>
+            <note role="application">Key Chaining is the method of using multiple layers of
+              encryption keys to ultimately secure the a final key. The number of intermediate keys will
+              vary. The ST Author should clearly indicate which portions of the key chain are created and 
+              maintained by the enterprise server and which are created and maintained by the AA.</note>
+            <aactivity>
+              <h:h4>TSS</h:h4>
+              The evaluator shall verify the TSS contains a high-level description of the key sizes
+              that it supports BEV outputs of no fewer 128 bits for products that support only AES128,
+              and no fewer than 256 bits for products that support AES-256.
+              The evaluator shall verify the TSS contains a description of the controls preventing a key 
+              from being provided to the endpoint before validation has occurred.
+              
+              The evaluator shall verify the TSS includes a description of the key
+              hierarchy used to protect encryption keys associated with endpoints. 
+              The description of the key chains shall be reviewed to ensure it maintains
+              a chain of keys using the methods listed in the SFR. 
+              The evaluator shall ensure the chain of keys is maintained from
+              the authorization factor or recovery value to the value returned to the endpoint.
+              The evaluator shall examine the TSS to ensure that it describes how the key chain
+              process functions, such that it does not expose any material that might compromise any
+              key in the chain. This description must include a diagram illustrating the key hierarchy implemented and
+              detail where all keys and keying material is stored or what it is derived from. The
+              evaluator shall examine the key hierarchy to ensure that at no point the chain could be
+              broken without a cryptographic exhaust, the initial authorization value, recovery value
+              or a compromise of the TOE server and the effective strength of the keys are maintained
+              throughout the key chain.
+
+              
+              <h:h4>Guidance</h:h4>
+              If there are configurations to enable or disable use of enterprise server, which modify
+              the key chain, they shall be described.
+              If there are configurations on to enable recovery mechanisms, they shall be described.
+              
+              <h:h4>Tests</h:h4> None.
+              
+              </aactivity>
           </f-element>
         </f-component>
         
@@ -2428,7 +2482,7 @@
               (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FDEs on their systems).
               
               The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
-              as a combination of one or more roles that are provided by the TOE. A user as defined by this cPP-Module may be either a user that is 
+              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
               specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
               
               The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
@@ -2451,7 +2505,7 @@
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
-              conforms to the requirements of this cPP be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
+              conforms to the requirements of this PP-module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
               three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
               
               For distributed TOEs where not every TOE component implements own user management and where authentication and identification of security administrators is not
@@ -2483,7 +2537,7 @@
               (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FDEs on their systems).
               
               The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
-              as a combination of one or more roles that are provided by the TOE. A user as defined by this cPP-Module may be either a user that is 
+              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
               specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
               
               The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
@@ -2506,7 +2560,7 @@
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
-              conforms to the requirements of this cPP be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
+              conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
               three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
               
               For distributed TOEs where not every TOE component implements own user management and where authentication and identification of security administrators is not
@@ -2582,7 +2636,7 @@
               <title>The TSF shall provide the ability to register remote endpoints by [assignment: exchange of mutually identifying information that allows for an association to be made].
                </title>
               <note role="Application">The ST author will complete the assignment with information on the method used by the Management Server portion
-                of the TOE to establish the association with the AA portion of the TOE described in FPT_KYP_EXT.3.1.
+                of the TOE to establish the association with the endpoint portion of the TOE described in FPT_KYP_EXT.3.1.
               </note>
             </f-element>
             
@@ -2635,7 +2689,7 @@
               shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.
               
               
-              <h:h4>Guidance</h:h4>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed 
+              <h:h4>Guidance</h:h4>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
               communication channels and protocols between each pair of authorized TOE components, and that it contains recovery instructions should a connection be unintentionally broken. 
               
               <h:h4>Tests</h:h4>
