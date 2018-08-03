@@ -1395,7 +1395,8 @@
                     <selectable id="USEKEYCOM">implement key combining as specified in FCS_SMC_EXT.1</selectable>
                     <selectable id="USEKEYENC">implement key encryption as specified in FCS_COP.1(7)</selectable>
                     <selectable id="USEKEYTRA">implement key transport as specified in FCS_COP.1(8)</selectable>
-                  </selectables> while maintaining an effective strength of 
+                  </selectables> 
+                  while maintaining an effective strength of 
                     <selectables>
                       <selectable>
                         <selectables>
@@ -1411,10 +1412,8 @@
                           <selectable>256 bits</selectable>
                         </selectables> for asymmetric keys;
                       </selectable>
-                    </selectables> commensurate with the strength of the FEK.
-                </selectable>
-              </selectables> 
-             
+                    </selectables> 
+                  commensurate with the strength of the FEK.              
             </title>
             <note role="application">Key Chaining is the method of using multiple layers of
               encryption keys to ultimately secure the a final key. The number of intermediate keys will
