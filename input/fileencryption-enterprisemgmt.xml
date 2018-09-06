@@ -687,7 +687,7 @@
                   <selectable>
                     <selectables>
                       <selectable>direct the endpoint to perform key sanitization</selectable>
-                      <selectable>perform a key sanitization</selectable>
+                      <selectable>perform a key sanitization of a key required by the endpoint</selectable>
                     </selectables> of FEK(s) or an intermediate key upon 
                     <assignable>ST author specified number or configurable range of attempts</assignable>] consecutive failed validation attempts</selectable>
                   <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
@@ -1061,7 +1061,9 @@
               <h:h4>TSS</h:h4>
               The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
               The evaluator shall confirm that the nonces are unique and the IVs and tweaks meet the stated requirements.
+              
               <h:h4>Guidance</h:h4>None.
+              
               <h:h4>Tests</h:h4>None.
             </aactivity>
           </f-element>
@@ -1928,7 +1930,7 @@
                 <selectable>change recovery credentials</selectable>
                 <selectable>define administrators of the TOE</selectable>
                 <selectable>enable/disable use of recovery credential</selectable>
-                <selectable>configure number of failed authentication attempts before issuing a key sanitization of the FEK(s)</selectable>
+                <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
                 <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
                 <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
                 <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption Module]</assignable></selectable>
@@ -1971,7 +1973,7 @@
               •	Change Recovery Credentials
               •	Define Administrators of the TOE
               •	Enable/Disable the use of recovery credentials (end users)
-              •	Configure the number of failed authentication attempts before issuing a key sanitization of the FEK(s) or intermediate keys
+              •	Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)
               •	Configure the number of authentication attempts that can be made in a 24 hour period
               •	Configure the number of failed authentication attempts required to begin blocking subsequent attempts
               •	The ability to enable/disable one or more functions defined in the File Encryption module
