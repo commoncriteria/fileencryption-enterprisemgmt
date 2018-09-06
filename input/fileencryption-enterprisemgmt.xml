@@ -674,7 +674,7 @@
                       </selectables> as specified in FCS_COP.1(1) and compare it against a stored known value]</selectable>
                   </selectables> </selectable>
               </selectables>
-            
+            </title>
           </f-element>
           
           <f-element id="FCS_VAL_EXT.2.2">
@@ -1390,9 +1390,9 @@
               appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
               in forming the submask that will be used to form the FEK or KEK, that process shall be
               described in the TSS. <h:br/>No explicit testing of the formation of the submask from the
-              input password is required. <
+              input password is required. 
               
-              h:br/> FCS_CKM_1.2(A): The ST author shall provide a
+              <h:br/> FCS_CKM_1.2(A): The ST author shall provide a
               description in the TSS regarding the salt generation. The evaluator shall confirm that
               the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
                 linkend="bibAppPP"/>). 
