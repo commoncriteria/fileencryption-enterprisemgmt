@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="..\transforms\pp2html.xsl"?>
 
-<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-
-<PP xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption">  
+<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<Module  target-products="File Encryption Enterprise Management Module Draft" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption enterprise management">  
   <PPReference>
     <ReferenceTable>
-      <PPTitle>Application Software Module for File Encryption Enterprise Management </PPTitle>
-      <PPVersion>1.0-DRAFT</PPVersion>
+      <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-06-15</PPPubDate>
      <Keywords>file encryption; encryption</Keywords>
@@ -27,14 +25,58 @@
       well defined and described threats. However, this Module is not complete in itself, but rather
       extends the Protection Profile for Application Software (<cite linkend="bibAppPP"/>). This
       introduction will describe the features of a compliant Target of Evaluation, and will also
-      discuss how this Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. </section>
-    <section id="glossary" title="Terms">The following sections provide both Common Criteria and
-      technology terms used in this Module. 
+      discuss how this Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. 
+    
+    The use case for a product conforming to the FE module is to protect data at rest on a device
+    that is lost or stolen while powered off without any prior access by an adversary. The use case
+    where an adversary obtains a device that is in a powered state and is able to make modifications
+    to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. <h:br/>
+      
+      While that use case is still true for the Enterprise Management Module, this PP-module also
+      expands the use case to include protecting the communications between the Enterprise
+      Management Server and the client device through the use of a trusted channel. It also expands
+      the use case to include the optional abilities of the EM to interact with clients (with proper
+      authorization), to direct it to perform sanitation of keys and material on the device, 
+      to manage and store parts of the key chain required for decryption on the client, or to issue a
+      recovery credential to reset the authentication factor if it has been lost.
+      
+      The TOE and Its Supporting Environment:
+      
+      The environment in which the EM functions is expected to exist is on a back end server, not
+      on the endpoint system. It is expected to have secure access to a certified LDAP
+      (e.g. Active Directory) and access to a certified means of storing key material when not in use.
+      The EM shall not have the ability to access the secured stored key material without verification
+      of access authority by the LDAP.
+      The Operating System environment may make a full range of services available to the
+      Enterprise Management Module, including hardware drivers, cryptographic libraries, and
+      perhaps other services external to the TOE.
+      The EM TOE may include or leverage features and functions within the operational
+      environment.
+    </section>
+    
+    <section id="glossary" title="Terms">
+      The following sections provide both Common Criteria and technology terms used in this Module. 
+      
+      <subsection title="Common Criteria Terms">
         <glossary>
+          <entry>
+            <term>Assurance</term>
+            <description> Grounds for confidence that a TOE meets the SFRs [CC1]. </description>
+          </entry>
           <entry>
             <term><abbr title="Common Criteria">CC</abbr></term>
             <description>Common Criteria for Information Technology Security
               Evaluation.</description>
+          </entry>
+          <entry>
+            <term>Distributed TOE</term>
+            <description>A TOE composed of multiple components operating as a logical whole.</description>
+          </entry>
+          <entry>
+            <term>Operational Environment </term>
+            <description> Hardware and software that are outside the TOE boundary that support the
+              TOE functionality and security policy, including the host platform, its firmware, and
+              the operating system. </description>
           </entry>
           <entry>
             <term><abbr title="Protection Profile">PP</abbr></term>
@@ -63,7 +105,7 @@
           <entry>
             <term><abbr title="TOE Summary Specification">TSS</abbr></term>
             <description>A description of how a <abbr linkend="TOE"/> satisfies the SFRs in a <abbr
-                linkend="ST"/>. </description>
+              linkend="ST"/>. </description>
           </entry>
           <entry>
             <term><abbr title="Security Functional Requirement">SFR</abbr></term>
@@ -75,23 +117,21 @@
             <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
             </description>
           </entry>
+          <entry>
+            <term>Target of Evaluation </term>
+            <description> A set of software, firmware and/or hardware possibly accompanied by guidance. [CC1]</description>
+          </entry>
+        </glossary>
+      </subsection>
       
-     
-         
+      <subsection title="Technical Terms">
+        <glossary>
           <entry>
             <term>Authorization factor (AF) </term>
             <description> A value that a user knows, has, or is (e.g. password, token, etc.) submitted 
               to the TOE to establish that the user is in the community authorized to use the hard disk.
               This value is used in the derivation or decryption of the FEK and eventual decryption of the files.
               Note that these values may or may not be used to establish the particular identity of the user.  </description>
-          </entry>
-          <entry>
-            <term>Assurance</term>
-            <description> Grounds for confidence that a TOE meets the SFRs [CC1]. </description>
-          </entry>
-          <entry>
-            <term>Distributed TOE</term>
-            <description>A TOE composed of multiple components operating as a logical whole.</description>
           </entry>
           <entry>
             <term>Key Sanitization </term>
@@ -132,24 +172,18 @@
             <term>Keying material </term>
             <description> Key material is commonly known as critical security parameter (CSP) data, and also includes authorization data, nonces, and metadata. </description>
           </entry>
-            <entry>
-              <term>Key Release Key </term>
-              <description> A key used to release another key from storage, it is not used for the direct derivation or decryption of another key. </description>
-            </entry>
-            <entry>
+          <entry>
+            <term>Key Release Key </term>
+            <description> A key used to release another key from storage, it is not used for the direct derivation or decryption of another key. </description>
+          </entry>
+          <entry>
             <term>Noise Source </term>
             <description> The component of an RBG that contains the non-deterministic,
               entropy-producing activity. </description>
           </entry>
-            <entry>
-              <term>Non-Volatile Memory</term>
-              <description> A type of computer memory that will retain information without power.  </description>
-            </entry>
           <entry>
-            <term>Operational Environment </term>
-            <description> Hardware and software that are outside the TOE boundary that support the
-              TOE functionality and security policy, including the host platform, its firmware, and
-              the operating system. </description>
+            <term>Non-Volatile Memory</term>
+            <description> A type of computer memory that will retain information without power.  </description>
           </entry>
           <entry>
             <term>Powered-Off State </term>
@@ -163,11 +197,9 @@
             <term>Submask </term>
             <description> A submask is a bit string that can be generated and stored in a number of ways. </description>
           </entry>
-          <entry>
-            <term>Target of Evaluation </term>
-            <description> A set of software, firmware and/or hardware possibly accompanied by guidance. [CC1]</description>
-          </entry>
         </glossary>
+        
+      </subsection>
       
     </section>
     <section title="Compliant Targets of Evaluation" id="complianttargets">     
@@ -178,68 +210,50 @@
     The following sections provide an overview of the security functionality of this PP-module.</section>
     
     <section title="Use Cases" id="usecases">
-      <subsection title="Usage and Major Security Features of the Target of Evaluation (TOE)"
-        id="usagetoe"> 
-          The use case for a product conforming to the FE module is to protect data at rest on a device
-          that is lost or stolen while powered off without any prior access by an adversary. The use case
-          where an adversary obtains a device that is in a powered state and is able to make modifications
-          to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. <h:br/>
-        
-          While that use case is still true for the Enterprise Management Module, this PP-module also
-          expands the use case to include protecting the communications between the Enterprise
-          Management Server and the client device through the use of a trusted channel. It also expands
-          the use case to include the optional abilities of the EM to interact with clients (with proper
-          authorization), to direct it to perform sanitation of keys and material on the device, 
-          to manage and store parts of the key chain required for decryption on the client, or to issue a
-          recovery credential to reset the authentication factor if it has been lost.
-      </subsection>
-      
-      <subsection title="The TOE and Its Supporting Environment" id="supenv"> The environment in which the EM functions is expected to exist is on a back end server, not
-        on the endpoint system. It is expected to have secure access to a certified LDAP
-        (e.g. Active Directory) and access to a certified means of storing key material when not in use.
-        The EM shall not have the ability to access the secured stored key material without verification
-        of access authority by the LDAP.
-        The Operating System environment may make a full range of services available to the
-        Enterprise Management Module, including hardware drivers, cryptographic libraries, and
-        perhaps other services external to the TOE.
-        The EM TOE may include or leverage features and functions within the operational
-        environment.  </subsection>
+        <usecases>
+          <usecase title="Enterprise Encryption Management" id="usecase1">
+            <description>The use case for this Module is protecting the communications between the Enterprise
+              Management Server and the client device through the use of a trusted channel. Including the optional abilities of the EM to interact with clients (with proper
+              authorization), to direct it to perform sanitation of keys and material on the device, 
+              to manage and store parts of the key chain required for decryption on the client, or to issue a
+              recovery credential to reset the authentication factor if it has been lost. </description>
+          </usecase>
+        </usecases>
+         
     </section>
     
   </chapter>
   <chapter title="Conformance Claims" id="conf">
     <cclaims>
-      <cclaim id="Conformance Statement">
-        <description> 
-          This lanaguage will be updated before release. 
-          
-          The Protection Profile for Application Software (App PP) defines the baseline
-          Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs) for
-          application software products. This Module serves to extend the App PP baseline with
-          additional SFRs and associated Assurance Activities specific to an email client. Assurance
-          Activities are the actions that the evaluator performs in order to determine an email
-          client’s compliance to the SFRs.<h:br/> This Module conforms to Common Criteria <cite
-            linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
-          5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
-          EP, the ST must include all components in this Module and the associated App PP that are:
-              <h:ul><h:li>unconditional (which are always required)</h:li>
-            <h:li>selection-based (which are required when certain selections are chosen in the
-              unconditional requirements)</h:li>
-          </h:ul> and may include optional and/or objective components that are desirable but not
-          required for conformance. </description>
+      <cclaim title="Conformance Statement">
+        <description>
+          <h:p>
+            The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
+            defines the baseline Security Functional Requirements (SFRs) and Security Assurance
+            Requirements (SARs) for application software products. This <abbr linkend="PP-Module"/> serves to
+            extend the ApSo PP baseline with additional SFRs and associated Evaluation Activities
+            specific to an enterprise encryption managmenet product.
+            Evaluation Activities are the actions that the evaluator
+            performs in order to determine a file encryption product's compliance to the SFRs.
+          </h:p>
+          <h:p>
+            This <abbr linkend="PP-Module"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
+            Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2 extended and CC
+            Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
+              linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
+            associated ApSo PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
+              <h:li>selection-based (which are required when certain selections are chosen in the
+                unconditional requirements)</h:li>
+            </h:ul> and may include optional and/or objective components that are desirable but not
+            required for conformance. 
+          </h:p>
+          <h:p>
+            In accordance with CC Part 1, dependencies are not included when they are addressed by other SFRs.
+            The evaluation activities provide adequate proof that any dependencies are also satisfied.
+          </h:p>
+        </description>
       </cclaim>
     </cclaims>
-    <section title="How to Use This Module" id="howto"> 
-      This lanaguage will be updated before release.
-      
-      As an Module of the <cite
-        linkend="bibAppPP"/>, it is expected that the content of both this Module and the <cite
-        linkend="bibAppPP"/> be appropriately combined in the context of each product-specific
-      Security Target. This Module has been specifically defined such that there should be no difficulty
-      or ambiguity in so doing. An ST must identify the applicable versions of the <cite
-        linkend="bibAppPP"/> (see http://www.niap-ccevs.org/pp/ for the current version) and this  Module 
-      in its conformance claims. When requirements are referenced from the <cite linkend="bibAppPP"
-      />, a short notation is included. </section>
   </chapter>
   
   <chapter title="Security Problem Description" id="spd"> The primary asset that is being protected
@@ -314,6 +328,8 @@
         </threat>
       </threats>
     </section>
+    
+    <!--  
       <section title="Assumptions" id="assumptions">
         <assumptions>
          
@@ -343,10 +359,10 @@
           </assumption>
         </assumptions>
       </section>
+      -->
   
   </chapter>
-  <chapter title="Security Objectives" id="obj">
-    <section title="Security Objectives for the TOE" id="objtoe"> The Security Problem described in
+  <chapter title="Security Objectives" id="obj">The Security Problem described in
       Section 2 will be addressed by a combination of cryptographic capabilities. Compliant TOEs
       will provide security functionality that addresses threats to the TOE and enforces policies
       that are imposed by law and regulation. The following subsections provide a description of the
@@ -357,6 +373,8 @@
       requirements (SFRs) that provide the mechanisms to satisfy the objectives.<h:br/> The Security
       Objectives are the requirements for the Target of Evaluation (TOE) and for the Operational
       Environment derived from the threats in Section 2. 
+      
+    <section title="Security Objectives for the TOE" id="objtoe"> 
       <SOs>
         <SO id="O.KEY_MATERIAL_PROTECTION">
           <description>
@@ -366,6 +384,9 @@
             in a host with weaker security. A product which distributes keys to meet the requirements of FPT_KYP_EXT.3 will
             additionally prevent an attacker from gaining access to the encrypted data. </description>
           <component-refer ref="FPT_KYP_EXT.3"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
         <SO id="O.RECOVERY_PROTECTION">
           <description>
@@ -387,6 +408,9 @@
           <component-refer ref="FCS_VAL_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.2)"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
         
         <SO id="O.KEY_MATERIAL_SERVER">
@@ -456,6 +480,9 @@
           <component-refer ref="FCS_COP.1(7)"/>
           <component-refer ref="FCS_KDF_EXT.1"/>
           <component-refer ref="FMT_MOF.1"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
@@ -472,6 +499,9 @@
           <component-refer ref="FPT_ITT.1"/>
           <component-refer ref="FCS_CKM.1(a)"/>
           <component-refer ref="FCS_COP.1(a)"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
         <SO id="O.VERIFIED_ADMIN">
           <description>
@@ -480,6 +510,9 @@
           </description>
           <component-refer ref="FIA_UAU.1"/>
           <component-refer ref="FIA_UID.1"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
         
         <SO id="O.TRUSTED_COMMUNICATION_CHANNEL">
@@ -502,18 +535,23 @@
           <component-refer ref="FCS_RBG_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.2"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
         </SO>
       </SOs>
     </section>
     
-    <section title="Security Objectives for the TOE's Operational Environment" id="objenv"> The
+    <section title="Security Objectives for the Operational Environment" id="objenv"> The
       Operational Environment of the TOE implements technical and procedural measures to assist the
       TOE in correctly providing its security functionality (which is defined by the security
       objectives for the TOE). The security objectives for the Operational Environment consist of a
       set of statements describing the goals that the Operational Environment should achieve.<h:br/>
       This section defines the security objectives that are to be addressed by the IT domain or by
       non-technical or procedural means. The assumptions identified in Section 3 are incorporated as
-      security objectives for the environment. <SOs>
+      security objectives for the environment. 
+      <!--  
+      <SOs>
         <SO id="OE.SECURED_CONFIGURATION">
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
             so that the level of security that is provided by the TOE is consistent with its evaluated configuration.</description>
@@ -535,37 +573,25 @@
           <component-refer ref="FPT_KYP_EXT.2"/>
         </SO>
        </SOs>
-    
+       -->
     </section>
-    <section title="Security Objectives Rationale" id="SOR">This section describes how the
-      assumptions, threats, and organizational security policies map to the security objectives.
-      <h:insertSPDCorrespondence/>
+    
+    <section title="Security Objectives Rationale" id="SOR">
     </section>
   </chapter>
 
-  <chapter title="Security Requirements" id="req">This chapter describes the security requirements
-    which have to be fulfilled by the email client. Those requirements comprise functional
-    components from Part 2 of <cite linkend="bibCC"/>. The following notations are used: <h:ul>
-      <h:li>
-        <h:b>Selection</h:b> (denoted by <h:i>italicized text</h:i>): is used to select one or more options
-        provided by the [CC] in stating a requirement.</h:li>
-      <h:li>
-        <h:b>Assignment</h:b> operation (denoted by <h:i>italicized text</h:i>): is used to assign a
-        specific value to an unspecified parameter, such as the length of a password. Showing the
-        value in square brackets indicates assignment.</h:li>
-      <h:li>
-        <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g.
-        "(1)").</h:li>
-    </h:ul>
-    <section title="Security Functional Requirements for the File Encryption Application (TOE)"
-      id="SFRs"> As indicated in Section 1.3.2, security functional requirements in the main body of
-      the module are divided into those that must be satisfied by the file encryption solution, and those that must be satisfied by either the TOE or the platform on which it runs.
-      This section contains the requirements that must be met by the TOE. 
-      
-      
-      
+  <chapter title="Security Requirements" id="req">
+    <base-pp 
+      product="application"
+      name="Application Software" short="ApSo" 
+      url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
+      xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
+      <modified-sfrs></modified-sfrs>
+      <additional-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="FCS_VAL_EXT.1" name="Extended: Admin Validation">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_VAL_EXT.1.1">
             <title>The TSF shall perform validation of the admin by 
               <selectables>
@@ -638,6 +664,8 @@
         </f-component>
         
         <f-component id="FCS_VAL_EXT.2" name="Extended: User Validation">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_VAL_EXT.2.1">
             <title>The TSF shall perform validation of the admin by 
               <selectables>
@@ -726,6 +754,8 @@
        
       
         <f-component id="FCS_COP.1(5)" name="Cryptographic operation (Key Wrapping)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_COP.1.1(5)">
             <title>
               <h:b>Refinement:</h:b> The application shall 
@@ -825,6 +855,8 @@
         
         
         <f-component id="FCS_COP.1(7)" name="Cryptographic operation (Key Encryption)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_COP.1.1(7)">
             <title>
               <h:b>Refinement:</h:b> The TSF shall 
@@ -864,6 +896,8 @@
         </f-component>
         
         <f-component id="FCS_KDF_EXT.1" name="Cryptographic operation (Key Derivation)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_KDF_EXT.1.1">
             <title>
               <h:b>Refinement:</h:b> The TSF shall <selectables>
@@ -911,6 +945,8 @@
         </f-component>
         
         <f-component id="FCS_COP.1(8)" name="Cryptographic operation (Key Transport)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_COP.1.1(8)">
             <title>
               <h:b>Refinement:</h:b> The TSF shall  
@@ -1033,6 +1069,8 @@
         </f-component>
         
         <f-component id="FCS_IV_EXT.1" name="Extended: Initialization Vector Generation">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_IV_EXT.1.1 ">
             <title>The application shall <selectables>
               <selectable>implement platform-provided functionality to generate IVs</selectable>
@@ -1059,6 +1097,8 @@
         </f-component>
         
         <f-component id="FCS_SMC_EXT.1" name="Submask Combining ">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_SMC_EXT.1.1 ">
             <title>The TSF shall 
               <selectables>
@@ -1092,6 +1132,8 @@
         </f-component>
         
         <f-component id="FCS_CKM_EXT.4" name="Extended: Cryptographic Key Destruction">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_CKM_EXT.4.1">
             <title>The TSF shall destroy cryptographic keys in accordance with a specified cryptographic key destruction method 
               <selectables linebreak="yes">
@@ -1288,128 +1330,12 @@
         </f-component>
         
         
-        <f-component id="FCS_CKM.1(A)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)" status="sel-based"> 
-          <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
-          <f-element id="FCS_CKM.1.1(A)">
-            <title>
-              <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
-              [assignment: maximum password size, positive integer of 64 or more] 
-              characters used to generate a password authorization factor.
-            </title>
-          </f-element>
-          <f-element id="FCS_CKM.1.2(A)">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
-              lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
-              and [selection: [assignment: other supported special characters], no other characters].</title>
-          </f-element>
-          <f-element id="FCS_CKM.1.3(A)">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall perform [Password-based Key Derivation
-              Functions] in accordance with a specified cryptographic algorithm [HMAC- <selectables>
-                <selectable>SHA-256</selectable>
-                <selectable>SHA-384</selectable>
-                <selectable>SHA-512</selectable>
-              </selectables> ], with [assignment: positive integer of 4096 or more] iterations, and
-              output cryptographic key sizes <selectables>
-                <selectable>128</selectable>
-                <selectable>256</selectable>
-              </selectables> that meet the following: [NIST SP 800-132]. 
-            </title>
-          </f-element>
-          <f-element id="FCS_CKM.1.4(A)">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall not accept passwords less than [selection: a value settable by the administrator, 
-              [assignment: minimum password length accepted by the TOE, must be >= 1]] and greater than the maximum password length 
-              defined in FCS_CKM_EXT.1.1(A).</title>
-          </f-element>
-          <f-element id="FCS_CKM.1.5(A)">
-            <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from the AS PP) and with entropy 
-              corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.1.3(A).</title>
-            
-            <note role="application"> 
-              This applies to passwords on the enterprise server.
-              
-              The password/passphrase is represented on the host machine as a sequence of characters whose 
-              encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.
-              
-              For FCS_CKM_EXT.1.1(A), the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
-              
-              For FCS_CKM_EXT.1.2(A), the ST author assigns any other supported characters; if there are no other supported characters, 
-              they should select “no other characters”.
-              
-              For FCS_CKM_EXT.1.3(A), the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
-              key sizes in are made to correspond to the KEK key sizes selected in FCS_CKM_EXT.1.
-              
-              The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
-              KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
-              NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.
-              
-              Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
-              a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this EP,
-              a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
-              A significantly higher value is recommended to ensure optimal security.
-              
-              For FCS_CKM_EXT.1.4(A) If the minimum password length is settable, then ST author chooses “a value settable by the administrator
-              for this component, as well as the “configure password/passphrase complexity setting” item for FMT_SMF.1.1. If the minimum length
-              is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
-            <aactivity>
-              <TSS/> FCS_CKM_1.1(A): There are two aspects of this component that require
-              evaluation: passwords/passphrases of the length specified in the requirement (at least
-              64 characters) are supported, and that the characters that are input are subject to the
-              selected conditioning function. These activities are separately addressed in the text
-              below. 
-              
-              <h:br/>Support for minimum length:The evaluator shall check to ensure that the 
-              TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
-              
-              
-              <h:br/>Support for character set: The evaluator shall check to ensure that the 
-              TSS describes the allowable character set and that it contains the characters listed in the SFR.
-              
-              <h:br/>Support for PBKDF: The evaluator shall examine the TSS to ensure
-              that the formation of all KEKs or FEKs (as decided in the FCS_CKM_EXT.1 selection) is
-              described and that the key sizes match that described by the ST author. <h:br/>The
-              evaluator shall check that the TSS describes the method by which the password/passphrase
-              is first encoded and then fed to the SHA algorithm. The settings for the algorithm
-              (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
-              are supported by the selections in this component as well as the selections concerning
-              the hash function itself. The evaluator shall verify that the TSS contains a description
-              of how the output of the hash function is used to form the submask that will be input
-              into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
-              <h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
-              assurance activities will be performed when doing the assurance activities for the
-              appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
-              in forming the submask that will be used to form the FEK or KEK, that process shall be
-              described in the TSS. <h:br/>No explicit testing of the formation of the submask from the
-              input password is required. 
-              
-              <h:br/> FCS_CKM_1.2(A): The ST author shall provide a
-              description in the TSS regarding the salt generation. The evaluator shall confirm that
-              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
-                linkend="bibAppPP"/>). 
-              
-              <Guidance/>
-              <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
-              to determine that there are instructions on how to generate large passwords/passphrases, and
-              instructions on how to configure the password/passphrase length (and optional complexity settings)
-              to provide entropy commensurate with the keys that the authorization factor is protecting.  
-              
-              <Tests/> Support for Password/Passphrase characteristics: In addition to the analysis above, 
-              the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <testlist>
-                <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
-                <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.1.1(A). </test>
-                <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.1.4(A).
-                  If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
-                <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.1.2(A).</test>
-              </testlist>
-              <h:b>Conditioning:</h:b> No explicit testing of the formation of the authorization factor
-              from the input password/passphrase is required.  </aactivity>
-          </f-element>
-        </f-component>
         
         
-         <f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
+        
+        <f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FCS_KYC_EXT.1.1">
             <title> The TSF shall maintain a key chain of intermediate keys originating from one or more initial
                   <selectables>
@@ -1507,14 +1433,11 @@
         
               
       </subsection>
-      
-      
-      
-      
-      
       <subsection title="Identification and Authentication (FIA)" id="fia">
         
         <f-component id="FIA_AUT_EXT.2" name="Server Administrator Authorization">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FIA_AUT_EXT.2.1">
             <title>The application shall 
               <selectables>
@@ -1608,6 +1531,8 @@
         </f-component>
         
         <f-component id="FIA_UAU.1" name="Timing of Authentication">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FIA_UAU.1.1">
             <title>The TSF shall allow 
               <assignable>list of TSF-mediated actions</assignable>
@@ -1651,6 +1576,8 @@
         </f-component>
         
         <f-component id="FIA_UID.1" name="Timing of Identification">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FIA_UID.1.1">
             <title>The TSF shall allow 
               <assignable>list of TSF-mediated actions</assignable>
@@ -1685,6 +1612,8 @@
         </f-component>
         
         <f-component id="FIA_REC_EXT.1" name="Recovery Support">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FIA_REC_EXT.1.1">
             <title>The TSF shall support the following recovery mechanisms 
               <selectables>
@@ -1722,132 +1651,9 @@
           </f-element>
         </f-component>
         
-        <f-component id="FIA_CHR_EXT.1" name="Challenge Recovery Recovery Credential" status="sel-based">
-          <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
-          <f-element id="FIA_CHR_EXT.1.1">
-            <title>The TSF shall only generate a response if it is able to access recovery information for 
-              <selectables>
-                <selectable>the user requesting the recovery</selectable>
-                <selectable>the user requesting recovery and the device for which the recovery was requested</selectable>
-              </selectables>.
-            </title>
-            <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate endpoint.
-              </note>
-          </f-element>
-          
-          <f-element id="FIA_CHR_EXT.1.2">
-            <title>The response shall only work on the system upon which the challenge was generated and the user to whom it was generated.
-            </title>
-            <note role="application"> This mechanism is intended to provide a recovery method for a user who has forgotten their
-              authentication factor and is unable to access their encrypted data on a system that is fully functional.
-            </note>
-          </f-element>
-          
-          <f-element id="FIA_CHR_EXT.1.3">
-            <title>The response shall only be used during the same session in which the request was generated.
-            </title>
-            <note role="application"> The intent of this requirement is to limit the attack surface of the recovery credential
-              mechanism by preventing the use of the credential following a reboot of the device.
-            </note>
-          </f-element>
-          
-          <f-element id="FIA_CHR_EXT.1.4">
-            <title>The TSF shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
-            </title>
-          </f-element>
-          
-          <f-element id="FIA_CHR_EXT.1.5">
-            <title>The TSF shall allow a maximum of [assignment: integer value] of response entry attempts per boot cycle.
-            </title>
-          </f-element>
-          
-          <f-element id="FIA_CHR_EXT.1.6">
-            <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2.3 for failed challenge recovery attempts.
-            </title>
-            
-            <aactivity>
-              
-              <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
-              The TSS shall also describe the methods used to verify user or both user and device requesting the Recovery credential. 
-              The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
-              as many potential values as a corresponding password or PIN.
-              
-              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
-              of the user or both user and device for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
-              consecutive failed validation attempts if this value is configurable.
-              
-              
-              <Tests/> The evaluator shall ensure that a response is only generated if the user or both the user and device for which 
-              recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
-              behalf of the requesting user and on the device where the challenge was generated with the constraints specified for consecutive failed authentication attempts. <h:br/>
-              
-              The term “managed” below is used to refer a user or device which is registered on the server, i.e.
-              their identity can be successfully verified by either administrator or TSF.
-              The “unmanaged” presumes that the user/device cannot be successfully verified. <h:br/>
-              
-              The evaluator shall perform the following tests: <h:br/>
-              
-              <testlist>
-                <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user and device. 
-                  The evaluator shall then issue a challenge on behalf of a managed user for a managed device and ensure that TSF successfully generates the response.</test>
-                <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
-                  The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
-                <test>Test 3: The evaluator shall configure Challenge/Response recovery to validate the device. 
-                  The evaluator shall then issue a challenge on behalf of managed User A for an unmanaged device or a managed device that 
-                  User A has no access to and then attempt to use it to obtain a response. This should fail.</test>
-                <test>Test 4: The evaluator shall issue a challenge on behalf of a managed user from a specific device and ensure that 
-                  the response received successfully will log the user in on that device.</test>
-                <test>Test 5: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
-                <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user from a specific device, and then attempt to reuse 
-                  the response on a different device. This should fail.</test>
-                <test>Test 7: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
-                  reboot the system [system terminates the session] and enter the response. This should fail.</test>
-                <test>Test 8: The evaluator shall issue a challenge on behalf of a managed user from a managed system and attempt to enter an 
-                  incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
-                  conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
-              </testlist>
-              
-            </aactivity>
-            
-          </f-element>
-        </f-component>
         
         
-        <f-component id="FIA_PIN_EXT.1" name="PIN Recovery Credential" status="sel-based">
-          <selection-depends req="FIA_REC_EXT.1.1" ids="PIN"/>
-          <f-element id="FIA_PIN_EXT.1.1">
-            <title>The TSF shall pre-populate the recovery PIN on the Management Server.
-            </title>
-            
-          </f-element>
-          
-          <f-element id="FIA_PIN_EXT.1.2">
-            <title>The recovery key chain accessed by the recovery PIN shall only work on the system(s) within which the FEK(s) to be recovered resides.</title>
-          </f-element>
-          
-          <f-element id="FIA_PIN_EXT.1.3">
-            <title>The TSF shall not permit the PIN to be used more than once.</title>
-          
-            <aactivity>
-              
-              <TSS/> The evaluator shall examine the TSS to determine that the methods using a PIN Recovery Credential are specified.
-              
-              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for establishing Recovery PIN
-              credential for each user on the Management Server.
-              
-              
-              <Tests/> 
-              <testlist>
-                <test>Test 1: The evaluator shall populate the Management Server with a Recovery PIN and then try to retrieve it. The test shall pass.
-                  The evaluation shall remove the Recovery PIN and try to retrieve it. This test shall fail.</test>
-                <test>Test 2: The evaluator shall use the retrieved Recovery PIN to authenticate to the system where the FEK(s) protected by the Recovery PIN is installed.
-                  This test shall pass. The evaluator shall then try to use the Recovery PIN on a device with different FEK(s). This test shall fail. </test>
-                <test>Test 3: After successful authentication with the Recovery PIN the evaluator shall restart the system and try to authenticate again with the same PIN. This should fail.</test>
-              </testlist>
-            </aactivity>
-            
-          </f-element>
-        </f-component>
+        
         
         
         
@@ -1859,6 +1665,8 @@
         
         
         <f-component id="FMT_MTD.1" name="Management of TSF Data">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FMT_MTD.1.1">
             <title>The TSF shall restrict the ability to 
               <selectables>
@@ -1905,6 +1713,8 @@
         </f-component>
         
         <f-component id="FMT_SMF.1" name="Specification of Management Functions (Management Server)">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FMT_SMF.1.1">
             <title>The TSF shall be capable of performing the following management functions: 
               <selectables linebreak="yes">
@@ -2020,6 +1830,8 @@
         </f-component>
         
         <f-component id="FMT_SMR.2" name="Restrictions on Security Roles">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FMT_SMR.2.1">
             <title>The TSF shall maintain the roles [administrator, user]
             </title>
@@ -2074,6 +1886,8 @@
         </f-component>
         
         <f-component id="FMT_MOF.1" name="Server Management Functions Behavior">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FMT_MOF.1.1">
             <title>The TSF shall restrict the ability to 
               <selectables>
@@ -2126,10 +1940,10 @@
         
         
       </subsection>
-      
-      
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_KYP_EXT.2" name="Extended: Protection of Server Key and Key Material ">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FPT_KYP_EXT.2.1">
             <title>The TSF shall only store keys in non-volatile memory when
                   <selectables>
@@ -2170,7 +1984,9 @@
           </f-element>
         </f-component>
         
-          <f-component id="FPT_KYP_EXT.3" name="Extended: Attribution of Key and Key Material">
+        <f-component id="FPT_KYP_EXT.3" name="Extended: Attribution of Key and Key Material">
+          <consistency-rationale>
+          </consistency-rationale>
             <f-element id="FPT_KYP_EXT.3.1">
               <title>The TSF shall maintain an association between stored endpoint keys and [user identity, 
                 <selectables>
@@ -2223,6 +2039,8 @@
           </f-component>
       
         <f-component id="FPT_ITT.1" name="Basic Internal TSF Data Transfer Protection">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FPT_ITT.1.1">
             <title>The TSF shall protect TSF data from [disclosure, modification] when it is transmitted between separate parts
               of the TOE through the use of 
@@ -2268,6 +2086,8 @@
         </f-component>
         
         <f-component id="FPT_TRP.1" name="Trusted Path">
+          <consistency-rationale>
+          </consistency-rationale>
           <f-element id="FPT_TRP.1.1">
             <title>The TSF shall be capable of using 
               <selectables>
@@ -2327,47 +2147,272 @@
           </f-element>
         </f-component>
         
-      </subsection>
-    </section>
+      </subsection></additional-sfrs>
+      <con-toe></con-toe>
+      <con-sec-prob></con-sec-prob>
+      <con-obj></con-obj>
+      <con-op-en></con-op-en>
+    </base-pp>
+    <man-sfrs></man-sfrs>
+    <opt-sfrs></opt-sfrs>
+    <sel-sfrs>
+      <f-component id="FCS_CKM.1(A)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
+        <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
+        <consistency-rationale>
+        </consistency-rationale>
+        <f-element id="FCS_CKM.1.1(A)">
+          <title>
+            <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
+            [assignment: maximum password size, positive integer of 64 or more] 
+            characters used to generate a password authorization factor.
+          </title>
+        </f-element>
+        <f-element id="FCS_CKM.1.2(A)">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
+            lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
+            and [selection: [assignment: other supported special characters], no other characters].</title>
+        </f-element>
+        <f-element id="FCS_CKM.1.3(A)">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall perform [Password-based Key Derivation
+            Functions] in accordance with a specified cryptographic algorithm [HMAC- <selectables>
+              <selectable>SHA-256</selectable>
+              <selectable>SHA-384</selectable>
+              <selectable>SHA-512</selectable>
+            </selectables> ], with [assignment: positive integer of 4096 or more] iterations, and
+            output cryptographic key sizes <selectables>
+              <selectable>128</selectable>
+              <selectable>256</selectable>
+            </selectables> that meet the following: [NIST SP 800-132]. 
+          </title>
+        </f-element>
+        <f-element id="FCS_CKM.1.4(A)">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall not accept passwords less than [selection: a value settable by the administrator, 
+            [assignment: minimum password length accepted by the TOE, must be >= 1]] and greater than the maximum password length 
+            defined in FCS_CKM_EXT.1.1(A).</title>
+        </f-element>
+        <f-element id="FCS_CKM.1.5(A)">
+          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from the AS PP) and with entropy 
+            corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.1.3(A).</title>
+          
+          <note role="application"> 
+            This applies to passwords on the enterprise server.
+            
+            The password/passphrase is represented on the host machine as a sequence of characters whose 
+            encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.
+            
+            For FCS_CKM_EXT.1.1(A), the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
+            
+            For FCS_CKM_EXT.1.2(A), the ST author assigns any other supported characters; if there are no other supported characters, 
+            they should select “no other characters”.
+            
+            For FCS_CKM_EXT.1.3(A), the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
+            key sizes in are made to correspond to the KEK key sizes selected in FCS_CKM_EXT.1.
+            
+            The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
+            KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
+            NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.
+            
+            Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
+            a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this EP,
+            a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
+            A significantly higher value is recommended to ensure optimal security.
+            
+            For FCS_CKM_EXT.1.4(A) If the minimum password length is settable, then ST author chooses “a value settable by the administrator
+            for this component, as well as the “configure password/passphrase complexity setting” item for FMT_SMF.1.1. If the minimum length
+            is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
+          <aactivity>
+            <TSS/> FCS_CKM_1.1(A): There are two aspects of this component that require
+            evaluation: passwords/passphrases of the length specified in the requirement (at least
+            64 characters) are supported, and that the characters that are input are subject to the
+            selected conditioning function. These activities are separately addressed in the text
+            below. 
+            
+            <h:br/>Support for minimum length:The evaluator shall check to ensure that the 
+            TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
+            
+            
+            <h:br/>Support for character set: The evaluator shall check to ensure that the 
+            TSS describes the allowable character set and that it contains the characters listed in the SFR.
+            
+            <h:br/>Support for PBKDF: The evaluator shall examine the TSS to ensure
+            that the formation of all KEKs or FEKs (as decided in the FCS_CKM_EXT.1 selection) is
+            described and that the key sizes match that described by the ST author. <h:br/>The
+            evaluator shall check that the TSS describes the method by which the password/passphrase
+            is first encoded and then fed to the SHA algorithm. The settings for the algorithm
+            (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
+            are supported by the selections in this component as well as the selections concerning
+            the hash function itself. The evaluator shall verify that the TSS contains a description
+            of how the output of the hash function is used to form the submask that will be input
+            into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
+            <h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
+            assurance activities will be performed when doing the assurance activities for the
+            appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
+            in forming the submask that will be used to form the FEK or KEK, that process shall be
+            described in the TSS. <h:br/>No explicit testing of the formation of the submask from the
+            input password is required. 
+            
+            <h:br/> FCS_CKM_1.2(A): The ST author shall provide a
+            description in the TSS regarding the salt generation. The evaluator shall confirm that
+            the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
+              linkend="bibAppPP"/>). 
+            
+            <Guidance/>
+            <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
+            to determine that there are instructions on how to generate large passwords/passphrases, and
+            instructions on how to configure the password/passphrase length (and optional complexity settings)
+            to provide entropy commensurate with the keys that the authorization factor is protecting.  
+            
+            <Tests/> Support for Password/Passphrase characteristics: In addition to the analysis above, 
+            the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <testlist>
+              <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
+              <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.1.1(A). </test>
+              <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.1.4(A).
+                If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
+              <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.1.2(A).</test>
+            </testlist>
+            <h:b>Conditioning:</h:b> No explicit testing of the formation of the authorization factor
+            from the input password/passphrase is required.  </aactivity>
+        </f-element>
+      </f-component>
+      
+      <f-component id="FIA_CHR_EXT.1" name="Challenge Recovery Recovery Credential">
+        <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
+        <consistency-rationale>
+        </consistency-rationale>
+        <f-element id="FIA_CHR_EXT.1.1">
+          <title>The TSF shall only generate a response if it is able to access recovery information for 
+            <selectables>
+              <selectable>the user requesting the recovery</selectable>
+              <selectable>the user requesting recovery and the device for which the recovery was requested</selectable>
+            </selectables>.
+          </title>
+          <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate endpoint.
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.2">
+          <title>The response shall only work on the system upon which the challenge was generated and the user to whom it was generated.
+          </title>
+          <note role="application"> This mechanism is intended to provide a recovery method for a user who has forgotten their
+            authentication factor and is unable to access their encrypted data on a system that is fully functional.
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.3">
+          <title>The response shall only be used during the same session in which the request was generated.
+          </title>
+          <note role="application"> The intent of this requirement is to limit the attack surface of the recovery credential
+            mechanism by preventing the use of the credential following a reboot of the device.
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.4">
+          <title>The TSF shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
+          </title>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.5">
+          <title>The TSF shall allow a maximum of [assignment: integer value] of response entry attempts per boot cycle.
+          </title>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.6">
+          <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2.3 for failed challenge recovery attempts.
+          </title>
+          
+          <aactivity>
+            
+            <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
+            The TSS shall also describe the methods used to verify user or both user and device requesting the Recovery credential. 
+            The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
+            as many potential values as a corresponding password or PIN.
+            
+            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
+            of the user or both user and device for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
+            consecutive failed validation attempts if this value is configurable.
+            
+            
+            <Tests/> The evaluator shall ensure that a response is only generated if the user or both the user and device for which 
+            recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
+            behalf of the requesting user and on the device where the challenge was generated with the constraints specified for consecutive failed authentication attempts. <h:br/>
+            
+            The term “managed” below is used to refer a user or device which is registered on the server, i.e.
+            their identity can be successfully verified by either administrator or TSF.
+            The “unmanaged” presumes that the user/device cannot be successfully verified. <h:br/>
+            
+            The evaluator shall perform the following tests: <h:br/>
+            
+            <testlist>
+              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user and device. 
+                The evaluator shall then issue a challenge on behalf of a managed user for a managed device and ensure that TSF successfully generates the response.</test>
+              <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
+              <test>Test 3: The evaluator shall configure Challenge/Response recovery to validate the device. 
+                The evaluator shall then issue a challenge on behalf of managed User A for an unmanaged device or a managed device that 
+                User A has no access to and then attempt to use it to obtain a response. This should fail.</test>
+              <test>Test 4: The evaluator shall issue a challenge on behalf of a managed user from a specific device and ensure that 
+                the response received successfully will log the user in on that device.</test>
+              <test>Test 5: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
+              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user from a specific device, and then attempt to reuse 
+                the response on a different device. This should fail.</test>
+              <test>Test 7: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
+                reboot the system [system terminates the session] and enter the response. This should fail.</test>
+              <test>Test 8: The evaluator shall issue a challenge on behalf of a managed user from a managed system and attempt to enter an 
+                incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
+                conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
+            </testlist>
+            
+          </aactivity>
+          
+        </f-element>
+      </f-component>
+        <f-component id="FIA_PIN_EXT.1" name="PIN Recovery Credential">
+          <selection-depends req="FIA_REC_EXT.1.1" ids="PIN"/>
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FIA_PIN_EXT.1.1">
+            <title>The TSF shall pre-populate the recovery PIN on the Management Server.
+            </title>
+            
+          </f-element>
+          
+          <f-element id="FIA_PIN_EXT.1.2">
+            <title>The recovery key chain accessed by the recovery PIN shall only work on the system(s) within which the FEK(s) to be recovered resides.</title>
+          </f-element>
+          
+          <f-element id="FIA_PIN_EXT.1.3">
+            <title>The TSF shall not permit the PIN to be used more than once.</title>
+          
+            <aactivity>
+              
+              <TSS/> The evaluator shall examine the TSS to determine that the methods using a PIN Recovery Credential are specified.
+              
+              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for establishing Recovery PIN
+              credential for each user on the Management Server.
+              
+              
+              <Tests/> 
+              <testlist>
+                <test>Test 1: The evaluator shall populate the Management Server with a Recovery PIN and then try to retrieve it. The test shall pass.
+                  The evaluation shall remove the Recovery PIN and try to retrieve it. This test shall fail.</test>
+                <test>Test 2: The evaluator shall use the retrieved Recovery PIN to authenticate to the system where the FEK(s) protected by the Recovery PIN is installed.
+                  This test shall pass. The evaluator shall then try to use the Recovery PIN on a device with different FEK(s). This test shall fail. </test>
+                <test>Test 3: After successful authentication with the Recovery PIN the evaluator shall restart the system and try to authenticate again with the same PIN. This should fail.</test>
+              </testlist>
+            </aactivity>
+            
+          </f-element>
+        </f-component>
+    </sel-sfrs>
+    <obj-sfrs></obj-sfrs>
   </chapter>
+      
+              
 
-    <appendix title="Optional Requirements" id="optional" >
-        As indicated in <secref linkend="ccl"/>, the baseline requirements (those that must be
-        performed by the <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>) are contained in the body of this PP.
-        Additionally, there are three other types of requirements specified in 
-        <appref linkend="optional"/>, <appref linkend="sel-based"/>, and
-        <appref linkend="objective"/>.
-        The first type (in this Appendix) are requirements that can be included in the <abbr title="Security Target" linkend="ST">ST</abbr>,
-        but are not required in order for a TOE to claim conformance to this PP. The second type 
-        (in <appref linkend="sel-based"/>)
-        are requirements based on selections in the body of the PP: if certain selections are made,
-        then additional requirements in that appendix must be included. The third type (in
-        <appref linkend="objective"/> are components that are not required in
-        order to conform to this PP, but will be
-        included in the baseline requirements in future versions of this PP, so adoption by
-        vendors is encouraged. Note that the ST author is responsible for ensuring that
-        requirements that may be associated with those in 
-        <appref linkend="optional"/>, <appref linkend="sel-based"/>, and
-        <appref linkend="objective"/>
-        but are not listed (e.g., FMT-type requirements) are also included in the ST.
-    </appendix>
-    
-    <appendix title="Selection-Based Requirements" id="sel-based" >
-        As indicated in the introduction to this PP, the baseline requirements (those that must be
-        performed by the TOE or its underlying platform) are contained in the body of this PP. There
-        are additional requirements based on selections in the body of the PP: if certain selections are
-        made, then additional requirements below will need to be included.
-    </appendix>
-    
-    <appendix title="Objective Requirements" id="objective">
-        This Annex includes requirements that specify security functionality which also addresses
-        threats. The requirements are not currently mandated in the body of this PP as they describe
-        security functionality not yet widely available in commercial technology. However, these
-        requirements may be included in the ST such that the TOE is still conformant to this PP, and
-        it is expected that they be included as soon as possible.
-    </appendix>
 
-  <appendix id="biblio" title="References">
     <bibliography>
       <entry id="bibCC">
         <tag>CC</tag>
@@ -2448,8 +2493,7 @@
           Operation: Methods for Key Wrapping, December 2012 </description>
       </entry>
     </bibliography>
-  </appendix>
-  <appendix id="acronyms" title="Acronyms">
+  
     <acronyms>
       <entry>
         <term>AES</term>
@@ -2565,5 +2609,4 @@
         <description>TOE Summary Specification </description>
       </entry>
     </acronyms>
-  </appendix>
-</PP>
+</Module>
