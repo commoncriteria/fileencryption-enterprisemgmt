@@ -918,7 +918,7 @@
                     </selectable>
                     <selectable>NIST SP 800-132</selectable>
                   </selectables> using the keyed-hash functions specified in FCS_COP.1(c), such that the output is at least of
-                  equivalent security strength (in number of bits) to the FEK.
+                  equivalent security strength (in number of bits) to the FEK(s).
                 </selectable>
               </selectables> 
               
@@ -935,7 +935,9 @@
               function and shall verify the key derivation uses an approved derivation mode and
               key expansion algorithm according to SP 800-108 and SP 800-132. <h:br/>
               
-              <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived.
+              <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
+              including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
+              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.
               
               <Guidance/> None. 
               
@@ -1618,7 +1620,6 @@
             <title>The TSF shall support the following recovery mechanisms 
               <selectables>
                 <selectable id="CR">Challenge Response Recovery as defined in FIA_CHR_EXT.1</selectable>
-                <selectable id="PIN">PIN Recovery Credential as defined in FIA_PIN_EXT.1</selectable>
                 <selectable>None.</selectable>
               </selectables>
               
@@ -1632,7 +1633,8 @@
                 <selectable>provide the ability to enable and disable the use of recovery credentials.</selectable>
               <selectable>not support recovery</selectable>
             </selectables></title>
-            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the enterprise server.
+            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication of the users.
+              
             </note>
           
           <aactivity>
@@ -1718,8 +1720,8 @@
           <f-element id="FMT_SMF.1.1">
             <title>The TSF shall be capable of performing the following management functions: 
               <selectables linebreak="yes">
-                <selectable>register new endpoint</selectable>
-                <selectable>revoke registration of endpoint</selectable>
+                <selectable>register new user</selectable>
+                <selectable>revoke registration of user</selectable>
                 <selectable>initiate key generation</selectable>
                 <selectable>initiate key escrow</selectable>
                 <selectable>initiate key zeroization</selectable>
@@ -1743,7 +1745,7 @@
               provide the ST author the ability to indicate when File Encyrption module functionality (such as configuration of power saving states) can be configured by the Management Server.
               
               The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
-              functions or by the TOE issuing a request to a remote endpoint to perform the functions. The ST author shall indicate which case is provided by the TSF.
+              functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
               If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
               FCS SFRs from the File Encryption Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
               
@@ -1755,14 +1757,14 @@
               The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
               Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
               The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
-              escrow, zeroization and/or recovery or whether it requests the endpoint to perform those functions.
+              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.
               
               
               <Guidance/>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
               including any reliance on the Operational Environment if applicable:
               
-              •	Register new endpoint
-              •	Revoke registration of an endpoint
+              •	Register new user
+              •	Revoke registration of an user
               •	Initiate key generation
               •	Initiate key escrow
               •	Initiate key recovery
@@ -1783,24 +1785,24 @@
               <Tests/> The evaluator shall perform the following tests for each claimed management function:
               
               <testlist>
-                <test>Test 1: The evaluator shall configure the management server and two endpoints according to the guidance documents.
-                  The evaluator shall register the endpoints with the management server. The evaluator shall verify that the endpoints
+                <test>Test 1: The evaluator shall configure the management server and two users according to the guidance documents.
+                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
                   are identified by the management server as defined in the guidance documents. This test shall pass.</test>
                 
-                <test>Test 2: The evaluator shall disconnect the second endpoint from the network. The evaluator shall revoke the registration of the second endpoint
-                  in the management server. The evaluator shall attempt to connect the second endpoint to the network and verify the endpoint fails to connect or is
+                <test>Test 2: The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
+                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
                   displayed as revoked in the console.</test>
                 
-                <test>Test 3: For each item that is performed by the TOE, the evaluator shall verify that the TOE performs the actions (e.g. generate key) and
-                  sends the result to the endpoint. The endpoint shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
+                <test>Test 3: The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
+                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
                   with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
                 
                 <test>Test 4: For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
-                  endpoint to perform the action (generate a key and encrypt the data, zeroize a key). </test>
+                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
                 
                 <test>Test 5: For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
-                  and then verify all authorization values supported allow the user access to the encrypted data on configured endpoint. Then the evaluator shall exercise
-                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the endpoint
+                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
+                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
                   denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
                 
                 <test>Test 6: The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
@@ -1811,15 +1813,15 @@
                   their original authorization factor. </test>
                 
                 <test>Test 7: The evaluator shall verify that the second administrator from Test 2 can configure each of the supported authorization attempts configurations 
-                  and shall verify that the endpoint denies access to the user’s encrypted data. </test>
+                  and shall verify that the user is denied access to the encrypted data. </test>
                 
                 <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM Module, the evaluator shall devise a test that
                   ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
                 
-                <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Endpoint, where those administrative capabilities are then disabled in the File Encryption Enpoint,
-                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Endpoint and can be subsequently managed by the EM is tested as follows:
+                <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
+                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Cleitns and can be subsequently managed by the EM is tested as follows:
                   
-                  Disable the administrative capability in the File Encryption Endpoint and enable it in the EM
+                  Disable the administrative capability in a File Encryption Client and enable it in the EM
                   
                   Verify that the administration of the capability in the EM is successfully
                 </test>
@@ -2278,7 +2280,7 @@
         </f-element>
       </f-component>
       
-      <f-component id="FIA_CHR_EXT.1" name="Challenge Recovery Recovery Credential">
+      <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
         <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
         <consistency-rationale>
         </consistency-rationale>
@@ -2289,12 +2291,12 @@
               <selectable>the user requesting recovery and the device for which the recovery was requested</selectable>
             </selectables>.
           </title>
-          <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate endpoint.
+          <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate user(s).
           </note>
         </f-element>
         
         <f-element id="FIA_CHR_EXT.1.2">
-          <title>The response shall only work on the system upon which the challenge was generated and the user to whom it was generated.
+          <title>The response shall only work for the user to whom it was generated.
           </title>
           <note role="application"> This mechanism is intended to provide a recovery method for a user who has forgotten their
             authentication factor and is unable to access their encrypted data on a system that is fully functional.
@@ -2315,7 +2317,7 @@
         </f-element>
         
         <f-element id="FIA_CHR_EXT.1.5">
-          <title>The TSF shall allow a maximum of [assignment: integer value] of response entry attempts per boot cycle.
+          <title>The TSF shall allow a maximum of <assignable>integer value</assignable> of response entry attempts per boot cycle.
           </title>
         </f-element>
         
@@ -2326,18 +2328,18 @@
           <aactivity>
             
             <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
-            The TSS shall also describe the methods used to verify user or both user and device requesting the Recovery credential. 
+            The TSS shall also describe the methods used to verify user requesting the Recovery credential. 
             The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
             as many potential values as a corresponding password or PIN.
             
             <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
-            of the user or both user and device for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
+            of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
             consecutive failed validation attempts if this value is configurable.
             
             
-            <Tests/> The evaluator shall ensure that a response is only generated if the user or both the user and device for which 
+            <Tests/> The evaluator shall ensure that a response is only generated if the user for which 
             recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
-            behalf of the requesting user and on the device where the challenge was generated with the constraints specified for consecutive failed authentication attempts. <h:br/>
+            behalf of the requesting user with the constraints specified for consecutive failed authentication attempts. <h:br/>
             
             The term “managed” below is used to refer a user or device which is registered on the server, i.e.
             their identity can be successfully verified by either administrator or TSF.
@@ -2346,21 +2348,16 @@
             The evaluator shall perform the following tests: <h:br/>
             
             <testlist>
-              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user and device. 
-                The evaluator shall then issue a challenge on behalf of a managed user for a managed device and ensure that TSF successfully generates the response.</test>
+              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</test>
               <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
-              <test>Test 3: The evaluator shall configure Challenge/Response recovery to validate the device. 
-                The evaluator shall then issue a challenge on behalf of managed User A for an unmanaged device or a managed device that 
-                User A has no access to and then attempt to use it to obtain a response. This should fail.</test>
-              <test>Test 4: The evaluator shall issue a challenge on behalf of a managed user from a specific device and ensure that 
+               <test>Test 3: The evaluator shall issue a challenge on behalf of a managed user and ensure that 
                 the response received successfully will log the user in on that device.</test>
-              <test>Test 5: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
-              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user from a specific device, and then attempt to reuse 
-                the response on a different device. This should fail.</test>
-              <test>Test 7: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
+              <test>Test 4: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
+              <test>Test 5: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
                 reboot the system [system terminates the session] and enter the response. This should fail.</test>
-              <test>Test 8: The evaluator shall issue a challenge on behalf of a managed user from a managed system and attempt to enter an 
+              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
                 incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
                 conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
             </testlist>
@@ -2369,43 +2366,6 @@
           
         </f-element>
       </f-component>
-        <f-component id="FIA_PIN_EXT.1" name="PIN Recovery Credential">
-          <selection-depends req="FIA_REC_EXT.1.1" ids="PIN"/>
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FIA_PIN_EXT.1.1">
-            <title>The TSF shall pre-populate the recovery PIN on the Management Server.
-            </title>
-            
-          </f-element>
-          
-          <f-element id="FIA_PIN_EXT.1.2">
-            <title>The recovery key chain accessed by the recovery PIN shall only work on the system(s) within which the FEK(s) to be recovered resides.</title>
-          </f-element>
-          
-          <f-element id="FIA_PIN_EXT.1.3">
-            <title>The TSF shall not permit the PIN to be used more than once.</title>
-          
-            <aactivity>
-              
-              <TSS/> The evaluator shall examine the TSS to determine that the methods using a PIN Recovery Credential are specified.
-              
-              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for establishing Recovery PIN
-              credential for each user on the Management Server.
-              
-              
-              <Tests/> 
-              <testlist>
-                <test>Test 1: The evaluator shall populate the Management Server with a Recovery PIN and then try to retrieve it. The test shall pass.
-                  The evaluation shall remove the Recovery PIN and try to retrieve it. This test shall fail.</test>
-                <test>Test 2: The evaluator shall use the retrieved Recovery PIN to authenticate to the system where the FEK(s) protected by the Recovery PIN is installed.
-                  This test shall pass. The evaluator shall then try to use the Recovery PIN on a device with different FEK(s). This test shall fail. </test>
-                <test>Test 3: After successful authentication with the Recovery PIN the evaluator shall restart the system and try to authenticate again with the same PIN. This should fail.</test>
-              </testlist>
-            </aactivity>
-            
-          </f-element>
-        </f-component>
     </sel-sfrs>
     <obj-sfrs></obj-sfrs>
   </chapter>
