@@ -4,20 +4,14 @@
 <?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <PP xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption">  
-  <PPReference title="PP Reference" id="ID003">
+  <PPReference>
     <ReferenceTable>
-      <PPTitle>Application Software Extended Package for File Encryption Enterprise Management </PPTitle>
+      <PPTitle>Application Software Module for File Encryption Enterprise Management </PPTitle>
       <PPVersion>1.0-DRAFT</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-06-15</PPPubDate>
-      <PPCertificationID>unassigned</PPCertificationID>
-      <CCVersion>Version 1.0</CCVersion>
-      <Keywords>file encryption; encryption</Keywords>
-      <entry>
-        <name>Registration</name>
-        <description>National Information Assurance Partnership</description>
-      </entry>
-    </ReferenceTable>
+     <Keywords>file encryption; encryption</Keywords>
+      </ReferenceTable>
   </PPReference>
   <RevisionHistory>
     <entry>
@@ -27,25 +21,20 @@
     </entry>
   </RevisionHistory>
   <chapter title="Introduction" id="int">
-    <section title="Overview" id="ppoverview"> This Extended Package (EP) describes security
+    <section title="Overview" id="ppoverview"> This Module Module describes security
       requirements for an encryption management product that is configurable for the data it encrypts and is
       intended to provide a minimal, baseline set of requirements that are targeted at mitigating
-      well defined and described threats. However, this EP is not complete in itself, but rather
+      well defined and described threats. However, this Module is not complete in itself, but rather
       extends the Protection Profile for Application Software (<cite linkend="bibAppPP"/>). This
       introduction will describe the features of a compliant Target of Evaluation, and will also
-      discuss how this EP is to be used in conjunction with the <cite linkend="bibAppPP"/>. </section>
+      discuss how this Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
-      technology terms used in this Extended Package. 
+      technology terms used in this Module. 
         <glossary>
           <entry>
             <term><abbr title="Common Criteria">CC</abbr></term>
             <description>Common Criteria for Information Technology Security
               Evaluation.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Extended Package">EP</abbr></term>
-            <description>An implementation-independent set of security requirements for a category
-              of products, which extends those in a Protection Profile.</description>
           </entry>
           <entry>
             <term><abbr title="Protection Profile">PP</abbr></term>
@@ -106,7 +95,7 @@
           </entry>
           <entry>
             <term>Key Sanitization </term>
-            <description> A method of sanitizing encrypted data by securely overwriting the key that was encrypting the data. 
+            <description> A method of sanitizing encrypted data by securely overwriting the key, as described in the key destruction requirement, that was encrypting the data. 
             </description>
           </entry>
           <entry>
@@ -226,13 +215,13 @@
           
           The Protection Profile for Application Software (App PP) defines the baseline
           Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs) for
-          application software products. This EP serves to extend the App PP baseline with
+          application software products. This Module serves to extend the App PP baseline with
           additional SFRs and associated Assurance Activities specific to an email client. Assurance
           Activities are the actions that the evaluator performs in order to determine an email
-          client’s compliance to the SFRs.<h:br/> This EP conforms to Common Criteria <cite
+          client’s compliance to the SFRs.<h:br/> This Module conforms to Common Criteria <cite
             linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
           5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
-          EP, the ST must include all components in this EP and the associated App PP that are:
+          EP, the ST must include all components in this Module and the associated App PP that are:
               <h:ul><h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</h:li>
@@ -240,15 +229,15 @@
           required for conformance. </description>
       </cclaim>
     </cclaims>
-    <section title="How to Use This Extended Package" id="howto"> 
+    <section title="How to Use This Module" id="howto"> 
       This lanaguage will be updated before release.
       
-      As an EP of the <cite
-        linkend="bibAppPP"/>, it is expected that the content of both this EP and the <cite
+      As an Module of the <cite
+        linkend="bibAppPP"/>, it is expected that the content of both this Module and the <cite
         linkend="bibAppPP"/> be appropriately combined in the context of each product-specific
-      Security Target. This EP has been specifically defined such that there should be no difficulty
+      Security Target. This Module has been specifically defined such that there should be no difficulty
       or ambiguity in so doing. An ST must identify the applicable versions of the <cite
-        linkend="bibAppPP"/> (see http://www.niap-ccevs.org/pp/ for the current version) and this EP
+        linkend="bibAppPP"/> (see http://www.niap-ccevs.org/pp/ for the current version) and this  Module 
       in its conformance claims. When requirements are referenced from the <cite linkend="bibAppPP"
       />, a short notation is included. </section>
   </chapter>
@@ -623,7 +612,7 @@
           <note role="application">The EM Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
             used to log in to the EM in accordance with this SFR.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               
               The evaluator shall examine the TSS to review a high-level description if multiple submasks are used within the TOE,
               how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, what OE component is being leveraged).  
@@ -631,10 +620,10 @@
               The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1 are only accisible to an adminitrator after authentication.
               
               
-              <h:h4>Guidance</h:h4>If the validation functionality is configurable, the evaluator shall examine the operational guidance
+              <Guidance/>If the validation functionality is configurable, the evaluator shall examine the operational guidance
               to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established. 
               
-              <h:h4>Tests</h:h4>The evaluator shall perform the following tests:
+              <Tests/>The evaluator shall perform the following tests:
               
               Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
               The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
@@ -703,21 +692,21 @@
             <note role="application">This references the validation of a endpoint user to the server.  These activities are performed by the server.</note>
             
           <aactivity>
-              <h:h4>TSS</h:h4>
+            <TSS/>
             The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity.
             The evaluator shall examine the TSS to determine how the TOE responds to an assertion by the Operational Environment. The evaluator shall examine the
             TSS to verify that it describes how validation is performed. The evaluator shall verify the TSS ensures that the validation process does not expose
             any material that might compromise key material or expose protected data.
               
               
-            <h:h4>Guidance</h:h4>The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operating Environment to enable the OE
+            <Guidance/>The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operating Environment to enable the OE
             to provide User identity assertions to the TOE. 
             
             (conditional) If the number of User authentication attempts is configurable in the TOE, the examiner shall examine the operational guidance to ensure it describes
             how to configure the TOE. 
             
               
-              <h:h4>Tests</h:h4>
+            <Tests/>
             The evaluator shall perform the following tests:
             
             Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
@@ -768,7 +757,7 @@
               This requirement is used in the body of the ST if the ST author chooses to
               use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
               <h:h4>Conditional:</h:h4> If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
               describes how the FEK encryption/decryption is invoked. <h:br/>
@@ -787,10 +776,10 @@
               
               
               <h:br/>
-              <h:h4>Guidance</h:h4> If multiple encryption modes are supported, the evaluator examines the guidance documentation
+              <Guidance/> If multiple encryption modes are supported, the evaluator examines the guidance documentation
               to determine that the method of choosing a specific mode/key size is described.
               
-              <h:h4>Tests</h:h4> 
+              <Tests/>
               <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
               
               The assurance activity tests specified for AES in GCM mode in the underlying Application Software PP shall be performed in the case that "GCM" is selected in the requirement.
@@ -857,7 +846,7 @@
               use AES encryption/decryption for protecting the keys as part of the key chaining approach
               that is specified in FCS_KYC_EXT.1.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               
               <h:h4>Conditional:</h:h4> If not perform key encryption was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
               <h:h4>Requirement met by the platform</h:h4> If the platform provides the FEK
@@ -865,8 +854,8 @@
               describes how the FEK encryption/decryption is invoked. <h:br/>
               <h:h4>Requirement met by the TOE</h:h4> The evaluator shall verify the TSS includes a description of the key size used for
               encryption and the mode used for the key encryption <h:br/>
-              <h:h4>Guidance</h:h4> None. 
-              <h:h4>Tests</h:h4> 
+              <Guidance/> None. 
+              <Tests/> 
               
               <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
               The assurance activity tests specified for AES in CBC mode in the underlying Application Software PP shall be performed in the case that "CBC" is selected in the requirement.
@@ -905,7 +894,7 @@
               This requirement establishes acceptable methods for generating a new random key or an
               existing submask to create a new key along the key chain.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               <h:h4>Conditional:</h:h4> If not perform key derivation was selected, then the evaluator shall only examine the TSS to verify no key derivation is performed. <h:br/>
               
               The evaluator shall verify the TSS includes a description of the key derivation
@@ -914,9 +903,9 @@
               
               <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived.
               
-              <h:h4>Guidance</h:h4> None. 
+              <Guidance/> None. 
               
-              <h:h4>Tests</h:h4> None. 
+              <Tests/> None. 
             </aactivity>
           </f-element>
         </f-component>
@@ -943,7 +932,7 @@
               use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               <h:h4>Conditional:</h:h4> If not perform key transport was selected, then the evaluator shall only examine the TSS to verify no key transport is performed. <h:br/>
               
               The evaluator shall verify the TSS provides a high level description of the RSA
@@ -959,8 +948,8 @@
               If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
               identifies the key derivation method, the AES-based key wrapping method, the secret
               value encapsulation technique, and the random number generator. <h:br/>
-              <h:h4>Guidance</h:h4> None. 
-              <h:h4>Tests</h:h4> 
+              <Guidance/> None. 
+              <Tests/>
               For each supported key transport schema, the evaluator shall initiate at least 25
               sessions that require key transport with an independently developed remote instance
               of a key transport entity, using known RSA key-pairs. The evaluator shall observe
@@ -1058,13 +1047,13 @@
             </selectables> </title>
             <note role="application">This applies to any IV generation occuring on the enterprise server.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
               The evaluator shall confirm that the nonces are unique and the IVs and tweaks meet the stated requirements.
               
-              <h:h4>Guidance</h:h4>None.
+              <Guidance/>None.
               
-              <h:h4>Tests</h:h4>None.
+              <Tests/>None.
             </aactivity>
           </f-element>
         </f-component>
@@ -1088,14 +1077,15 @@
               This requirement specifies the way that a product may combine the
               various submasks by using either an XOR or an approved SHA-hash. </note>
             <aactivity>
-              <h:h4>TSS</h:h4> 
+              <TSS/>
               <h:h4>Conditional:</h:h4> If not perform submask combining was selected, then the evaluator shall only examine the TSS to verify no submask combining is performed. <h:br/>
               
               If keys are XORed together to form an intermediate key, the TSS section
               shall identify how this is performed (e.g., if there are ordering requirements, checks
               performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. <h:h4>Guidance</h:h4>None.
-              <h:h4>Tests</h:h4>None.
+              of the output produced is at least the same as that of the FEK. 
+              <Guidance/>None.
+              <Tests/>None.
             </aactivity>
           </f-element>
           
@@ -1160,7 +1150,7 @@
               current or residual data that itself requires confidentiality protection. </note>
             
             <aactivity>
-              <h:h4>TSS or KMD (Key Management Description may be used if necessary details describe proprietary information)</h:h4> 
+              <TSS/><h:h4> or KMD (Key Management Description may be used if necessary details describe proprietary information)</h:h4> 
               The evaluator examines the TSS to ensure it describes how the keys are managed in volatile memory. 
               This description includes details of how each identified key is introduced into volatile memory (e.g. by derivation 
               from user input, or by unwrapping a wrapped key stored in non-volatile memory) and how they are overwritten.
@@ -1180,7 +1170,7 @@
               The evaluator shall check that the TSS identifies any configurations or 
               circumstances that may not strictly conform to the key destruction requirement.
               
-              <h:h4>Guidance</h:h4> There are a variety of concerns that may prevent or delay key destruction in some cases.
+              <Guidance/> There are a variety of concerns that may prevent or delay key destruction in some cases.
               
               The evaluator shall check that the guidance documentation identifies configurations or circumstances that may 
               not strictly conform to the key destruction requirement, and that this description is consistent with the 
@@ -1207,7 +1197,7 @@
               amount of damage to drive health occurs, this minimizes the risk that small amounts of 
               potentially recoverable data may remain in damaged areas of the drive.
               
-              <h:h4>Tests</h:h4> 
+              <Tests/>
               These tests are only for key destruction provided by the application, test 2 does not apply to any keys using the selection "new value of a key": 
               <testlist>
                 <test>Applied to each key held as in volatile memory and subject to destruction by overwrite by the 
@@ -1281,7 +1271,7 @@
               PIN was used for a SmartCard and managed by the TOE, ensuring that the PIN was properly destroyed shall be addressed.
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>              
+              <TSS/>              
               The evaluator shall verify the TSS  includes a key lifecycle, that includes a
               description where key material reside, how the key material is used, how it is
               determined that keys and key material are no longer needed, and how the material is
@@ -1289,9 +1279,9 @@
               FCS_CKM_EXT.4.1 for the destruction.
               
               
-              <h:h4>Guidance</h:h4> None.
+              <Guidance/> None.
               
-              <h:h4>Tests</h:h4> None.
+              <Tests/> None.
               
             </aactivity>
           </f-element>
@@ -1364,7 +1354,7 @@
               for this component, as well as the “configure password/passphrase complexity setting” item for FMT_SMF.1.1. If the minimum length
               is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
             <aactivity>
-              <h:h4>TSS</h:h4> FCS_CKM_1.1(A): There are two aspects of this component that require
+              <TSS/> FCS_CKM_1.1(A): There are two aspects of this component that require
               evaluation: passwords/passphrases of the length specified in the requirement (at least
               64 characters) are supported, and that the characters that are input are subject to the
               selected conditioning function. These activities are separately addressed in the text
@@ -1399,13 +1389,13 @@
               the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
                 linkend="bibAppPP"/>). 
               
-              <h:h4>Guidance</h:h4>
+              <Guidance/>
               <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
               to determine that there are instructions on how to generate large passwords/passphrases, and
               instructions on how to configure the password/passphrase length (and optional complexity settings)
               to provide entropy commensurate with the keys that the authorization factor is protecting.  
               
-              <h:h4>Tests</h:h4> Support for Password/Passphrase characteristics: In addition to the analysis above, 
+              <Tests/> Support for Password/Passphrase characteristics: In addition to the analysis above, 
               the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <testlist>
                 <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
                 <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.1.1(A). </test>
@@ -1461,7 +1451,7 @@
               vary. The ST Author should clearly indicate which portions of the key chain are created and 
               maintained by the enterprise server and which are created and maintained by the AA.</note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall verify the TSS contains a high-level description of the key sizes
               that it supports key outputs of no fewer 128 bits for products that support only AES128,
               and no fewer than 256 bits for products that support AES-256.
@@ -1484,12 +1474,12 @@
               throughout the key chain.
 
               
-              <h:h4>Guidance</h:h4>
+              <Guidance/>
               If there are configurations to enable or disable use of enterprise server, which modify
               the key chain, they shall be described.
               If there are configurations on to enable recovery mechanisms, they shall be described.
               
-              <h:h4>Tests</h:h4> None.
+              <Tests/> None.
               
               </aactivity>
           </f-element>
@@ -1581,7 +1571,7 @@
               selections in an ST; it should be understood that if a capability is not selected in
               the ST, the noted assurance activity does not need to be performed. 
               
-              <h:h4>TSS</h:h4> The
+              <TSS/> The
               evaluator shall examine the TSS to ensure that it describes how user authentication is
               performed. The evaluator shall verify that the authorization methods listed in the TSS
               are specified and included in the requirements in the ST. <h:br/>
@@ -1600,12 +1590,12 @@
               functionality and how it is getting an authorization value that has appropriate
               entropy. 
               
-              <h:h4>Guidance</h:h4>The evaluator shall verify that the AGD guidance includes instructions for all of the
+              <Guidance/>The evaluator shall verify that the AGD guidance includes instructions for all of the
               authorization factors. The AGD will discuss the characteristics of external
               authorization factors (e.g., how the authorization factor is generated; format(s) or
               standards that the authorization factor must meet, configuration of the TPM device
               used) that are able to be used by the TOE.
-              <h:h4>Tests</h:h4>The evaluator shall ensure that authorization using each selected
+              <Tests/>The evaluator shall ensure that authorization using each selected
               method is tested during the course of the evaluation, setting up the method as
               described in the operational guidance and ensuring that authorization is successful and 
               that failure to provide an authorization factor results in denial to access to plaintext data..
@@ -1630,18 +1620,18 @@
             </note>
             <aactivity>
               
-              <h:h4>TSS</h:h4> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf
+              <TSS/> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf
               of the administrator prior to login of the administrator. The evaluator shall examine the TSS to determine that it describes the list
               of actions that require administrator authentication.
               
-              <h:h4>Guidance</h:h4>	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
+              <Guidance/>	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
               (e.g., establishing credential material such as pre- shared keys, tunnels, certificates, etc.) to logging in are described.
               For each supported login method, the evaluator shall ensure the guidance documentation provides clear instructions for successfully
               logging on. If configuration is necessary to ensure the services provided before login are limited, the evaluator shall determine
               that the guidance documentation provides sufficient instruction on limiting the allowed services.
               
               
-              <h:h4>Tests</h:h4>	The evaluator shall perform the following tests:
+              <Tests/>	The evaluator shall perform the following tests:
               <testlist>
                 <test>Test 1: The evaluator shall verify that the list of actions allowed without administrator login completes 
                   successfully without requiring administrator login and make sure this list is consistent with the TSS. </test>
@@ -1673,14 +1663,14 @@
             </note>
             <aactivity>
               
-              <h:h4>TSS</h:h4> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf of the administrator
+              <TSS/> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf of the administrator
               prior to identification of the administrator.
               
-              <h:h4>Guidance</h:h4> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
+              <Guidance/> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
               steps for creating and configuring administrator accounts are described.
               
               
-              <h:h4>Tests</h:h4> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:
               <testlist>
                 <test>Test 1: The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without
                   requiring the administrator to be identified and make sure this list is consistent with the TSS. </test>
@@ -1718,14 +1708,14 @@
           
           <aactivity>
               
-            <h:h4>TSS</h:h4> The evaluator shall examine the TSS to determine that types of supported recovery
+            <TSS/> The evaluator shall examine the TSS to determine that types of supported recovery
             credential are specified.
               
-            <h:h4>Guidance</h:h4> The evaluator shall confirm that the guidance documentation contains instructions for
+            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for
             turning off the ability of the server to return a recovery credential is specified.
               
               
-            <h:h4>Tests</h:h4> The evaluator shall disable the ability of a server to return a recovery credential. The
+            <Tests/> The evaluator shall disable the ability of a server to return a recovery credential. The
             evaluator should then attempt to obtain the recovery credential and this should fail.
             </aactivity>
             
@@ -1777,17 +1767,17 @@
             
             <aactivity>
               
-              <h:h4>TSS</h:h4> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
+              <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
               The TSS shall also describe the methods used to verify user or both user and device requesting the Recovery credential. 
               The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
               as many potential values as a corresponding password or PIN.
               
-              <h:h4>Guidance</h:h4> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
+              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
               of the user or both user and device for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
               consecutive failed validation attempts if this value is configurable.
               
               
-              <h:h4>Tests</h:h4> The evaluator shall ensure that a response is only generated if the user or both the user and device for which 
+              <Tests/> The evaluator shall ensure that a response is only generated if the user or both the user and device for which 
               recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
               behalf of the requesting user and on the device where the challenge was generated with the constraints specified for consecutive failed authentication attempts. <h:br/>
               
@@ -1840,13 +1830,13 @@
           
             <aactivity>
               
-              <h:h4>TSS</h:h4> The evaluator shall examine the TSS to determine that the methods using a PIN Recovery Credential are specified.
+              <TSS/> The evaluator shall examine the TSS to determine that the methods using a PIN Recovery Credential are specified.
               
-              <h:h4>Guidance</h:h4> The evaluator shall confirm that the guidance documentation contains instructions for establishing Recovery PIN
+              <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for establishing Recovery PIN
               credential for each user on the Management Server.
               
               
-              <h:h4>Tests</h:h4> 
+              <Tests/> 
               <testlist>
                 <test>Test 1: The evaluator shall populate the Management Server with a Recovery PIN and then try to retrieve it. The test shall pass.
                   The evaluation shall remove the Recovery PIN and try to retrieve it. This test shall fail.</test>
@@ -1888,16 +1878,16 @@
             <note role="application"> These restrictions apply to modifications on the enterprise server.
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall examine the TSS to determine that, for each administrative function identified in the guidance documentation;
               those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
               the TSS details when changes may be made to the encryption keys and/or intermediate values.
               
               
-              <h:h4>Guidance</h:h4>The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
+              <Guidance/>The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
               values are allowed to the administrator at what times.
               
-              <h:h4>Tests</h:h4> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:
               
               <testlist>
                 <test>Test 1: The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
@@ -1951,14 +1941,14 @@
             </note>
             
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
               Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
               The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
               escrow, zeroization and/or recovery or whether it requests the endpoint to perform those functions.
               
               
-              <h:h4>Guidance</h:h4>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
+              <Guidance/>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
               including any reliance on the Operational Environment if applicable:
               
               •	Register new endpoint
@@ -1980,7 +1970,7 @@
               •	The ability to authorize whether or not users can perform one or more of the functions in the File Encryption Module.
               
               
-              <h:h4>Tests</h:h4> The evaluator shall perform the following tests for each claimed management function:
+              <Tests/> The evaluator shall perform the following tests for each claimed management function:
               
               <testlist>
                 <test>Test 1: The evaluator shall configure the management server and two endpoints according to the guidance documents.
@@ -2064,14 +2054,14 @@
               
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components
               
-              <h:h4>Guidance</h:h4>
+              <Guidance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
               including any configuration that needs to be performed on the client for remote administration.
               
-              <h:h4>Tests</h:h4> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
@@ -2113,16 +2103,16 @@
               
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>
+              <TSS/>
               The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
               The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.
               
               
-              <h:h4>Guidance</h:h4>
+              <Guidance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
               including any configuration that needs to be performed on the client for remote administration.
               
-              <h:h4>Tests</h:h4> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
@@ -2167,14 +2157,16 @@
               protecting the FEK is if it is a key split or providing additional layers of wrapping
               or encryption on keys that have already been protected. </note>
             <aactivity>
-              <h:h4>TSS or KMD (Key Management Description may be used if necessary details describe proprietary information)
+              <TSS/><h:h4> or KMD (Key Management Description may be used if necessary details describe proprietary information)
               </h:h4> The evaluator shall verify the TSS contains a high level description of method(s)
               used to protect keys stored in non-volatile memory.<h:br/> The evaluator shall verify
               the TSS to ensure it describes the storage location of all keys and the protection of
               all keys stored in non-volatile memory. The description of the key chain shall be
               reviewed to ensure FCS_COP.1(5) is followed for the storage of wrapped or encrypted
               keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
-              criteria for storage. <h:h4>Guidance</h:h4> None. <h:h4>Tests</h:h4> None. </aactivity>
+              criteria for storage. 
+              <Guidance/> None. 
+              <Tests/> None. </aactivity>
           </f-element>
         </f-component>
         
@@ -2220,11 +2212,11 @@
            
               <aactivity>
                 
-                <h:h4>TSS</h:h4> The evaluator shall examine the TSS to verify that it describes the method by which an association is maintained and verify it matches the selections.
+                <TSS/> The evaluator shall examine the TSS to verify that it describes the method by which an association is maintained and verify it matches the selections.
                 
-                <h:h4>Guidance</h:h4> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, if any configuration is necessary.
+                <Guidance/> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, if any configuration is necessary.
                 
-                <h:h4>Tests</h:h4> For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.
+                <Tests/> For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.
               
               </aactivity>
             </f-element>
@@ -2248,15 +2240,15 @@
               the ST author must claim the applicable SFRs for cryptographic primitives and certificate validation as well as the supported cryptographic protocol(s).
             </note>
             <aactivity>
-              <h:h4>TSS</h:h4>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
+              <TSS/>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
               each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
               shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.
               
               
-              <h:h4>Guidance</h:h4>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
+              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
               communication channels and protocols between each pair of authorized TOE components, and that it contains instructions to reestablish a connection should a connection be unintentionally broken. 
               
-              <h:h4>Tests</h:h4>
+              <Tests/>
               The evaluator shall perform the following tests:
               <testlist>
                 <test>Test 1: The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
@@ -2307,13 +2299,13 @@
             </note>
             
             <aactivity>
-              <h:h4>TSS</h:h4>	The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
+              <TSS/>	The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
               along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
               of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.
               
-              <h:h4>Guidance</h:h4>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.
+              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.
               
-              <h:h4>Tests</h:h4>
+              <Tests/>
               The evaluator shall perform the following tests:
               <testlist>
                 <test>Test 1: The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
@@ -2495,10 +2487,6 @@
         <term>ECC CDH</term>
         <description>Elliptic Curve Cryptography Cofactor Diffie-Hellman (see NIST SP 800-56A rev 2,
           section 6.2.2.2)</description>
-      </entry>
-      <entry>
-        <term>EP</term>
-        <description>Extended Package</description>
       </entry>
       <entry>
         <term>FIPS</term>
