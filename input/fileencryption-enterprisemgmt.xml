@@ -555,24 +555,28 @@
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
             so that the level of security that is provided by the TOE is consistent with its evaluated configuration.</description>
           <component-refer ref="FMT_SMF.1"/>
+	  <consistency-rationale></consistency-rationale>
         </SO>
         <SO id="OE.SECURED_ENVIRONMENT">
           <description>The components of the Management Server’s underlying platform are configured in accordance with their associated 
             operational guidance so that the TOE is deployed in an environment that is consistent with its evaluated configuration. </description>
           <component-refer ref="FMT_SMF.1 "/>
+	  <consistency-rationale></consistency-rationale>
         </SO>
         <SO id="OE.PHYSICAL_SERVER">
           <description>The Operating environment will provide a cryptographic function capability
             that is commensurate with the requirements and capabilities of the TOE.</description>
           <component-refer ref="FCS_KYC_EXT.1"/>
+	  <consistency-rationale></consistency-rationale>
         </SO>
         <SO id="OE.ENVIRONMENTAL_STORAGE">
           <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will provide at least the same 
             level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
           <component-refer ref="FPT_KYP_EXT.2"/>
+	  <consistency-rationale></consistency-rationale>
         </SO>
        </SOs>
-       -->    </section>
+    </section>
     
     <section title="Security Objectives Rationale" id="SOR">
     </section>
