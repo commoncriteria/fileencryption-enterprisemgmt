@@ -329,7 +329,7 @@
       </threats>
     </section>
     
-    <!--  
+
       <section title="Assumptions" id="assumptions">
         <assumptions>
          
@@ -359,7 +359,6 @@
           </assumption>
         </assumptions>
       </section>
-      -->
   
   </chapter>
   <chapter title="Security Objectives" id="obj">The Security Problem described in
@@ -550,7 +549,7 @@
       This section defines the security objectives that are to be addressed by the IT domain or by
       non-technical or procedural means. The assumptions identified in Section 3 are incorporated as
       security objectives for the environment. 
-      <!--  
+      
       <SOs>
         <SO id="OE.SECURED_CONFIGURATION">
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
@@ -573,8 +572,7 @@
           <component-refer ref="FPT_KYP_EXT.2"/>
         </SO>
        </SOs>
-       -->
-    </section>
+       -->    </section>
     
     <section title="Security Objectives Rationale" id="SOR">
     </section>
