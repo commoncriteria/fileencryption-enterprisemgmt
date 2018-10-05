@@ -7,14 +7,14 @@
     <ReferenceTable>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-06-15</PPPubDate>
+      <PPPubDate>2018-10-05</PPPubDate>
      <Keywords>file encryption; encryption</Keywords>
       </ReferenceTable>
   </PPReference>
   <RevisionHistory>
     <entry>
       <version>1.0 DRAFT</version>
-      <date>2018-06-15</date>
+      <date>2018-10-05</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -589,7 +589,13 @@
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
       <modified-sfrs></modified-sfrs>
-      <additional-sfrs>
+      <additional-sfrs></additional-sfrs>
+      <con-toe></con-toe>
+      <con-sec-prob></con-sec-prob>
+      <con-obj></con-obj>
+      <con-op-en></con-op-en>
+    </base-pp>
+    <man-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="FCS_VAL_EXT.1" name="Extended: Admin Validation">
           <consistency-rationale>
@@ -2151,13 +2157,7 @@
           </f-element>
         </f-component>
         
-      </subsection></additional-sfrs>
-      <con-toe></con-toe>
-      <con-sec-prob></con-sec-prob>
-      <con-obj></con-obj>
-      <con-op-en></con-op-en>
-    </base-pp>
-    <man-sfrs></man-sfrs>
+      </subsection></man-sfrs>
     <opt-sfrs></opt-sfrs>
     <sel-sfrs>
       <f-component id="FCS_CKM.1(A)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
