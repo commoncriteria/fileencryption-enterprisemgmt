@@ -1,21 +1,21 @@
-Module for File Encryption Enterprise Management
+PP-Module for File Encryption Enterprise Management
 ===========
 [![Build Status](https://travis-ci.org/commoncriteria/fileencryption-enterprisemgmt.svg?branch=master)](https://travis-ci.org/commoncriteria/fileencryption-enterprisemgmt)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/fileencryption-enterprisemgmt.svg?maxAge=2592000)](https://github.com/commoncriteria/fileencryption-enterprisemgmt/issues)
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
-This repository hosts the draft version of the Module for Software File Encryption Enterprise Managment Version for this technology class of products. This repository is used to facilitate collaboration and development on the draft document. 
+This repository hosts the draft version of the PP-Module for Software File Encryption Enterprise Managment Version for this technology class of products. This repository is used to facilitate collaboration and development on the draft document. 
 See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
-A list of products that have passed evaluation against this Module can be found [here](https://www.niap-ccevs.org/Product/PCL.cfm).
+A list of products that have passed evaluation against this PP-Module can be found [here](https://www.niap-ccevs.org/Product/PCL.cfm).
 
 ## Draft Version
-
-* [Module for Software File Encryption Enterprise Management Version 1.0](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.html) (html)
-* [Module for Software File Encryption Enterprise Management Version 1.0](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.pdf) (pdf)
+* [PP-Module for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmtcryption-release.html) (html)
+* [Supporting Document for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-sd.html) (html)
+* [Combined Document for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt.html) (html)
 
 ## Release Version
 
-* [Module for Software File Encryption Enterprise Management Version 1.0](https://www.niap-ccevs.org/Profile/INSERT)
+* [PP-Module for Software File Encryption Enterprise Management Version 1.0](https://www.niap-ccevs.org/Profile/INSERT)
 
 ## Contributing
 
