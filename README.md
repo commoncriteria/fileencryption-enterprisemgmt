@@ -9,9 +9,9 @@ See the [release](#Release-Version) section if you are looking for the officiall
 A list of products that have passed evaluation against this PP-Module can be found [here](https://www.niap-ccevs.org/Product/PCL.cfm).
 
 ## Draft Version
-* [PP-Module for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmtcryption-release.html) (html)
-* [Supporting Document for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-sd.html) (html)
-* [Combined Document for Software File Encryption Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt.html) (html)
+* [PP-Module for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.html) (html)
+* [Supporting Document for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-sd.html) (html)
+* [Combined Document for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt.html) (html)
 
 ## Release Version
 
