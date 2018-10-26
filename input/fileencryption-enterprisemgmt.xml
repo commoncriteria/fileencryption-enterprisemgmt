@@ -608,6 +608,7 @@
                 <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption PP-Module]</assignable></selectable>
                 <selectable><assignable>ability to perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
                 <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
+		<selectable>configure password/passphrase complexity setting</selectable>
               </selectables>
             </title>
             <note role="application"> 
