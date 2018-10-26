@@ -2,37 +2,37 @@
 <?xml-stylesheet type="text/xsl" href="..\transforms\pp2html.xsl"?>
 
 <?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<Module  target-products="File Encryption Enterprise Management Module Draft" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption enterprise management">  
+<Module  target-products="File Encryption Enterprise Management Draft" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption enterprise management">  
   <PPReference>
     <ReferenceTable>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-10-05</PPPubDate>
+      <PPPubDate>2018-10-26</PPPubDate>
      <Keywords>file encryption; encryption</Keywords>
       </ReferenceTable>
   </PPReference>
   <RevisionHistory>
     <entry>
       <version>1.0 DRAFT</version>
-      <date>2018-10-05</date>
+      <date>2018-10-26</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
   <chapter title="Introduction" id="int">
-    <section title="Overview" id="ppoverview"> This Module Module describes security
+    <section title="Overview" id="ppoverview"> This PP-Module describes security
       requirements for an encryption management product that is configurable for the data it encrypts and is
       intended to provide a minimal, baseline set of requirements that are targeted at mitigating
-      well defined and described threats. However, this Module is not complete in itself, but rather
+      well defined and described threats. However, this PP-Module is not complete in itself, but rather
       extends the Protection Profile for Application Software (<cite linkend="bibAppPP"/>). This
       introduction will describe the features of a compliant Target of Evaluation, and will also
-      discuss how this Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. 
+      discuss how this PP-Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. 
     
     The use case for a product conforming to the FE module is to protect data at rest on a device
     that is lost or stolen while powered off without any prior access by an adversary. The use case
     where an adversary obtains a device that is in a powered state and is able to make modifications
     to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. <h:br/>
       
-      While that use case is still true for the Enterprise Management Module, this PP-module also
+      While that use case is still true for the Enterprise Management PP-Module, this PP-module also
       expands the use case to include protecting the communications between the Enterprise
       Management Server and the client device through the use of a trusted channel. It also expands
       the use case to include the optional abilities of the EM to interact with clients (with proper
@@ -48,14 +48,14 @@
       The EM shall not have the ability to access the secured stored key material without verification
       of access authority by the LDAP.
       The Operating System environment may make a full range of services available to the
-      Enterprise Management Module, including hardware drivers, cryptographic libraries, and
+      Enterprise Management PP-Module, including hardware drivers, cryptographic libraries, and
       perhaps other services external to the TOE.
       The EM TOE may include or leverage features and functions within the operational
       environment.
     </section>
     
     <section id="glossary" title="Terms">
-      The following sections provide both Common Criteria and technology terms used in this Module. 
+      The following sections provide both Common Criteria and technology terms used in this PP-Module. 
       
       <subsection title="Common Criteria Terms">
         <glossary>
@@ -90,7 +90,7 @@
           </entry>
           <entry>
             <term><abbr title="Target of Evaluation">TOE</abbr></term>
-            <description>The product under evaluation. In this case, application software and its
+            <description>The product under evaluation. In this case, file encryption enterprise management software and its
               supporting documentation.</description>
           </entry>
           <entry>
@@ -203,8 +203,8 @@
       
     </section>
     <section title="Compliant Targets of Evaluation" id="complianttargets">     
-    The target of evaluation for this Module is the Enterprise Management (EM) function of
-    an FE solution. The EM function is designed to augment the claims made in the File Encryption Module;
+    The target of evaluation for this PP-Module is the Enterprise Management (EM) function of
+    an FE solution. The EM function is designed to augment the claims made in the File Encryption PP-Module;
     therefore, this functionality is intended to be evaluated in conjunction with a TOE that also
     claims conformance to that module at minimum.
     The following sections provide an overview of the security functionality of this PP-module.</section>
@@ -212,7 +212,7 @@
     <section title="Use Cases" id="usecases">
         <usecases>
           <usecase title="Enterprise Encryption Management" id="usecase1">
-            <description>The use case for this Module is protecting the communications between the Enterprise
+            <description>The use case for this PP-Module is protecting the communications between the Enterprise
               Management Server and the client device through the use of a trusted channel. Including the optional abilities of the EM to interact with clients (with proper
               authorization), to direct it to perform sanitation of keys and material on the device, 
               to manage and store parts of the key chain required for decryption on the client, or to issue a
@@ -231,7 +231,7 @@
             The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
             defines the baseline Security Functional Requirements (SFRs) and Security Assurance
             Requirements (SARs) for application software products. This <abbr linkend="PP-Module"/> serves to
-            extend the ApSo PP baseline with additional SFRs and associated Evaluation Activities
+            extend the App PP baseline with additional SFRs and associated Evaluation Activities
             specific to an enterprise encryption managmenet product.
             Evaluation Activities are the actions that the evaluator
             performs in order to determine a file encryption product's compliance to the SFRs.
@@ -241,7 +241,7 @@
             Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2 extended and CC
             Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
               linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
-            associated ApSo PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
+            associated App PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
               <h:li>selection-based (which are required when certain selections are chosen in the
                 unconditional requirements)</h:li>
             </h:ul> and may include optional and/or objective components that are desirable but not
@@ -278,7 +278,7 @@
         <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
           <description>
             An attacker accessing the Management Server by getting access to the management server and generating a recovery key chain for an endpoint. 
-            The File Encryption Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
+            The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
             this adds the Management Server to the scope of the threat. </description>
           <objective-refer ref="O.RECOVERY_PROTECTION">
             <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_SERVER is countered by O.RECOVERY_PROTECTION as this
@@ -437,7 +437,7 @@
             only administrators can select the encryption algorithms and key sizes. Only administrators can perform management
             functions on the Enterprise Management Server as defined in FMT_SMF.1. <h:br/>
             
-            FCS_KYC_EXT.1 extends the requirements of File Encryption Module key chaining to key chains generated or maintained by the Server. <h:br/>
+            FCS_KYC_EXT.1 extends the requirements of File Encryption PP-Module key chaining to key chains generated or maintained by the Server. <h:br/>
             
             FPT_ITT.1 ensures that keys and key material transported between the EM and the endpoint are protected from disclosure, modification, deletion, substitution, reordering or insertion. <h:br/>
             
@@ -585,7 +585,7 @@
   <chapter title="Security Requirements" id="req">
     <base-pp 
       product="application"
-      name="Application Software" short="ApSo" 
+      name="Application Software" short="App PP" 
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
       <modified-sfrs></modified-sfrs>
@@ -643,7 +643,7 @@
                 </selectables>
               </title>
           
-          <note role="application">The EM Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
+          <note role="application">The EM PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
             used to log in to the EM in accordance with this SFR.</note>
             <aactivity>
               <TSS/>
@@ -1743,19 +1743,19 @@
                 <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
                 <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
                 <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption Module]</assignable></selectable>
-                <selectable><assignable>ability to perform one or more functions defined in the File Encryption Module</assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption Module</assignable></selectable>
+                <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption PP-Module]</assignable></selectable>
+                <selectable><assignable>ability to perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
+                <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
               </selectables>
             </title>
             <note role="application"> This SFR refers specifically to the management functions that can be performed by the Management Server. 
-              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption Module. The final two assignments
+              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module. The final two assignments
               provide the ST author the ability to indicate when File Encyrption module functionality (such as configuration of power saving states) can be configured by the Management Server.
               
               The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
               functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
               If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
-              FCS SFRs from the File Encryption Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
+              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
               
               If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
             </note>
@@ -1787,7 +1787,7 @@
               •	Configure the number of authentication attempts that can be made in a 24 hour period
               •	Configure the number of failed authentication attempts required to begin blocking subsequent attempts
               •	The ability to enable/disable one or more functions defined in the File Encryption module
-              •	The ability to authorize whether or not users can perform one or more of the functions in the File Encryption Module.
+              •	The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.
               
               
               <Tests/> The evaluator shall perform the following tests for each claimed management function:
@@ -1823,7 +1823,7 @@
                 <test>Test 7: The evaluator shall verify that the second administrator from Test 2 can configure each of the supported authorization attempts configurations 
                   and shall verify that the user is denied access to the encrypted data. </test>
                 
-                <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM Module, the evaluator shall devise a test that
+                <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
                   ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
                 
                 <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
@@ -2220,7 +2220,7 @@
             NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.
             
             Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
-            a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this EP,
+            a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this PP-Module,
             a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
             A significantly higher value is recommended to ensure optimal security.
             
@@ -2380,14 +2380,14 @@
         <tag>CC</tag>
         <description>Common Criteria for Information Technology Security Evaluation - <h:ul>
           <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part
-                1: Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 4,
-              September 2012.</h:li>
+                1: Introduction and General Model</h:a>, CCMB-2017-04-001, Version 3.1 Revision 5,
+              April 2017.</h:li>
           <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part
-                2: Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 4,
-              September 2012.</h:li>
+                2: Security Functional Components</h:a>, CCMB-2017-04-002, Version 3.1 Revision 5,
+              April 2017.</h:li>
           <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part
-                3: Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 4,
-              September 2012.</h:li>
+                3: Security Assurance Components</h:a>, CCMB-2017-04-003, Version 3.1 Revision 5,
+              April 2017.</h:li>
           </h:ul></description>
       </entry>
       <entry id="bibAppPP">
