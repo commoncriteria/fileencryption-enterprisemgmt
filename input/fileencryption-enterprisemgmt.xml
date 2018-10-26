@@ -584,7 +584,7 @@
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
       <modified-sfrs>
-	<subsection id="fmt" title="Fixthis">
+	<subsection title="Security Management (FMT)" id="fmt"> 
 	    <f-component id="FMT_SMF.1" name="Specification of Management Functions (Management Server)">
           <consistency-rationale>
           </consistency-rationale>
@@ -2184,7 +2184,7 @@
       </subsection></man-sfrs>
     <opt-sfrs></opt-sfrs>
     <sel-sfrs>
-      <subsection id="fcs" title="QQQ">
+      <subsection title="Cryptographic Support (FCS)" id="fcs">
       <f-component id="FCS_CKM.1(1)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
         <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
         <consistency-rationale>
