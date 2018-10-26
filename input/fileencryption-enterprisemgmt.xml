@@ -891,7 +891,7 @@
                   <selectables linebreak="yes">
                     <selectable>Key Wrap</selectable>
                     <selectable>Key Wrap with Padding</selectable>
-                    <selectable>GMC mode</selectable>
+                    <selectable>GCM mode</selectable>
                     <selectable>CCM mode</selectable>
                   </selectables> and the cryptographic key size 
                   <selectables>
@@ -902,7 +902,7 @@
                     <selectable>“NIST SP 800-38C”</selectable>
                     <selectable>“NIST SP 800-38D”</selectable>
                     <selectable>“NIST SP 800-38F”</selectable>
-                    <selectable>no other standards</selectable>
+			  and no other standards.
                   </selectables>
                 </selectable>
               </selectables> 
