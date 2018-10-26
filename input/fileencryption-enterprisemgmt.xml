@@ -75,7 +75,7 @@
           <entry>
             <term>Operational Environment </term>
             <description> Hardware and software that are outside the TOE boundary that support the
-              TOE functionality and security policy, including the host platform, its firmware, and
+              TOE functionality and security policy, including the platform, its firmware, and
               the operating system. </description>
           </entry>
           <entry>
@@ -153,11 +153,6 @@
             <term>File Encryption Key (FEK) </term>
             <description> The key that is used by the encryption algorithm to encrypt the selected
               user data on the host machine. </description>
-          </entry>
-          <entry>
-            <term>Host Platform</term>
-            <description>The local hardware and software the TOE is running on, this does not include 
-              any peripheral devices (e.g. USB devices) that may be connected to the local hardware and software. </description>
           </entry>
           <entry>
             <term>Key Chaining</term>
@@ -588,7 +583,128 @@
       name="Application Software" short="App PP" 
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
-      <modified-sfrs></modified-sfrs>
+      <modified-sfrs>
+	    <f-component id="FMT_SMF.1" name="Specification of Management Functions (Management Server)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FMT_SMF.1.1">
+            <title>The TSF shall be capable of performing the following management functions: 
+              <selectables linebreak="yes">
+                <selectable>register new user</selectable>
+                <selectable>revoke registration of user</selectable>
+                <selectable>initiate key generation</selectable>
+                <selectable>initiate key escrow</selectable>
+                <selectable>initiate key zeroization</selectable>
+                <selectable>initiate key recovery</selectable>
+                <selectable>set encryption policy (supported algorithms and key sizes)</selectable>
+                <selectable>change administrator passwords</selectable>
+                <selectable>change user passwords</selectable>
+                <selectable>change recovery credentials</selectable>
+                <selectable>define administrators of the TOE</selectable>
+                <selectable>enable/disable use of recovery credential</selectable>
+                <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
+                <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
+                <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
+                <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption PP-Module]</assignable></selectable>
+                <selectable><assignable>ability to perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
+                <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
+              </selectables>
+            </title>
+            <note role="application"> 
+		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
+              form a single FMT_SMF.1 SFR in the ST.
+		    
+		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
+              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module. The final two assignments
+              provide the ST author the ability to indicate when File Encyrption module functionality (such as configuration of power saving states) can be configured by the Management Server.
+              
+              The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
+              functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
+              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
+              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
+              
+              If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
+            </note>
+            
+            <aactivity>
+              <TSS/>
+              The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
+              Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
+              The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
+              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.
+              
+              
+              <Guidance/>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
+              including any reliance on the Operational Environment if applicable:
+              
+              •	Register new user
+              •	Revoke registration of an user
+              •	Initiate key generation
+              •	Initiate key escrow
+              •	Initiate key recovery
+              •	Initiate key zeroization
+              •	Set encryption policy (supported algorithms and key sizes)
+              •	Change Administrator passwords
+              •	Change user passwords
+              •	Change Recovery Credentials
+              •	Define Administrators of the TOE
+              •	Enable/Disable the use of recovery credentials (end users)
+              •	Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)
+              •	Configure the number of authentication attempts that can be made in a 24 hour period
+              •	Configure the number of failed authentication attempts required to begin blocking subsequent attempts
+              •	The ability to enable/disable one or more functions defined in the File Encryption module
+              •	The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.
+              
+              
+              <Tests/> The evaluator shall perform the following tests for each claimed management function:
+              
+              <testlist>
+                <test>Test 1: The evaluator shall configure the management server and two users according to the guidance documents.
+                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
+                  are identified by the management server as defined in the guidance documents. This test shall pass.</test>
+                
+                <test>Test 2: The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
+                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
+                  displayed as revoked in the console.</test>
+                
+                <test>Test 3: The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
+                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
+                  with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
+                
+                <test>Test 4: For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
+                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
+                
+                <test>Test 5: For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
+                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
+                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
+                  denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
+                
+                <test>Test 6: The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
+                  factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
+                  The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
+                  Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
+                  or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
+                  their original authorization factor. </test>
+                
+                <test>Test 7: The evaluator shall verify that the second administrator from Test 2 can configure each of the supported authorization attempts configurations 
+                  and shall verify that the user is denied access to the encrypted data. </test>
+                
+                <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
+                  ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
+                
+                <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
+                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Cleitns and can be subsequently managed by the EM is tested as follows:
+                  
+                  Disable the administrative capability in a File Encryption Client and enable it in the EM
+                  
+                  Verify that the administration of the capability in the EM is successfully
+                </test>
+                
+              </testlist>
+            </aactivity>
+          </f-element>
+        </f-component>
+        </modified-sfrs>
       <additional-sfrs></additional-sfrs>
       <con-toe></con-toe>
       <con-sec-prob></con-sec-prob>
@@ -1484,7 +1600,7 @@
                 <selectable> an external Smartcard factor that is at least the same bit-length as the FEK(s), and is protecting a submask that is 
                   <selectables>
                     <selectable>generated by the TOE (using the RBG as specified in FCS_RBG_EXT.1)</selectable>
-                    <selectable>generated by the Host Platform</selectable>
+                    <selectable>generated by the platform</selectable>
                   </selectables> protected using RSA with key size 
                   <selectables>
                     <selectable>2048 bits</selectable>
@@ -1501,7 +1617,7 @@
                   and is providing a submask generated by the 
                   <selectables>
                     <selectable>TOE, using the RBG as specified in FCS_RBG_EXT.1</selectable>
-                    <selectable>Host Platform</selectable>
+                    <selectable>platform</selectable>
                   </selectables>
                 </selectable>
               </selectables>
@@ -1746,122 +1862,6 @@
           </f-element>
         </f-component>
         
-        <f-component id="FMT_SMF.1" name="Specification of Management Functions (Management Server)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FMT_SMF.1.1">
-            <title>The TSF shall be capable of performing the following management functions: 
-              <selectables linebreak="yes">
-                <selectable>register new user</selectable>
-                <selectable>revoke registration of user</selectable>
-                <selectable>initiate key generation</selectable>
-                <selectable>initiate key escrow</selectable>
-                <selectable>initiate key zeroization</selectable>
-                <selectable>initiate key recovery</selectable>
-                <selectable>set encryption policy (supported algorithms and key sizes)</selectable>
-                <selectable>change administrator passwords</selectable>
-                <selectable>change user passwords</selectable>
-                <selectable>change recovery credentials</selectable>
-                <selectable>define administrators of the TOE</selectable>
-                <selectable>enable/disable use of recovery credential</selectable>
-                <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
-                <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
-                <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption PP-Module]</assignable></selectable>
-                <selectable><assignable>ability to perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
-              </selectables>
-            </title>
-            <note role="application"> This SFR refers specifically to the management functions that can be performed by the Management Server. 
-              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module. The final two assignments
-              provide the ST author the ability to indicate when File Encyrption module functionality (such as configuration of power saving states) can be configured by the Management Server.
-              
-              The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
-              functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
-              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
-              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
-              
-              If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
-            </note>
-            
-            <aactivity>
-              <TSS/>
-              The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
-              Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
-              The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
-              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.
-              
-              
-              <Guidance/>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
-              including any reliance on the Operational Environment if applicable:
-              
-              •	Register new user
-              •	Revoke registration of an user
-              •	Initiate key generation
-              •	Initiate key escrow
-              •	Initiate key recovery
-              •	Initiate key zeroization
-              •	Set encryption policy (supported algorithms and key sizes)
-              •	Change Administrator passwords
-              •	Change user passwords
-              •	Change Recovery Credentials
-              •	Define Administrators of the TOE
-              •	Enable/Disable the use of recovery credentials (end users)
-              •	Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)
-              •	Configure the number of authentication attempts that can be made in a 24 hour period
-              •	Configure the number of failed authentication attempts required to begin blocking subsequent attempts
-              •	The ability to enable/disable one or more functions defined in the File Encryption module
-              •	The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.
-              
-              
-              <Tests/> The evaluator shall perform the following tests for each claimed management function:
-              
-              <testlist>
-                <test>Test 1: The evaluator shall configure the management server and two users according to the guidance documents.
-                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
-                  are identified by the management server as defined in the guidance documents. This test shall pass.</test>
-                
-                <test>Test 2: The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
-                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
-                  displayed as revoked in the console.</test>
-                
-                <test>Test 3: The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
-                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
-                  with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
-                
-                <test>Test 4: For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
-                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
-                
-                <test>Test 5: For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
-                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
-                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
-                  denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
-                
-                <test>Test 6: The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
-                  factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
-                  The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
-                  Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
-                  or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
-                  their original authorization factor. </test>
-                
-                <test>Test 7: The evaluator shall verify that the second administrator from Test 2 can configure each of the supported authorization attempts configurations 
-                  and shall verify that the user is denied access to the encrypted data. </test>
-                
-                <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
-                  ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
-                
-                <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
-                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Cleitns and can be subsequently managed by the EM is tested as follows:
-                  
-                  Disable the administrative capability in a File Encryption Client and enable it in the EM
-                  
-                  Verify that the administration of the capability in the EM is successfully
-                </test>
-                
-              </testlist>
-            </aactivity>
-          </f-element>
-        </f-component>
         
         <f-component id="FMT_SMR.2" name="Restrictions on Security Roles">
           <consistency-rationale>
