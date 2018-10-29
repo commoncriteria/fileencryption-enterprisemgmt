@@ -259,27 +259,6 @@
     <section title="Threats" id="threats"> 
       
       <threats>
-        <threat id="T.UNAUTHORIZED_DATA_ACCESS">
-          <description>
-             An attacker
-            accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
-            by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
-            the primary threat of unauthorized disclosure of recovery material. </description>
-          <objective-refer ref="O.KEY_MATERIAL_PROTECTION">
-            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.KEY_MATERIAL_PROTECTION as this
-              provides for encyption of keys that protect data.</rationale>
-          </objective-refer>
-        </threat>
-        <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
-          <description>
-            An attacker accessing the Management Server by getting access to the management server and generating a recovery key chain for an endpoint. 
-            The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
-            this adds the Management Server to the scope of the threat. </description>
-          <objective-refer ref="O.RECOVERY_PROTECTION">
-            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_SERVER is countered by O.RECOVERY_PROTECTION as this
-              provides for protection of recovery information.</rationale>
-          </objective-refer>
-        </threat>
         <threat id="T.KEYING_MATERIAL_COMPROMISE_SERVER">
           <description>
             Possession of any of the keys, authorization factors, submasks, and random numbers
@@ -321,13 +300,46 @@
               provides a trusted channel for server endpoint communications.</rationale>
           </objective-refer>
         </threat>
+        <threat id="T.UNAUTHORIZED_DATA_ACCESS">
+          <description>
+             An attacker
+            accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
+            by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
+            the primary threat of unauthorized disclosure of recovery material. </description>
+          <objective-refer ref="O.KEY_MATERIAL_PROTECTION">
+            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.KEY_MATERIAL_PROTECTION as this
+              provides for encyption of keys that protect data.</rationale>
+          </objective-refer>
+        </threat>
+        <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
+          <description>
+            An attacker accessing the Management Server by getting access to the management server and generating a recovery key chain for an endpoint. 
+            The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
+            this adds the Management Server to the scope of the threat. </description>
+          <objective-refer ref="O.RECOVERY_PROTECTION">
+            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_SERVER is countered by O.RECOVERY_PROTECTION as this
+              provides for protection of recovery information.</rationale>
+          </objective-refer>
+        </threat>
       </threats>
     </section>
     
 
       <section title="Assumptions" id="assumptions">
         <assumptions>
-         
+          
+          <assumption id="A.ENVIRONMENTAL_STORAGE">
+            <description>Any key storage mechanism provided by the Operational Environment is able to provide the same level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
+            <objective-refer ref="OE.ENVIRONMENTAL_STORAGE">
+              <rationale>The operational environment objective OE.ENVIRONMENTAL_STORAGE is realized through A.ENVIRONMENTAL_STORAGE.</rationale>
+            </objective-refer>
+          </assumption>
+          <assumption id="A.PHYSICAL_SERVER">
+            <description>The platform on which the Management Server resides is physically protected in its Operational Environment and not subject to physical attacks that compromise the security and/or interfere with the platform’s correct operation.</description>
+            <objective-refer ref="OE.PHYSICAL_SERVER">
+              <rationale>The operational environment objective OE.PHYSICAL_SERVER is realized through A.PHYSICAL_SERVER.</rationale>
+            </objective-refer>
+          </assumption>
           <assumption id="A.SECURED_CONFIGURATION">
             <description>The Management Server and the remote endpoints are installed and configured in accordance with their evaluated configuration. </description>
             <objective-refer ref="OE.SECURED_CONFIGURATION">
@@ -338,18 +350,6 @@
             <description>Any environmental components required to support the functionality of the Management Server (e.g. underlying operating system, firewall, database) are installed and configured in accordance with its evaluated configuration.</description>
             <objective-refer ref="OE.SECURED_ENVIRONMENT">
               <rationale>The operational environment objective OE.SECURED_ENVIRONMENT is realized through A.SECURED_ENVIRONMENT.</rationale>
-            </objective-refer>
-          </assumption>
-          <assumption id="A.PHYSICAL_SERVER">
-            <description>The platform on which the Management Server resides is physically protected in its Operational Environment and not subject to physical attacks that compromise the security and/or interfere with the platform’s correct operation.</description>
-            <objective-refer ref="OE.PHYSICAL_SERVER">
-              <rationale>The operational environment objective OE.PHYSICAL_SERVER is realized through A.PHYSICAL_SERVER.</rationale>
-            </objective-refer>
-          </assumption>
-          <assumption id="A.ENVIRONMENTAL_STORAGE">
-            <description>Any key storage mechanism provided by the Operational Environment is able to provide the same level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
-            <objective-refer ref="OE.ENVIRONMENTAL_STORAGE">
-              <rationale>The operational environment objective OE.ENVIRONMENTAL_STORAGE is realized through A.ENVIRONMENTAL_STORAGE.</rationale>
             </objective-refer>
           </assumption>
         </assumptions>
@@ -382,31 +382,7 @@
             This objective is consistent with <base-name/>.
           </consistency-rationale>
         </SO>
-        <SO id="O.RECOVERY_PROTECTION">
-          <description>
-            <h:b>Recovery Protection:</h:b> FIA_UAU.1 requires the administrator to be authenticated prior to allowing the administrator
-            to manage the product via the remote console. FIA_UID.1 requires the admin to be identified prior to allowing the administrator to manage the
-            product via the remote console. FMT_MTD.1 requires that actions which result in changes to key material, user authentication policy and recovery
-            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2, if selected, requires user
-            authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. <h:br/>
-            
-            The Optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
-            FCS_COP.1(6); and certificate-based authentication, validated by FIA_X509_EXT.2 and validation, as validated by FIA_X509_EXT.1.
-            
-          </description>
-          <component-refer ref="FIA_UAU.1"/>
-          <component-refer ref="FIA_UID.1"/>
-          <component-refer ref="FMT_MTD.1"/>
-          <component-refer ref="FMT_SMR.2"/>
-          <component-refer ref="FCS_COP.1(1)"/>
-          <component-refer ref="FCS_VAL_EXT.2"/>
-          <component-refer ref="FIA_X509_EXT.1"/>
-          <component-refer ref="FIA_X509_EXT.2)"/>
-          <consistency-rationale>
-            This objective is consistent with <base-name/>.
-          </consistency-rationale>
-        </SO>
-        
+	      
         <SO id="O.KEY_MATERIAL_SERVER">
           <description>
             <h:b>Key Material Server:</h:b>
@@ -479,6 +455,31 @@
             This objective is consistent with <base-name/>.
           </consistency-rationale>
         </SO>
+
+        <SO id="O.RECOVERY_PROTECTION">
+          <description>
+            <h:b>Recovery Protection:</h:b> FIA_UAU.1 requires the administrator to be authenticated prior to allowing the administrator
+            to manage the product via the remote console. FIA_UID.1 requires the admin to be identified prior to allowing the administrator to manage the
+            product via the remote console. FMT_MTD.1 requires that actions which result in changes to key material, user authentication policy and recovery
+            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2, if selected, requires user
+            authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. <h:br/>
+            
+            The Optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
+            FCS_COP.1(6); and certificate-based authentication, validated by FIA_X509_EXT.2 and validation, as validated by FIA_X509_EXT.1.
+            
+          </description>
+          <component-refer ref="FIA_UAU.1"/>
+          <component-refer ref="FIA_UID.1"/>
+          <component-refer ref="FMT_MTD.1"/>
+          <component-refer ref="FMT_SMR.2"/>
+          <component-refer ref="FCS_COP.1(1)"/>
+          <component-refer ref="FCS_VAL_EXT.2"/>
+          <component-refer ref="FIA_X509_EXT.1"/>
+          <component-refer ref="FIA_X509_EXT.2)"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
+        </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
             <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication from disclosure, modification, 
@@ -499,18 +500,6 @@
             This objective is consistent with <base-name/>.
           </consistency-rationale>
         </SO>
-        <SO id="O.VERIFIED_ADMIN">
-          <description>
-            <h:b>Verified Admin:</h:b> FIA_UAU.1 requires that the administrator be authenticated by the EM. 
-            The administrator is required by FIA_UID.1 to successfully authenticate to the EM prior to being permitted to perform management functions on behalf of the administrator.
-          </description>
-          <component-refer ref="FIA_UAU.1"/>
-          <component-refer ref="FIA_UID.1"/>
-          <consistency-rationale>
-            This objective is consistent with <base-name/>.
-          </consistency-rationale>
-        </SO>
-        
         <SO id="O.TRUSTED_COMMUNICATION_CHANNEL">
           <description>FPT_TRP.1 addresses the threat of disclosure of keys, key material, or recovery material transferred between
             the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
@@ -535,6 +524,20 @@
             This objective is consistent with <base-name/>.
           </consistency-rationale>
         </SO>
+	      
+	      <SO id="O.VERIFIED_ADMIN">
+          <description>
+            <h:b>Verified Admin:</h:b> FIA_UAU.1 requires that the administrator be authenticated by the EM. 
+            The administrator is required by FIA_UID.1 to successfully authenticate to the EM prior to being permitted to perform management functions on behalf of the administrator.
+          </description>
+          <component-refer ref="FIA_UAU.1"/>
+          <component-refer ref="FIA_UID.1"/>
+          <consistency-rationale>
+            This objective is consistent with <base-name/>.
+          </consistency-rationale>
+        </SO>
+        
+        
       </SOs>
     </section>
     
@@ -548,6 +551,18 @@
       security objectives for the environment. 
       
       <SOs>
+        <SO id="OE.ENVIRONMENTAL_STORAGE">
+          <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will provide at least the same 
+            level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
+          <component-refer ref="FPT_KYP_EXT.2"/>
+	  <consistency-rationale></consistency-rationale>
+        </SO>
+       <SO id="OE.PHYSICAL_SERVER">
+          <description>The Operating environment will provide a cryptographic function capability
+            that is commensurate with the requirements and capabilities of the TOE.</description>
+          <component-refer ref="FCS_KYC_EXT.1"/>
+	  <consistency-rationale></consistency-rationale>
+        </SO>
         <SO id="OE.SECURED_CONFIGURATION">
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
             so that the level of security that is provided by the TOE is consistent with its evaluated configuration.</description>
@@ -560,19 +575,7 @@
           <component-refer ref="FMT_SMF.1 "/>
 	  <consistency-rationale></consistency-rationale>
         </SO>
-        <SO id="OE.PHYSICAL_SERVER">
-          <description>The Operating environment will provide a cryptographic function capability
-            that is commensurate with the requirements and capabilities of the TOE.</description>
-          <component-refer ref="FCS_KYC_EXT.1"/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-        <SO id="OE.ENVIRONMENTAL_STORAGE">
-          <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will provide at least the same 
-            level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
-          <component-refer ref="FPT_KYP_EXT.2"/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-       </SOs>
+        </SOs>
     </section>
     
     <section title="Security Objectives Rationale" id="SOR"/>
