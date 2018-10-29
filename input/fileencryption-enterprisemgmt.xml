@@ -446,9 +446,10 @@
             <h:li>PP-Module for VPN Client </h:li>
             <h:li>FCS_SSHS_EXT.1 </h:li>
             <h:li>FCS_SSHC_EXT.1 </h:li>
+		  <!--
             <h:li>FCS_TLSC_EXT.1 (and optionally FCS_TLSC_EXT.3 depending on the claimed ciphersuites) </h:li>
             <h:li>FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites) </h:li>
-            
+            -->
             The various iterations of FCS_COP.1 as well as FCS_RBG_EXT.1 all validate that the cryptography used to initiate and protect
             the communication channel protocols between the Enterprise Server and the endpoint, if remote management is supported by the TSF. If implemented
             on the server, FCS_CKM.4(1) ensures proper destruction of keys and key material on the server when no longer needed.<h:br/>
@@ -484,9 +485,10 @@
             reordering, substitution, or deletion If server side key generation is implemented, FCS_CKM.1(1) ensures sufficiently
             strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. Products implementing cryptographic 
             communication protocols between the server and managed endpoints must meet the requirements for the specific protocols as
-            defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}. 
+            defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}
+		  <!--, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}. -->
             
-            If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites.
+            <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
             If the EM Server generates signatures to request or verify certificates, FCS_COP.1(1) ensures correct cryptographic
             operation in signature generation process. </description>
           
@@ -514,9 +516,9 @@
             the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
             by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/>
             
-            The selection-based communication protocol SFR’s FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, and FCS_TLSC_EXT.1
-            ensure correct implementation of the protocols required by FTP_TRP.1. If TLS is supported, then FCS_TLSS_EXT.3 may also
-            apply, depending on the claimed TLS ciphersuites. FCS_RBG_EXT.1 ensures sufficiently strong keys are generated for 
+            The selection-based communication protocol SFR’s FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, and the TLS package
+            ensure correct implementation of the protocols required by FTP_TRP.1. <!-- If TLS is supported, then FCS_TLSS_EXT.3 may also
+            apply, depending on the claimed TLS ciphersuites. --> FCS_RBG_EXT.1 ensures sufficiently strong keys are generated for 
             the communication protocols previously referenced. FIA_X509_EXT.1, FIA_X509_EXT.2, and FIA_X509_EXT.3 ensure
             the communication channel is established only with a server that is authenticated. FCS_COP.1(1) ensures correct generation of cryptographic signatures. <h:br/>
             
