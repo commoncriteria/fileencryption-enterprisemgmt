@@ -723,550 +723,7 @@
     </base-pp>
     <man-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
-        <f-component id="FCS_VAL_EXT.1" name="Extended: Admin Validation">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_VAL_EXT.1.1">
-            <title>The TSF shall perform validation of the admin by 
-              <selectables>
-                <selectable>by receiving assertion of the user’s validity from: 
-                  <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
-                <selectable> validating the 
-                  <selectables> 
-                  <selectable>submask</selectable>
-                  <selectable>intermediate key</selectable>
-                </selectables>using the following method(s): 
-                  <selectables>
-                    <selectable>key wrap as specified in FCS_COP.1(5)</selectable>
-                    <selectable>hash the 
-                      <selectables>
-                        <selectable>submask</selectable>
-                        <selectable>intermediate key</selectable>
-                      </selectables>as specified in FCS_COP.1.1(2) as specified the Application Software PP
-                      and compare it to a stored hashed </selectable> 
-                    <selectable>decrypt a known value using the 
-                      <selectables>
-                        <selectable>submask</selectable>
-                        <selectable>intermediate key</selectable>
-                      </selectables> as specified in FCS_COP.1(1) and compare it against a stored known value]</selectable>
-                  </selectables> </selectable>
-              </selectables>
-              
-            </title>
-          </f-element>
-          
-            <f-element id="FCS_VAL_EXT.1.2">
-              <title>The TSF shall require validation of the user prior to permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1.</title>
-            </f-element>
-            
-            <f-element id="FCS_VAL_EXT.1.3">
-              <title>The TSF shall 
-                <selectables linebreak="yes">
-                  <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    validation attempts can be made within a 24 hour period, </selectable>
-                  <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    of consecutive failed validation attempts</selectable>
-                </selectables>
-              </title>
-          
-          <note role="application">The EM PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
-            used to log in to the EM in accordance with this SFR.</note>
-            <aactivity>
-              <TSS/>
-              
-              The evaluator shall examine the TSS to review a high-level description if multiple submasks are used within the TOE,
-              how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, what OE component is being leveraged).  
-              
-              The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1 are only accisible to an adminitrator after authentication.
-              
-              
-              <Guidance/>If the validation functionality is configurable, the evaluator shall examine the operational guidance
-              to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established. 
-              
-              <Tests/>The evaluator shall perform the following tests:
-              
-              Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
-              The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
-              protected data. If the limit mechanism includes any “lockout” period, the time period tested should include at least one such
-              period. Then the evaluator will verify that the TOE behaves as described in the TSS. 
-              
-              Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor,
-              the TOE prevents the access administrators.
-            </aactivity>
-            
-            </f-element>
-        </f-component>
-        
-        <f-component id="FCS_VAL_EXT.2" name="Extended: User Validation">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_VAL_EXT.2.1">
-            <title>The TSF shall perform validation of the admin by 
-              <selectables>
-                <selectable>by receiving assertion of the user’s validity from: 
-                  <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
-                <selectable> validating the 
-                  <selectables> 
-                    <selectable>submask</selectable>
-                    <selectable>intermediate key</selectable>
-                  </selectables>using the following method(s): 
-                  <selectables>
-                    <selectable>key wrap as specified in FCS_COP.1(5)</selectable>
-                    <selectable>hash the 
-                      <selectables>
-                        <selectable>submask</selectable>
-                        <selectable>intermediate key</selectable>
-                      </selectables>as specified in FCS_COP.1.1(2) as specified the Application Software PP
-                      and compare it to a stored hashed </selectable> 
-                    <selectable>decrypt a known value using the 
-                      <selectables>
-                        <selectable>submask</selectable>
-                        <selectable>intermediate key</selectable>
-                      </selectables> as specified in FCS_COP.1(1) and compare it against a stored known value]</selectable>
-                  </selectables> </selectable>
-              </selectables>
-            </title>
-          </f-element>
-          
-          <f-element id="FCS_VAL_EXT.2.2">
-            <title>The TSF shall require validation of the user prior to transmitting submasks, FEKS, or keys to decrypt FEKs to the endpoint.</title>
-          </f-element>
-          
-          <f-element id="FCS_VAL_EXT.2.3">
-            <title>The TSF shall 
-                <selectables linebreak="yes">
-                  <selectable>
-                    <selectables>
-                      <selectable>direct the endpoint to perform key sanitization</selectable>
-                      <selectable>perform a key sanitization of a key required by the endpoint</selectable>
-                    </selectables> of FEK(s) or an intermediate key upon 
-                    <assignable>ST author specified number or configurable range of attempts</assignable>] consecutive failed validation attempts</selectable>
-                  <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    validation attempts can be made within a 24 hour period, </selectable>
-                  <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    of consecutive failed validation attempts</selectable>
-                  <selectable>terminate the session after <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    consecutive failed validation attempts</selectable>
-                </selectables>
-              
-            </title>
-            
-            <note role="application">This references the validation of a endpoint user to the server.  These activities are performed by the server.</note>
-            
-          <aactivity>
-            <TSS/>
-            The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity.
-            The evaluator shall examine the TSS to determine how the TOE responds to an assertion by the Operational Environment. The evaluator shall examine the
-            TSS to verify that it describes how validation is performed. The evaluator shall verify the TSS ensures that the validation process does not expose
-            any material that might compromise key material or expose protected data.
-              
-              
-            <Guidance/>The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operating Environment to enable the OE
-            to provide User identity assertions to the TOE. 
-            
-            (conditional) If the number of User authentication attempts is configurable in the TOE, the examiner shall examine the operational guidance to ensure it describes
-            how to configure the TOE. 
-            
-              
-            <Tests/>
-            The evaluator shall perform the following tests:
-            
-            Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
-            entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
-            the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.
-            
-            Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
-            from being forwarded to the endpoint.
-            
-          </aactivity>
-            
-          </f-element>
-        </f-component>
-        
-        
-      
-       
-      
-        <f-component id="FCS_COP.1(5)" name="Cryptographic operation (Key Wrapping)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_COP.1.1(5)">
-            <title>
-              <h:b>Refinement:</h:b> The application shall 
-              <selectables>
-                <selectable>not perform key wrapping</selectable>
-                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
-                <selectable>implement functionality to perform Key Wrapping in accordance with a specified cryptographic algorithm [AES] in the following modes
-                  <selectables linebreak="yes">
-                    <selectable>Key Wrap</selectable>
-                    <selectable>Key Wrap with Padding</selectable>
-                    <selectable>GCM mode</selectable>
-                    <selectable>CCM mode</selectable>
-                  </selectables> and the cryptographic key size 
-                  <selectables>
-                    <selectable>128 bits (AES)</selectable>
-                    <selectable>256 bits (AES)</selectable>
-                  </selectables> that meet the following: 
-                  <selectables linebreak="yes">
-                    <selectable>“NIST SP 800-38C”</selectable>
-                    <selectable>“NIST SP 800-38D”</selectable>
-                    <selectable>“NIST SP 800-38F”</selectable>
-                  </selectables>
-		   and no other standards.
-                </selectable>
-              </selectables> 
-            </title>
-            <note role="application">
-              This applies to any key wrapping occuring on the enterprise server.
-              This requirement is used in the body of the ST if the ST author chooses to
-              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
-            <aactivity>
-              <TSS/>
-              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
-              <h:h4>Conditional:</h:h4> If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
-              describes how the FEK encryption/decryption is invoked. <h:br/>
-              <h:h4>Conditional:</h:h4> If impliment functionality was selected, The evaluator shall check that the TSS includes
-              a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
-              selected encryption function includes the key sizes and modes of operations as specified in the selections above.
-              The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
-              included in the selections made for ‘cryptographic algorithm’ and ‘list of standards’. 
-              
-              The evaluator shall examine the TSS to ensure that the points at which key wrapping and decryption occurs are described,
-              and that the complete data path for key wrapping is described. The evaluator checks that this description is consistent
-              with the relevant parts of the TSS.
-              
-              Assessment of the complete data path for key wrapping includes confirming that the TSS describes the data flow from the
-              device’s host interface to the device’s non-volatile memory storing the data. 
-              
-              
-              <h:br/>
-              <Guidance/> If multiple encryption modes are supported, the evaluator examines the guidance documentation
-              to determine that the method of choosing a specific mode/key size is described.
-              
-              <Tests/>
-              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
-              
-              The assurance activity tests specified for AES in GCM mode in the underlying Application Software PP shall be performed in the case that "GCM" is selected in the requirement.
-              
-              If AES Key Wrap is used to decrypt/encrypt the key, the evaluator shall examine the TSS to determine that it specifies that the implementation conforms to SP 800-38F with the appropriate (with or without padding) Key Wrap section using AES. 
-              The evaluator shall also perform the verification procedures outlined in the testing methodology, "The Key Wrap Validation System." (http://csrc.nist.gov/groups/STM/cavp/documents/mac/KWVS.pdf)
-              
-              AES-CCM Tests
-              These tests are intended to be equivalent to those described in the NIST document, “The CCM Validation System (CCMVS),” updated 9 Jan 2012, found at http://csrc.nist.gov/groups/STM/cavp/documents/mac/CCMVS.pdf.
-              
-              It is not recommended that evaluators use values obtained from static sources such as 
-              http://csrc.nist.gov/groups/STM/cavp/documents/mac/ccmtestvectors.zip
-              or use values not generated expressly to exercise the AES-CCM implementation.
-              
-              The evaluator shall test the generation-encryption and decryption-verification
-              functionality of AES-CCM for the following input parameter and tag lengths:
-              Keys: All supported and selected key sizes (e.g., 128, 256 bits).
-              Associated Data: Two or three values for associated data length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported associated data lengths, and 2^16 (65536) bytes, if supported.
-              Payload: Two values for payload length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported payload lengths.
-              Nonces: All supported nonce lengths (7, 8, 9, 10, 11, 12, 13) in bytes.
-              Tag: All supported tag lengths (4, 6, 8, 10, 12, 14, 16) in bytes.
-              
-              The testing for CCM consists of five tests. To determine correctness in each of the below tests, the evaluator shall compare the ciphertext with the result of encryption of the same inputs with a known good implementation.
-              
-              Variable Associated Data Test
-              For each supported key size and associated data length, and any supported payload length, nonce length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
-              
-              Variable Payload Text
-              For each supported key size and payload length, and any supported associated data length, nonce length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
-              
-              Variable Nonce Test
-              For each supported key size and nonce length, and any supported associated data length, payload length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
-              
-              Variable Tag Test
-              For each supported key size and tag length, and any supported associated data length, payload length, and nonce length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
-              
-              Decryption-Verification Process Test
-              To test the decryption-verification functionality of AES-CCM, for each combination of supported associated data length, payload length, nonce length, and tag length, the evaluator shall supply a key value and 15 sets of input plus ciphertext, and obtain the decrypted payload. Ten of the 15 input sets supplied should fail verification and five should pass.
-              
-            </aactivity>
-          </f-element>
-        </f-component>
-        
-        
-        <f-component id="FCS_COP.1(7)" name="Cryptographic operation (Key Encryption)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_COP.1.1(7)">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall 
-              <selectables>
-                <selectable>not perform key encryption</selectable>
-                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
-                <selectable>perform [key encryption and decryption] in accordance with a specified cryptographic algorithm [AES used in CBC mode] and cryptographic key sizes 
-                  <selectables linebreak="yes">
-                    <selectable>128</selectable>
-                    <selectable>256</selectable>
-                  </selectables> bits] that meet the following:
-                  [AES as specified in SP 800-38A.
-                </selectable>
-              </selectables>
-            </title>
-            <note role="application">: 
-              This applies to any key encryption occuring on the entperise server.
-              This requirement is used in the body of the ST if the ST author chooses to
-              use AES encryption/decryption for protecting the keys as part of the key chaining approach
-              that is specified in FCS_KYC_EXT.1.</note>
-            <aactivity>
-              <TSS/>
-              
-              <h:h4>Conditional:</h:h4> If not perform key encryption was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
-              <h:h4>Requirement met by the platform</h:h4> If the platform provides the FEK
-              encryption/decryption, then the evaluator shall examine the TSS to verify that it
-              describes how the FEK encryption/decryption is invoked. <h:br/>
-              <h:h4>Requirement met by the TOE</h:h4> The evaluator shall verify the TSS includes a description of the key size used for
-              encryption and the mode used for the key encryption <h:br/>
-              <Guidance/> None. 
-              <Tests/> 
-              
-              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
-              The assurance activity tests specified for AES in CBC mode in the underlying Application Software PP shall be performed in the case that "CBC" is selected in the requirement.
-            </aactivity>
-          </f-element>
-        </f-component>
-        
-        <f-component id="FCS_KDF_EXT.1" name="Cryptographic operation (Key Derivation)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_KDF_EXT.1.1">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall <selectables>
-                <selectable>not derive keys</selectable>
-                <selectable>accept
-                  <selectables>
-                    <selectable>a RNG generated submask as specified in FCS_RBG_EXT.1</selectable>
-                    <selectable>a conditioned password</selectable>
-                    <selectable>an imported submask</selectable>
-                  </selectables> to derive an intermediate key, as defined in [selection:
-                  <selectables>
-                    <selectable>NIST SP 800-108 
-                      <selectables>
-                        <selectable>KDF in Counter Mode</selectable>
-                        <selectable>KDF in Feedback Mode</selectable>
-                        <selectable>KDF in Double-Pipeline Iteration Mode</selectable>
-                      </selectables>
-                    </selectable>
-                    <selectable>NIST SP 800-132</selectable>
-                  </selectables> using the keyed-hash functions specified in FCS_COP.1(3), such that the output is at least of
-                  equivalent security strength (in number of bits) to the FEK(s).
-                </selectable>
-              </selectables> 
-              
-            </title>
-            <note role="application">: 
-              This applies to any key derviation occuring on the enterprise server.
-              This requirement establishes acceptable methods for generating a new random key or an
-              existing submask to create a new key along the key chain.</note>
-            <aactivity>
-              <TSS/>
-              <h:h4>Conditional:</h:h4> If not perform key derivation was selected, then the evaluator shall only examine the TSS to verify no key derivation is performed. <h:br/>
-              
-              The evaluator shall verify the TSS includes a description of the key derivation
-              function and shall verify the key derivation uses an approved derivation mode and
-              key expansion algorithm according to SP 800-108 and SP 800-132. <h:br/>
-              
-              <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
-              including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
-              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.
-              
-              <Guidance/> None. 
-              
-              <Tests/> None. 
-            </aactivity>
-          </f-element>
-        </f-component>
-        
-        <f-component id="FCS_COP.1(8)" name="Cryptographic operation (Key Transport)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_COP.1.1(8)">
-            <title>
-              <h:b>Refinement:</h:b> The TSF shall  
-              <selectables>
-                <selectable>not perform key transport</selectable>
-                <selectable>perform [key transport] in accordance with a
-                  3 specified cryptographic algorithm [RSA in the following modes 
-                  <selectables>
-                    <selectable>KTS-OAEP</selectable>
-                    <selectable>KTS4-KEM-KWS</selectable>
-                  </selectables> and the cryptographic key size 
-                  <selectables>
-                    <selectable>2048</selectable>
-                    <selectable>3072</selectable>
-                  </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
-              </selectables>
-            </title>
-            <note role="application">:  This requirement is used in the body of the ST if the ST author chooses to
-              use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
-            </note>
-            <aactivity>
-              <TSS/>
-              <h:h4>Conditional:</h:h4> If not perform key transport was selected, then the evaluator shall only examine the TSS to verify no key transport is performed. <h:br/>
-              
-              The evaluator shall verify the TSS provides a high level description of the RSA
-              scheme and the cryptographic key size that is being used, and that the asymmetric
-              algorithm being used for key transport is RSA. If more than one scheme/key size are
-              allowed, then the evaluator shall make sure and test all combinations of scheme and
-              key size. There may be more than one key size to specify – an RSA modulus size
-              (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
-              size.
-              If the KTS-OAEP scheme was selected, the evaluator shall verify that the TSS
-              identifies the hash function, the mask generating function, the random bit generator,
-              the encryption primitive and decryption primitive.
-              If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
-              identifies the key derivation method, the AES-based key wrapping method, the secret
-              value encapsulation technique, and the random number generator. <h:br/>
-              <Guidance/> None. 
-              <Tests/>
-              For each supported key transport schema, the evaluator shall initiate at least 25
-              sessions that require key transport with an independently developed remote instance
-              of a key transport entity, using known RSA key-pairs. The evaluator shall observe
-              traffic passed from the sender-side and to the receiver-side of the TOE, and shall
-              perform the following tests, specific to which key transport scheme was employed.
-              If the KTS-OAEP scheme was selected, the evaluator shall perform the following
-              tests:
-              1. The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
-              encryption operation of the TOE and make sure it is the correct length, either
-              256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
-              the TOE’s RSA-OEAP decryption operation some cipher texts that are the
-              wrong length and verify that the erroneous input is detected and that the
-              decryption operation exits with an error code.
-              2. The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
-              encryption operation of the TOE to the correct cipher text integer, c, and use the
-              decryption primitive to compute em = RSADP((n,d),c) and convert em to the
-              encoded message EM. The evaluator shall then check that the first byte of EM
-              is 0x00. The evaluator shall also feed into the TOE’s RSA-OEAP decryption
-              operation some cipher texts where the first byte of EM was set to a value other
-              than 0x00, and verify that the erroneous input is detected and that the decryption
-              operation exits with an error code.
-              3. The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
-              encryption operation of the TOE using RSADP, and perform the OAEP
-              decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
-              HA’ || X. For each HA’, the evalutor shall take the corresponding A and the
-              specified hash algorithm and verify that HA' = Hash(A). The evaluator
-              should[shall?] also force the TOE to perform some RSA-OAEP decryptions
-              where the A value is passed incorrectly, and the evaluator shall verify
-              that an error is detected.
-              4. The evaluator shall check the format of the ‘X’ string recovered in OAEP.Test.3
-              to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
-              more consecutive 0x00 bytes and K is the transported keying material. The
-              evaluator shall also feed into the TOE’s RSA-OEAP decryption
-              operation some cipher texts for which the resulting ‘X’ strings do not have the
-              correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
-              formatted ‘X’ variables should[shall?] be detected by the RSA-OEAP decrypt
-              function.
-              5. The evaluator shall trigger all detectable decryption errors and validate that the
-              returned error codes are the same and that no information is given back to the
-              sender on which type of error occurred. The evaluator shall also validate that no
-              intermediate results from the TOE’s receiver-side operations are revealed to the
-              sender.
-              If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
-              following tests:
-              1. The evaluator shall inspect each cipher text, C, produced by RSA-KEM-KWS
-              encryption operation of the TOE and make sure the length (in bytes) of the
-              cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
-              the RSA public key) and that cLen - nLen is consistent with the byte lengths
-              supported by the key wrapping algorithm. The evaluator shall feed into the
-              RSA-KEM-KWS decryption operation a cipher text of unsupported length and
-              verify that an error is detected and that the decryption process stops.
-              2. The evaluator shall separate the cipher text, C, produced by the sender-side of
-              the TOE into its C0 and C1 components and use the RSA decryption primitive to
-              recover the secret value, Z, from C0. The evaluator shall check that the
-              unsigned integer represented by Z is greater than 1 and less than n-1, where n is
-              the modulus of the RSA public key. The evaluator shall construct examples
-              where the cipher text is created with a secret value Z = 1 and make sure the
-              RSA-KEM-KWS decryption process detects the error. Similarly, the evaluator
-              shall construct examples where the cipher text is created with a secret value Z =
-              n – 1 and make sure the RSA-KEM-KWS decryption process detects the error.
-              3. The evaluator shall attempt to successfully recover the secret value Z, derive the
-              key wrapping key, KWK, and unwrap the KWA-cipher text following the RSAKEM-KWS
-              decryption process given in NISP SP 800-56B section 7.2.3.4. If the
-              key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
-              of any (unwrapped) associated data, A, that was passed with the wrapped keying
-              material is correct The evaluator shall feed into the TOE’s RSA-KEM-KWS
-              decryption operation examples of incorrect cipher text and verify that a
-              decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
-              evaluator shall attempt at least one decryption where the wrong value of A is
-              given to the RSA-KEM-KWS decryption operation and verify that a decryption
-              error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
-              evaluator shall attempt at least one decryption where the wrong nonce is given to
-              the RSA-KEM-KWS decryption operation and verify that a decryption error is
-              detected.
-              4. The evaluator shall trigger all detectable decryption errors and validate that the
-              resulting error codes are the same and that no information is given back to the
-              sender on which type of error occurred. The evaluator shall also validate that no
-              intermediate results from the TOE’s receiver-side operations (in particular, no Z
-              values) are revealed to the sender.</aactivity>
-          </f-element>
-        </f-component>
-        
-        <f-component id="FCS_IV_EXT.1" name="Extended: Initialization Vector Generation">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_IV_EXT.1.1 ">
-            <title>The application shall <selectables>
-              <selectable>implement platform-provided functionality to generate IVs</selectable>
-              <selectable>generate IVs in the following manner<selectables>
-                <selectable>CBC: IVs shall be non-repeating and unpredictable;</selectable>
-                <selectable>CCM: Nonce shall be non-repeating and unpredictable;</selectable>
-                <selectable>XTS: No IV. Tweak values shall be non-negative integers, assigned consecutively,
-                  and starting at an arbitrary non-negative integer;</selectable>
-                <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall not exceed
-                  2^32 for a given secret key].</selectable>
-              </selectables></selectable>
-            </selectables> </title>
-            <note role="application">This applies to any IV generation occuring on the enterprise server.</note>
-            <aactivity>
-              <TSS/>
-              The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
-              The evaluator shall confirm that the nonces are unique and the IVs and tweaks meet the stated requirements.
-              
-              <Guidance/>None.
-              
-              <Tests/>None.
-            </aactivity>
-          </f-element>
-        </f-component>
-        
-        <f-component id="FCS_SMC_EXT.1" name="Submask Combining ">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FCS_SMC_EXT.1.1 ">
-            <title>The TSF shall 
-              <selectables>
-                <selectable>not perform submask combining</selectable>
-                <selectable>combine submasks using the following method <selectables>
-                  <selectable>exclusive OR (XOR)</selectable>
-                  <selectable>SHA-256</selectable>
-                  <selectable>SHA-384</selectable>
-                  <selectable>SHA-512</selectable>
-                  <selectable>HMAC-SHA-256</selectable>
-                  <selectable>HMAC-SHA-384</selectable>
-                  <selectable>HMAC-SHA-512</selectable>
-                </selectables> to generate an intermediary key</selectable>
-              </selectables></title>
-            <note role="application">This applies to any submark combining occuring on the enteprise server.
-              This requirement specifies the way that a product may combine the
-              various submasks by using either an XOR or an approved SHA-hash. </note>
-            <aactivity>
-              <TSS/>
-              <h:h4>Conditional:</h:h4> If not perform submask combining was selected, then the evaluator shall only examine the TSS to verify no submask combining is performed. <h:br/>
-              
-              If keys are XORed together to form an intermediate key, the TSS section
-              shall identify how this is performed (e.g., if there are ordering requirements, checks
-              performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. 
-              <Guidance/>None.
-              <Tests/>None.
-            </aactivity>
-          </f-element>
-          
-        </f-component>
-	<f-component id="FCS_CKM_EXT.4" name="Extended: Cryptographic Key Destruction">
+        <f-component id="FCS_CKM_EXT.4" name="Extended: Cryptographic Key Destruction">
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FCS_CKM_EXT.4.1">
@@ -1486,11 +943,355 @@
           </f-element>
         </f-component>
         
+	      
+	      <f-component id="FCS_COP.1(5)" name="Cryptographic operation (Key Wrapping)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_COP.1.1(5)">
+            <title>
+              <h:b>Refinement:</h:b> The application shall 
+              <selectables>
+                <selectable>not perform key wrapping</selectable>
+                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
+                <selectable>implement functionality to perform Key Wrapping in accordance with a specified cryptographic algorithm [AES] in the following modes
+                  <selectables linebreak="yes">
+                    <selectable>Key Wrap</selectable>
+                    <selectable>Key Wrap with Padding</selectable>
+                    <selectable>GCM mode</selectable>
+                    <selectable>CCM mode</selectable>
+                  </selectables> and the cryptographic key size 
+                  <selectables>
+                    <selectable>128 bits (AES)</selectable>
+                    <selectable>256 bits (AES)</selectable>
+                  </selectables> that meet the following: 
+                  <selectables linebreak="yes">
+                    <selectable>“NIST SP 800-38C”</selectable>
+                    <selectable>“NIST SP 800-38D”</selectable>
+                    <selectable>“NIST SP 800-38F”</selectable>
+                  </selectables>
+		   and no other standards.
+                </selectable>
+              </selectables> 
+            </title>
+            <note role="application">
+              This applies to any key wrapping occuring on the enterprise server.
+              This requirement is used in the body of the ST if the ST author chooses to
+              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
+            <aactivity>
+              <TSS/>
+              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
+              <h:h4>Conditional:</h:h4> If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
+              describes how the FEK encryption/decryption is invoked. <h:br/>
+              <h:h4>Conditional:</h:h4> If impliment functionality was selected, The evaluator shall check that the TSS includes
+              a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
+              selected encryption function includes the key sizes and modes of operations as specified in the selections above.
+              The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
+              included in the selections made for ‘cryptographic algorithm’ and ‘list of standards’. 
+              
+              The evaluator shall examine the TSS to ensure that the points at which key wrapping and decryption occurs are described,
+              and that the complete data path for key wrapping is described. The evaluator checks that this description is consistent
+              with the relevant parts of the TSS.
+              
+              Assessment of the complete data path for key wrapping includes confirming that the TSS describes the data flow from the
+              device’s host interface to the device’s non-volatile memory storing the data. 
+              
+              
+              <h:br/>
+              <Guidance/> If multiple encryption modes are supported, the evaluator examines the guidance documentation
+              to determine that the method of choosing a specific mode/key size is described.
+              
+              <Tests/>
+              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
+              
+              The assurance activity tests specified for AES in GCM mode in the underlying Application Software PP shall be performed in the case that "GCM" is selected in the requirement.
+              
+              If AES Key Wrap is used to decrypt/encrypt the key, the evaluator shall examine the TSS to determine that it specifies that the implementation conforms to SP 800-38F with the appropriate (with or without padding) Key Wrap section using AES. 
+              The evaluator shall also perform the verification procedures outlined in the testing methodology, "The Key Wrap Validation System." (http://csrc.nist.gov/groups/STM/cavp/documents/mac/KWVS.pdf)
+              
+              AES-CCM Tests
+              These tests are intended to be equivalent to those described in the NIST document, “The CCM Validation System (CCMVS),” updated 9 Jan 2012, found at http://csrc.nist.gov/groups/STM/cavp/documents/mac/CCMVS.pdf.
+              
+              It is not recommended that evaluators use values obtained from static sources such as 
+              http://csrc.nist.gov/groups/STM/cavp/documents/mac/ccmtestvectors.zip
+              or use values not generated expressly to exercise the AES-CCM implementation.
+              
+              The evaluator shall test the generation-encryption and decryption-verification
+              functionality of AES-CCM for the following input parameter and tag lengths:
+              Keys: All supported and selected key sizes (e.g., 128, 256 bits).
+              Associated Data: Two or three values for associated data length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported associated data lengths, and 2^16 (65536) bytes, if supported.
+              Payload: Two values for payload length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported payload lengths.
+              Nonces: All supported nonce lengths (7, 8, 9, 10, 11, 12, 13) in bytes.
+              Tag: All supported tag lengths (4, 6, 8, 10, 12, 14, 16) in bytes.
+              
+              The testing for CCM consists of five tests. To determine correctness in each of the below tests, the evaluator shall compare the ciphertext with the result of encryption of the same inputs with a known good implementation.
+              
+              Variable Associated Data Test
+              For each supported key size and associated data length, and any supported payload length, nonce length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
+              
+              Variable Payload Text
+              For each supported key size and payload length, and any supported associated data length, nonce length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
+              
+              Variable Nonce Test
+              For each supported key size and nonce length, and any supported associated data length, payload length, and tag length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
+              
+              Variable Tag Test
+              For each supported key size and tag length, and any supported associated data length, payload length, and nonce length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and obtain the resulting ciphertext.
+              
+              Decryption-Verification Process Test
+              To test the decryption-verification functionality of AES-CCM, for each combination of supported associated data length, payload length, nonce length, and tag length, the evaluator shall supply a key value and 15 sets of input plus ciphertext, and obtain the decrypted payload. Ten of the 15 input sets supplied should fail verification and five should pass.
+              
+            </aactivity>
+          </f-element>
+        </f-component>
         
         
+        <f-component id="FCS_COP.1(7)" name="Cryptographic operation (Key Encryption)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_COP.1.1(7)">
+            <title>
+              <h:b>Refinement:</h:b> The TSF shall 
+              <selectables>
+                <selectable>not perform key encryption</selectable>
+                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
+                <selectable>perform [key encryption and decryption] in accordance with a specified cryptographic algorithm [AES used in CBC mode] and cryptographic key sizes 
+                  <selectables linebreak="yes">
+                    <selectable>128</selectable>
+                    <selectable>256</selectable>
+                  </selectables> bits] that meet the following:
+                  [AES as specified in SP 800-38A.
+                </selectable>
+              </selectables>
+            </title>
+            <note role="application">: 
+              This applies to any key encryption occuring on the entperise server.
+              This requirement is used in the body of the ST if the ST author chooses to
+              use AES encryption/decryption for protecting the keys as part of the key chaining approach
+              that is specified in FCS_KYC_EXT.1.</note>
+            <aactivity>
+              <TSS/>
+              
+              <h:h4>Conditional:</h:h4> If not perform key encryption was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
+              <h:h4>Requirement met by the platform</h:h4> If the platform provides the FEK
+              encryption/decryption, then the evaluator shall examine the TSS to verify that it
+              describes how the FEK encryption/decryption is invoked. <h:br/>
+              <h:h4>Requirement met by the TOE</h:h4> The evaluator shall verify the TSS includes a description of the key size used for
+              encryption and the mode used for the key encryption <h:br/>
+              <Guidance/> None. 
+              <Tests/> 
+              
+              <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
+              The assurance activity tests specified for AES in CBC mode in the underlying Application Software PP shall be performed in the case that "CBC" is selected in the requirement.
+            </aactivity>
+          </f-element>
+        </f-component>
         
         
-        <f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
+	      <f-component id="FCS_COP.1(8)" name="Cryptographic operation (Key Transport)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_COP.1.1(8)">
+            <title>
+              <h:b>Refinement:</h:b> The TSF shall  
+              <selectables>
+                <selectable>not perform key transport</selectable>
+                <selectable>perform [key transport] in accordance with a
+                  3 specified cryptographic algorithm [RSA in the following modes 
+                  <selectables>
+                    <selectable>KTS-OAEP</selectable>
+                    <selectable>KTS4-KEM-KWS</selectable>
+                  </selectables> and the cryptographic key size 
+                  <selectables>
+                    <selectable>2048</selectable>
+                    <selectable>3072</selectable>
+                  </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
+              </selectables>
+            </title>
+            <note role="application">:  This requirement is used in the body of the ST if the ST author chooses to
+              use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
+            </note>
+            <aactivity>
+              <TSS/>
+              <h:h4>Conditional:</h:h4> If not perform key transport was selected, then the evaluator shall only examine the TSS to verify no key transport is performed. <h:br/>
+              
+              The evaluator shall verify the TSS provides a high level description of the RSA
+              scheme and the cryptographic key size that is being used, and that the asymmetric
+              algorithm being used for key transport is RSA. If more than one scheme/key size are
+              allowed, then the evaluator shall make sure and test all combinations of scheme and
+              key size. There may be more than one key size to specify – an RSA modulus size
+              (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
+              size.
+              If the KTS-OAEP scheme was selected, the evaluator shall verify that the TSS
+              identifies the hash function, the mask generating function, the random bit generator,
+              the encryption primitive and decryption primitive.
+              If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
+              identifies the key derivation method, the AES-based key wrapping method, the secret
+              value encapsulation technique, and the random number generator. <h:br/>
+              <Guidance/> None. 
+              <Tests/>
+              For each supported key transport schema, the evaluator shall initiate at least 25
+              sessions that require key transport with an independently developed remote instance
+              of a key transport entity, using known RSA key-pairs. The evaluator shall observe
+              traffic passed from the sender-side and to the receiver-side of the TOE, and shall
+              perform the following tests, specific to which key transport scheme was employed.
+              If the KTS-OAEP scheme was selected, the evaluator shall perform the following
+              tests:
+              1. The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
+              encryption operation of the TOE and make sure it is the correct length, either
+              256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
+              the TOE’s RSA-OEAP decryption operation some cipher texts that are the
+              wrong length and verify that the erroneous input is detected and that the
+              decryption operation exits with an error code.
+              2. The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
+              encryption operation of the TOE to the correct cipher text integer, c, and use the
+              decryption primitive to compute em = RSADP((n,d),c) and convert em to the
+              encoded message EM. The evaluator shall then check that the first byte of EM
+              is 0x00. The evaluator shall also feed into the TOE’s RSA-OEAP decryption
+              operation some cipher texts where the first byte of EM was set to a value other
+              than 0x00, and verify that the erroneous input is detected and that the decryption
+              operation exits with an error code.
+              3. The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
+              encryption operation of the TOE using RSADP, and perform the OAEP
+              decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
+              HA’ || X. For each HA’, the evalutor shall take the corresponding A and the
+              specified hash algorithm and verify that HA' = Hash(A). The evaluator
+              should[shall?] also force the TOE to perform some RSA-OAEP decryptions
+              where the A value is passed incorrectly, and the evaluator shall verify
+              that an error is detected.
+              4. The evaluator shall check the format of the ‘X’ string recovered in OAEP.Test.3
+              to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
+              more consecutive 0x00 bytes and K is the transported keying material. The
+              evaluator shall also feed into the TOE’s RSA-OEAP decryption
+              operation some cipher texts for which the resulting ‘X’ strings do not have the
+              correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
+              formatted ‘X’ variables should[shall?] be detected by the RSA-OEAP decrypt
+              function.
+              5. The evaluator shall trigger all detectable decryption errors and validate that the
+              returned error codes are the same and that no information is given back to the
+              sender on which type of error occurred. The evaluator shall also validate that no
+              intermediate results from the TOE’s receiver-side operations are revealed to the
+              sender.
+              If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
+              following tests:
+              1. The evaluator shall inspect each cipher text, C, produced by RSA-KEM-KWS
+              encryption operation of the TOE and make sure the length (in bytes) of the
+              cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
+              the RSA public key) and that cLen - nLen is consistent with the byte lengths
+              supported by the key wrapping algorithm. The evaluator shall feed into the
+              RSA-KEM-KWS decryption operation a cipher text of unsupported length and
+              verify that an error is detected and that the decryption process stops.
+              2. The evaluator shall separate the cipher text, C, produced by the sender-side of
+              the TOE into its C0 and C1 components and use the RSA decryption primitive to
+              recover the secret value, Z, from C0. The evaluator shall check that the
+              unsigned integer represented by Z is greater than 1 and less than n-1, where n is
+              the modulus of the RSA public key. The evaluator shall construct examples
+              where the cipher text is created with a secret value Z = 1 and make sure the
+              RSA-KEM-KWS decryption process detects the error. Similarly, the evaluator
+              shall construct examples where the cipher text is created with a secret value Z =
+              n – 1 and make sure the RSA-KEM-KWS decryption process detects the error.
+              3. The evaluator shall attempt to successfully recover the secret value Z, derive the
+              key wrapping key, KWK, and unwrap the KWA-cipher text following the RSAKEM-KWS
+              decryption process given in NISP SP 800-56B section 7.2.3.4. If the
+              key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
+              of any (unwrapped) associated data, A, that was passed with the wrapped keying
+              material is correct The evaluator shall feed into the TOE’s RSA-KEM-KWS
+              decryption operation examples of incorrect cipher text and verify that a
+              decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
+              evaluator shall attempt at least one decryption where the wrong value of A is
+              given to the RSA-KEM-KWS decryption operation and verify that a decryption
+              error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
+              evaluator shall attempt at least one decryption where the wrong nonce is given to
+              the RSA-KEM-KWS decryption operation and verify that a decryption error is
+              detected.
+              4. The evaluator shall trigger all detectable decryption errors and validate that the
+              resulting error codes are the same and that no information is given back to the
+              sender on which type of error occurred. The evaluator shall also validate that no
+              intermediate results from the TOE’s receiver-side operations (in particular, no Z
+              values) are revealed to the sender.</aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component id="FCS_IV_EXT.1" name="Extended: Initialization Vector Generation">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_IV_EXT.1.1 ">
+            <title>The application shall <selectables>
+              <selectable>implement platform-provided functionality to generate IVs</selectable>
+              <selectable>generate IVs in the following manner<selectables>
+                <selectable>CBC: IVs shall be non-repeating and unpredictable;</selectable>
+                <selectable>CCM: Nonce shall be non-repeating and unpredictable;</selectable>
+                <selectable>XTS: No IV. Tweak values shall be non-negative integers, assigned consecutively,
+                  and starting at an arbitrary non-negative integer;</selectable>
+                <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall not exceed
+                  2^32 for a given secret key].</selectable>
+              </selectables></selectable>
+            </selectables> </title>
+            <note role="application">This applies to any IV generation occuring on the enterprise server.</note>
+            <aactivity>
+              <TSS/>
+              The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
+              The evaluator shall confirm that the nonces are unique and the IVs and tweaks meet the stated requirements.
+              
+              <Guidance/>None.
+              
+              <Tests/>None.
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+	      
+	      <f-component id="FCS_KDF_EXT.1" name="Cryptographic operation (Key Derivation)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_KDF_EXT.1.1">
+            <title>
+              <h:b>Refinement:</h:b> The TSF shall <selectables>
+                <selectable>not derive keys</selectable>
+                <selectable>accept
+                  <selectables>
+                    <selectable>a RNG generated submask as specified in FCS_RBG_EXT.1</selectable>
+                    <selectable>a conditioned password</selectable>
+                    <selectable>an imported submask</selectable>
+                  </selectables> to derive an intermediate key, as defined in [selection:
+                  <selectables>
+                    <selectable>NIST SP 800-108 
+                      <selectables>
+                        <selectable>KDF in Counter Mode</selectable>
+                        <selectable>KDF in Feedback Mode</selectable>
+                        <selectable>KDF in Double-Pipeline Iteration Mode</selectable>
+                      </selectables>
+                    </selectable>
+                    <selectable>NIST SP 800-132</selectable>
+                  </selectables> using the keyed-hash functions specified in FCS_COP.1(3), such that the output is at least of
+                  equivalent security strength (in number of bits) to the FEK(s).
+                </selectable>
+              </selectables> 
+              
+            </title>
+            <note role="application">: 
+              This applies to any key derviation occuring on the enterprise server.
+              This requirement establishes acceptable methods for generating a new random key or an
+              existing submask to create a new key along the key chain.</note>
+            <aactivity>
+              <TSS/>
+              <h:h4>Conditional:</h:h4> If not perform key derivation was selected, then the evaluator shall only examine the TSS to verify no key derivation is performed. <h:br/>
+              
+              The evaluator shall verify the TSS includes a description of the key derivation
+              function and shall verify the key derivation uses an approved derivation mode and
+              key expansion algorithm according to SP 800-108 and SP 800-132. <h:br/>
+              
+              <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
+              including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
+              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.
+              
+              <Guidance/> None. 
+              
+              <Tests/> None. 
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+	<f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FCS_KYC_EXT.1.1">
@@ -1568,24 +1369,215 @@
           </f-element>
         </f-component>
         
-        
-        
+	      
+	<f-component id="FCS_SMC_EXT.1" name="Submask Combining ">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_SMC_EXT.1.1 ">
+            <title>The TSF shall 
+              <selectables>
+                <selectable>not perform submask combining</selectable>
+                <selectable>combine submasks using the following method <selectables>
+                  <selectable>exclusive OR (XOR)</selectable>
+                  <selectable>SHA-256</selectable>
+                  <selectable>SHA-384</selectable>
+                  <selectable>SHA-512</selectable>
+                  <selectable>HMAC-SHA-256</selectable>
+                  <selectable>HMAC-SHA-384</selectable>
+                  <selectable>HMAC-SHA-512</selectable>
+                </selectables> to generate an intermediary key</selectable>
+              </selectables></title>
+            <note role="application">This applies to any submark combining occuring on the enteprise server.
+              This requirement specifies the way that a product may combine the
+              various submasks by using either an XOR or an approved SHA-hash. </note>
+            <aactivity>
+              <TSS/>
+              <h:h4>Conditional:</h:h4> If not perform submask combining was selected, then the evaluator shall only examine the TSS to verify no submask combining is performed. <h:br/>
+              
+              If keys are XORed together to form an intermediate key, the TSS section
+              shall identify how this is performed (e.g., if there are ordering requirements, checks
+              performed, etc.). The evaluator shall also confirm that the TSS describes how the length
+              of the output produced is at least the same as that of the FEK. 
+              <Guidance/>None.
+              <Tests/>None.
+            </aactivity>
+          </f-element>
           
-         
+        </f-component>
+	      
+	      
+	      <f-component id="FCS_VAL_EXT.1" name="Extended: Admin Validation">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_VAL_EXT.1.1">
+            <title>The TSF shall perform validation of the admin by 
+              <selectables>
+                <selectable>by receiving assertion of the user’s validity from: 
+                  <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
+                <selectable> validating the 
+                  <selectables> 
+                  <selectable>submask</selectable>
+                  <selectable>intermediate key</selectable>
+                </selectables>using the following method(s): 
+                  <selectables>
+                    <selectable>key wrap as specified in FCS_COP.1(5)</selectable>
+                    <selectable>hash the 
+                      <selectables>
+                        <selectable>submask</selectable>
+                        <selectable>intermediate key</selectable>
+                      </selectables>as specified in FCS_COP.1.1(2) as specified the Application Software PP
+                      and compare it to a stored hashed </selectable> 
+                    <selectable>decrypt a known value using the 
+                      <selectables>
+                        <selectable>submask</selectable>
+                        <selectable>intermediate key</selectable>
+                      </selectables> as specified in FCS_COP.1(1) and compare it against a stored known value]</selectable>
+                  </selectables> </selectable>
+              </selectables>
+              
+            </title>
+          </f-element>
+          
+            <f-element id="FCS_VAL_EXT.1.2">
+              <title>The TSF shall require validation of the user prior to permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1.</title>
+            </f-element>
+            
+            <f-element id="FCS_VAL_EXT.1.3">
+              <title>The TSF shall 
+                <selectables linebreak="yes">
+                  <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
+                    validation attempts can be made within a 24 hour period, </selectable>
+                  <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
+                    of consecutive failed validation attempts</selectable>
+                </selectables>
+              </title>
+          
+          <note role="application">The EM PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
+            used to log in to the EM in accordance with this SFR.</note>
+            <aactivity>
+              <TSS/>
+              
+              The evaluator shall examine the TSS to review a high-level description if multiple submasks are used within the TOE,
+              how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, what OE component is being leveraged).  
+              
+              The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1 are only accisible to an adminitrator after authentication.
+              
+              
+              <Guidance/>If the validation functionality is configurable, the evaluator shall examine the operational guidance
+              to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established. 
+              
+              <Tests/>The evaluator shall perform the following tests:
+              
+              Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
+              The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
+              protected data. If the limit mechanism includes any “lockout” period, the time period tested should include at least one such
+              period. Then the evaluator will verify that the TOE behaves as described in the TSS. 
+              
+              Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor,
+              the TOE prevents the access administrators.
+            </aactivity>
+            
+            </f-element>
+        </f-component>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <f-component id="FCS_VAL_EXT.2" name="Extended: User Validation">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FCS_VAL_EXT.2.1">
+            <title>The TSF shall perform validation of the admin by 
+              <selectables>
+                <selectable>by receiving assertion of the user’s validity from: 
+                  <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
+                <selectable> validating the 
+                  <selectables> 
+                    <selectable>submask</selectable>
+                    <selectable>intermediate key</selectable>
+                  </selectables>using the following method(s): 
+                  <selectables>
+                    <selectable>key wrap as specified in FCS_COP.1(5)</selectable>
+                    <selectable>hash the 
+                      <selectables>
+                        <selectable>submask</selectable>
+                        <selectable>intermediate key</selectable>
+                      </selectables>as specified in FCS_COP.1.1(2) as specified the Application Software PP
+                      and compare it to a stored hashed </selectable> 
+                    <selectable>decrypt a known value using the 
+                      <selectables>
+                        <selectable>submask</selectable>
+                        <selectable>intermediate key</selectable>
+                      </selectables> as specified in FCS_COP.1(1) and compare it against a stored known value]</selectable>
+                  </selectables> </selectable>
+              </selectables>
+            </title>
+          </f-element>
+          
+          <f-element id="FCS_VAL_EXT.2.2">
+            <title>The TSF shall require validation of the user prior to transmitting submasks, FEKS, or keys to decrypt FEKs to the endpoint.</title>
+          </f-element>
+          
+          <f-element id="FCS_VAL_EXT.2.3">
+            <title>The TSF shall 
+                <selectables linebreak="yes">
+                  <selectable>
+                    <selectables>
+                      <selectable>direct the endpoint to perform key sanitization</selectable>
+                      <selectable>perform a key sanitization of a key required by the endpoint</selectable>
+                    </selectables> of FEK(s) or an intermediate key upon 
+                    <assignable>ST author specified number or configurable range of attempts</assignable>] consecutive failed validation attempts</selectable>
+                  <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
+                    validation attempts can be made within a 24 hour period, </selectable>
+                  <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
+                    of consecutive failed validation attempts</selectable>
+                  <selectable>terminate the session after <assignable>ST author specified number or configurable range of attempts</assignable> 
+                    consecutive failed validation attempts</selectable>
+                </selectables>
+              
+            </title>
+            
+            <note role="application">This references the validation of a endpoint user to the server.  These activities are performed by the server.</note>
+            
+          <aactivity>
+            <TSS/>
+            The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity.
+            The evaluator shall examine the TSS to determine how the TOE responds to an assertion by the Operational Environment. The evaluator shall examine the
+            TSS to verify that it describes how validation is performed. The evaluator shall verify the TSS ensures that the validation process does not expose
+            any material that might compromise key material or expose protected data.
+              
+              
+            <Guidance/>The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operating Environment to enable the OE
+            to provide User identity assertions to the TOE. 
+            
+            (conditional) If the number of User authentication attempts is configurable in the TOE, the examiner shall examine the operational guidance to ensure it describes
+            how to configure the TOE. 
+            
+              
+            <Tests/>
+            The evaluator shall perform the following tests:
+            
+            Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
+            entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
+            the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.
+            
+            Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
+            from being forwarded to the endpoint.
+            
+          </aactivity>
+            
+          </f-element>
+        </f-component>
         
         
       
+       
       
+        
+        
+        
+        
+        
+        
+        
+        
       
         
               
@@ -1687,6 +1679,47 @@
           </f-element>
         </f-component>
         
+	<f-component id="FIA_REC_EXT.1" name="Recovery Support">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FIA_REC_EXT.1.1">
+            <title>The TSF shall support the following recovery mechanisms 
+              <selectables>
+                <selectable id="CR">Challenge Response Recovery as defined in FIA_CHR_EXT.1</selectable>
+                <selectable>None.</selectable>
+              </selectables>
+              
+            </title>
+          
+            
+          </f-element>
+          <f-element id="FIA_REC_EXT.1.2">
+            <title>The TSF shall 
+              <selectables>
+                <selectable>provide the ability to enable and disable the use of recovery credentials.</selectable>
+              <selectable>not support recovery</selectable>
+            </selectables></title>
+            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication of the users.
+              
+            </note>
+          
+          <aactivity>
+              
+            <TSS/> The evaluator shall examine the TSS to determine that types of supported recovery
+            credential are specified.
+              
+            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for
+            turning off the ability of the server to return a recovery credential is specified.
+              
+              
+            <Tests/> The evaluator shall disable the ability of a server to return a recovery credential. The
+            evaluator should then attempt to obtain the recovery credential and this should fail.
+            </aactivity>
+            
+          </f-element>
+        </f-component>
+              
+	      
         <f-component id="FIA_UAU.1" name="Timing of Authentication">
           <consistency-rationale>
           </consistency-rationale>
@@ -1768,56 +1801,64 @@
           </f-element>
         </f-component>
         
-        <f-component id="FIA_REC_EXT.1" name="Recovery Support">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FIA_REC_EXT.1.1">
-            <title>The TSF shall support the following recovery mechanisms 
-              <selectables>
-                <selectable id="CR">Challenge Response Recovery as defined in FIA_CHR_EXT.1</selectable>
-                <selectable>None.</selectable>
-              </selectables>
-              
-            </title>
-          
-            
-          </f-element>
-          <f-element id="FIA_REC_EXT.1.2">
-            <title>The TSF shall 
-              <selectables>
-                <selectable>provide the ability to enable and disable the use of recovery credentials.</selectable>
-              <selectable>not support recovery</selectable>
-            </selectables></title>
-            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication of the users.
-              
-            </note>
-          
-          <aactivity>
-              
-            <TSS/> The evaluator shall examine the TSS to determine that types of supported recovery
-            credential are specified.
-              
-            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for
-            turning off the ability of the server to return a recovery credential is specified.
-              
-              
-            <Tests/> The evaluator shall disable the ability of a server to return a recovery credential. The
-            evaluator should then attempt to obtain the recovery credential and this should fail.
-            </aactivity>
-            
-          </f-element>
-        </f-component>
-        
-        
-        
-        
-        
         
         
         
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt"> 
         
+        <f-component id="FMT_MOF.1" name="Server Management Functions Behavior">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FMT_MOF.1.1">
+            <title>The TSF shall restrict the ability to 
+              <selectables>
+                <selectable>determine the behaviour of</selectable>
+                <selectable>disable</selectable>
+                <selectable>enable</selectable>
+                <selectable>modify the behaviour of</selectable>
+              </selectables>
+              the functions 
+              <selectables>
+                <selectable>encryption algorithms used</selectable>
+                <selectable>key sizes used</selectable>
+              </selectables> to [administrators].
+            </title>
+         
+            
+            <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
+              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).
+              
+              The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
+              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
+              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
+              
+              The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
+              of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
+              maintaining the user role as defined by FMT_SMR.2.1.
+              
+            </note>
+            <aactivity>
+              <TSS/>
+              The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
+              The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.
+              
+              
+              <Guidance/>
+              The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
+              including any configuration that needs to be performed on the client for remote administration.
+              
+              <Tests/> The evaluator shall perform the following tests:
+              
+              In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
+              each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
+              conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
+              three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
+              
+              
+            </aactivity>
+          </f-element>
+        </f-component>
         
         
         
@@ -1926,63 +1967,59 @@
           </f-element>
         </f-component>
         
-        <f-component id="FMT_MOF.1" name="Server Management Functions Behavior">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FMT_MOF.1.1">
-            <title>The TSF shall restrict the ability to 
-              <selectables>
-                <selectable>determine the behaviour of</selectable>
-                <selectable>disable</selectable>
-                <selectable>enable</selectable>
-                <selectable>modify the behaviour of</selectable>
-              </selectables>
-              the functions 
-              <selectables>
-                <selectable>encryption algorithms used</selectable>
-                <selectable>key sizes used</selectable>
-              </selectables> to [administrators].
-            </title>
-         
-            
-            <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
-              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).
-              
-              The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
-              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
-              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
-              
-              The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
-              of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
-              maintaining the user role as defined by FMT_SMR.2.1.
-              
-            </note>
-            <aactivity>
-              <TSS/>
-              The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
-              The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.
-              
-              
-              <Guidance/>
-              The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
-              including any configuration that needs to be performed on the client for remote administration.
-              
-              <Tests/> The evaluator shall perform the following tests:
-              
-              In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
-              each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
-              conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
-              three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
-              
-              
-            </aactivity>
-          </f-element>
-        </f-component>
         
         
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="FPT_KYP_EXT.2" name="Extended: Protection of Server Key and Key Material ">
+        <f-component id="FPT_ITT.1" name="Basic Internal TSF Data Transfer Protection">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FPT_ITT.1.1">
+            <title>The TSF shall protect TSF data from [disclosure, modification] when it is transmitted between separate parts
+              of the TOE through the use of 
+              <selectables>
+                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
+                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
+                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
+                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
+              </selectables>
+            </title>
+            <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
+              
+              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to
+              establish these trusted communications. If the TOE implements its own cryptographic capability to perform this function,
+              the ST author must claim the applicable SFRs for cryptographic primitives and certificate validation as well as the supported cryptographic protocol(s).
+            </note>
+            <aactivity>
+              <TSS/>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
+              each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
+              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.
+              
+              
+              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
+              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions to reestablish a connection should a connection be unintentionally broken. 
+              
+              <Tests/>
+              The evaluator shall perform the following tests:
+              <testlist>
+                <test>Test 1: The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
+                  tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful. 
+                </test>
+                <test>Test 2: The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
+                </test>
+                <test>Test 3: The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
+                  The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
+                </test>
+              </testlist>
+              Further assurance activities are associated with the specific protocols.
+              
+            
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+	      
+	      <f-component id="FPT_KYP_EXT.2" name="Extended: Protection of Server Key and Key Material ">
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FPT_KYP_EXT.2.1">
@@ -2079,52 +2116,6 @@
             </f-element>
           </f-component>
       
-        <f-component id="FPT_ITT.1" name="Basic Internal TSF Data Transfer Protection">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FPT_ITT.1.1">
-            <title>The TSF shall protect TSF data from [disclosure, modification] when it is transmitted between separate parts
-              of the TOE through the use of 
-              <selectables>
-                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
-                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
-                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
-                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
-              </selectables>
-            </title>
-            <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
-              
-              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to
-              establish these trusted communications. If the TOE implements its own cryptographic capability to perform this function,
-              the ST author must claim the applicable SFRs for cryptographic primitives and certificate validation as well as the supported cryptographic protocol(s).
-            </note>
-            <aactivity>
-              <TSS/>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
-              each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
-              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.
-              
-              
-              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
-              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions to reestablish a connection should a connection be unintentionally broken. 
-              
-              <Tests/>
-              The evaluator shall perform the following tests:
-              <testlist>
-                <test>Test 1: The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
-                  tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful. 
-                </test>
-                <test>Test 2: The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
-                </test>
-                <test>Test 3: The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
-                  The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
-                </test>
-              </testlist>
-              Further assurance activities are associated with the specific protocols.
-              
-            
-            </aactivity>
-          </f-element>
-        </f-component>
         
         <f-component id="FPT_TRP.1" name="Trusted Path">
           <consistency-rationale>
@@ -2192,7 +2183,95 @@
     <opt-sfrs></opt-sfrs>
     <sel-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
-      <f-component id="FCS_CKM.1(1)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
+      <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
+        <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
+        <consistency-rationale>
+        </consistency-rationale>
+        <f-element id="FIA_CHR_EXT.1.1">
+          <title>The TSF shall only generate a response if it is able to access recovery information for 
+            <selectables>
+              <selectable>the user requesting the recovery</selectable>
+              <selectable>the user requesting recovery and the device for which the recovery was requested</selectable>
+            </selectables>.
+          </title>
+          <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate user(s).
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.2">
+          <title>The response shall only work for the user to whom it was generated.
+          </title>
+          <note role="application"> This mechanism is intended to provide a recovery method for a user who has forgotten their
+            authentication factor and is unable to access their encrypted data on a system that is fully functional.
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.3">
+          <title>The response shall only be used during the same session in which the request was generated.
+          </title>
+          <note role="application"> The intent of this requirement is to limit the attack surface of the recovery credential
+            mechanism by preventing the use of the credential following a reboot of the device.
+          </note>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.4">
+          <title>The TSF shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
+          </title>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.5">
+          <title>The TSF shall allow a maximum of <assignable>integer value</assignable> of response entry attempts per boot cycle.
+          </title>
+        </f-element>
+        
+        <f-element id="FIA_CHR_EXT.1.6">
+          <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2.3 for failed challenge recovery attempts.
+          </title>
+          
+          <aactivity>
+            
+            <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
+            The TSS shall also describe the methods used to verify user requesting the Recovery credential. 
+            The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
+            as many potential values as a corresponding password or PIN.
+            
+            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
+            of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
+            consecutive failed validation attempts if this value is configurable.
+            
+            
+            <Tests/> The evaluator shall ensure that a response is only generated if the user for which 
+            recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
+            behalf of the requesting user with the constraints specified for consecutive failed authentication attempts. <h:br/>
+            
+            The term “managed” below is used to refer a user or device which is registered on the server, i.e.
+            their identity can be successfully verified by either administrator or TSF.
+            The “unmanaged” presumes that the user/device cannot be successfully verified. <h:br/>
+            
+            The evaluator shall perform the following tests: <h:br/>
+            
+            <testlist>
+              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</test>
+              <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
+               <test>Test 3: The evaluator shall issue a challenge on behalf of a managed user and ensure that 
+                the response received successfully will log the user in on that device.</test>
+              <test>Test 4: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
+              <test>Test 5: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
+                reboot the system [system terminates the session] and enter the response. This should fail.</test>
+              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
+                incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
+                conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
+            </testlist>
+            
+          </aactivity>
+          
+        </f-element>
+      </f-component>
+      
+	      
+	      <f-component id="FCS_CKM.1(1)" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
         <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
         <consistency-rationale>
         </consistency-rationale>
@@ -2314,92 +2393,6 @@
         </f-element>
       </f-component>
       
-      <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
-        <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
-        <consistency-rationale>
-        </consistency-rationale>
-        <f-element id="FIA_CHR_EXT.1.1">
-          <title>The TSF shall only generate a response if it is able to access recovery information for 
-            <selectables>
-              <selectable>the user requesting the recovery</selectable>
-              <selectable>the user requesting recovery and the device for which the recovery was requested</selectable>
-            </selectables>.
-          </title>
-          <note role="application"> This requires that the TSF has the ability to attribute key chain information to the appropriate user(s).
-          </note>
-        </f-element>
-        
-        <f-element id="FIA_CHR_EXT.1.2">
-          <title>The response shall only work for the user to whom it was generated.
-          </title>
-          <note role="application"> This mechanism is intended to provide a recovery method for a user who has forgotten their
-            authentication factor and is unable to access their encrypted data on a system that is fully functional.
-          </note>
-        </f-element>
-        
-        <f-element id="FIA_CHR_EXT.1.3">
-          <title>The response shall only be used during the same session in which the request was generated.
-          </title>
-          <note role="application"> The intent of this requirement is to limit the attack surface of the recovery credential
-            mechanism by preventing the use of the credential following a reboot of the device.
-          </note>
-        </f-element>
-        
-        <f-element id="FIA_CHR_EXT.1.4">
-          <title>The TSF shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
-          </title>
-        </f-element>
-        
-        <f-element id="FIA_CHR_EXT.1.5">
-          <title>The TSF shall allow a maximum of <assignable>integer value</assignable> of response entry attempts per boot cycle.
-          </title>
-        </f-element>
-        
-        <f-element id="FIA_CHR_EXT.1.6">
-          <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2.3 for failed challenge recovery attempts.
-          </title>
-          
-          <aactivity>
-            
-            <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
-            The TSS shall also describe the methods used to verify user requesting the Recovery credential. 
-            The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
-            as many potential values as a corresponding password or PIN.
-            
-            <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
-            of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
-            consecutive failed validation attempts if this value is configurable.
-            
-            
-            <Tests/> The evaluator shall ensure that a response is only generated if the user for which 
-            recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on 
-            behalf of the requesting user with the constraints specified for consecutive failed authentication attempts. <h:br/>
-            
-            The term “managed” below is used to refer a user or device which is registered on the server, i.e.
-            their identity can be successfully verified by either administrator or TSF.
-            The “unmanaged” presumes that the user/device cannot be successfully verified. <h:br/>
-            
-            The evaluator shall perform the following tests: <h:br/>
-            
-            <testlist>
-              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user. 
-                The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</test>
-              <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
-                The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
-               <test>Test 3: The evaluator shall issue a challenge on behalf of a managed user and ensure that 
-                the response received successfully will log the user in on that device.</test>
-              <test>Test 4: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
-              <test>Test 5: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
-                reboot the system [system terminates the session] and enter the response. This should fail.</test>
-              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
-                incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
-                conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
-            </testlist>
-            
-          </aactivity>
-          
-        </f-element>
-      </f-component>
       </subsection>
     </sel-sfrs>
     <obj-sfrs></obj-sfrs>
