@@ -619,16 +619,18 @@
             </title>
             <note role="application"> 
 		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
-              form a single FMT_SMF.1 SFR in the ST.
+              form a single FMT_SMF.1 SFR in the ST.<h:br/>
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
-              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module. The final two assignments
-              provide the ST author the ability to indicate when File Encyrption module functionality (such as configuration of power saving states) can be configured by the Management Server.
+              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module.
+		    The final two assignments provide the ST author the ability to indicate when File Encyrption module functionality
+		    (such as configuration of power saving states) can be configured by the Management Server.<h:br/>
               
               The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
               functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
               If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
-              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these functions are provided by the Management Server component of the TOE.
+              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these 
+		    functions are provided by the Management Server component of the TOE. <h:br/>
               
               If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
             </note>
