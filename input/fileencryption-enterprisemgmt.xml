@@ -646,23 +646,23 @@
               <Guidance/>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
               including any reliance on the Operational Environment if applicable:
               
-              <h:li>Register new user<h:li/>
-              <h:li>Revoke registration of an user<h:li/>
-              <h:li>Initiate key generation<h:li/>
-              <h:li>Initiate key escrow<h:li/>
-              <h:li>Initiate key recovery<h:li/>
-              <h:li>Initiate key zeroization<h:li/>
-              <h:li>Set encryption policy (supported algorithms and key sizes)<h:li/>
-              <h:li>Change Administrator passwords<h:li/>
-              <h:li>Change user passwords<h:li/>
-              <h:li>Change Recovery Credentials<h:li/>
-              <h:li>Define Administrators of the TOE<h:li/>
-              <h:li>Enable/Disable the use of recovery credentials (end users)<h:li/>
-              <h:li>Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)<h:li/>
-              <h:li>Configure the number of authentication attempts that can be made in a 24 hour period<h:li/>
-              <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts<h:li/>
-              <h:li>The ability to enable/disable one or more functions defined in the File Encryption module<h:li/>
-              <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.<h:li/>
+              <h:li>Register new user</h:li>
+              <h:li>Revoke registration of an user</h:li>
+              <h:li>Initiate key generation</h:li>
+              <h:li>Initiate key escrow</h:li>
+              <h:li>Initiate key recovery</h:li>
+              <h:li>Initiate key zeroization</h:li>
+              <h:li>Set encryption policy (supported algorithms and key sizes)</h:li>
+              <h:li>Change Administrator passwords</h:li>
+              <h:li>Change user passwords</h:li>
+              <h:li>Change Recovery Credentials</h:li>
+              <h:li>Define Administrators of the TOE</h:li>
+              <h:li>Enable/Disable the use of recovery credentials (end users)</h:li>
+              <h:li>Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)</h:li>
+              <h:li>Configure the number of authentication attempts that can be made in a 24 hour period</h:li>
+              <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
+              <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
+              <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</h:li>
               
               
               <Tests/> The evaluator shall perform the following tests for each claimed management function:
