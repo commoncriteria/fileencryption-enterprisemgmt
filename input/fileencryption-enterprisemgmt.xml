@@ -1368,12 +1368,13 @@
               that it supports key outputs of no fewer 128 bits for products that support only AES128,
               and no fewer than 256 bits for products that support AES-256.
               The evaluator shall verify the TSS contains a description of the controls preventing a key 
-              from being provided to the endpoint before validation has occurred.
+              from being provided to the endpoint before validation has occurred.<h:br/>
               
               The evaluator shall verify the TSS includes a description of the key
               chain used to protect encryption keys associated with endpoints. 
               The description of the key chains shall be reviewed to ensure it maintains
-              a chain of keys using the methods listed in the SFR. 
+              a chain of keys using the methods listed in the SFR. <h:br/>
+		    
               The evaluator shall ensure the chain of keys is maintained from
               the authorization factor or recovery value to the value returned to the endpoint.
               The evaluator shall examine the TSS to ensure that it describes how the key chain
@@ -1383,13 +1384,13 @@
               evaluator shall examine the key chain to ensure that at no point the chain could be
               broken without a cryptographic exhaust, the initial authorization value, recovery value
               or a compromise of the TOE server and the effective strength of the keys are maintained
-              throughout the key chain.
+              throughout the key chain.<h:br/><h:br/>
 
               
               <Guidance/>
               If there are configurations to enable or disable use of enterprise server, which modify
               the key chain, they shall be described.
-              If there are configurations on to enable recovery mechanisms, they shall be described.
+              If there are configurations on to enable recovery mechanisms, they shall be described.<h:br/><h:br/>
               
               <Tests/> None.
               
@@ -1425,8 +1426,8 @@
               If keys are XORed together to form an intermediate key, the TSS section
               shall identify how this is performed (e.g., if there are ordering requirements, checks
               performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. 
-              <Guidance/>None.
+              of the output produced is at least the same as that of the FEK. <h:br/>
+              <Guidance/>None.<h:br/>
               <Tests/>None.
             </aactivity>
           </f-element>
@@ -1486,23 +1487,30 @@
               <TSS/>
               
               The evaluator shall examine the TSS to review a high-level description if multiple submasks are used within the TOE,
-              how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, what OE component is being leveraged).  
+              how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, 
+		    what OE component is being leveraged).  <h:br/>
               
-              The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1 are only accisible to an adminitrator after authentication.
+              The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1 are 
+		    only accisible to an adminitrator after authentication.<h:br/><h:br/>
               
               
               <Guidance/>If the validation functionality is configurable, the evaluator shall examine the operational guidance
-              to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established. 
+              to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<h:br/><h:br/> 
               
-              <Tests/>The evaluator shall perform the following tests:
-              
-              Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
+              <Tests/>The evaluator shall perform the following tests:<h:br/>
+              <testlist>
+		      <test>
+              The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
               The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
               protected data. If the limit mechanism includes any “lockout” period, the time period tested should include at least one such
               period. Then the evaluator will verify that the TOE behaves as described in the TSS. 
-              
-              Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor,
+		      </test>
+		      <test>
+              For each validated authorization factor, ensure that when the user provides an incorrect authorization factor,
               the TOE prevents the access administrators.
+		      </test>
+		      </testlist>
+		    
             </aactivity>
             
             </f-element>
@@ -1566,29 +1574,32 @@
             
           <aactivity>
             <TSS/>
-            The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity.
+            The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity. <h:br/>
             The evaluator shall examine the TSS to determine how the TOE responds to an assertion by the Operational Environment. The evaluator shall examine the
             TSS to verify that it describes how validation is performed. The evaluator shall verify the TSS ensures that the validation process does not expose
-            any material that might compromise key material or expose protected data.
+            any material that might compromise key material or expose protected data.<h:br/><h:br/>
               
               
             <Guidance/>The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operating Environment to enable the OE
-            to provide User identity assertions to the TOE. 
+            to provide User identity assertions to the TOE. <h:br/>
             
             (conditional) If the number of User authentication attempts is configurable in the TOE, the examiner shall examine the operational guidance to ensure it describes
-            how to configure the TOE. 
+            how to configure the TOE. <h:br/><h:br/>
             
               
             <Tests/>
-            The evaluator shall perform the following tests:
-            
-            Test 1: The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
+            The evaluator shall perform the following tests:<h:br/>
+            <testlist>
+		    <test>
+            The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
             entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
             the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.
-            
-            Test 2: For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
+		    </test>
+		    <test>
+            For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
             from being forwarded to the endpoint.
-            
+		    </test>
+		  </testlist>
           </aactivity>
             
           </f-element>
@@ -1650,55 +1661,63 @@
               </selectables>
             </title>
             <note role="application"> 
-              This applies to the authorization of administartors on the enteprise server.
+              This applies to the authorization of administartors on the enteprise server.<h:br/>
               
-              FCS_RBG_EXT.1 is in the Application Software Protection Profile.
+              FCS_RBG_EXT.1 is in the Application Software Protection Profile.<h:br/>
               
               This requirement specifies what authorization factors the TOE accepts
               from the user. A password entered by the user is one authorization factor that the TOE must 
               be able to condition, as specified in FCS_CKM.3. Another option is a smart card
               authorization factor, with the differentiating feature being how the value is generated – either
               by the TOE’s RBG or by the platform. An external USB token may also be used, with the
-              submask value generated either by the TOE’s RBG or by the platform.
+              submask value generated either by the TOE’s RBG or by the platform.<h:br/>
+		    
               The TOE may accept any number of authorization factors, and these are categorized as
               “submasks”. The ST author selects the authorization factors they support, and there may be
-              multiple methods for a selection.
+              multiple methods for a selection.<h:br/>
+		    
               Use of multiple authorization factors is preferable; if more than one authorization factor is
-              used, the submasks produced must be combined using FCS_SMC_EXT.1.
+              used, the submasks produced must be combined using FCS_SMC_EXT.1.<h:br/>
+		    
             </note>
             <aactivity>The assurance activities for this component will be driven by the selections
               made by the ST author. This section describes assurance activities for all possible
               selections in an ST; it should be understood that if a capability is not selected in
-              the ST, the noted assurance activity does not need to be performed. 
+              the ST, the noted assurance activity does not need to be performed. <h:br/>
               
               <TSS/> The
               evaluator shall examine the TSS to ensure that it describes how user authentication is
               performed. The evaluator shall verify that the authorization methods listed in the TSS
               are specified and included in the requirements in the ST. <h:br/>
-              <h:b>Requirement met by the TOE</h:b> <h:br/> The evaluator shall first examine the TSS to ensure that the authorization
+		    
+              <h:b>Requirement met by the TOE</h:b> <h:br/> 
+		    The evaluator shall first examine the TSS to ensure that the authorization
               factors specified in the ST are described. For password-based factors the
               examination of the TSS section is performed as part of FCS_CKM.3
               Evaluation Activities. Additionally in this case, the evaluator shall verify that
               the operational guidance discusses the characteristics of external authorization
               factors (e.g., how the authorization factor must be generated; format(s) or
               standards that the authorization factor must meet) that are able to be used by
-              the TOE.
+              the TOE.<h:br/>
+		    
               If other authorization factors are specified, then for each factor, the TSS specifies
-              how the factors are input into the TOE.<h:br/>
+              how the factors are input into the TOE.<h:br/><h:br/>
+		    
               <h:b>Requirement met by the OE</h:b><h:br/> The evaluator shall examine the TSS to
               ensure a description is included for how the TOE is invoking the OE
               functionality and how it is getting an authorization value that has appropriate
-              entropy. 
+              entropy. <h:br/><h:br/>
               
               <Guidance/>The evaluator shall verify that the AGD guidance includes instructions for all of the
               authorization factors. The AGD will discuss the characteristics of external
               authorization factors (e.g., how the authorization factor is generated; format(s) or
               standards that the authorization factor must meet, configuration of the TPM device
-              used) that are able to be used by the TOE.
+              used) that are able to be used by the TOE.<h:br/><h:br/>
+		    
               <Tests/>The evaluator shall ensure that authorization using each selected
               method is tested during the course of the evaluation, setting up the method as
               described in the operational guidance and ensuring that authorization is successful and 
-              that failure to provide an authorization factor results in denial to access to plaintext data..
+              that failure to provide an authorization factor results in denial to access to plaintext data.<h:br/>
               
               [conditional]: If there is more than one authorization factor, ensure that failure
               to supply a required authorization factor does not result in access to the decrypted
@@ -1727,17 +1746,19 @@
                 <selectable>provide the ability to enable and disable the use of recovery credentials.</selectable>
               <selectable>not support recovery</selectable>
             </selectables></title>
-            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication of the users.
+            <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the 
+		    enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication 
+		    of the users.
               
             </note>
           
           <aactivity>
               
             <TSS/> The evaluator shall examine the TSS to determine that types of supported recovery
-            credential are specified.
+            credential are specified.<h:br/><h:br/>
               
             <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for
-            turning off the ability of the server to return a recovery credential is specified.
+            turning off the ability of the server to return a recovery credential is specified.<h:br/><h:br/>
               
               
             <Tests/> The evaluator shall disable the ability of a server to return a recovery credential. The
@@ -1765,27 +1786,27 @@
               
               <TSS/> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf
               of the administrator prior to login of the administrator. The evaluator shall examine the TSS to determine that it describes the list
-              of actions that require administrator authentication.
+              of actions that require administrator authentication.<h:br/><h:br/>
               
               <Guidance/>	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
               (e.g., establishing credential material such as pre- shared keys, tunnels, certificates, etc.) to logging in are described.
               For each supported login method, the evaluator shall ensure the guidance documentation provides clear instructions for successfully
               logging on. If configuration is necessary to ensure the services provided before login are limited, the evaluator shall determine
-              that the guidance documentation provides sufficient instruction on limiting the allowed services.
+              that the guidance documentation provides sufficient instruction on limiting the allowed services.<h:br/><h:br/>
               
               
-              <Tests/>	The evaluator shall perform the following tests:
+              <Tests/>	The evaluator shall perform the following tests:<h:br/>
               <testlist>
-                <test>Test 1: The evaluator shall verify that the list of actions allowed without administrator login completes 
+                <test>The evaluator shall verify that the list of actions allowed without administrator login completes 
                   successfully without requiring administrator login and make sure this list is consistent with the TSS. </test>
                 
-                <test>Test 2: The evaluator shall verify that attempting any other action requires successful entry of an administrator credential. </test>
+                <test>The evaluator shall verify that attempting any other action requires successful entry of an administrator credential. </test>
                 
-                <test>Test 3: The evaluator shall use the guidance documentation to configure the appropriate credential supported for the login method.
+                <test>The evaluator shall use the guidance documentation to configure the appropriate credential supported for the login method.
                 For that credential/login method, the evaluator shall show that providing correct I&amp;A information results in the ability to access the system,
                 while providing incorrect information results in denial of access.</test>
                 
-                <test>Test 4: The evaluator shall configure the services allowed (if any) according to the guidance documentation, and then determine
+                <test>The evaluator shall configure the services allowed (if any) according to the guidance documentation, and then determine
                   the services available to an external remote entity. The evaluator shall determine that the list of services available is limited to those specified in the requirement. </test>
                 
               </testlist>
@@ -1809,18 +1830,18 @@
             <aactivity>
               
               <TSS/> The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf of the administrator
-              prior to identification of the administrator.
+              prior to identification of the administrator.<h:br/><h:br/>
               
               <Guidance/> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
-              steps for creating and configuring administrator accounts are described.
+              steps for creating and configuring administrator accounts are described.<h:br/><h:br/>
               
               
               <Tests/> The evaluator shall perform the following tests:
               <testlist>
-                <test>Test 1: The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without
+                <test>The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without
                   requiring the administrator to be identified and make sure this list is consistent with the TSS. </test>
                 
-                <test>Test 2: The evaluator shall verify that attempting any other action requires successful entry of an administrator
+                <test>The evaluator shall verify that attempting any other action requires successful entry of an administrator
                   account name and successful entry of the administrator account credential.  </test>
                 
                 
@@ -1855,28 +1876,28 @@
          
             
             <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
-              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).
+              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).<h:br/>
               
               The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
               as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
-              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
+              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE<h:br/>
               
               The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
               of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
-              maintaining the user role as defined by FMT_SMR.2.1.
+              maintaining the user role as defined by FMT_SMR.2.1.<h:br/>
               
             </note>
             <aactivity>
               <TSS/>
               The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
-              The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.
+              The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.<h:br/><h:br/>
               
               
               <Guidance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
-              including any configuration that needs to be performed on the client for remote administration.
+              including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
               
-              <Tests/> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:<h:br/>
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
@@ -1915,24 +1936,24 @@
               <TSS/>
               The evaluator shall examine the TSS to determine that, for each administrative function identified in the guidance documentation;
               those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
-              the TSS details when changes may be made to the encryption keys and/or intermediate values.
+              the TSS details when changes may be made to the encryption keys and/or intermediate values.<h:br/><h:br/>
               
               
               <Guidance/>The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
-              values are allowed to the administrator at what times.
+              values are allowed to the administrator at what times.<h:br/><h:br/>
               
-              <Tests/> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:<h:br/>
               
               <testlist>
-                <test>Test 1: The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
+                <test>The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
                   (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration 
                   of the TOE). This test should fail.</test>
                 
-                <test>Test 2: The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</test>
+                <test>The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</test>
                 
-                <test>Test 3: The evaluator shall try to perform at least one of the actions at the times that are not permitted. This test should fail.</test>
+                <test>The evaluator shall try to perform at least one of the actions at the times that are not permitted. This test should fail.</test>
                 
-                <test>Test 4: The evaluator shall try to perform at least one of the actions at the times are permitted. This test should pass.</test>
+                <test>The evaluator shall try to perform at least one of the actions at the times are permitted. This test should pass.</test>
               </testlist>
             </aactivity>
           </f-element>
@@ -1964,26 +1985,26 @@
             </title>
             
             <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
-              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).
+              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).<h:br/>
               
               The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST shall logically define the administrator
               as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
-              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.
+              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE.<h:br/>
               
               The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
               of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
-              maintaining the user role as defined by FMT_SMR.2.1.
+              maintaining the user role as defined by FMT_SMR.2.1.<h:br/>
               
             </note>
             <aactivity>
               <TSS/>
-              The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components
+              The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components.<h:br/><h:br/>
               
               <Guidance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
-              including any configuration that needs to be performed on the client for remote administration.
+              including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
               
-              <Tests/> The evaluator shall perform the following tests:
+              <Tests/> The evaluator shall perform the following tests:<h:br/>
               
               In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
               each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
@@ -2021,21 +2042,22 @@
             <aactivity>
               <TSS/>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
               each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
-              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.
+              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.<h:br/><h:br/>
               
               
               <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
-              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions to reestablish a connection should a connection be unintentionally broken. 
+              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions 
+		    to reestablish a connection should a connection be unintentionally broken. <h:br/><h:br/>
               
               <Tests/>
-              The evaluator shall perform the following tests:
+              The evaluator shall perform the following tests:<h:br/>
               <testlist>
-                <test>Test 1: The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
+                <test>The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
                   tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful. 
                 </test>
-                <test>Test 2: The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
+                <test>The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
                 </test>
-                <test>Test 3: The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
+                <test>The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
                   The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
                 </test>
               </testlist>
@@ -2084,8 +2106,8 @@
               all keys stored in non-volatile memory. The description of the key chain shall be
               reviewed to ensure FCS_COP.1(5) is followed for the storage of wrapped or encrypted
               keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
-              criteria for storage. 
-              <Guidance/> None. 
+              criteria for storage. <h:br/><h:br/>
+              <Guidance/> None. <h:br/><h:br/>
               <Tests/> None. </aactivity>
           </f-element>
         </f-component>
@@ -2104,7 +2126,7 @@
               </title>
               <note role="application">The intent of this SFR is that at minimum, keys are associated with the users for which it was explicitly created by the TSF.
                 If the TOE has the ability to maintain a key chain for a user, this SFR is intended to require an association between the key chain and a user through 
-                the user account name(s) that are authorized to use it. 
+                the user account name(s) that are authorized to use it. <h:br/>
                 
                 Likewise, if the TOE supports the use of a recovery credential, this SFR is intended to require an association between user and the recovery credential
                 used to recover that data. </note>
@@ -2128,15 +2150,15 @@
               <title>The TSF shall transmit any secure or private cryptographic information that is transferred between the TOE and a remote endpoint in order
                 to establish or disestablish an association using a communications channel with a security strength at least as great as the strength of the
                 information being transmitted.</title>
-              <note>The channel used to transmit this data is defined in FPT_ITT.1.</note>
+              <note role="Application">The channel used to transmit this data is defined in FPT_ITT.1.</note>
             
             
            
               <aactivity>
                 
-                <TSS/> The evaluator shall examine the TSS to verify that it describes the method by which an association is maintained and verify it matches the selections.
+                <TSS/> The evaluator shall examine the TSS to verify that it describes the method by which an association is maintained and verify it matches the selections.<h:br/><h:br/>
                 
-                <Guidance/> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, if any configuration is necessary.
+                <Guidance/> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, if any configuration is necessary.<h:br/><h:br/>
                 
                 <Tests/> For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.
               
@@ -2171,8 +2193,8 @@
           </title>
             
             <note role="application">
-              This SFR is intended to define protected communications between the Management Server and remote endpoints.
-              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to establish the trusted path.
+              This SFR is intended to define protected communications between the Management Server and remote endpoints.<h:br/>
+              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to establish the trusted path.<h:br/>
               If the TOE implements its own cryptographic capability to perform this function, the ST author must claim the applicable SFRs for cryptographic primitives
               and certificate validation as well as the supported cryptographic protocol(s).
               
@@ -2181,22 +2203,22 @@
             <aactivity>
               <TSS/>	The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
               along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
-              of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.
+              of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<h:br/><h:br/>
               
-              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.
+              <Guidance/>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
               
               <Tests/>
               The evaluator shall perform the following tests:
               <testlist>
-                <test>Test 1: The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
+                <test>The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
                   the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
                 </test>
-                <test>Test 2: For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
+                <test>For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
                   that in fact the communication channel can be initiated from the TOE. 
                 </test>
-                <test>Test 3: The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
+                <test>The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
                 </test>
-                <test>Test 4: The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
+                <test>The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
                   The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
                 </test>
               </testlist>
@@ -2261,11 +2283,11 @@
             <TSS/> The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
             The TSS shall also describe the methods used to verify user requesting the Recovery credential. 
             The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
-            as many potential values as a corresponding password or PIN.
+            as many potential values as a corresponding password or PIN.<h:br/><h:br/>
             
             <Guidance/> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
             of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
-            consecutive failed validation attempts if this value is configurable.
+            consecutive failed validation attempts if this value is configurable.<h:br/><h:br/>
             
             
             <Tests/> The evaluator shall ensure that a response is only generated if the user for which 
@@ -2279,16 +2301,16 @@
             The evaluator shall perform the following tests: <h:br/>
             
             <testlist>
-              <test>Test 1: The evaluator shall configure the Challenge/Response recovery to validate the user. 
+              <test>The evaluator shall configure the Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</test>
-              <test>Test 2: The evaluator shall configure Challenge/Response recovery to validate the user. 
+              <test>The evaluator shall configure Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </test>
-               <test>Test 3: The evaluator shall issue a challenge on behalf of a managed user and ensure that 
+               <test>The evaluator shall issue a challenge on behalf of a managed user and ensure that 
                 the response received successfully will log the user in on that device.</test>
-              <test>Test 4: The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
-              <test>Test 5: The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
+              <test>The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</test>
+              <test>The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
                 reboot the system [system terminates the session] and enter the response. This should fail.</test>
-              <test>Test 6: The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
+              <test>The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
                 incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
                 conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</test>
             </testlist>
@@ -2341,27 +2363,27 @@
             corresponding to the security strength selected for PBKDF in FCS_CKM.3.3.</title>
           
           <note role="application"> 
-            This applies to passwords on the enterprise server.
+            This applies to passwords on the enterprise server.<h:br/>
             
             The password/passphrase is represented on the host machine as a sequence of characters whose 
-            encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.
+            encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.<h:br/>
             
-            For FCS_CKM_EXT.3.1, the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
+            For FCS_CKM_EXT.3.1, the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.<h:br/>
             
             For FCS_CKM_EXT.3.2, the ST author assigns any other supported characters; if there are no other supported characters, 
-            they should select “no other characters”.
+            they should select “no other characters”.<h:br/>
             
             For FCS_CKM_EXT.3.3, the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
-            key sizes in are made to correspond to the symetric key sizes selected in FCS_KYC_EXT.1.
+            key sizes in are made to correspond to the symetric key sizes selected in FCS_KYC_EXT.1.<h:br/>
             
             The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
             KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
-            NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.
+            NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.<h:br/>
             
             Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
             a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this PP-Module,
             a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
-            A significantly higher value is recommended to ensure optimal security.
+            A significantly higher value is recommended to ensure optimal security.<h:br/>
             
             For FCS_CKM_EXT.3.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
             for this component, as well as the “configure password/passphrase complexity setting” item for FMT_SMF.1.1. If the minimum length
@@ -2398,22 +2420,23 @@
             <h:br/> The ST author shall provide a
             description in the TSS regarding the salt generation. The evaluator shall confirm that
             the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
-              linkend="bibAppPP"/>). 
+              linkend="bibAppPP"/>). <h:br/><h:br/>
             
             <Guidance/>
             <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
             to determine that there are instructions on how to generate large passwords/passphrases, and
             instructions on how to configure the password/passphrase length (and optional complexity settings)
-            to provide entropy commensurate with the keys that the authorization factor is protecting.  
+            to provide entropy commensurate with the keys that the authorization factor is protecting.  <h:br/><h:br/>
             
             <Tests/> Support for Password/Passphrase characteristics: In addition to the analysis above, 
-            the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <testlist>
+            the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <h:br/>
+		  <testlist>
               <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
               <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM.3.1. </test>
               <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM.3.4.
                 If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
               <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM.3.2.</test>
-            </testlist>
+            </testlist><h:br/>
             <h:b>Conditioning:</h:b> No explicit testing of the formation of the authorization factor
             from the input password/passphrase is required.  </aactivity>
         </f-element>
