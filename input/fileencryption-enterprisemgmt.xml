@@ -422,7 +422,7 @@
             -->
             The various iterations of FCS_COP.1 as well as FCS_RBG_EXT.1 all validate that the cryptography used to initiate and protect
             the communication channel protocols between the Enterprise Server and the endpoint, if remote management is supported by the TSF. If implemented
-            on the server, FCS_CKM_EXT.4.1(1) ensures proper destruction of keys and key material on the server when no longer needed.<h:br/>
+            on the server, FCS_CKM_EXT.4.2 ensures proper destruction of keys and key material on the server when no longer needed.<h:br/>
             
             In order to ensure that a key is only released to the appropriate endpoint, FCS_KYP_EXT.3 ensures that there is attribution of the endpoint
             or encrypted file(s) and a key. The optional Server requirement FCS_CKM.2 ensures that if a key is communicated between the server and the
@@ -605,9 +605,18 @@
                 <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
                 <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
                 <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more functions defined in the File Encryption PP-Module]</assignable></selectable>
-                <selectable><assignable>ability to perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more functions defined in the File Encryption PP-Module</assignable></selectable>
+                <selectable><assignable>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
+                <selectable><assignable>ability to perform one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+			<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
+                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions d(configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+			<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
 		<selectable>configure password/passphrase complexity setting</selectable>
               </selectables>
             </title>
@@ -916,7 +925,7 @@
             </aactivity>
           </f-element>
           
-          <f-element id="FCS_CKM_EXT.4.1(1)">
+          <f-element id="FCS_CKM_EXT.4.2">
             <title>The TSF shall destroy all keys and key material when no longer needed.</title>
             
             <note role="application">Application Note: Keys, including intermediate keys and key material that are no longer
@@ -1240,10 +1249,10 @@
             <title>The TSF shall <selectables>
               <selectable>implement platform-provided functionality to generate IVs</selectable>
               <selectable>generate IVs in the following manner<selectables>
-                <selectable>CBC: IVs shall be non-repeating and unpredictable;</selectable>
-                <selectable>CCM: Nonce shall be non-repeating and unpredictable;</selectable>
-                <selectable>XTS: No IV. Tweak values shall be non-negative integers, assigned consecutively,
-                  and starting at an arbitrary non-negative integer;</selectable>
+                <selectable>CBC: IVs shall be non-repeating and unpredictable</selectable>
+                <selectable>CCM: Nonce shall be non-repeating and unpredictable</selectable>
+                <selectable>XTS: Not generated, instead tweak values shall be non-negative integers, assigned consecutively,
+                  and starting at an arbitrary non-negative integer</selectable>
                 <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall not exceed
                   2^32 for a given secret key].</selectable>
               </selectables></selectable>
@@ -1438,8 +1447,8 @@
           <f-element id="FCS_VAL_EXT.1.1">
             <title>The TSF shall perform validation of the admin by 
               <selectables>
-                <selectable>by receiving assertion of the user’s validity from: 
-                  <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
+                <selectable>by receiving assertion of the admin’s validity from: 
+                  <assignable>Operational Environment component responsible for authentication</assignable></selectable>
                 <selectable> validating the 
                   <selectables> 
                   <selectable>submask</selectable>
@@ -1465,14 +1474,14 @@
           </f-element>
           
             <f-element id="FCS_VAL_EXT.1.2">
-              <title>The TSF shall require validation of the user prior to permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1.</title>
+              <title>The TSF shall require validation of the admin prior to permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1.</title>
             </f-element>
             
             <f-element id="FCS_VAL_EXT.1.3">
               <title>The TSF shall 
                 <selectables linebreak="yes">
                   <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    validation attempts can be made within a 24 hour period, </selectable>
+                    validation attempts can be made within a 24 hour period</selectable>
                   <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
                     of consecutive failed validation attempts</selectable>
                 </selectables>
@@ -1503,8 +1512,8 @@
               period. Then the evaluator will verify that the TOE behaves as described in the TSS. 
 		      </test>
 		      <test>
-              For each validated authorization factor, ensure that when the user provides an incorrect authorization factor,
-              the TOE prevents the access administrators.
+              For each validated authorization factor, ensure that when the admin provides an incorrect authorization factor,
+              the TOE prevents the access.
 		      </test>
 		      </testlist>
 		    
@@ -1517,7 +1526,7 @@
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FCS_VAL_EXT.2.1">
-            <title>The TSF shall perform validation of the admin by 
+            <title>The TSF shall perform validation of the user by 
               <selectables>
                 <selectable>by receiving assertion of the user’s validity from: 
                   <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
@@ -1532,7 +1541,7 @@
                       <selectables>
                         <selectable>submask</selectable>
                         <selectable>intermediate key</selectable>
-                      </selectables>as specified in FCS_COP.1.1(2) as specified the Application Software PP
+                      </selectables> as specified in FCS_COP.1.1(2) in the Application Software PP
                       and compare it to a stored hashed </selectable> 
                     <selectable>decrypt a known value using the 
                       <selectables>
@@ -1558,11 +1567,11 @@
                     </selectables> of FEK(s) or an intermediate key upon 
                     <assignable>ST author specified number or configurable range of attempts</assignable>] consecutive failed validation attempts</selectable>
                   <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    validation attempts can be made within a 24 hour period, </selectable>
+                    validation attempts can be made within a 24 hour period</selectable>
                   <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
                     of consecutive failed validation attempts</selectable>
                   <selectable>terminate the session after <assignable>ST author specified number or configurable range of attempts</assignable> 
-                    consecutive failed validation attempts</selectable>
+                    consecutive failed validation attempts.</selectable>
                 </selectables>
               
             </title>
@@ -1777,7 +1786,7 @@
           </f-element>
             <f-element id="FIA_UAU.1.2">
            <title>The TSF shal require each administrator to be successfully authenticated before allowing any other TSF-mediated actions on behlaf of that administractor.</title>
-            <note role="application"> This requirement defines the timing administrator capabilities on the enterprise server.
+            <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
               
@@ -1822,7 +1831,7 @@
           </f-element>
           <f-element id="FIA_UAU.1.2">
             <title>The TSF shal require each administrator to be successfully identified before allowing any other TSF-mediated actions on behlaf of that administractor.</title>
-            <note role="application"> This requirement defines the timing administrator capabilities on the enterprise server.
+            <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
               
@@ -1973,9 +1982,9 @@
           <f-element id="FMT_SMR.2.3">
             <title>The TSF shall ensure that the conditions 
               <selectables>
-                <selectable>the administrator role shall be able to administer the Management Server locally, </selectable>
-                <selectable>the administrator role shall be able to administer the Management Server remotely, </selectable>
-                <selectable>the administrator role shall be able to administer the endpoint(s) locally, </selectable>
+                <selectable>the administrator role shall be able to administer the Management Server locally </selectable>
+                <selectable>the administrator role shall be able to administer the Management Server remotely </selectable>
+                <selectable>the administrator role shall be able to administer the endpoint(s) locally </selectable>
                 <selectable>the administrator role shall be able to administer the endpoint(s) remotely </selectable>
               </selectables>
               are satisfied.
@@ -1997,7 +2006,7 @@
               <TSS/>
               The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components.<h:br/><h:br/>
               
-              <Guidance/>
+              <GFance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
               including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
               
@@ -2032,9 +2041,7 @@
             </title>
             <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
               
-              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to
-              establish these trusted communications. If the TOE implements its own cryptographic capability to perform this function,
-              the ST author must claim the applicable SFRs for cryptographic primitives and certificate validation as well as the supported cryptographic protocol(s).
+             
             </note>
             <aactivity>
               <TSS/>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
@@ -2191,9 +2198,7 @@
             
             <note role="application">
               This SFR is intended to define protected communications between the Management Server and remote endpoints.<h:br/>
-              The TSF may rely on the Operational Environment to provide the cryptographic functionality that is used to establish the trusted path.<h:br/>
-              If the TOE implements its own cryptographic capability to perform this function, the ST author must claim the applicable SFRs for cryptographic primitives
-              and certificate validation as well as the supported cryptographic protocol(s).
+            
               
             </note>
             
