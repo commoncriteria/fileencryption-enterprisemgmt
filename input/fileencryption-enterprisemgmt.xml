@@ -408,6 +408,9 @@
             <h:li>Key combining [FCS_SMC_EXT.1]</h:li>
             <h:li>Key storage [FPT_KYP_EXT.1, FPT_KYP_EXT.2]</h:li>
             <h:li>Key encryption [FCS_COP.1(7)]</h:li>
+            <h:li>Key Transport [FCS_IV_EXT.1]</h:li>
+            <h:li>Key Chaining and Key Storage (Management Server) [FCS_KYC_EXT.1]</h:li>
+            <h:li>Initialization Vector Generation[FCS_COP.1(8)]</h:li>
             <h:li>Salt, Nonce, and IV generation [FCS_SNI_EXT.1]</h:li>
             
             Key chains may be maintained using asymmetric [FCS_CKM.1(1)] and/or symmetric [FCS_CKM.1(2)]. <h:br/>
@@ -418,7 +421,7 @@
             
             FCS_KYC_EXT.1 extends the requirements of File Encryption PP-Module key chaining to key chains generated or maintained by the Server. <h:br/>
             
-            FPT_ITT.1 ensures that keys and key material transported between the EM and the endpoint are protected from disclosure, modification, deletion, substitution, reordering or insertion. <h:br/>
+            FPT_ITT.1 ensures that keys and key material transported between the EM and the endpoint are protected. <h:br/>
             
             FPT_KYP_EXT.1 ensures unwrapped key material is not stored in non-volatile memory minimizing the exposure of plaintext keys and key material.
             
@@ -430,8 +433,9 @@
             <h:li>PP-Module for VPN Client </h:li>
             <h:li>FCS_SSHS_EXT.1 </h:li>
             <h:li>FCS_SSHC_EXT.1 </h:li>
-		  <!--
-            <h:li>FCS_TLSC_EXT.1 (and optionally FCS_TLSC_EXT.3 depending on the claimed ciphersuites) </h:li>
+		 
+            <h:li>TLS package</h:li>
+		   <!--
             <h:li>FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites) </h:li>
             -->
             The various iterations of FCS_COP.1 as well as FCS_RBG_EXT.1 all validate that the cryptography used to initiate and protect
@@ -457,6 +461,9 @@
           <component-refer ref="FCS_COP.1(4)"/>
           <component-refer ref="FCS_COP.1(5)"/>
           <component-refer ref="FCS_COP.1(7)"/>
+          <component-refer ref="FCS_COP.1(8)"/>
+          <component-refer ref="FCS_IC_EXT.1"/>
+          <component-refer ref="FCS_KYC_EXT.1"/>
           <component-refer ref="FCS_KDF_EXT.1"/>
           <component-refer ref="FMT_MOF.1"/>
           <consistency-rationale>
@@ -469,11 +476,11 @@
             <h:b>Recovery Protection:</h:b> FIA_UAU.1 requires the administrator to be authenticated prior to allowing the administrator
             to manage the product via the remote console. FIA_UID.1 requires the admin to be identified prior to allowing the administrator to manage the
             product via the remote console. FMT_MTD.1 requires that actions which result in changes to key material, user authentication policy and recovery
-            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2, if selected, requires user
-            authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. <h:br/>
+            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2 requires user
+            authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. Recovery methods are defined by FIA_REC_EXT.1 and FIA_CHR_EXT.1<h:br/>
             
             The Optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
-            FCS_COP.1(6); and certificate-based authentication, validated by FIA_X509_EXT.2 and validation, as validated by FIA_X509_EXT.1.
+            FCS_COP.1(1); and certificate-based authentication, validated by FIA_X509_EXT.2 and validation, as validated by FIA_X509_EXT.1.
             
           </description>
           <component-refer ref="FIA_UAU.1"/>
@@ -483,15 +490,16 @@
           <component-refer ref="FCS_COP.1(1)"/>
           <component-refer ref="FCS_VAL_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.1"/>
-          <component-refer ref="FIA_X509_EXT.2)"/>
+          <component-refer ref="FIA_X509_EXT.2"/>
+          <component-refer ref="FIA_REC_EXT.1"/>
+          <component-refer ref="FIA_CHR_EXT.1"/>
           <consistency-rationale>
             This objective is consistent with <base-name/>.
           </consistency-rationale>
         </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
-            <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication from disclosure, modification, 
-            reordering, substitution, or deletion If server side key generation is implemented, FCS_CKM.1(1) ensures sufficiently
+            <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication. If server side key generation is implemented, FCS_CKM.1(1) ensures sufficiently
             strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. Products implementing cryptographic 
             communication protocols between the server and managed endpoints must meet the requirements for the specific protocols as
             defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}
@@ -502,6 +510,7 @@
             operation in signature generation process. </description>
           
           <component-refer ref="FPT_ITT.1"/>
+          <component-refer ref="FPT_TRP.1"/>
           <component-refer ref="FCS_CKM.1(1)"/>
           <component-refer ref="FCS_COP.1(1)"/>
           <consistency-rationale>
@@ -519,7 +528,7 @@
             the communication protocols previously referenced. FIA_X509_EXT.1, FIA_X509_EXT.2, and FIA_X509_EXT.3 ensure
             the communication channel is established only with a server that is authenticated. FCS_COP.1(1) ensures correct generation of cryptographic signatures. <h:br/>
             
-            If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 ensure that the password data is not subjected
+            If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 and FCS_CKM_EXT.3 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
           <component-refer ref="FPT_TRP.1"/>
@@ -535,9 +544,10 @@
 	      
 	      <SO id="O.VERIFIED_ADMIN">
           <description>
-            <h:b>Verified Admin:</h:b> FIA_UAU.1 requires that the administrator be authenticated by the EM. 
-            The administrator is required by FIA_UID.1 to successfully authenticate to the EM prior to being permitted to perform management functions on behalf of the administrator.
+            <h:b>Verified Admin:</h:b> FIA_UAU.1 requires that the administrator be authenticated by the EM, which is verified by FCS_VAL_EXT.1.
+            The administrator is required by FIA_UID.1 to successfully authenticate to the EM prior to being permitted to perform management functions.
           </description>
+          <component-refer ref="FCS_VAL_EXT.1"/>
           <component-refer ref="FIA_UAU.1"/>
           <component-refer ref="FIA_UID.1"/>
           <consistency-rationale>
@@ -2028,7 +2038,7 @@ configure the number of failed validation attempts required to trigger correctiv
             <title>The TSF shall ensure that the conditions 
               <selectables>
                 <selectable>the administrator role shall be able to administer the Management Server locally </selectable>
-                <selectable>the administrator role shall be able to administer the Management Server remotely </selectable>
+                <selectable>the administrator role shall be able to administer the Management Server remotely as specified in FPT_TRP.1</selectable>
                 <selectable>the administrator role shall be able to administer the endpoint(s) locally </selectable>
                 <selectable>the administrator role shall be able to administer the endpoint(s) remotely </selectable>
               </selectables>
@@ -2182,7 +2192,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </f-element>
             
             <f-element id="FPT_KYP_EXT.3.2">
-              <title>The TSF shall provide the ability to register remote endpoints by exchange of [assignment: mutually identifying information that allows for an association to be made].
+              <title>The TSF shall provide the ability to register users by exchange of [assignment: mutually identifying information that allows for an association to be made].
                </title>
               <note role="Application">The ST author will complete the assignment with information on the method used by the Management Server portion
                 of the TOE to establish the association with the endpoint portion of the TOE described in FPT_KYP_EXT.3.1.
@@ -2190,13 +2200,13 @@ configure the number of failed validation attempts required to trigger correctiv
             </f-element>
             
             <f-element id="FPT_KYP_EXT.3.3">
-              <title>The TSF shall provide the ability to revoke the registration of remote endpoints by [assignment: method of removing and/or exchanging information
+              <title>The TSF shall provide the ability to revoke the registration of users by [assignment: method of removing and/or exchanging information
                 that prevents further communications between the TOE and the endpoint].</title>
             </f-element>
             
             
             <f-element id="FPT_KYP_EXT.3.4">
-              <title>The TSF shall transmit any secure or private cryptographic information that is transferred between the TOE and a remote endpoint in order
+              <title>The TSF shall transmit any secure or private cryptographic information that is transferred between the TOE and a user's endpoint in order
                 to establish or disestablish an association using a communications channel with a security strength at least as great as the strength of the
                 information being transmitted.</title>
               <note role="Application">The channel used to transmit this data is defined in FPT_ITT.1.</note>
@@ -2217,6 +2227,7 @@ configure the number of failed validation attempts required to trigger correctiv
       
         
         <f-component id="FPT_TRP.1" name="Trusted Path">
+		<selection-depends req="FMT_SMR.2.4"/>
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FPT_TRP.1.1">
@@ -2242,7 +2253,7 @@ configure the number of failed validation attempts required to trigger correctiv
           </title>
             
             <note role="application">
-              This SFR is intended to define protected communications between the Management Server and remote endpoints.<h:br/>
+              This SFR is intended to define protected communications between the Management Server and remote administrators.<h:br/>
             
               
             </note>
