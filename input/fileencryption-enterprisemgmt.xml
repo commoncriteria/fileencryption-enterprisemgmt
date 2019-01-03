@@ -510,7 +510,7 @@
           </description>
           <component-refer ref="FPT_TRP.1"/>
           <component-refer ref="FCS_COP.1(3)"/>
-          <component-refer ref="FCS_CKM.3"/>
+          <component-refer ref="FCS_CKM_EXT.3"/>
           <component-refer ref="FCS_RBG_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.1"/>
           <component-refer ref="FIA_X509_EXT.2"/>
@@ -608,15 +608,15 @@
                 <selectable><assignable>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
 configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
+<assingable>other management functions provided by the TSF</assignable></assignable></selectable>
                 <selectable><assignable>ability to perform one or more of the following functions (configure password/passphrase complexity setting,
 configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions d(configure password/passphrase complexity setting,
+			<assingable>other management functions provided by the TSF</assignable></assignable></selectable>
+                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure password/passphrase complexity setting,
 configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assingable>other management functions provided by the TSF]</assignable></assignable></selectable>
+			<assingable>other management functions provided by the TSF</assignable></assignable></selectable>
 		<selectable>configure password/passphrase complexity setting</selectable>
               </selectables>
             </title>
@@ -666,52 +666,68 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
               <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
               <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</h:li>
+<h:li>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+                <h:li>ability to perform one or more of the following functions  (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+                <h:li>ability to authorize whether or not users can perform one or more of the following functions  (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+		<h:li>configure password/passphrase complexity setting</h:li>
 		    <h:br/><h:br/>
               
               
               <Tests/> The evaluator shall perform the following tests for each claimed management function:
               
               <testlist>
-                <test>Test 1: The evaluator shall configure the management server and two users according to the guidance documents.
+                <test>The evaluator shall configure the management server and two users according to the guidance documents.
                   The evaluator shall register the users with the management server. The evaluator shall verify that the users
                   are identified by the management server as defined in the guidance documents. This test shall pass.</test>
                 
-                <test>Test 2: The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
+                <test>The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
                   in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
                   displayed as revoked in the console.</test>
                 
-                <test>Test 3: The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
+                <test>The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
                   sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
                   with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
                 
-                <test>Test 4: For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
+                <test>For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
                   user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
                 
-                <test>Test 5: For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
+                <test>For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
                   and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
                   the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
                   denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
                 
-                <test>Test 6: The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
+                <test>The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
                   factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
                   The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
                   Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
                   or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
                   their original authorization factor. </test>
                 
-                <test>Test 7: The evaluator shall verify that the second administrator from Test 2 can configure each of the supported authorization attempts configurations 
-                  and shall verify that the user is denied access to the encrypted data. </test>
+                <test>The evaluator shall verify that the an administor can configure each of the supported authorization factors attempts limits 
+			and shall verify that the user is denied access after surpassing that limit. </test>
                 
-                <test>Test 8: If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
+                <test>If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
                   ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
                 
-                <test>Test 9: If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
-                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Cleitns and can be subsequently managed by the EM is tested as follows:
+                <test>If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
+                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
                   
-                  Disable the administrative capability in a File Encryption Client and enable it in the EM
+                  Disable the administrative capability in a File Encryption Client and enable it in the EM.
                   
-                  Verify that the administration of the capability in the EM is successfully
+                  Verify that the administration of the capability in the EM is successful.
                 </test>
+		      <test>The evaluator shall verify password complexity limits by setting conditions permitted by the TOE and verifying those limits are enforced.</test>
+                
+		      <test>The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</test>
                 
               </testlist>
             </aactivity>
@@ -1359,7 +1375,22 @@ configure the number of failed validation attempts required to trigger correctiv
                         </selectables> for asymmetric keys;
                       </selectable>
                     </selectables> 
-                  commensurate with the strength of the FEK.              
+                  commensurate with the strength of the FEK.    
+		    and 
+              <selectables>
+                <selectable> no supplemental key chains</selectable>
+                <selectable> other supplemental key chains that protect a key or keys in the primary key chain using the following method(s):
+                  <selectables linebreak="yes">
+                    <selectable>utilization of the platform key storage</selectable>
+                    <selectable>utilization of platform key storage that performs key wrap with a
+                      TSF provided key</selectable>
+                    <selectable id="USEKEYWRA">implement key wrapping as specified in FCS_COP.1(5)</selectable>
+                    <selectable id="USEKEYCOM">implement key combining as specified in FCS_SMC_EXT.1</selectable>
+                    <selectable id="USEKEYENC">implement key encryption as specified in FCS_COP.1(7)</selectable>
+                    <selectable id="USEKEYTRA">implement key transport as specified in FCS_COP.1(8)</selectable>
+                    <selectable id="USEKEYDER">implement key derivation as specified in FCS_KDF_EXT.1</selectable>
+                  </selectables></selectable>
+              </selectables>
             </title>
             <note role="application">Key Chaining is the method of using multiple layers of
               encryption keys to ultimately secure the a final key. The number of intermediate keys will
@@ -1640,7 +1671,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable>provide  authorization</selectable>
               </selectables> based on 
               <selectables>
-                <selectable id="USEPAS"> a password authorization factor conditioned as defined in FCS_CKM.3</selectable>
+                <selectable id="USEPAS"> a password authorization factor conditioned as defined in FCS_CKM_EXT.3</selectable>
                 <selectable> an external Smartcard factor that is at least the same bit-length as the FEK(s), and is protecting a submask that is 
                   <selectables>
                     <selectable>generated by the TOE (using the RBG as specified in FCS_RBG_EXT.1)</selectable>
@@ -1673,7 +1704,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               This requirement specifies what authorization factors the TOE accepts
               from the user. A password entered by the user is one authorization factor that the TOE must 
-              be able to condition, as specified in FCS_CKM.3. Another option is a smart card
+              be able to condition, as specified in FCS_CKM_EXT.3. Another option is a smart card
               authorization factor, with the differentiating feature being how the value is generated – either
               by the TOE’s RBG or by the platform. An external USB token may also be used, with the
               submask value generated either by the TOE’s RBG or by the platform.<h:br/>
@@ -1699,7 +1730,7 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:b>Requirement met by the TOE</h:b> <h:br/> 
 		    The evaluator shall first examine the TSS to ensure that the authorization
               factors specified in the ST are described. For password-based factors the
-              examination of the TSS section is performed as part of FCS_CKM.3
+              examination of the TSS section is performed as part of FCS_CKM_EXT.3
               Evaluation Activities. Additionally in this case, the evaluator shall verify that
               the operational guidance discusses the characteristics of external authorization
               factors (e.g., how the authorization factor must be generated; format(s) or
@@ -1749,9 +1780,9 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element id="FIA_REC_EXT.1.2">
             <title>The TSF shall 
               <selectables>
-                <selectable>provide the ability to enable and disable the use of recovery credentials.</selectable>
+                <selectable>provide the ability to enable and disable the use of recovery credentials</selectable>
               <selectable>not support recovery</selectable>
-            </selectables></title>
+            </selectables>.</title>
             <note role="application"> This requirement defines the recovery options supported between the endpoint(s) and the 
 		    enterprise server.  This does not prevent the OE from providing recovery if the OE is managing the authentication 
 		    of the users.
@@ -2129,7 +2160,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 </selectables>
               </title>
               <note role="application">The intent of this SFR is that at minimum, keys are associated with the users for which it was explicitly created by the TSF.
-                If the TOE has the ability to maintain a key chain for a user, this SFR is intended to require an association between the key chain and a user through 
+                If the TOE has the ability to maintain an association to keys for a user, this SFR is intended to require an association between the key chain and a user through 
                 the user account name(s) that are authorized to use it. <h:br/>
                 
                 Likewise, if the TOE supports the use of a recovery credential, this SFR is intended to require an association between user and the recovery credential
@@ -2236,7 +2267,7 @@ configure the number of failed validation attempts required to trigger correctiv
     <sel-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
       <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
-        <selection-depends req="FCS_REC_EXT.1.1"  ids="CR"/>
+        <selection-depends req="FIA_REC_EXT.1.1"  ids="CR"/>
         <consistency-rationale>
         </consistency-rationale>
         <f-element id="FIA_CHR_EXT.1.1">
@@ -2323,24 +2354,24 @@ configure the number of failed validation attempts required to trigger correctiv
       </f-component>
       
 	      
-	      <f-component id="FCS_CKM.3" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
+	      <f-component id="FCS_CKM_EXT.3" name="Extended: Cryptographic key generation (Password/Passphrase conditioning)"> 
         <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
         <consistency-rationale>
         </consistency-rationale>
-        <f-element id="FCS_CKM.3.1">
+        <f-element id="FCS_CKM_EXT.3.1">
           <title>
             <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
             [assignment: maximum password size, positive integer of 64 or more] 
             characters used to generate a password authorization factor.
           </title>
         </f-element>
-        <f-element id="FCS_CKM.3.2">
+        <f-element id="FCS_CKM_EXT.3.2">
           <title>
             <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
             and [selection: [assignment: other supported special characters], no other characters].</title>
         </f-element>
-        <f-element id="FCS_CKM.3.3">
+        <f-element id="FCS_CKM_EXT.3.3">
           <title>
             <h:b>Refinement:</h:b> The TSF shall perform [Password-based Key Derivation
             Functions] in accordance with a specified cryptographic algorithm [HMAC- <selectables>
@@ -2354,15 +2385,15 @@ configure the number of failed validation attempts required to trigger correctiv
             </selectables> that meet the following: [NIST SP 800-132]. 
           </title>
         </f-element>
-        <f-element id="FCS_CKM.3.4">
+        <f-element id="FCS_CKM_EXT.3.4">
           <title>
             <h:b>Refinement:</h:b> The TSF shall not accept passwords less than [selection: a value settable by the administrator, 
             [assignment: minimum password length accepted by the TOE, must be >= 1]] and greater than the maximum password length 
-            defined in FCS_CKM.3.1</title>
+            defined in FCS_CKM_EXT.3.1</title>
         </f-element>
-        <f-element id="FCS_CKM.3.5">
+        <f-element id="FCS_CKM_EXT.3.5">
           <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from the AS PP) and with entropy 
-            corresponding to the security strength selected for PBKDF in FCS_CKM.3.3.</title>
+            corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
           
           <note role="application"> 
             This applies to passwords on the enterprise server.<h:br/>
@@ -2434,10 +2465,10 @@ configure the number of failed validation attempts required to trigger correctiv
             the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <h:br/>
 		  <testlist>
               <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
-              <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM.3.1. </test>
-              <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM.3.4.
+              <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.3.1. </test>
+              <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.3.4.
                 If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
-              <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM.3.2.</test>
+              <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.3.2.</test>
             </testlist><h:br/>
             <h:b>Conditioning:</h:b> No explicit testing of the formation of the authorization factor
             from the input password/passphrase is required.  </aactivity>
