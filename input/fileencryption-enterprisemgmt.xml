@@ -23,7 +23,7 @@
       requirements for an encryption management product that is configurable for the data it encrypts and is
       intended to provide a minimal, baseline set of requirements that are targeted at mitigating
       well defined and described threats. However, this PP-Module is not complete in itself, but rather
-      extends the Protection Profile for Application Software (<cite linkend="bibAppPP"/>). This
+      extends the Protection Profile for Application Software 1.3 (<cite linkend="bibAppPP"/>). This
       introduction will describe the features of a compliant Target of Evaluation, and will also
       discuss how this PP-Module is to be used in conjunction with the <cite linkend="bibAppPP"/>. 
     
@@ -157,6 +157,10 @@
             <term>Key Encryption Key (KEK) </term>
             <description> The key that is used to encrypt the FEK or another KEK. </description>
           </entry>
+		<entry>
+            <term>Keying Escrow </term>
+            <description> The process of exporting a key to an alternate location. </description>
+          </entry>
           <entry>
             <term>Keying material </term>
             <description> Key material is commonly known as critical security parameter (CSP) data, and also includes authorization data, nonces, and metadata. </description>
@@ -182,9 +186,17 @@
             <term>Protected Data</term>
             <description> This refers to all files designated by the user for encryption. </description>
           </entry>
+		<entry>
+            <term>Registration</term>
+            <description> The intial process of associating and endpoint and/or user with the server. </description>
+          </entry>
           <entry>
             <term>Submask </term>
             <description> A submask is a bit string that can be generated and stored in a number of ways. </description>
+          </entry>
+		<entry>
+            <term>System Identiy </term>
+            <description>A composition of a series of identifiers that may vary, but aim to identiy and associate with a specific system.</description>
           </entry>
         </glossary>
         
@@ -227,7 +239,7 @@
           </h:p>
           <h:p>
             This <abbr linkend="PP-Module"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
-            Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2 extended and CC
+            Technology Security Evaluation, Version 3.1, Revision 5. It is CC Part 2 extended and CC
             Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
               linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
             associated App PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
@@ -261,7 +273,7 @@
             look for key material in unencrypted storage on the Management Server and in external databases in the operating environment (OE), e.g. SQL database. </description>
           <objective-refer ref="O.KEY_MATERIAL_SERVER">
             <rationale>The threat T.KEYING_MATERIAL_COMPROMISE_SERVER is countered by O.KEY_MATERIAL_SERVER as this
-              provides for properly protection of key material on the server.</rationale>
+              provides for proper protection of key material on the server.</rationale>
           </objective-refer>
         </threat>
         <threat id="T.MAN_IN_THE_MIDDLE">
@@ -307,7 +319,7 @@
         </threat>
         <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
           <description>
-            An attacker accessing the Management Server by getting access to the management server and generating a recovery key chain for an endpoint. 
+            An attacker accessing the Management Server and generating a recovery key chain for an endpoint. 
             The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
             this adds the Management Server to the scope of the threat. </description>
           <objective-refer ref="O.RECOVERY_PROTECTION">
@@ -341,14 +353,16 @@
               </objective-refer>
           </assumption>
           <assumption id="A.SECURED_ENVIRONMENT">
-            <description>Any environmental components required to support the functionality of the Management Server (e.g. underlying operating system, firewall, database) are installed and configured in accordance with its evaluated configuration.</description>
+            <description>Any environmental components required to support the functionality of the Management Server (e.g. underlying operating system, firewall, database) are installed and configured in accordance with its proper configuration.</description>
             <objective-refer ref="OE.SECURED_ENVIRONMENT">
               <rationale>The operational environment objective OE.SECURED_ENVIRONMENT is realized through A.SECURED_ENVIRONMENT.</rationale>
             </objective-refer>
           </assumption>
         </assumptions>
       </section>
-  
+  <section title="Organizational Security Policies" id="OSPs">
+      There are no Organizational Security Policies for the PP-Module.
+       </section>
   </chapter>
   <chapter title="Security Objectives" id="obj">The Security Problem described in
       Section 2 will be addressed by a combination of cryptographic capabilities. Compliant TOEs
@@ -546,14 +560,14 @@
       
       <SOs>
         <SO id="OE.ENVIRONMENTAL_STORAGE">
-          <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will provide at least the same 
-            level of security as a TOE-internal storage mechanism that is conformant to this PP-Configuration.</description>
+          <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will
+		  provide at least the same level of security as a TOE-internal storage mechanism as defined by FPT_KYP_EXT.2.</description>
           <component-refer ref="FPT_KYP_EXT.2"/>
 	  <consistency-rationale></consistency-rationale>
         </SO>
        <SO id="OE.PHYSICAL_SERVER">
           <description>The Operating environment will provide a cryptographic function capability
-            that is commensurate with the requirements and capabilities of the TOE.</description>
+            that is commensurate with the requirements and capabilities of the TOE as defined in FCS_KCY_EXT.1.</description>
           <component-refer ref="FCS_KYC_EXT.1"/>
 	  <consistency-rationale></consistency-rationale>
         </SO>
@@ -1893,7 +1907,7 @@ configure the number of failed validation attempts required to trigger correctiv
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt"> 
         
-        <f-component id="FMT_MOF.1" name="Server Management Functions Behavior">
+        <f-component id="FMT_MOF.1" name="Server Management of Security Functions Behavior">
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FMT_MOF.1.1">
@@ -2168,7 +2182,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </f-element>
             
             <f-element id="FPT_KYP_EXT.3.2">
-              <title>The TSF shall provide the ability to register remote endpoints by [assignment: exchange of mutually identifying information that allows for an association to be made].
+              <title>The TSF shall provide the ability to register remote endpoints by exchange of [assignment: mutually identifying information that allows for an association to be made].
                </title>
               <note role="Application">The ST author will complete the assignment with information on the method used by the Management Server portion
                 of the TOE to establish the association with the endpoint portion of the TOE described in FPT_KYP_EXT.3.1.
@@ -2303,7 +2317,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-element>
         
         <f-element id="FIA_CHR_EXT.1.5">
-          <title>The TSF shall allow a maximum of <assignable>integer value</assignable> of response entry attempts per boot cycle.
+          <title>The TSF shall allow a maximum of <assignable>integer value</assignable> response entry attempts per boot cycle.
           </title>
         </f-element>
         
