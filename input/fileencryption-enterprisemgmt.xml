@@ -2038,7 +2038,7 @@ configure the number of failed validation attempts required to trigger correctiv
             <title>The TSF shall ensure that the conditions 
               <selectables>
                 <selectable>the administrator role shall be able to administer the Management Server locally </selectable>
-                <selectable>the administrator role shall be able to administer the Management Server remotely as specified in FPT_TRP.1</selectable>
+                <selectable id="remote">the administrator role shall be able to administer the Management Server remotely as specified in FPT_TRP.1</selectable>
                 <selectable>the administrator role shall be able to administer the endpoint(s) locally </selectable>
                 <selectable>the administrator role shall be able to administer the endpoint(s) remotely </selectable>
               </selectables>
@@ -2061,7 +2061,7 @@ configure the number of failed validation attempts required to trigger correctiv
               <TSS/>
               The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components.<h:br/><h:br/>
               
-              <GFance/>
+              <Guidance/>
               The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
               including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
               
@@ -2226,8 +2226,8 @@ configure the number of failed validation attempts required to trigger correctiv
           </f-component>
       
         
-        <f-component id="FPT_TRP.1" name="Trusted Path">
-		<selection-depends req="FMT_SMR.2.4"/>
+        <f-component id="FPT_TRP.1" name="Trusted Path" status="sel-based">
+		<selection-depends req="FMT_SMR.2.4" ids="remote"/>
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FPT_TRP.1.1">
