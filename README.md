@@ -1,6 +1,6 @@
 PP-Module for File Encryption Enterprise Management
 ===========
-[![Build Status](https://travis-ci.org/commoncriteria/fileencryption-enterprisemgmt.svg?branch=master)](https://travis-ci.org/commoncriteria/fileencryption-enterprisemgmt)
+[![Build Status](https://travis-ci.com/commoncriteria/fileencryption-enterprisemgmt.svg?branch=master)](https://travis-ci.com/commoncriteria/fileencryption-enterprisemgmt)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/fileencryption-enterprisemgmt.svg?maxAge=2592000)](https://github.com/commoncriteria/fileencryption-enterprisemgmt/issues)
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
