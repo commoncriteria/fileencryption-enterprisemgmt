@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="..\transforms\pp2html.xsl"?>
-<?xml-model href="../transforms/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/a83fe1be0b03223a6ef98b6ae4da02f9203a11c8/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <Module  target-products="File Encryption Enterprise Management Draft" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption enterprise management">  
   <PPReference>
     <ReferenceTable>
@@ -207,7 +207,48 @@
     an FE solution. The EM function is designed to augment the claims made in the File Encryption PP-Module;
     therefore, this functionality is intended to be evaluated in conjunction with a TOE that also
     claims conformance to that module at minimum.
-    The following sections provide an overview of the security functionality of this PP-module.</section>
+    The following sections provide an overview of the security functionality of this PP-module.
+      <subsection title="TOE Boundary" id="TOEboundary">
+        <h:p>
+          The application, which consists of the software provided by its vendor,
+          is installed onto the platform(s) it operates on.  It executes on the platform, which
+          may be an operating system (<figref refid="toe-as-apponos"/>), hardware environment, 
+          a software based execution environment, 
+          or some combination of these (<figref refid="toe-as-apponee"/>). Those platforms may themselves run within other
+          environments, such as virtual machines or operating systems, that completely abstract away the underlying hardware
+          from the application. The TOE is not accountable for security functionality that is implemented by 
+          platform layers that are abstracted away.
+          Some evaluation activities are specific to the particular platform
+          on which the application runs, in order to provide precision and
+          repeatability. The only platforms currently recognized by the AppPP are those specified in SFR Evaluation Activities.
+          To test on a platform for which there are no EAs, a Vendor should contact NIAP with recommended EAs.
+          NIAP will determine if the proposed platform is appropriate for the PP and accept, reject,
+          or develop EAs as necessary in coordination with the technical community.
+        </h:p><h:p>	
+          Applications include a diverse range of software such as office suites, thin
+          clients, <h:abbr title="Portable Document Format">PDF</h:abbr> readers, downloadable
+          smartphone apps, and apps running in a cloud container. The TOE includes 
+          any software in the application installation package, even those pieces that may 
+          extend or modify the functionality of the underlying platform, such as kernel drivers.  
+          Many platforms come bundled with applications
+          such as web browsers, email clients and media players and these too
+          should be considered subject to the requirements defined in this
+          document although the expectation of formal Common Criteria evaluation
+          depends upon the national scheme.  <h:abbr title="Basic Input/Output
+            System">BIOS</h:abbr> and other firmware, the operating system kernel,
+          and other systems software (and drivers) provided as part of the
+          platform are outside the scope of this document.  
+          <figure	entity="images/toe.png" 
+            title="TOE as an Application and Kernel Module Running on an Operating System" 
+            id="toe-as-apponos"
+          />
+          <figure entity="images/toeruntime.png" 
+            title="TOE as an Application Running in an Execution Environment Plus Native Code"
+            id="toe-as-apponee"
+          />
+          
+        </h:p>
+      </subsection></section>
     
     <section title="Use Cases" id="usecases">
         <usecases>
@@ -558,41 +599,29 @@
       </SOs>
     </section>
     
-    <section title="Security Objectives for the Operational Environment" id="objenv"> The
-      Operational Environment of the TOE implements technical and procedural measures to assist the
-      TOE in correctly providing its security functionality (which is defined by the security
-      objectives for the TOE). The security objectives for the Operational Environment consist of a
-      set of statements describing the goals that the Operational Environment should achieve.<h:br/>
-      This section defines the security objectives that are to be addressed by the IT domain or by
-      non-technical or procedural means. The assumptions identified in Section 3 are incorporated as
-      security objectives for the environment. 
-      
-      <SOs>
-        <SO id="OE.ENVIRONMENTAL_STORAGE">
+    <section title="Security Objectives for the Operational Environment" id="objenv"> 
+      <SOEs>
+        <SOE id="OE.ENVIRONMENTAL_STORAGE">
           <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will
 		  provide at least the same level of security as a TOE-internal storage mechanism as defined by FPT_KYP_EXT.2.</description>
-          <component-refer ref="FPT_KYP_EXT.2"/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-       <SO id="OE.PHYSICAL_SERVER">
+          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+        </SOE>
+       <SOE id="OE.PHYSICAL_SERVER">
           <description>The Operating environment will provide a cryptographic function capability
             that is commensurate with the requirements and capabilities of the TOE as defined in FCS_KCY_EXT.1.</description>
-          <component-refer ref="FCS_KYC_EXT.1"/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-        <SO id="OE.SECURED_CONFIGURATION">
+         <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+        </SOE>
+        <SOE id="OE.SECURED_CONFIGURATION">
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
             so that the level of security that is provided by the TOE is consistent with its evaluated configuration.</description>
-          <component-refer ref="FMT_SMF.1"/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-        <SO id="OE.SECURED_ENVIRONMENT">
+          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+        </SOE>
+        <SOE id="OE.SECURED_ENVIRONMENT">
           <description>The components of the Management Server’s underlying platform are configured in accordance with their associated 
             operational guidance so that the TOE is deployed in an environment that is consistent with its evaluated configuration. </description>
-          <component-refer ref="FMT_SMF.1 "/>
-	  <consistency-rationale></consistency-rationale>
-        </SO>
-        </SOs>
+          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+        </SOE>
+        </SOEs>        
     </section>
     
     <section title="Security Objectives Rationale" id="SOR"/>
@@ -603,6 +632,7 @@
     <base-pp 
       product="application"
       name="Application Software" short="App" 
+      version = "1.3"
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
       <modified-sfrs>
@@ -2292,69 +2322,7 @@ configure the number of failed validation attempts required to trigger correctiv
           </f-component>
       
         
-        <f-component id="FPT_TRP.1" name="Trusted Path" status="sel-based">
-		<selection-depends req="FMT_SMR.2.3" ids="remote"/>
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FPT_TRP.1.1">
-            <title>The TSF shall be capable of using 
-              <selectables>
-                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
-                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
-                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
-                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
-              </selectables>
-              to provide a communication path between itself and authorized remote administrators that is logically distinct from other communication paths
-              and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
-            </title>
-          </f-element>
-          
-          <f-element id="FPT_TRP.1.2">
-            <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
-            </title>
-          </f-element>
-          
-          <f-element id="FPT_TRP.1.3">
-            <title>The TSF shall require the use of the trusted path for initial administrator authentication and all remote administration actions.
-          </title>
-            
-            <note role="application">
-              This SFR is intended to define protected communications between the Management Server and remote administrators.<h:br/>
-            
-              
-            </note>
-            
-            <aactivity>
-              <TSS>	The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
-              along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
-              of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<h:br/><h:br/>
-              
-              </TSS>
-<Guidance>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
-              
-              </Guidance>
-<Tests>
-              The evaluator shall perform the following tests:
-              <testlist>
-                <test>The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
-                  the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
-                </test>
-                <test>For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
-                  that in fact the communication channel can be initiated from the TOE. 
-                </test>
-                <test>The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
-                </test>
-                <test>The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
-                  The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
-                </test>
-              </testlist>
-              Further assurance activities are associated with the specific protocols.
-              
-              
-            </Tests>
-</aactivity>
-          </f-element>
-        </f-component>
+        
         
       </subsection></man-sfrs>
     <opt-sfrs></opt-sfrs>
@@ -2575,6 +2543,71 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-element>
       </f-component>
       
+      </subsection>
+      <subsection title="Protection of the TSF (FPT)" id="fpt">
+        <f-component id="FPT_TRP.1" name="Trusted Path">
+          <selection-depends req="FMT_SMR.2.3" ids="remote"/>
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FPT_TRP.1.1">
+            <title>The TSF shall be capable of using 
+              <selectables>
+                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
+                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
+                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
+                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
+              </selectables>
+              to provide a communication path between itself and authorized remote administrators that is logically distinct from other communication paths
+              and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
+            </title>
+          </f-element>
+          
+          <f-element id="FPT_TRP.1.2">
+            <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
+            </title>
+          </f-element>
+          
+          <f-element id="FPT_TRP.1.3">
+            <title>The TSF shall require the use of the trusted path for initial administrator authentication and all remote administration actions.
+            </title>
+            
+            <note role="application">
+              This SFR is intended to define protected communications between the Management Server and remote administrators.<h:br/>
+              
+              
+            </note>
+            
+            <aactivity>
+              <TSS>	The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
+                along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
+                of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<h:br/><h:br/>
+                
+              </TSS>
+              <Guidance>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
+                
+              </Guidance>
+              <Tests>
+                The evaluator shall perform the following tests:
+                <testlist>
+                  <test>The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
+                    the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
+                  </test>
+                  <test>For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
+                    that in fact the communication channel can be initiated from the TOE. 
+                  </test>
+                  <test>The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
+                  </test>
+                  <test>The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
+                    The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
+                  </test>
+                </testlist>
+                Further assurance activities are associated with the specific protocols.
+                
+                
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
       </subsection>
     </sel-sfrs>
     <obj-sfrs></obj-sfrs>
