@@ -721,13 +721,7 @@
           </f-component>
         </subsection>
         </modified-sfrs>
-      <additional-sfrs></additional-sfrs>
-      <con-toe></con-toe>
-      <con-sec-prob></con-sec-prob>
-      <con-obj></con-obj>
-      <con-op-en></con-op-en>
-    </base-pp>
-    <man-sfrs>
+      <additional-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="FCS_CKM_EXT.4" name="Extended: Cryptographic Key Destruction">
           <consistency-rationale>
@@ -2406,7 +2400,13 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
         
-      </subsection></man-sfrs>
+      </subsection></additional-sfrs>
+      <con-toe></con-toe>
+      <con-sec-prob></con-sec-prob>
+      <con-obj></con-obj>
+      <con-op-en></con-op-en>
+    </base-pp>
+    <man-sfrs></man-sfrs>
     <opt-sfrs></opt-sfrs>
     <sel-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
