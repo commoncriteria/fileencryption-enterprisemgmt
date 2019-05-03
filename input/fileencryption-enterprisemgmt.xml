@@ -268,31 +268,21 @@
     <cclaims>
       <cclaim title="Conformance Statement">
         <description>
-          <h:p>
-            The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
-            defines the baseline Security Functional Requirements (SFRs) and Security Assurance
-            Requirements (SARs) for application software products. This <abbr linkend="PP-Module"/> serves to
-            extend the App PP baseline with additional SFRs and associated Evaluation Activities
-            specific to an enterprise encryption managmenet product.
-            Evaluation Activities are the actions that the evaluator
-            performs in order to determine a file encryption product's compliance to the SFRs.
-          </h:p>
-          <h:p>
-            This <abbr linkend="PP-Module"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
-            Technology Security Evaluation, Version 3.1, Revision 5. It is CC Part 2 extended and CC
-            Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
-              linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
-            associated App PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
-              <h:li>selection-based (which are required when certain selections are chosen in the
-                unconditional requirements)</h:li>
-            </h:ul> and may include optional and/or objective components that are desirable but not
-            required for conformance. 
-          </h:p>
-          <h:p>
-            In accordance with CC Part 1, dependencies are not included when they are addressed by other SFRs.
-            The evaluation activities provide adequate proof that any dependencies are also satisfied.
+                    <h:p>
+            <h:b>Conformance Claims</h:b> <h:br/>
+            This <abbr linkend="PP-Module"/> inherits exact conformance as required from the specified Base-PP and as defined in the <cite linkend="bibCC"/> and CEM addenda for Exact Conformance, Selection-Based SFRs, and Optional SFRs (dated May 2017).
+            
+            This PP-Module is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 5 [CC]. 
+            
+            The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP-Module.
+            <h:ul><h:li>PP-Module for VPN Client, Version 2.1</h:li>
+              <h:li>PP-Module for File Encryption Enterprise Management</h:li></h:ul>
           </h:p>
         </description>
+      </cclaim>
+      <cclaim title="Package Claims">
+        <description>This <abbr linkend="PP-Module"/> is TLS Package Version 1.1
+          Conformant.</description>
       </cclaim>
     </cclaims>
   </chapter>
@@ -636,161 +626,100 @@
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
       <modified-sfrs>
-	<subsection title="Security Management (FMT)" id="fmt"> 
-	    <f-component id="FMT_SMF.1" name="Specification of Management Functions (Management Server)">
-          <consistency-rationale>
-          </consistency-rationale>
-          <f-element id="FMT_SMF.1.1">
-            <title>The TSF shall be capable of performing the following management functions: 
-              <selectables linebreak="yes">
-                <selectable>register new user</selectable>
-                <selectable>revoke registration of user</selectable>
-                <selectable>initiate key generation</selectable>
-                <selectable>initiate key escrow</selectable>
-                <selectable>initiate key zeroization</selectable>
-                <selectable>initiate key recovery</selectable>
-                <selectable>set encryption policy (supported algorithms and key sizes)</selectable>
-                <selectable>change administrator passwords</selectable>
-                <selectable>change user passwords</selectable>
-                <selectable>change recovery credentials</selectable>
-                <selectable>define administrators of the TOE</selectable>
-                <selectable>enable/disable use of recovery credential</selectable>
-                <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
-                <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
-                <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event
-of an excessive number of failed validation attempts,
-<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to perform one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-		<selectable>configure password/passphrase complexity setting</selectable>
-              </selectables>
-            </title>
-            <note role="application"> 
-		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
-              form a single FMT_SMF.1 SFR in the ST.<h:br/>
-		    
-		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
-              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module.
-		    The final two assignments provide the ST author the ability to indicate when File Encyrption module functionality
-		    (such as configuration of power saving states) can be configured by the Management Server.<h:br/>
-              
-              The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
-              functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
-              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
-              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these 
-		    functions are provided by the Management Server component of the TOE. <h:br/>
-              
-              If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
-            </note>
-            
-            <aactivity>
-              <TSS>
-              The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
-              Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
-              The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
-              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<h:br/><h:br/>
-              
-              
-              </TSS>
-<Guidance>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
-              including any reliance on the Operational Environment if applicable:
-              
-              <h:li>Register new user</h:li>
-              <h:li>Revoke registration of an user</h:li>
-              <h:li>Initiate key generation</h:li>
-              <h:li>Initiate key escrow</h:li>
-              <h:li>Initiate key recovery</h:li>
-              <h:li>Initiate key zeroization</h:li>
-              <h:li>Set encryption policy (supported algorithms and key sizes)</h:li>
-              <h:li>Change Administrator passwords</h:li>
-              <h:li>Change user passwords</h:li>
-              <h:li>Change Recovery Credentials</h:li>
-              <h:li>Define Administrators of the TOE</h:li>
-              <h:li>Enable/Disable the use of recovery credentials (end users)</h:li>
-              <h:li>Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)</h:li>
-              <h:li>Configure the number of authentication attempts that can be made in a 24 hour period</h:li>
-              <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
-              <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
-              <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</h:li>
-<h:li>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-	[other management functions provided by the TSF]</h:li>
-                <h:li>ability to perform one or more of the following functions  (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-	[other management functions provided by the TSF]</h:li>
-                <h:li>ability to authorize whether or not users can perform one or more of the following functions  (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-	[other management functions provided by the TSF]</h:li>
-		<h:li>configure password/passphrase complexity setting</h:li>
-		    <h:br/><h:br/>
-              
-              
-              </Guidance>
-<Tests> The evaluator shall perform the following tests for each claimed management function:
-              
-              <testlist>
-                <test>The evaluator shall configure the management server and two users according to the guidance documents.
-                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
-                  are identified by the management server as defined in the guidance documents. This test shall pass.</test>
-                
-                <test>The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
-                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
-                  displayed as revoked in the console.</test>
-                
-                <test>The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
-                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
-                  with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
-                
-                <test>For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
-                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
-                
-                <test>For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
-                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
-                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
-                  denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
-                
-                <test>The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
-                  factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
-                  The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
-                  Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
-                  or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
-                  their original authorization factor. </test>
-                
-                <test>The evaluator shall verify that the an administor can configure each of the supported authorization factors attempts limits 
-			and shall verify that the user is denied access after surpassing that limit. </test>
-                
-                <test>If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
-                  ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
-                
-                <test>If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
-                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
+        <subsection title="Trusted Path/Channel (FTP)" id="ftp">
+          <f-component id="ftp_dit_ext.1" name="Protection of Data in Transit">
+            <consistency-rationale>
+            </consistency-rationale>
+            <f-element id="ftp_dit_ext.1.1">
+              <title>The application shall 
+                <selectables linebreak="yes">
                   
-                  Disable the administrative capability in a File Encryption Client and enable it in the EM.
+                  <selectable>encrypt all transmitted 
+                    <selectables>
+                      <selectable>sensitive data</selectable>
+                      <selectable>data</selectable>
+                    </selectables> with
+                    <selectables>
+                      <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1</selectable>
+                      <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
+                      <selectable id="sel_all_dtls"><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
+                      <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
+                    </selectables>
+                  </selectable>
                   
-                  Verify that the administration of the capability in the EM is successful.
-                </test>
-		      <test>The evaluator shall verify password complexity limits by setting conditions permitted by the TOE and verifying those limits are enforced.</test>
-                
-		      <test>The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</test>
-                
-              </testlist>
-            </Tests>
-</aactivity>
-          </f-element>
-        </f-component>
-	</subsection>
+                  <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with
+                    <selectables>
+                      <selectable><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr></selectable>
+                      <selectable><h:abbr title="Transport Layer Security">TLS</h:abbr></selectable>
+                      <selectable><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr></selectable>
+                      <selectable>SSH</selectable>
+                    </selectables>
+                  </selectable>	    
+                  
+                  <selectable>invoke platform-provided functionality to encrypt all transmitted data with
+                    <selectables>
+                      <selectable><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr></selectable>
+                      <selectable><h:abbr title="Transport Layer Security">TLS</h:abbr></selectable>
+                      <selectable><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr></selectable>
+                      <selectable>SSH</selectable>
+                    </selectables>
+                  </selectable>	    
+                  
+                </selectables>
+                between itself and another trusted IT product.
+              </title>
+              <note role="application">
+                <!--The X509 requirements are invoked based on the selections in FTP_DIT_EXT.1; if you select a protocol that uses certificates,
+	      then you must include the SFRs that address the certificates.   
+	      X509 SFRs shall be included if selections for HTTPS, TLS, or DTLS are included (FCS_HTTPS, FCS_TLSC, FCS_TLSS, FCS_DTLS).
+	       <h:br/> <h:br/>-->
+                <h:br/>
+                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>TLS</h:i> is selected, then evaluation of elements from either <linkref linkend="FCS_TLSC_EXT.1"/> or <linkref linkend="FCS_TLSS_EXT.1"/> is required.</h:p>
+                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>HTTPS</h:i> is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.</h:p> 
+                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>DTLS</h:i> is selected, <linkref linkend="FCS_DTLS_EXT.1"/> is required.</h:p>
+                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>SSH</h:i> is selected, the TSF shall be validated against the <h:i>Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">Secure Shell</h:a></h:i>.</h:p>
+                <h:p>
+                  If <h:i>encrypt all transmitted</h:i> is selected the corresponding FCS_COP.1 requirements will be included.
+                </h:p>
+              </note>  
+              <aactivity>
+                <TSS>For platform-provided functionality, the evaluator shall verify the TSS contains the calls to the platform that TOE is leveraging to invoke the functionality.
+                </TSS>
+                <Guidance>None.
+                  </Guidance>
+                  <Tests>The evaluator shall perform the following tests.
+                  
+                    <testlist>
+                  <test>
+                    The evaluator shall exercise the application (attempting to transmit data; for example 
+                    by connecting to remote systems or websites) while capturing packets from the 
+                    application. The evaluator shall verify from the packet capture that the traffic is 
+                    encrypted with <h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr>, 
+                    <h:abbr title="Transport Layer Security">TLS</h:abbr>, 
+                    <h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr>, or <h:abbr title="Secure Shell">SSH</h:abbr> in accordance with the 
+                    selection in the <abbr title="Security Target" linkend="ST">ST</abbr>.
+                  </test>
+                  <test>
+                    The evaluator shall exercise the application (attempting to transmit data; for example by 
+                    connecting to remote systems or websites) while capturing packets from the application.
+                    The evaluator shall review the packet capture and verify that no sensitive data is transmitted 
+                    in the clear.
+                  </test>
+                  <test>
+                    The evaluator shall inspect the TSS to determine if user credentials are
+                    transmitted. If credentials are transmitted the evaluator shall set the
+                    credential to a known value. The evaluator shall capture packets from the application
+                    while causing credentials to be transmitted as described in the TSS.
+                    The evaluator shall perform a string search
+                    of the captured network packets and verify that the plaintext credential previously
+                    set by the evaluator is not found.
+                  </test>
+                </testlist>
+                  </Tests>
+              </aactivity>
+            </f-element>
+          </f-component>
+        </subsection>
         </modified-sfrs>
       <additional-sfrs></additional-sfrs>
       <con-toe></con-toe>
@@ -1993,7 +1922,160 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
       </subsection>
-      <subsection title="Security Management (FMT)" id="fmt"> 
+      <subsection title="Security Management (FMT)" id="fmt">
+	    <f-component id="FMT_SMF.1(2)" name="Specification of Management Functions (Management Server)">
+          <consistency-rationale>
+          </consistency-rationale>
+          <f-element id="FMT_SMF.1.1(2)">
+            <title>The TSF shall be capable of performing the following management functions: 
+              <selectables linebreak="yes">
+                <selectable>register new user</selectable>
+                <selectable>revoke registration of user</selectable>
+                <selectable>initiate key generation</selectable>
+                <selectable>initiate key escrow</selectable>
+                <selectable>initiate key zeroization</selectable>
+                <selectable>initiate key recovery</selectable>
+                <selectable>set encryption policy (supported algorithms and key sizes)</selectable>
+                <selectable>change administrator passwords</selectable>
+                <selectable>change user passwords</selectable>
+                <selectable>change recovery credentials</selectable>
+                <selectable>define administrators of the TOE</selectable>
+                <selectable>enable/disable use of recovery credential</selectable>
+                <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
+                <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
+                <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
+                <selectable><assignable>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event
+of an excessive number of failed validation attempts,
+<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
+                <selectable><assignable>ability to perform one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
+                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
+		<selectable>configure password/passphrase complexity setting</selectable>
+              </selectables>
+            </title>
+            <note role="application"> 
+		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
+              form a single FMT_SMF.1 SFR in the ST.<h:br/>
+		    
+		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
+              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1 SFR in the File Encryption PP-Module.
+		    The final two assignments provide the ST author the ability to indicate when File Encyrption module functionality
+		    (such as configuration of power saving states) can be configured by the Management Server.<h:br/>
+              
+              The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
+              functions or by the TOE issuing a request to a remote client to perform the functions. The ST author shall indicate which case is provided by the TSF.
+              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
+              FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these 
+		    functions are provided by the Management Server component of the TOE. <h:br/>
+              
+              If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
+            </note>
+            
+            <aactivity>
+              <TSS>
+              The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
+              Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
+              The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
+              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<h:br/><h:br/>
+              
+              
+              </TSS>
+<Guidance>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
+              including any reliance on the Operational Environment if applicable:
+              
+              <h:li>Register new user</h:li>
+              <h:li>Revoke registration of an user</h:li>
+              <h:li>Initiate key generation</h:li>
+              <h:li>Initiate key escrow</h:li>
+              <h:li>Initiate key recovery</h:li>
+              <h:li>Initiate key zeroization</h:li>
+              <h:li>Set encryption policy (supported algorithms and key sizes)</h:li>
+              <h:li>Change Administrator passwords</h:li>
+              <h:li>Change user passwords</h:li>
+              <h:li>Change Recovery Credentials</h:li>
+              <h:li>Define Administrators of the TOE</h:li>
+              <h:li>Enable/Disable the use of recovery credentials (end users)</h:li>
+              <h:li>Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)</h:li>
+              <h:li>Configure the number of authentication attempts that can be made in a 24 hour period</h:li>
+              <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
+              <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
+              <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</h:li>
+<h:li>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+                <h:li>ability to perform one or more of the following functions  (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+                <h:li>ability to authorize whether or not users can perform one or more of the following functions  (configure password/passphrase complexity setting,
+configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
+	[other management functions provided by the TSF]</h:li>
+		<h:li>configure password/passphrase complexity setting</h:li>
+		    <h:br/><h:br/>
+              
+              
+              </Guidance>
+<Tests> The evaluator shall perform the following tests for each claimed management function:
+              
+              <testlist>
+                <test>The evaluator shall configure the management server and two users according to the guidance documents.
+                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
+                  are identified by the management server as defined in the guidance documents. This test shall pass.</test>
+                
+                <test>The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
+                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
+                  displayed as revoked in the console.</test>
+                
+                <test>The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
+                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
+                  with the new key, update the encryption algorithm key size or mode and re-encrypt).</test>
+                
+                <test>For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
+                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </test>
+                
+                <test>For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
+                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
+                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
+                  denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </test>
+                
+                <test>The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
+                  factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
+                  The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
+                  Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
+                  or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
+                  their original authorization factor. </test>
+                
+                <test>The evaluator shall verify that the an administor can configure each of the supported authorization factors attempts limits 
+			and shall verify that the user is denied access after surpassing that limit. </test>
+                
+                <test>If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
+                  ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </test>
+                
+                <test>If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
+                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
+                  
+                  Disable the administrative capability in a File Encryption Client and enable it in the EM.
+                  
+                  Verify that the administration of the capability in the EM is successful.
+                </test>
+		      <test>The evaluator shall verify password complexity limits by setting conditions permitted by the TOE and verifying those limits are enforced.</test>
+                
+		      <test>The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</test>
+                
+              </testlist>
+            </Tests>
+</aactivity>
+          </f-element>
+        </f-component> 
         
         <f-component id="FMT_MOF.1" name="Server Management of Security Functions Behavior">
           <consistency-rationale>
@@ -2176,9 +2258,9 @@ configure the number of failed validation attempts required to trigger correctiv
               of the TOE through the use of 
               <selectables>
                 <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
-                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
-                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
-                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
+                <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
+                <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
               </selectables>
             </title>
             <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
@@ -2553,9 +2635,9 @@ configure the number of failed validation attempts required to trigger correctiv
             <title>The TSF shall be capable of using 
               <selectables>
                 <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
-                <selectable id="SSH">SSH as defined in FCS_SSH_EXT.1 in the Application Software Protection Profile</selectable>
-                <selectable id="TLS">TLS as defined in the TLS Package</selectable>
-                <selectable id="HTTPS">HTTPS as defined in FCS_HTTPS_EXT.1 Application Software Protection Profile</selectable>
+                <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
+                <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
               </selectables>
               to provide a communication path between itself and authorized remote administrators that is logically distinct from other communication paths
               and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
