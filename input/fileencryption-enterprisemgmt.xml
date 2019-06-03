@@ -97,11 +97,6 @@
             <description>The security functionality of the product under evaluation.</description>
           </entry>
           <entry>
-            <term><abbr title="TOE Security Policy">TSP</abbr></term>
-            <description>The set of rules that regulate how assets are managed, protected and
-              distributed within a TOE.</description>
-          </entry>
-          <entry>
             <term><abbr title="TOE Summary Specification">TSS</abbr></term>
             <description>A description of how a <abbr linkend="TOE"/> satisfies the SFRs in a <abbr
               linkend="ST"/>. </description>
@@ -267,7 +262,8 @@
             This PP-Module is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 5 [CC]. 
             
             The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP-Module.
-            <h:ul><h:li>PP-Module for VPN Client, Version 2.1</h:li>
+              <h:ul><h:li>Protection Profile for Application Software, Version 1.3</h:li>
+              <h:li>PP-Module for VPN Client, Version 2.1</h:li>
               <h:li>PP-Module for File Encryption, Version 2.0</h:li></h:ul>
           </h:p>
         </description>
