@@ -13,7 +13,7 @@
   <RevisionHistory>
     <entry>
       <version>1.0 DRAFT</version>
-      <date>2018-10-26</date>
+      <date>2019-06-13</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -480,7 +480,7 @@
           <component-refer ref="FCS_COP.1(5)"/>
           <component-refer ref="FCS_COP.1(7)"/>
           <component-refer ref="FCS_COP.1(8)"/>
-          <component-refer ref="FCS_IC_EXT.1"/>
+          <component-refer ref="FCS_IV_EXT.1"/>
           <component-refer ref="FCS_KYC_EXT.1"/>
           <component-refer ref="FCS_KDF_EXT.1"/>
           <component-refer ref="FMT_MOF.1"/>
@@ -613,6 +613,12 @@
       version = "1.3"
       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
+      
+      <sec-func-req-dir>
+        The TOE is expected to rely on some of the security functions implemented by the application as a whole and evaluated against <cite linkend="bibAppPP"/>.
+        The following sections describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.       
+      </sec-func-req-dir>
+            
       <modified-sfrs>
         <subsection title="Trusted Path/Channel (FTP)" id="ftp">
           <f-component id="ftp_dit_ext.1" name="Protection of Data in Transit">
@@ -728,7 +734,7 @@
                     <selectable>single overwrite consisting of 
                       <selectables>
                         <selectable>a pseudo-random pattern using the TSF's RBG</selectable>
-                        <selectable>zeros</selectable>
+                        <selectable>zeroes</selectable>
                         <selectable>ones</selectable>
                         <selectable>new value of a key</selectable>
                         <selectable><assignable>any value that does not contain any CSP</assignable></selectable>
@@ -753,7 +759,7 @@
                       overwrite consisting of 
                       <selectables>
                         <selectable>a pseudo-random pattern using the TSF's RBG</selectable>
-                        <selectable>zeros</selectable>
+                        <selectable>zeroes</selectable>
                         <selectable>ones</selectable>
                         <selectable>new value of a key</selectable>
                         <selectable><assignable>any value that does not contain any CSP</assignable></selectable>
@@ -1359,7 +1365,7 @@
                         <selectables>
                           <selectable>128 bits</selectable>
                           <selectable>256 bits</selectable>
-                        </selectables> for symmetric keys;
+                        </selectables> for symmetric keys
                       </selectable>
                       <selectable>
                         <selectables>
@@ -1367,7 +1373,7 @@
                           <selectable>128 bits</selectable>
                           <selectable>192 bits</selectable>
                           <selectable>256 bits</selectable>
-                        </selectables> for asymmetric keys;
+                        </selectables> for asymmetric keys
                       </selectable>
                     </selectables> 
                   commensurate with the strength of the FEK.    
