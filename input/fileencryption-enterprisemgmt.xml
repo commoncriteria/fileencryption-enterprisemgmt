@@ -2179,7 +2179,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FMT_SMR.2.1">
-            <title>The TSF shall maintain the roles [<h:i>administrator, user</h:i>]
+            <title>The TSF shall maintain the roles [<h:i>administrator, user</h:i>].
             </title>
             
           </f-element>
@@ -2344,7 +2344,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   <selectable>recovery credential</selectable>
                   <selectable>system identity</selectable>
                   <selectable>no other subjects</selectable>
-                </selectables>
+                </selectables>.
               </title>
               <note role="application">The intent of this SFR is that at minimum, keys are associated with the users for which it was explicitly created by the TSF.
                 If the TOE has the ability to maintain an association to keys for a user, this SFR is intended to require an association between the key chain and a user through 
@@ -2508,21 +2508,21 @@ configure the number of failed validation attempts required to trigger correctiv
             <selectables>
               <selectable><assignable>other supported special characters</assignable></selectable>
               <selectable>no other characters</selectable>
-            </selectables>
+            </selectables>.
           </title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.3">
           <title>
             <h:b>Refinement:</h:b> The TSF shall perform [<h:i>Password-based Key Derivation
-              Functions</h:i>] in accordance with a specified cryptographic algorithm [<h:i>HMAC- <selectables>
+              Functions</h:i>] in accordance with a specified cryptographic algorithm [<h:i>HMAC-<selectables>
               <selectable>SHA-256</selectable>
               <selectable>SHA-384</selectable>
               <selectable>SHA-512</selectable>
-              </selectables></h:i> ], with <assignable>positive integer of 4096 or more</assignable> iterations, and
+              </selectables></h:i>], with <assignable>positive integer of 4096 or more</assignable> iterations, and
             output cryptographic key sizes <selectables>
               <selectable>128</selectable>
               <selectable>256</selectable>
-            </selectables> that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
+            </selectables> bits that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
           </title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.4">
@@ -2533,10 +2533,10 @@ configure the number of failed validation attempts required to trigger correctiv
               <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
             </selectables>
             and greater than the maximum password length 
-            defined in FCS_CKM_EXT.3.1</title>
+            defined in FCS_CKM_EXT.3.1.</title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.5">
-          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from <cite linkend="bibAppPP"/>) and with entropy 
+          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
             corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
           
           <note role="application"> 
