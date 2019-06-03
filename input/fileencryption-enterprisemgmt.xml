@@ -215,7 +215,7 @@
           platform layers that are abstracted away.
           Some evaluation activities are specific to the particular platform
           on which the application runs, in order to provide precision and
-          repeatability. The only platforms currently recognized by the AppPP are those specified in SFR Evaluation Activities.
+          repeatability. The only platforms currently recognized by <cite linkend="bibAppPP"/> are those specified in SFR Evaluation Activities.
           To test on a platform for which there are no EAs, a Vendor should contact NIAP with recommended EAs.
           NIAP will determine if the proposed platform is appropriate for the PP and accept, reject,
           or develop EAs as necessary in coordination with the technical community.
@@ -259,7 +259,7 @@
             <h:b>Conformance Claims</h:b> <h:br/>
             This <abbr linkend="PP-Module"/> inherits exact conformance as required from the specified Base-PP and as defined in the <cite linkend="bibCC"/> and CEM addenda for Exact Conformance, Selection-Based SFRs, and Optional SFRs (dated May 2017).
             
-            This PP-Module is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 5 [CC]. 
+            This PP-Module is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Revision 5 [CC]. 
             
             The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP-Module.
               <h:ul><h:li>Protection Profile for Application Software, Version 1.3</h:li>
@@ -528,7 +528,7 @@
             operation in signature generation process. </description>
           
           <component-refer ref="FPT_ITT.1"/>
-          <component-refer ref="FPT_TRP.1"/>
+          <component-refer ref="FTP_TRP.1"/>
           <component-refer ref="FCS_CKM.1(1)"/>
           <component-refer ref="FCS_COP.1(1)"/>
           <consistency-rationale>
@@ -536,7 +536,7 @@
           </consistency-rationale>
         </SO>
         <SO id="O.TRUSTED_COMMUNICATION_CHANNEL">
-          <description>FPT_TRP.1 addresses the threat of disclosure of keys, key material, or recovery material transferred between
+          <description>FTP_TRP.1 addresses the threat of disclosure of keys, key material, or recovery material transferred between
             the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
             by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/>
             
@@ -549,7 +549,7 @@
             If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 and FCS_CKM_EXT.3 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
-          <component-refer ref="FPT_TRP.1"/>
+          <component-refer ref="FTP_TRP.1"/>
           <component-refer ref="FCS_COP.1(3)"/>
           <component-refer ref="FCS_CKM_EXT.3"/>
           <component-refer ref="FCS_RBG_EXT.1"/>
@@ -957,7 +957,7 @@
           </consistency-rationale>
           <f-element id="FCS_COP.1.1(5)">
             <title>
-              <h:b>Refinement:</h:b> The TSF shall 
+              The TSF shall <h:b> 
               <selectables>
                 <selectable>not perform key wrapping</selectable>
                 <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
@@ -977,9 +977,9 @@
                     <selectable>“NIST SP 800-38D”</selectable>
                     <selectable>“NIST SP 800-38F”</selectable>
                   </selectables>
-		   and no other standards.
+		   and no other standards
                 </selectable>
-              </selectables> 
+              </selectables></h:b>. 
             </title>
             <note role="application">
               This applies to any key wrapping occuring on the enterprise server.
@@ -1079,7 +1079,7 @@
           </consistency-rationale>
           <f-element id="FCS_COP.1.1(7)">
             <title>
-              <h:b>Refinement:</h:b> The TSF shall 
+              The TSF shall <h:b>
               <selectables>
                 <selectable>not perform key encryption</selectable>
                 <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
@@ -1088,9 +1088,9 @@
                     <selectable>128</selectable>
                     <selectable>256</selectable>
                   </selectables> bits] that meet the following:
-                  [AES as specified in SP 800-38A.
+                  [AES as specified in SP 800-38A].
                 </selectable>
-              </selectables>
+              </selectables></h:b>
             </title>
             <note role="application">: 
               This applies to any key encryption occuring on the entperise server.
@@ -1124,7 +1124,7 @@
           </consistency-rationale>
           <f-element id="FCS_COP.1.1(8)">
             <title>
-              <h:b>Refinement:</h:b> The TSF shall  
+              The TSF shall <h:b>
               <selectables>
                 <selectable>not perform key transport</selectable>
                 <selectable>perform [key transport] in accordance with a
@@ -1137,7 +1137,7 @@
                     <selectable>2048</selectable>
                     <selectable>3072</selectable>
                   </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
-              </selectables>
+              </selectables></h:b>
             </title>
             <note role="application">:  This requirement is used in the body of the ST if the ST author chooses to
               use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
@@ -1915,7 +1915,7 @@
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FMT_SMF.1.1(2)">
-            <title>The TSF shall be capable of performing the following management functions: 
+            <title>The TSF shall be capable of performing the following management functions: <h:b>
               <selectables linebreak="yes">
                 <selectable>register new user</selectable>
                 <selectable>revoke registration of user</selectable>
@@ -1946,7 +1946,7 @@ configure cryptographic functionality, change authentication factors, perform a 
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
 		<selectable>configure password/passphrase complexity setting</selectable>
-              </selectables>
+              </selectables></h:b>.
             </title>
             <note role="application"> 
 		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
@@ -2076,11 +2076,11 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable>enable</selectable>
                 <selectable>modify the behaviour of</selectable>
               </selectables>
-              the functions 
+              the functions <h:b>
               <selectables>
                 <selectable>encryption algorithms used</selectable>
                 <selectable>key sizes used</selectable>
-              </selectables> to [administrators].
+              </selectables></h:b> to [<h:i>administrators</h:i>].
             </title>
          
             
@@ -2135,12 +2135,12 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable>delete</selectable>
                 <selectable>clear</selectable>
                 <selectable><assignable>other operations</assignable></selectable>
-              </selectables> the [encryption keys and intermediate values] to [administrators] at the following times: 
+              </selectables> the [<h:i>encryption keys and intermediate values</h:i>] to [<h:i>administrators</h:i>] <h:b>at the following times: 
               <selectables>
                 <selectable>never</selectable>
                 <selectable>during initial provisioning</selectable>
                 <selectable>during recovery</selectable>
-              </selectables>
+              </selectables></h:b>.
             </title>
             <note role="application"> These restrictions apply to modifications on the enterprise server.
             </note>
@@ -2179,7 +2179,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FMT_SMR.2.1">
-            <title>The TSF shall maintain the roles [administrator, user]
+            <title>The TSF shall maintain the roles [<h:i>administrator, user</h:i>]
             </title>
             
           </f-element>
@@ -2189,13 +2189,13 @@ configure the number of failed validation attempts required to trigger correctiv
           </f-element>
           
           <f-element id="FMT_SMR.2.3">
-            <title>The TSF shall ensure that the conditions 
+            <title>The TSF shall ensure that the conditions<h:b> 
               <selectables>
                 <selectable>the administrator role shall be able to administer the Management Server locally </selectable>
-                <selectable id="remote">the administrator role shall be able to administer the Management Server remotely as specified in FPT_TRP.1</selectable>
-                <selectable>the administrator role shall be able to administer the endpoint(s) locally </selectable>
-                <selectable>the administrator role shall be able to administer the endpoint(s) remotely </selectable>
-              </selectables>
+                <selectable id="remote">the administrator role shall be able to administer the Management Server remotely as specified in FTP_TRP.1</selectable>
+                <selectable>the administrator role shall be able to administer the endpoint(s) locally</selectable>
+                <selectable>the administrator role shall be able to administer the endpoint(s) remotely</selectable>
+              </selectables></h:b>
               are satisfied.
             </title>
             
@@ -2242,14 +2242,14 @@ configure the number of failed validation attempts required to trigger correctiv
           <consistency-rationale>
           </consistency-rationale>
           <f-element id="FPT_ITT.1.1">
-            <title>The TSF shall protect TSF data from [disclosure, modification] when it is transmitted between separate parts
-              of the TOE through the use of 
+            <title>The TSF shall protect TSF data from [<h:i>disclosure, modification</h:i>] when it is transmitted between separate parts
+              of the TOE <h:b>through the use of 
               <selectables>
                 <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
                 <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1</selectable>
                 <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
                 <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
-              </selectables>
+              </selectables></h:b>.
             </title>
             <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
               
@@ -2338,7 +2338,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <consistency-rationale>
           </consistency-rationale>
             <f-element id="FPT_KYP_EXT.3.1">
-              <title>The TSF shall maintain an association between stored endpoint keys and [user identity, 
+              <title>The TSF shall maintain an association between stored endpoint keys and user identity, 
                 <selectables>
                   <selectable>remote endpoints</selectable>
                   <selectable>recovery credential</selectable>
@@ -2355,7 +2355,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </f-element>
             
             <f-element id="FPT_KYP_EXT.3.2">
-              <title>The TSF shall provide the ability to register users by exchange of [assignment: mutually identifying information that allows for an association to be made].
+              <title>The TSF shall provide the ability to register users by exchange of <assignable>mutually identifying information that allows for an association to be made</assignable>.
                </title>
               <note role="Application">The ST author will complete the assignment with information on the method used by the Management Server portion
                 of the TOE to establish the association with the endpoint portion of the TOE described in FPT_KYP_EXT.3.1.
@@ -2363,8 +2363,8 @@ configure the number of failed validation attempts required to trigger correctiv
             </f-element>
             
             <f-element id="FPT_KYP_EXT.3.3">
-              <title>The TSF shall provide the ability to revoke the registration of users by [assignment: method of removing and/or exchanging information
-                that prevents further communications between the TOE and the endpoint].</title>
+              <title>The TSF shall provide the ability to revoke the registration of users by <assignable>method of removing and/or exchanging information
+                that prevents further communications between the TOE and the endpoint</assignable>.</title>
             </f-element>
             
             
@@ -2496,7 +2496,7 @@ configure the number of failed validation attempts required to trigger correctiv
         <f-element id="FCS_CKM_EXT.3.1">
           <title>
             <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
-            [assignment: maximum password size, positive integer of 64 or more] 
+            <assignable>maximum password size, positive integer of 64 or more</assignable> 
             characters used to generate a password authorization factor.
           </title>
         </f-element>
@@ -2504,30 +2504,39 @@ configure the number of failed validation attempts required to trigger correctiv
           <title>
             <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
-            and [selection: [assignment: other supported special characters], no other characters].</title>
+            and
+            <selectables>
+              <selectable><assignable>other supported special characters</assignable></selectable>
+              <selectable>no other characters</selectable>
+            </selectables>
+          </title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.3">
           <title>
-            <h:b>Refinement:</h:b> The TSF shall perform [Password-based Key Derivation
-            Functions] in accordance with a specified cryptographic algorithm [HMAC- <selectables>
+            <h:b>Refinement:</h:b> The TSF shall perform [<h:i>Password-based Key Derivation
+              Functions</h:i>] in accordance with a specified cryptographic algorithm [<h:i>HMAC- <selectables>
               <selectable>SHA-256</selectable>
               <selectable>SHA-384</selectable>
               <selectable>SHA-512</selectable>
-            </selectables> ], with [assignment: positive integer of 4096 or more] iterations, and
+              </selectables></h:i> ], with <assignable>positive integer of 4096 or more</assignable> iterations, and
             output cryptographic key sizes <selectables>
               <selectable>128</selectable>
               <selectable>256</selectable>
-            </selectables> that meet the following: [NIST SP 800-132]. 
+            </selectables> that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
           </title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.4">
           <title>
-            <h:b>Refinement:</h:b> The TSF shall not accept passwords less than [selection: a value settable by the administrator, 
-            [assignment: minimum password length accepted by the TOE, must be >= 1]] and greater than the maximum password length 
+            <h:b>Refinement:</h:b> The TSF shall not accept passwords less than 
+            <selectables>
+              <selectable>a value settable by the administrator</selectable>
+              <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
+            </selectables>
+            and greater than the maximum password length 
             defined in FCS_CKM_EXT.3.1</title>
         </f-element>
         <f-element id="FCS_CKM_EXT.3.5">
-          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from the AS PP) and with entropy 
+          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 (from <cite linkend="bibAppPP"/>) and with entropy 
             corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
           
           <note role="application"> 
@@ -2615,11 +2624,11 @@ configure the number of failed validation attempts required to trigger correctiv
       
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="FPT_TRP.1" name="Trusted Path">
+        <f-component id="FTP_TRP.1" name="Trusted Path">
           <selection-depends req="FMT_SMR.2.3" ids="remote"/>
           <consistency-rationale>
           </consistency-rationale>
-          <f-element id="FPT_TRP.1.1">
+          <f-element id="FTP_TRP.1.1">
             <title>The TSF shall be capable of using 
               <selectables>
                 <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
@@ -2628,17 +2637,17 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
               </selectables>
               to provide a communication path between itself and authorized remote administrators that is logically distinct from other communication paths
-              and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
+              and provides assured identification of its end points and protection of the communicated data from [<h:i>modification, disclosure</h:i>].
             </title>
           </f-element>
           
-          <f-element id="FPT_TRP.1.2">
-            <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
+          <f-element id="FTP_TRP.1.2">
+            <title>The TSF shall permit <h:b>remote administrators</h:b> to initiate communication via the trusted path.
             </title>
           </f-element>
           
-          <f-element id="FPT_TRP.1.3">
-            <title>The TSF shall require the use of the trusted path for initial administrator authentication and all remote administration actions.
+          <f-element id="FTP_TRP.1.3">
+            <title>The TSF shall require the use of the trusted path for [<h:i>initial administrator authentication, [all remote administration actions]</h:i>].
             </title>
             
             <note role="application">
