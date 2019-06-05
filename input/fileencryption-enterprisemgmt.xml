@@ -2792,10 +2792,6 @@ configure the number of failed validation attempts required to trigger correctiv
         <description>Common Criteria</description>
       </entry>
       <entry>
-        <term>CM</term>
-        <description/>
-      </entry>
-      <entry>
         <term>FAK</term>
         <description>File Authentication Key</description>
       </entry>
