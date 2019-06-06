@@ -916,7 +916,7 @@
                   
                   6. Search the content of the binary file created in Step #5 for instances of the known key value from Step #1.<h:br/>
                   
-                  Steps 1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, 
+                  Steps #1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, 
 			then the test fails.</test>
                 
                 <test>[Contitional] If new value of a key is selected this test does not apply. 
@@ -931,7 +931,7 @@
                   
                   3. Have the TOE attempt the functionality that the cleared key would be necessary for.
                   
-                  The test succeeds if step 3 fails.</test>
+                  The test succeeds if Step #3 fails.</test>
                   
                 Tests 3 and 4 do not apply for the selection instructing the underlying platform to destroy the representation of the key, 
 		      as the TOE has no visibility into the inner workings and completely relies on the underlying platform.<h:br/>
