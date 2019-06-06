@@ -83,6 +83,11 @@
               of products.</description>
           </entry>
           <entry>
+            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
+            <description>An implementation-independent set of security requirements for a category
+              of products.</description>
+          </entry>
+          <entry>
             <term><abbr title="Security Target">ST</abbr></term>
             <description>A set of implementation-dependent security requirements for a specific
               product.</description>
