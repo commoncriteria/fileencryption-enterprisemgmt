@@ -1993,20 +1993,16 @@
                 <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
                 <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
                 <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+                <selectable><assignable>ability to enable or disable one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event
 of an excessive number of failed validation attempts,
 <assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to perform one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+                <selectable><assignable>ability to perform one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-		<selectable>configure password/passphrase complexity setting</selectable>
               </selectables></h:b>.
             </title>
             <note role="application"> 
@@ -2056,19 +2052,15 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
               <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
               <h:li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</h:li>
-<h:li>ability to enable or disable one or more of the following functions (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+<h:li>ability to enable or disable one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 	[other management functions provided by the TSF]</h:li>
-                <h:li>ability to perform one or more of the following functions  (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+                <h:li>ability to perform one or more of the following functions  (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 	[other management functions provided by the TSF]</h:li>
-                <h:li>ability to authorize whether or not users can perform one or more of the following functions  (configure password/passphrase complexity setting,
-configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+                <h:li>ability to authorize whether or not users can perform one or more of the following functions  (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 	[other management functions provided by the TSF]</h:li>
-		<h:li>configure password/passphrase complexity setting</h:li>
 		    <h:br/><h:br/>
               
               
@@ -2116,7 +2108,6 @@ configure the number of failed validation attempts required to trigger correctiv
                   
                   Verify that the administration of the capability in the EM is successful.
                 </test>
-		      <test>The evaluator shall verify password complexity limits by setting conditions permitted by the TOE and verifying those limits are enforced.</test>
                 
 		      <test>The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</test>
                 
@@ -2631,7 +2622,7 @@ configure the number of failed validation attempts required to trigger correctiv
             A significantly higher value is recommended to ensure optimal security.<h:br/><h:br/>
             
             For FCS_CKM_EXT.3.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
-            for this component, as well as the “configure password/passphrase complexity setting” item for FMT_SMF.1.1(2). If the minimum length
+            for this component for FMT_SMF.1.1(2). If the minimum length
             is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
           <aactivity>
             <TSS> There are two aspects of this component that require
@@ -2671,7 +2662,7 @@ configure the number of failed validation attempts required to trigger correctiv
 <Guidance>
             <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
             to determine that there are instructions on how to generate large passwords/passphrases, and
-            instructions on how to configure the password/passphrase length (and optional complexity settings)
+            instructions on how to configure the password/passphrase length 
             to provide entropy commensurate with the keys that the authorization factor is protecting.  <h:br/><h:br/>
             
 </Guidance><h:br/>
