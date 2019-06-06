@@ -842,6 +842,7 @@
               be usable (of course, presumes the DEK is still encrypted and the KEK cannot be recovered or re-derived.). </note>
             
             <aactivity>
+              <TSS>
               <h:h4>TSS + KMD  (Key Management Description may be used if necessary details describe proprietary information)</h:h4>
               The evaluator examines the TSS to ensure it describes how the keys are managed in volatile memory. 
               This description includes details of how each identified key is introduced into volatile memory (e.g. by derivation 
