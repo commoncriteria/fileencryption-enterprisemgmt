@@ -154,7 +154,7 @@
           </entry>
           <entry>
             <term>Key Encryption Key (KEK) </term>
-            <description> The key that is used to encrypt the FEK or another KEK. </description>
+            <description> The key that is used to encrypt another key. </description>
           </entry>
 		<entry>
             <term>Keying Escrow </term>
