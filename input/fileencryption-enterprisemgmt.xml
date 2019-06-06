@@ -306,7 +306,8 @@
         </threat>
         <threat id="T.UNAUTHORIZED_ADMINISTRATOR_ACCESS">
           <description>
-            An attacker masquerading as an administrator to the Management Server.
+            An attacker masquerading as an administrator to the Management Server to gain access to TOE management functionality to gain unauthorized access to protected data 
+            or prevent legitimate users from gaining authorized access.
           </description>
           <objective-refer ref="O.VERIFIED_ADMIN">
             <rationale>The threat T.UNAUTHORIZED_ADMINISTRATOR_ACCESS is countered by O.VERIFIED_ADMIN as this
@@ -405,7 +406,8 @@
             additionally prevent an attacker from gaining access to the encrypted data. </description>
           <component-refer ref="FPT_KYP_EXT.3"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective is consistent with the Base-PP because the Base-PP includes the O.PROTECTED_STORAGE objective. 
+            The protection and timely destruction of key materials is consistent with the intent of that objective.
           </consistency-rationale>
         </SO>
 	      
@@ -487,7 +489,8 @@
           <component-refer ref="FCS_KDF_EXT.1"/>
           <component-refer ref="FMT_MOF.1"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective is consistent with the Base-PP because the Base-PP includes the O.PROTECTED_STORAGE and O.PROTECTED_COMMS objectives.
+            This objective defines behavior for the secure storage and transmission of decryption and recovery key data, consistent with the relevant objectives in the Base-PP.            
           </consistency-rationale>
         </SO>
 
@@ -515,7 +518,8 @@
           <component-refer ref="FIA_REC_EXT.1"/>
           <component-refer ref="FIA_CHR_EXT.1 (selection-based)"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective defines usage restrictions and supported behavior for the TOE's management interface. This is consistent with the O.MANAGE objective in the Base-PP for
+            functionality that is specific to this PP-Module.
           </consistency-rationale>
         </SO>
         <SO id="O.SECURE_CHANNEL">
@@ -535,7 +539,8 @@
           <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. Specifically, this objective
+            expects the communications between distributed TOE components to be protected in a similar manner to the corresponding Base-PP objective.
           </consistency-rationale>
         </SO>
         <SO id="O.TRUSTED_COMMUNICATION_CHANNEL">
@@ -552,14 +557,15 @@
             If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 and FCS_CKM_EXT.3 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
-          <component-refer ref="FTP_TRP.1"/>
+          <component-refer ref="FTP_TRP.1 (selection-based)"/>
           <component-refer ref="FCS_COP.1(3) (from Base-PP)"/>
           <component-refer ref="FCS_CKM_EXT.3 (selection-based)"/>
           <component-refer ref="FCS_RBG_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. This objective sets the same
+            expectation for any remote management interface included with the TOE.
           </consistency-rationale>
         </SO>
 	      
@@ -572,7 +578,8 @@
           <component-refer ref="FIA_UAU.1"/>
           <component-refer ref="FIA_UID.1"/>
           <consistency-rationale>
-            This objective is consistent with <base-name/>.
+            This objective is consistent with the O.MANAGE objective in the Base-PP and further restricts it by limiting security-relevant management interfaces to authenticated administrators.
+            It also supports the enforcement of the OE.PROPER_ADMIN environmental objective by reducing the likelihood that administrative actions are performed unintentionally.
           </consistency-rationale>
         </SO>
         
@@ -585,22 +592,32 @@
         <SOE id="OE.ENVIRONMENTAL_STORAGE">
           <description>If the TOE relies on the Operational Environment for key storage, the storage mechanism will
 		  provide at least the same level of security as a TOE-internal storage mechanism as defined by FPT_KYP_EXT.2.</description>
-          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+          <consistency-rationale>
+            This objective is consistent with the Base-PP because the Base-PP allows for the TOE to use platform-provided key storage.
+          </consistency-rationale>
         </SOE>
        <SOE id="OE.PHYSICAL_SERVER">
           <description>The Operating environment will provide a cryptographic function capability
-            that is commensurate with the requirements and capabilities of the TOE as defined in FCS_KCY_EXT.1.</description>
-         <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+            that is commensurate with the requirements and capabilities of the TOE as defined in FCS_KYC_EXT.1.</description>
+         <consistency-rationale>
+           This objective is consistent with the Base-PP because it is an extension of the Base-PP's OE.PLATFORM objective that is specific to this technology type.
+           It is also consistent because the Base-PP permits the TSF to use platform-provided cryptography.
+         </consistency-rationale>
         </SOE>
         <SOE id="OE.SECURED_CONFIGURATION">
           <description>The Management Server and remote endpoints are configured in accordance with its associated operational guidance
             so that the level of security that is provided by the TOE is consistent with its evaluated configuration.</description>
-          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+          <consistency-rationale>
+            This objective is consistent with the Base-PP because it expects the TOE's operational guidance to be responsibly followed in the same manner as OE.PROPER_ADMIN in the
+            Base-PP.
+          </consistency-rationale>
         </SOE>
         <SOE id="OE.SECURED_ENVIRONMENT">
           <description>The components of the Management Server’s underlying platform are configured in accordance with their associated 
             operational guidance so that the TOE is deployed in an environment that is consistent with its evaluated configuration. </description>
-          <consistency-rationale>This objective is consistent with <base-name/>.</consistency-rationale>
+          <consistency-rationale>
+            This objective is consistent with the Base-PP because it is an extension of the Base-PP's OE.PLATFORM objective that is specific to this technology type.
+          </consistency-rationale>
         </SOE>
         </SOEs>        
     </section>
@@ -625,7 +642,9 @@
       <modified-sfrs>
         <subsection title="Trusted Path/Channel (FTP)" id="ftp">
           <f-component id="ftp_dit_ext.1" name="Protection of Data in Transit">
-            <consistency-rationale>
+            <consistency-rationale>This SFR is defined in the Base-PP. This PP-Module modifies it by removing the option not to transmit sensitive data because this particular
+              TOE type will always have that capability. It is still consistent with the Base-PP because all selections that the ST author is permitted to make are available options
+              in the Base-PP version of the SFR.
             </consistency-rationale>
             <f-element id="ftp_dit_ext.1.1">
               <title>The application shall 
@@ -721,15 +740,36 @@
         </subsection>
         </modified-sfrs>
       <additional-sfrs></additional-sfrs>
-      <con-toe></con-toe>
+      <con-toe> When this <abbr linkend="PP-Module"/> is used to extend the App PP, the TOE type for the overall TOE is still a software application. 
+        The TOE boundary is simply extended to include the enterprise management functionality for software file encryption that the application performs.</con-toe>
+      
+      
       <con-sec-prob></con-sec-prob>
       <con-obj></con-obj>
       <con-op-en></con-op-en>
+      
+      <con-mod id="T.KEYING_MATERIAL_COMPROMISE_SERVER">This threat is a specific example of T.PHYSICAL_ACCESS defined in the Base-PP. 
+        Specifically, this PP-Module defines a method of maliciously gaining access to sensitive data at rest that is particular to the technology type of this PP-Module.</con-mod>
+      <con-mod id="T.MAN_IN_THE_MIDDLE">This threat is a specific example of T.NETWORK_EAVESDROP defined in the Base-PP. Specifically, the attacker performs 
+        network eavesdropping to gain access to key data in transit between TOE components.</con-mod>
+      <con-mod id="T.UNAUTHORIZED_ADMINISTRATOR_ACCESS">This threat is a variation on T.LOCAL_ATTACK defined in the Base-PP.
+        The Base-PP does not define access-controlled management functions so this PP-Module goes beyond it by specifying misuse of the management interface as a threat to the TSF.            
+      </con-mod>
+      <con-mod id="T.UNTRUSTED_COMMUNICATION_CHANNELS">This threat is a variation on T.NETWORK_ATTACK and T.NETWORK_EAVESDROP defined in the Base-PP. 
+      The threat of untrusted communication channels allows for exploitation of the TSF in different ways, depending on how the lack of trust is manifested.</con-mod>
+      <con-mod id="T.UNAUTHORIZED_DATA_ACCESS">This threat is a variation on T.PHYSICAL_ACCESS defined in the Base-PP.
+        In this case, the "sensitive data at rest" is the data that the TOE is intended to protect.</con-mod>
+      <con-mod id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">This threat is a variation on T.PHYSICAL_ACCESS defined in the Base-PP.
+        In this case, the "sensitive data at rest" is the data that the TOE is intended to protect.</con-mod>
+
+      
+      
     </base-pp>
     <man-sfrs>
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
-          <consistency-rationale>
+          <consistency-rationale>This SFR extends the cryptographic functionality defined in the Base-PP by specifying a method for key destruction. 
+            It is consistent with the Base-PP because keys generated by the Base-PP portion of the TOE may also be destroyed in the manner specified by this SFR.
           </consistency-rationale>
           <f-element id="FCS_CKM_EXT.4.1">
             <title>The TSF shall destroy cryptographic keys in accordance with a specified cryptographic key destruction method 
@@ -964,8 +1004,9 @@
         
 	      
 	      <f-component id="FCS_COP.1(5)" name="Cryptographic operation (Key Wrapping)">
-          <consistency-rationale>
-          </consistency-rationale>
+	        <consistency-rationale>This SFR defines usage of AES functionality not defined by the Base-PP. However, this functionality is only used in certain situations that are 
+	          specific to this PP-Module and do not affect the ability of any Base-PP SFRs to be enforced.
+	        </consistency-rationale>
           <f-element id="FCS_COP.1.1(5)">
             <title>
               The TSF shall <h:b> 
@@ -1087,7 +1128,7 @@
         
         
         <f-component id="FCS_COP.1(7)" name="Cryptographic operation (Key Encryption)">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines key encryption functionality that is outside the scope of the original cryptographic operations defined in the Base-PP.
           </consistency-rationale>
           <f-element id="FCS_COP.1.1(7)">
             <title>
@@ -1132,8 +1173,8 @@
         
         
 	      <f-component id="FCS_COP.1(8)" name="Cryptographic operation (Key Transport)">
-          <consistency-rationale>
-          </consistency-rationale>
+	        <consistency-rationale>This SFR defines key transport functionality that is outside the scope of the original cryptographic operations defined in the Base-PP.
+	        </consistency-rationale>
           <f-element id="FCS_COP.1.1(8)">
             <title>
               The TSF shall <h:b>
@@ -1262,7 +1303,8 @@
         </f-component>
         
         <f-component id="FCS_IV_EXT.1" name="Initialization Vector Generation">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines how IVs for AES keys must be generated. This is consistent with the Base-PP because it supplements the key generation 
+            methods specified by the Base-PP SFR FCS_CKM.1(2).
           </consistency-rationale>
           <f-element id="FCS_IV_EXT.1.1 ">
             <title>The TSF shall <selectables>
@@ -1294,8 +1336,9 @@
         
 	      
 	      <f-component id="FCS_KDF_EXT.1" name="Cryptographic operation (Key Derivation)">
-          <consistency-rationale>
-          </consistency-rationale>
+	        <consistency-rationale>This SFR defines key transport functionality. It uses random bit generation and keyed-hash message authentication functionality from the Base-PP 
+	          as they are intended but is otherwise outside the scope of the original cryptographic operations defined in the Base-PP.
+	        </consistency-rationale>
           <f-element id="FCS_KDF_EXT.1.1">
             <title>
               <h:b>Refinement:</h:b> The TSF shall <selectables>
@@ -1348,8 +1391,9 @@
         </f-component>
         
 	<f-component id="FCS_KYC_EXT.1" name="Key Chaining and Key Storage (Management Server)">
-          <consistency-rationale>
-          </consistency-rationale>
+	  <consistency-rationale>The Base-PP defines how stored keys are protected. This SFR extends that functionality by defining the logical hierarchy of how keys are logically
+	    protected by other keys or other secret data. 
+	  </consistency-rationale>
           <f-element id="FCS_KYC_EXT.1.1">
             <title> The TSF shall maintain a key chain of intermediate keys originating from one or more initial
                   <selectables>
@@ -1449,8 +1493,8 @@
         
 	      
 	<f-component id="FCS_SMC_EXT.1" name="Submask Combining ">
-          <consistency-rationale>
-          </consistency-rationale>
+	  <consistency-rationale>This SFR relates to submask combining as a method of generating intermediary keys. Key hierarchy functionality is outside the scope of the Base-PP.
+	  </consistency-rationale>
           <f-element id="FCS_SMC_EXT.1.1 ">
             <title>The TSF shall 
               <selectables>
@@ -1488,8 +1532,9 @@
 	      
 	      
 	      <f-component id="FCS_VAL_EXT.1" name="Admin Validation">
-          <consistency-rationale>
-          </consistency-rationale>
+	        <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can validate the correctness of data input to it 
+	          and take security-relevant action if the data is invalid.
+	        </consistency-rationale>
           <f-element id="FCS_VAL_EXT.1.1">
             <title>The TSF shall perform validation of the admin by 
               <selectables>
@@ -1572,7 +1617,8 @@
         </f-component>
         
         <f-component id="FCS_VAL_EXT.2" name="User Validation">
-          <consistency-rationale>
+          <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can validate the correctness of data input to it 
+            and take security-relevant action if the data is invalid.
           </consistency-rationale>
           <f-element id="FCS_VAL_EXT.2.1">
             <title>The TSF shall perform validation of the user by 
@@ -1684,12 +1730,13 @@
       <subsection title="Identification and Authentication (FIA)" id="fia">
         
         <f-component id="FIA_AUT_EXT.2" name="Server Administrator Authorization">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines how administrator requests to access protected data are authorized. It uses FCS_RBG_EXT.1 from the Base-PP in a manner consistent with its 
+            definition, but otherwise does not relate to functionality defined by the Base-PP.
           </consistency-rationale>
           <f-element id="FIA_AUT_EXT.2.1">
             <title>The application shall 
               <selectables>
-                <selectable>receiving assertion of the user’s validity from: 
+                <selectable>receive assertion of the user’s validity from: 
                   <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
                 <selectable>provide  authorization</selectable>
               </selectables> based on 
@@ -1789,7 +1836,7 @@
         </f-component>
         
 	<f-component id="FIA_REC_EXT.1" name="Recovery Support">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines the TOE's potential support for recovery credentials. This functionality does not relate to any behavior defined in the Base-PP.
           </consistency-rationale>
           <f-element id="FIA_REC_EXT.1.1">
             <title>The TSF shall support the following recovery mechanisms 
@@ -1835,16 +1882,17 @@
               
 	      
         <f-component id="FIA_UAU.1" name="Timing of Authentication">
-          <consistency-rationale>
+          <consistency-rationale>This SFR requires administrators to be authenticated prior to accessing management functionality.
+            The Base-PP does not mandate identification and authentication measures for a management interface but it also does not prohibit them.
           </consistency-rationale>
           <f-element id="FIA_UAU.1.1">
             <title>The TSF shall allow 
               <assignable>list of TSF-mediated actions</assignable>
-              on behalf of the administrator to be performed before the administrator is authenticated.
+              on behalf of the <h:b>administrator</h:b> to be performed before the administrator is authenticated.
             </title>
           </f-element>
             <f-element id="FIA_UAU.1.2">
-           <title>The TSF shal require each administrator to be successfully authenticated before allowing any other TSF-mediated actions on behlaf of that administractor.</title>
+              <title>The TSF shall require each <h:b>administrator</h:b> to be successfully authenticated before allowing any other TSF-mediated actions on behlaf of that <h:b>administrator</h:b>.</title>
             <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
@@ -1883,16 +1931,17 @@
         </f-component>
         
         <f-component id="FIA_UID.1" name="Timing of Identification">
-          <consistency-rationale>
+          <consistency-rationale>This SFR requires administrators to be identified prior to accessing management functionality.
+            The Base-PP does not mandate identification and authentication measures for a management interface but it also does not prohibit them.
           </consistency-rationale>
           <f-element id="FIA_UID.1.1">
             <title>The TSF shall allow 
               <assignable>list of TSF-mediated actions</assignable>
-              on behalf of the administrator to be performed before the administrator is identified.
+              on behalf of the administrator to be performed before the <h:b>administrator</h:b> is identified.
             </title>
           </f-element>
-          <f-element id="FIA_UAU.1.2">
-            <title>The TSF shal require each administrator to be successfully identified before allowing any other TSF-mediated actions on behlaf of that administractor.</title>
+          <f-element id="FIA_UID.1.2">
+            <title>The TSF shal require each <h:b>administrator</h:b> to be successfully identified before allowing any other TSF-mediated actions on behlaf of that <h:b>administrator</h:b>.</title>
             <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
@@ -1927,7 +1976,8 @@
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt">
 	    <f-component id="FMT_SMF.1(2)" name="Specification of Management Functions (Management Server)">
-          <consistency-rationale>
+	      <consistency-rationale>This SFR defines management functions for the TOE for functionality specific to this PP-Module. These functions are defined in addition to what 
+	        the Base-PP defines for its own operation.
           </consistency-rationale>
           <f-element id="FMT_SMF.1.1(2)">
             <title>The TSF shall be capable of performing the following management functions: <h:b>
@@ -1974,11 +2024,11 @@ configure the number of failed validation attempts required to trigger correctiv
               
               The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
               functions or by the TOE issuing a request to a remote client to perform the functions. The ST author must indicate which case is provided by the TSF.
-              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author shall include the equivalent
+              If the TOE performs any of the cryptographic functions that are selected as being initiated in this SFR, the ST author must include the equivalent
               FCS SFRs from the File Encryption PP-Module as part of the TOE, specifically indicating that these 
               functions are provided by the Management Server component of the TOE. <h:br/><h:br/>
               
-              If the TSF supports the use of a recovery credential, the ST author shall include the ‘enable/disable use of recovery credential’ selection.
+              If the TSF supports the use of a recovery credential, the ST author must include the ‘enable/disable use of recovery credential’ selection.
             </note>
             
             <aactivity>
@@ -2081,7 +2131,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-component> 
         
         <f-component id="FMT_MOF.1" name="Server Management of Security Functions Behavior">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines access restrictions for TOE management functions. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
           </consistency-rationale>
           <f-element id="FMT_MOF.1.1">
             <title>The TSF shall restrict the ability to 
@@ -2139,7 +2189,7 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
         <f-component id="FMT_MTD.1" name="Management of TSF Data">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines access restrictions for management of TSF data. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
           </consistency-rationale>
           <f-element id="FMT_MTD.1.1">
             <title>The TSF shall restrict the ability to 
@@ -2191,7 +2241,8 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
         <f-component id="FMT_SMR.2" name="Restrictions on Security Roles">
-          <consistency-rationale>
+          <consistency-rationale>This SFR defines administrative roles, which are used by other SFRs to derive privileges to interact with the TOE's management functionality.
+            This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
           </consistency-rationale>
           <f-element id="FMT_SMR.2.1">
             <title>The TSF shall maintain the roles [<h:i>administrator, user</h:i>].
@@ -2254,7 +2305,8 @@ configure the number of failed validation attempts required to trigger correctiv
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_ITT.1" name="Basic Internal TSF Data Transfer Protection">
-          <consistency-rationale>
+          <consistency-rationale>This SFR uses a subset of the protocols defined in the Base-PP for secure communications. This PP-Module extends the functionality by explicitly
+            defining a communications channel where both endpoints are TOE components.
           </consistency-rationale>
           <f-element id="FPT_ITT.1.1">
             <title>The TSF shall protect TSF data from [<h:i>disclosure, modification</h:i>] when it is transmitted between separate parts
@@ -2304,8 +2356,9 @@ configure the number of failed validation attempts required to trigger correctiv
         
 	      
 	      <f-component id="FPT_KYP_EXT.2" name="Protection of Server Key and Key Material ">
-          <consistency-rationale>
-          </consistency-rationale>
+	        <consistency-rationale>The Base-PP defines an SFR for secure storage of sensitive data. This SFR expands on that definition by describing the supported logical methods 
+	          for storage of key data.
+	        </consistency-rationale>
           <f-element id="FPT_KYP_EXT.2.1">
             <title>The TSF shall only store keys in non-volatile memory when
                   <selectables>
@@ -2353,7 +2406,8 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-component>
         
         <f-component id="FPT_KYP_EXT.3" name="Attribution of Key and Key Material">
-          <consistency-rationale>
+          <consistency-rationale>This SFR relates to key attribution such that stored keys can be associated with the users that 'own' them.
+            This does not relate to functionality that is defined in the Base-PP so it does not interfere with the implementation of any Base-PP SFRs.
           </consistency-rationale>
             <f-element id="FPT_KYP_EXT.3.1">
               <title>The TSF shall maintain an association between stored endpoint keys and user identity, 
@@ -2418,8 +2472,8 @@ configure the number of failed validation attempts required to trigger correctiv
       <subsection title="Cryptographic Support (FCS)" id="fcs">
       <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
         <selection-depends req="FIA_REC_EXT.1.1"  ids="CR"/>
-        <consistency-rationale>
-        </consistency-rationale>
+        <consistency-rationale>This SFR defines the TOE's implementation of recovery credentials. This functionality does not relate to any behavior defined in the Base-PP.
+        </consistency-rationale>        
         <f-element id="FIA_CHR_EXT.1.1">
           <title>The TSF shall only generate a response if it is able to access recovery information for 
             <selectables>
@@ -2509,8 +2563,8 @@ configure the number of failed validation attempts required to trigger correctiv
 	      
 	      <f-component id="FCS_CKM_EXT.3" name="Cryptographic key generation (Password/Passphrase conditioning)"> 
         <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
-        <consistency-rationale>
-        </consistency-rationale>
+	        <consistency-rationale>This SFR defines a key derivation method based on passphrase conditioning. It uses the FCS_RBG_EXT.1 SFR from the Base-PP in its intended manner 
+	          but otherwise does not relate to the Base-PP's functionality.</consistency-rationale>
         <f-element id="FCS_CKM_EXT.3.1">
           <title>
             <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
@@ -2644,7 +2698,8 @@ configure the number of failed validation attempts required to trigger correctiv
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FTP_TRP.1" name="Trusted Path">
           <selection-depends req="FMT_SMR.2.3" ids="remote"/>
-          <consistency-rationale>
+          <consistency-rationale>This SFR uses a subset of the protocols defined in the Base-PP for secure communications. This PP-Module extends the functionality by explicitly
+            defining a communications path between a remote administrator and the TOE.
           </consistency-rationale>
           <f-element id="FTP_TRP.1.1">
             <title>The TSF shall be capable of using 
