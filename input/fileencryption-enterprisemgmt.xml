@@ -60,7 +60,7 @@
         <glossary>
           <entry>
             <term>Assurance</term>
-            <description> Grounds for confidence that a TOE meets the SFRs [CC1]. </description>
+            <description>Grounds for confidence that a TOE meets the SFRs [CC1]. </description>
           </entry>
           <entry>
             <term><abbr title="Common Criteria">CC</abbr></term>
@@ -69,11 +69,11 @@
           </entry>
           <entry>
             <term>Distributed TOE</term>
-            <description>A TOE composed of multiple components operating as a logical whole.</description>
+            <description>A TOE composed of multiple components operating as a logical whole. Specifically for the FE EM, it is an FE EM solution with multiple FE endpoints.</description>
           </entry>
           <entry>
             <term>Operational Environment </term>
-            <description> Hardware and software that are outside the TOE boundary that support the
+            <description>Hardware and software that are outside the TOE boundary that support the
               TOE functionality and security policy, including the platform, its firmware, and
               the operating system. </description>
           </entry>
@@ -127,24 +127,24 @@
         <glossary>
           <entry>
             <term>Authorization factor (AF) </term>
-            <description> A value that a user knows, has, or is (e.g. password, token, etc.) submitted 
+            <description>A value that a user knows, has, or is (e.g. password, token, etc.) submitted 
               to the TOE to establish that the user is in the community authorized to access  the requested material.
               </description>
           </entry>
           <entry>
             <term>Key Sanitization </term>
-            <description> A method of sanitizing encrypted data by securely overwriting the key, as described in the key destruction requirement, that was encrypting the data. 
+            <description>A method of sanitizing encrypted data by securely overwriting the key, as described in the key destruction requirement, that was encrypting the data. 
             </description>
           </entry>
           <entry>
             <term>File/Set of files </term>
-            <description> The user data that is selected to be encrypted, which can include
+            <description>The user data that is selected to be encrypted, which can include
               individual file encryption (with a FEK per file) or a set of files encrypted with a
               single FEK. </description>
 		</entry>
           <entry>
             <term>File Encryption Key (FEK) </term>
-            <description> The key that is used by the encryption algorithm to encrypt the selected
+            <description>The key that is used by the encryption algorithm to encrypt the selected
               user data on the host machine. </description>
           </entry>
           <entry>
@@ -154,44 +154,44 @@
           </entry>
           <entry>
             <term>Key Encryption Key (KEK) </term>
-            <description> The key that is used to encrypt another key. </description>
+            <description>The key that is used to encrypt another key. </description>
           </entry>
 		<entry>
             <term>Keying Escrow </term>
-            <description> The process of exporting a key to an alternate location. </description>
+            <description>The process of exporting a key to an alternate location. </description>
           </entry>
           <entry>
             <term>Keying material </term>
-            <description> Key material is commonly known as critical security parameter (CSP) data, and also includes authorization data, nonces, and metadata. </description>
+            <description>Key material is commonly known as critical security parameter (CSP) data, and also includes authorization data, nonces, and metadata. </description>
           </entry>
           <entry>
             <term>Key Release Key </term>
-            <description> A key used to release another key from storage, it is not used for the direct derivation or decryption of another key. </description>
+            <description>A key used to release another key from storage, it is not used for the direct derivation or decryption of another key. </description>
           </entry>
           <entry>
             <term>Noise Source </term>
-            <description> The component of an RBG that contains the non-deterministic,
+            <description>The component of an RBG that contains the non-deterministic,
               entropy-producing activity. </description>
           </entry>
           <entry>
             <term>Non-Volatile Memory</term>
-            <description> A type of computer memory that will retain information without power.  </description>
+            <description>A type of computer memory that will retain information without power.  </description>
           </entry>
           <entry>
             <term>Powered-Off State </term>
-            <description> The device has been shut down. </description>
+            <description>The device has been shut down. </description>
           </entry>
           <entry>
             <term>Protected Data</term>
-            <description> This refers to all files designated by the user for encryption. </description>
+            <description>This refers to all files designated by the user for encryption. </description>
           </entry>
 		<entry>
             <term>Registration</term>
-            <description> The intial process of associating and endpoint and/or user with the server. </description>
+            <description>The intial process of associating and endpoint and/or user with the server. </description>
           </entry>
           <entry>
             <term>Submask </term>
-            <description> A submask is a bit string that can be generated and stored in a number of ways. </description>
+            <description>A submask is a bit string that can be generated and stored in a number of ways. </description>
           </entry>
 		<entry>
             <term>System Identiy </term>
@@ -212,9 +212,9 @@
         <h:p>
           The application, which consists of the software provided by its vendor,
           is installed onto the platform(s) it operates on.  It executes on the platform, which
-          may be an operating system (<figref refid="toe-as-apponos"/>), hardware environment, 
+          may be an operating system, hardware environment, 
           a software based execution environment, 
-          or some combination of these (<figref refid="toe-as-apponee"/>). Those platforms may themselves run within other
+          or some combination of these. Those platforms may themselves run within other
           environments, such as virtual machines or operating systems, that completely abstract away the underlying hardware
           from the application. The TOE is not accountable for security functionality that is implemented by 
           platform layers that are abstracted away.
@@ -463,7 +463,7 @@
             
             In order to ensure that a key is only released to the appropriate endpoint, FCS_KYP_EXT.3 ensures that there is attribution of the endpoint
             or encrypted file(s) and a key. The optional Server requirement FCS_CKM.2 ensures that if a key is communicated between the server and the
-            endpoint, keys distributed by the server are given to the correct endpoint for the purpose of delivering a key.
+            endpoint, keys distributed by the server are given to the correct endpoint for the purpose of delivering a key.<h:br/><h:br/>
             
             To ensure the key chain is started properly FIA_AUT_EXT.2 defines proper authentication and conditioning.
             
@@ -499,8 +499,7 @@
             <h:b>Recovery Protection:</h:b> FIA_UAU.1 requires the administrator to be authenticated prior to allowing the administrator
             to manage the product via the remote console. FIA_UID.1 requires the admin to be identified prior to allowing the administrator to manage the
             product via the remote console. FMT_MTD.1 requires that actions which result in changes to key material, user authentication policy and recovery
-            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2 requires user
-
+            are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2 requires user 
             authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. Recovery methods are defined by FIA_REC_EXT.1 and FIA_CHR_EXT.1<h:br/><h:br/>
             
             The Optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
@@ -527,7 +526,7 @@
             <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication. If server side key generation is implemented, FCS_CKM.1(1) ensures sufficiently
             strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. Products implementing cryptographic 
             communication protocols between the server and managed endpoints must meet the requirements for the specific protocols as
-            defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}
+            defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}<h:br/><h:br/>
 		  <!--, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}. -->
             
             <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
@@ -701,10 +700,10 @@
               </note>  
               <aactivity>
                 The evaluator shall perform the activities below in addition to the evaluation activities required for this SFR in the Base-PP.
-                <TSS>For platform-provided functionality, the evaluator shall verify the TSS contains the calls to the platform that TOE is leveraging to invoke the functionality.
-                </TSS><h:br/>
-                <Guidance>None.
-                </Guidance><h:br/>
+                <TSS>For platform-provided functionality, the evaluator shall verify the TSS contains the calls to the platform that TOE is leveraging to invoke the functionality.<h:br/><h:br/>
+                </TSS>
+                <Guidance>None.<h:br/><h:br/>
+                </Guidance>
                   <Tests>The evaluator shall perform the following tests.
                   
                     <testlist>
@@ -900,7 +899,8 @@
               
               </Guidance>
 <Tests>
-              These tests are only for key destruction provided by the application, test 2 does not apply to any keys using the selection "new value of a key": 
+              These tests are only for key destruction provided by the application, test 2 does not apply to any keys using the 
+              selection "new value of a key".<h:br/><h:br/> 
               <testlist>
                 <test>Applied to each key held in volatile memory and subject to destruction by overwrite by the 
                   TOE (whether or not the value is subsequently encrypted for storage in volatile or non-volatile memory). <h:br/>
@@ -989,13 +989,13 @@
               description where key material reside, how the key material is used, how it is
               determined that keys and key material are no longer needed, and how the material is
               destroyed once it is not needed and that the documentation in the follows
-              FCS_CKM_EXT.4.1 for the destruction.
+              FCS_CKM_EXT.4.1 for the destruction.<h:br/><h:br/>
               
               
-              </TSS><h:br/>
-              <Guidance> There are no additional guidance evaluation activities for FCS_CKM_EXT.4.2.
+              </TSS>
+              <Guidance> There are no additional guidance evaluation activities for FCS_CKM_EXT.4.2.<h:br/><h:br/>
               
-</Guidance><h:br/>
+</Guidance>
               <Tests> There are no additional test guidance evaluation activities for FCS_CKM_EXT.4.2.
               
             </Tests>
@@ -1379,12 +1379,12 @@
               
               <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
               including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
-              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.
+              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.<h:br/><h:br/>
               
-              </TSS><h:br/>
-<Guidance> None. 
+              </TSS>
+              <Guidance> None. <h:br/><h:br/>
               
-</Guidance><h:br/>
+</Guidance>
 <Tests> None. 
             </Tests>
 </aactivity>
@@ -1520,10 +1520,10 @@
                 <h:br/>If keys are XORed together to form an intermediate key, the TSS section
               shall identify how this is performed (e.g., if there are ordering requirements, checks
               performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. <h:br/>
-              </TSS><h:br/>
-<Guidance>None.<h:br/>
-</Guidance><h:br/>
+              of the output produced is at least the same as that of the FEK. <h:br/><h:br/>
+              </TSS>
+              <Guidance>None.<h:br/><h:br/>
+</Guidance>
 <Tests>None.
             </Tests>
 </aactivity>
@@ -2036,9 +2036,9 @@ configure the number of failed validation attempts required to trigger correctiv
               escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<h:br/><h:br/>
               
               
-              </TSS><h:br/>
+              </TSS>
 <Guidance>The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
-              including any reliance on the Operational Environment if applicable:
+  including any reliance on the Operational Environment if applicable:<h:br/>
               
               <h:li>Register new user</h:li>
               <h:li>Revoke registration of an user</h:li>
@@ -2069,7 +2069,7 @@ configure the number of failed validation attempts required to trigger correctiv
 		    <h:br/><h:br/>
               
               
-</Guidance><h:br/>
+</Guidance>
 <Tests> The evaluator shall perform the following tests for each claimed management function:
               
               <testlist>
@@ -2317,7 +2317,8 @@ configure the number of failed validation attempts required to trigger correctiv
             <aactivity>
               <TSS>	The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
               each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
-              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the requirements in the ST.<h:br/><h:br/>
+              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the 
+              requirements in the ST.<h:br/><h:br/>
               
               
               </TSS>
@@ -2387,11 +2388,11 @@ configure the number of failed validation attempts required to trigger correctiv
                 all keys stored in non-volatile memory. The description of the key chain shall be
                 reviewed to ensure FCS_COP.1(5) is followed for the storage of wrapped or encrypted
                 keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
-                criteria for storage. 
+                criteria for storage. <h:br/><h:br/>
                 
-              </TSS><h:br/>
-<Guidance> None.
-</Guidance><h:br/>
+              </TSS>
+              <Guidance> None.<h:br/><h:br/>
+</Guidance>
 <Tests> None. </Tests>
 </aactivity>
           </f-element>
@@ -2442,10 +2443,12 @@ configure the number of failed validation attempts required to trigger correctiv
            
               <aactivity>
                 
-                <TSS> The evaluator shall examine the TSS to verify that it describes the method by which an association is maintained and verify it matches the selections.<h:br/><h:br/>
+                <TSS> The evaluator shall examine the TSS to verify that it describes the method by which an association is 
+                  maintained and verify it matches the selections.<h:br/><h:br/>
                 
                 </TSS>
-<Guidance> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, if any configuration is necessary.<h:br/><h:br/>
+<Guidance> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, 
+  if any configuration is necessary.<h:br/><h:br/>
                 
                 </Guidance>
 <Tests> For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.
@@ -2663,14 +2666,14 @@ configure the number of failed validation attempts required to trigger correctiv
             the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
               linkend="bibAppPP"/>). <h:br/><h:br/>
             
-            </TSS><h:br/>
+            </TSS>
 <Guidance>
             <h:b>Support for minimum length:</h:b> The evaluators shall check the Operational Guidance 
             to determine that there are instructions on how to generate large passwords/passphrases, and
             instructions on how to configure the password/passphrase length 
             to provide entropy commensurate with the keys that the authorization factor is protecting.  <h:br/><h:br/>
             
-</Guidance><h:br/>
+</Guidance>
 <Tests> Support for Password/Passphrase characteristics: In addition to the analysis above, 
             the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <h:br/>
 		  <testlist>
@@ -2727,7 +2730,8 @@ configure the number of failed validation attempts required to trigger correctiv
                 of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<h:br/><h:br/>
                 
               </TSS>
-              <Guidance>	The evaluator shall confirm that the guidance documentation contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
+              <Guidance>	The evaluator shall confirm that the guidance documentation contains instructions for 
+                establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
                 
               </Guidance>
               <Tests>
