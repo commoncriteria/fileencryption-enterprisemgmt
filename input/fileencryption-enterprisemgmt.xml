@@ -1038,7 +1038,7 @@
               <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
               <h:h4>Conditional:</h:h4> If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
               describes how the FEK encryption/decryption is invoked. <h:br/>
-              <h:h4>Conditional:</h:h4> If impliment functionality was selected, The evaluator shall check that the TSS includes
+              <h:h4>Conditional:</h:h4> If implement functionality was selected, The evaluator shall check that the TSS includes
               a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
               selected encryption function includes the key sizes and modes of operations as specified in the selections above.
               The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
@@ -2789,7 +2789,7 @@ configure the number of failed validation attempts required to trigger correctiv
     <h:li>A description of all authorization factors that are supported by the product and how
       each factor is handled, including any conditioning and combining performed.</h:li>
     
-    <h:li>If validation is implimented, the process for validation shall be described, noting what
+    <h:li>If validation is implemented, the process for validation shall be described, noting what
       value is used for validation and the process used to perform the validation. It shall
       describe how this process ensures no keys in the key chain are weakened or exposed
       by this process.</h:li>
