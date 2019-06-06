@@ -1061,7 +1061,7 @@
 <Tests>
   <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/><h:br/>
               
-              The assurance activity tests specified for AES in GCM mode in the underlying Application Software PP 
+              The assurance activity tests specified for AES in GCM mode in the underlying <cite linkend="bibAppPP"/> 
               shall be performed in the case that "GCM" is selected in the requirement.<h:br/><h:br/>
               
               If AES Key Wrap is used to decrypt/encrypt the key, the evaluator shall examine the TSS to determine 
@@ -1161,7 +1161,7 @@
 <Tests> 
               
               <h:h4>Conditional:</h:h4> If not perform key wrapping was selected, no testing is performed.<h:br/>
-              The assurance activity tests specified for AES in CBC mode in the underlying Application Software PP shall be performed in the case that "CBC" is selected in the requirement.
+  The assurance activity tests specified for AES in CBC mode in the underlying <cite linkend="bibAppPP"/> shall be performed in the case that "CBC" is selected in the requirement.
             </Tests>
 </aactivity>
           </f-element>
@@ -2010,7 +2010,7 @@ configure the number of failed validation attempts required to trigger correctiv
               </selectables></h:b>.
             </title>
             <note role="application"> 
-		     The ST author should combine the selections with those in the FMT_SMF.1 requirement in the Application Software PP to 
+              The ST author should combine the selections with those in the FMT_SMF.1 requirement in the <cite linkend="bibAppPP"/> to 
 		     form a single FMT_SMF.1 SFR in the ST.<h:br/><h:br/>
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
