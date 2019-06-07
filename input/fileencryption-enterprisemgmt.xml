@@ -523,10 +523,10 @@
         </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
-            <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication. If server side key generation is implemented, FCS_CKM.1(1) ensures sufficiently
-            strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. Products implementing cryptographic 
-            communication protocols between the server and managed endpoints must meet the requirements for the specific protocols as
-            defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}<h:br/><h:br/>
+            <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication and FPT_DIT_EXT.1 covers all transmitted sensitive data. If server side key generation is implemented, 
+            FCS_CKM.1(1) ensures sufficiently strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. 
+            Products implementing cryptographic communication protocols between the server and managed endpoints must meet the requirements 
+            for the specific protocols as defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}<h:br/><h:br/>
 		  <!--, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}. -->
             
             <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
@@ -537,6 +537,7 @@
           <component-refer ref="FTP_TRP.1 (selection-based)"/>
           <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
+          <component-refer ref="FPT_DIT_EXT.1 (from Base-PP)"/>
           <consistency-rationale>
             This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. Specifically, this objective
             expects the communications between distributed TOE components to be protected in a similar manner to the corresponding Base-PP objective.
@@ -548,7 +549,7 @@
             by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/><h:br/>
             
             The selection-based communication protocol SFR’s FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, and the TLS package
-            ensure correct implementation of the protocols required by FTP_TRP.1. <!-- If TLS is supported, then FCS_TLSS_EXT.3 may also
+            ensure correct implementation of the protocols required by FTP_TRP.1 and FPT_DIT_EXT.1. <!-- If TLS is supported, then FCS_TLSS_EXT.3 may also
             apply, depending on the claimed TLS ciphersuites. --> FCS_RBG_EXT.1 ensures sufficiently strong keys are generated for 
             the communication protocols previously referenced. FIA_X509_EXT.1, FIA_X509_EXT.2, and FIA_X509_EXT.3 ensure
             the communication channel is established only with a server that is authenticated. FCS_COP.1(1) ensures correct generation of cryptographic signatures. <h:br/><h:br/>
@@ -562,6 +563,7 @@
           <component-refer ref="FCS_RBG_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
+          <component-refer ref="FPT_DIT_EXT.1 (from Base-PP)"/>
           <consistency-rationale>
             This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. This objective sets the same
             expectation for any remote management interface included with the TOE.
