@@ -1424,7 +1424,6 @@
                       </selectable>
                       <selectable>
                         <selectables>
-                          <selectable>112 bits</selectable>
                           <selectable>128 bits</selectable>
                           <selectable>192 bits</selectable>
                           <selectable>256 bits</selectable>
