@@ -336,8 +336,8 @@
             accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
             by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
             the primary threat of unauthorized disclosure of recovery material. </description>
-          <objective-refer ref="O.KEY_MATERIAL_PROTECTION">
-            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.KEY_MATERIAL_PROTECTION as this
+          <objective-refer ref="O.ENTERPRISE_KEY_PROTECTION">
+            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.ENTERPRISE_KEY_PROTECTION as this
               provides for encryption of keys that protect data.</rationale>
           </objective-refer>
         </threat>
@@ -402,7 +402,7 @@
       
     <section title="Security Objectives for the TOE" id="objtoe"> 
       <SOs>
-        <SO id="O.KEY_MATERIAL_PROTECTION">
+        <SO id="O.ENTERPRISE_KEY_PROTECTION">
           <description>
             <h:b>Protection of Key Material:</h:b> FPT_KYP_EXT.3 requires that the key material, and optionally recovery credentials
             be uniquely associated with the endpoint at a minimum. Additionally, key material may also be associated with a
@@ -979,7 +979,7 @@
               The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
-              Application Note: Keys, including intermediate keys and key material that are no longer
+              Keys, including intermediate keys and key material that are no longer
               needed are destroyed by using an approved method, FCS_CKM_EXT.4.1. Examples of keys are
               intermediate keys, submasks. There may be instances where keys or key material
               that are contained in persistent storage are no longer needed and require destruction. 
@@ -1040,7 +1040,7 @@
                 </selectable>
               </selectables></h:b>. 
             </title>
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -1157,7 +1157,7 @@
                     </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
                 </selectables></h:b>.
             </title>
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -1290,7 +1290,7 @@
                 </selectable>
               </selectables></h:b>.
             </title>
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -1387,7 +1387,7 @@
               </selectables>. 
               
             </title>
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -1538,7 +1538,7 @@
                   <selectable>HMAC-SHA-512</selectable>
                 </selectables> to generate an intermediary key</selectable>
               </selectables>.</title>
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -1611,7 +1611,7 @@
                 </selectables>.
               </title>
           
-              <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
                 the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
                 to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
                 
@@ -1710,7 +1710,7 @@
               
             </title>
             
-            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
               the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
               to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
@@ -2569,7 +2569,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
             corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
           
-          <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+          <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
             the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
             to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
             
