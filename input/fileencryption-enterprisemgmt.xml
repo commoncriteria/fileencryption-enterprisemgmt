@@ -517,7 +517,7 @@
         </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
-            <h:b>Secure Channel:</h:b> : FPT_ITT.1 ensures protection of intra TOE communication and FPT_DIT_EXT.1 covers all transmitted sensitive data. If server side key generation is implemented, 
+            <h:b>Secure Channel:</h:b> FPT_ITT.1 ensures protection of intra TOE communication and FPT_DIT_EXT.1 covers all transmitted sensitive data. If server side key generation is implemented, 
             FCS_CKM.1(1) ensures sufficiently strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. 
             Products implementing cryptographic communication protocols between the server and managed endpoints must meet the requirements 
             for the specific protocols as defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}<h:br/><h:br/>
