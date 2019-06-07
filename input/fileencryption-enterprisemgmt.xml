@@ -444,16 +444,9 @@
             
             FPT_KYP_EXT.2 ensures unwrapped key material is not stored in non-volatile memory minimizing the exposure of plaintext keys and key material.<h:br/><h:br/>
             
-            The following optional components ensure that key material is not exposed through the communication channel between an Enterprise Server and the endpoint,
-            if remote management is supported by the TSF. The requirements for establishing keys are validated by FCS_CKM.2 which relies on one or more of the
-            following SFR’s to implement secure communications: <h:br/><h:br/>
-            
-            <h:li>FCS_HTTPS_EXT.1 </h:li>
-            <h:li>PP-Module for VPN Client </h:li>
-            <h:li>FCS_SSHS_EXT.1 </h:li>
-            <h:li>FCS_SSHC_EXT.1 </h:li>
-		 
-            <h:li>TLS package</h:li><h:br/>
+            FTP_DIT_EXT.1 specifies the protocols used to ensure that key material is not exposed through the communication channel between an Enterprise Server and the endpoint,
+            if remote management is supported by the TSF. The requirements for establishing keys are validated by FCS_CKM.2 which relies on the SFRs or package claims selected in FTP_DIT_EXT.1
+            to implement secure communications.
 		   <!--
             <h:li>FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites) </h:li>
             -->
@@ -468,25 +461,25 @@
             To ensure the key chain is started properly FIA_AUT_EXT.2 defines proper authentication and conditioning.
             
           </description>
-          <component-refer ref="FIA_AUT_EXT.2"/>
-          <component-refer ref="FCS_CKM.2"/>
-          <component-refer ref="FCS_KDF_EXT.1"/>
-          <component-refer ref="FCS_COP.1(5)"/>
-          <component-refer ref="FCS_SMC_EXT.1"/>
-          <component-refer ref="FCS_COP.1(7)"/>
-          <component-refer ref="FCS_COP.1(6)"/>
           <component-refer ref="FCS_CKM.1(2) (from Base-PP)"/>
           <component-refer ref="FCS_CKM_EXT.1 (from Base-PP)"/>
+          <component-refer ref="FCS_CKM.2 (from Base-PP)"/>
+          <component-refer ref="FTP_DIT_EXT.1 (modified from Base-PP)"/>
+          <component-refer ref="FCS_CKM_EXT.4"/>
+          <component-refer ref="FCS_COP.1(5)"/>
+          <component-refer ref="FCS_COP.1(6)"/>
+          <component-refer ref="FCS_COP.1(7)"/>
+          <component-refer ref="FCS_KDF_EXT.1"/>
+          <component-refer ref="FCS_KYC_EXT.1"/>
+          <component-refer ref="FCS_KYP_EXT.3"/>
+          <component-refer ref="FCS_SMC_EXT.1"/>
+          <component-refer ref="FIA_AUT_EXT.2"/>
           <component-refer ref="FMT_MOF.1"/>
           <component-refer ref="FMT_SMF.1"/>
-          <component-refer ref="FCS_KYC_EXT.1"/>
           <component-refer ref="FPT_ITT.1"/>
-          <component-refer ref="FPT_KYP_EXT.2"/>
-          <component-refer ref="FCS_HTTPS_EXT.1)"/>
-          <component-refer ref="FCS_SSHS_EXT.1"/>
-          <component-refer ref="FCS_SSHC_EXT.1"/>
-          <component-refer ref="FCS_CKM_EXT.4"/>
-          <component-refer ref="FCS_KYP_EXT.3"/>
+
+          
+          
           
           <consistency-rationale>
             This objective is consistent with the Base-PP because the Base-PP includes the O.PROTECTED_STORAGE and O.PROTECTED_COMMS objectives.
@@ -502,20 +495,21 @@
             are constrained to administrators and specific times. FMT_SMR.2 requires users be assigned roles. FCS_VAL_EXT.2 requires user 
             authentication to be validated by the Operational Environment or the TOE prior to releasing a recovery value. Recovery methods are defined by FIA_REC_EXT.1 and FIA_CHR_EXT.1<h:br/><h:br/>
             
-            The Optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
+            The optional capability which may be provided by the TSF would include encryption of data stored on the server, as validated by 
             FCS_COP.1(1); and certificate-based authentication, validated by FIA_X509_EXT.2 and validation, as validated by FIA_X509_EXT.1.
             
           </description>
+          <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
+          <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
+          <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
+          <component-refer ref="FCS_VAL_EXT.2"/>
+          <component-refer ref="FIA_REC_EXT.1"/>
           <component-refer ref="FIA_UAU.1"/>
           <component-refer ref="FIA_UID.1"/>
           <component-refer ref="FMT_MTD.1"/>
           <component-refer ref="FMT_SMR.2"/>
-          <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
-          <component-refer ref="FCS_VAL_EXT.2"/>
-          <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
-          <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
-          <component-refer ref="FIA_REC_EXT.1"/>
           <component-refer ref="FIA_CHR_EXT.1 (selection-based)"/>
+          
           <consistency-rationale>
             This objective defines usage restrictions and supported behavior for the TOE's management interface. This is consistent with the O.MANAGE objective in the Base-PP for
             functionality that is specific to this PP-Module.
@@ -533,11 +527,12 @@
             If the EM Server generates signatures to request or verify certificates, FCS_COP.1(1) ensures correct cryptographic
             operation in signature generation process. </description>
           
-          <component-refer ref="FPT_ITT.1"/>
-          <component-refer ref="FTP_TRP.1 (selection-based)"/>
           <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
           <component-refer ref="FPT_DIT_EXT.1 (from Base-PP)"/>
+          <component-refer ref="FPT_ITT.1"/>
+          <component-refer ref="FTP_TRP.1 (selection-based)"/>
+
           <consistency-rationale>
             This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. Specifically, this objective
             expects the communications between distributed TOE components to be protected in a similar manner to the corresponding Base-PP objective.
@@ -548,22 +543,25 @@
             the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
             by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/><h:br/>
             
-            The selection-based communication protocol SFR’s FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, and the TLS package
-            ensure correct implementation of the protocols required by FTP_TRP.1 and FPT_DIT_EXT.1. <!-- If TLS is supported, then FCS_TLSS_EXT.3 may also
-            apply, depending on the claimed TLS ciphersuites. --> FCS_RBG_EXT.1 ensures sufficiently strong keys are generated for 
-            the communication protocols previously referenced. FIA_X509_EXT.1, FIA_X509_EXT.2, and FIA_X509_EXT.3 ensure
+            FTP_DIT_EXT.1, which is modified from its definition in the Base-PP to mandate the use of at least one trusted communications protocol, specifies the
+            protocols used to ensure that data in transit over this channel is secured.<h:br/><h:br/>
+            
+            FIA_X509_EXT.1, FIA_X509_EXT.2, and FIA_X509_EXT.3 ensure
             the communication channel is established only with a server that is authenticated. FCS_COP.1(1) ensures correct generation of cryptographic signatures. <h:br/><h:br/>
             
             If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 and FCS_CKM_EXT.3 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
-          <component-refer ref="FTP_TRP.1 (selection-based)"/>
           <component-refer ref="FCS_COP.1(3) (from Base-PP)"/>
-          <component-refer ref="FCS_CKM_EXT.3 (selection-based)"/>
           <component-refer ref="FCS_RBG_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
-          <component-refer ref="FPT_DIT_EXT.1 (from Base-PP)"/>
+          <component-refer ref="FIA_X509_EXT.3 (from Base-PP)"/>
+          <component-refer ref="FTP_DIT_EXT.1 (modified from Base-PP)"/>
+          <component-refer ref="FTP_TRP.1 (selection-based)"/>
+          <component-refer ref="FCS_CKM_EXT.3 (selection-based)"/>
+          
+          
           <consistency-rationale>
             This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. This objective sets the same
             expectation for any remote management interface included with the TOE.
