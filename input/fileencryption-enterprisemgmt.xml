@@ -1977,6 +1977,118 @@
         
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt">
+        
+        
+        <f-component id="FMT_MOF.1" name="Server Management of Security Functions Behavior">
+          <consistency-rationale>This SFR defines access restrictions for TOE management functions. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
+          </consistency-rationale>
+          <f-element id="FMT_MOF.1.1">
+            <title>The TSF shall restrict the ability to 
+              <selectables>
+                <selectable>determine the behavior of</selectable>
+                <selectable>disable</selectable>
+                <selectable>enable</selectable>
+                <selectable>modify the behavior of</selectable>
+              </selectables>
+              the functions <h:b>
+                <selectables>
+                  <selectable>encryption algorithms used</selectable>
+                  <selectable>key sizes used</selectable>
+                </selectables></h:b> to [<h:i>administrators</h:i>].
+            </title>
+            
+            
+            <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
+              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).<h:br/><h:br/>
+              
+              The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST must logically define the administrator
+              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
+              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE<h:br/><h:br/>
+              
+              The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
+              of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
+              maintaining the user role as defined by FMT_SMR.2.1.<h:br/>
+              
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
+                The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.<h:br/><h:br/>
+                
+                
+              </TSS>
+              <Guidance>
+                The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
+                including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
+                
+              </Guidance>
+              <Tests> The evaluator shall perform the following tests:<h:br/>
+                
+                In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
+                each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
+                conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
+                three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
+                
+                
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        
+        
+        <f-component id="FMT_MTD.1" name="Management of TSF Data">
+          <consistency-rationale>This SFR defines access restrictions for management of TSF data. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
+          </consistency-rationale>
+          <f-element id="FMT_MTD.1.1">
+            <title>The TSF shall restrict the ability to 
+              <selectables>
+                <selectable>change default</selectable>
+                <selectable>query</selectable>
+                <selectable>modify</selectable>
+                <selectable>delete</selectable>
+                <selectable>clear</selectable>
+                <selectable><assignable>other operations</assignable></selectable>
+              </selectables> the [<h:i>encryption keys and intermediate values</h:i>] to [<h:i>administrators</h:i>] <h:b>at the following times: 
+                <selectables>
+                  <selectable>never</selectable>
+                  <selectable>during initial provisioning</selectable>
+                  <selectable>during recovery</selectable>
+                </selectables></h:b>.
+            </title>
+            <note role="application"> These restrictions apply to modifications on the enterprise server.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS to determine that, for each administrative function identified in the guidance documentation;
+                those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
+                the TSS details when changes may be made to the encryption keys and/or intermediate values.<h:br/><h:br/>
+                
+                
+              </TSS>
+              <Guidance>The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
+                values are allowed to the administrator at what times.<h:br/><h:br/>
+                
+              </Guidance>
+              <Tests> The evaluator shall perform the following tests:<h:br/>
+                
+                <testlist>
+                  <test>The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
+                    (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration 
+                    of the TOE). This test should fail.</test>
+                  
+                  <test>The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</test>
+                  
+                  <test>The evaluator shall try to perform at least one of the actions at the times that are not permitted. This test should fail.</test>
+                  
+                  <test>The evaluator shall try to perform at least one of the actions at the times are permitted. This test should pass.</test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        
 	    <f-component id="FMT_SMF.1(2)" name="Specification of Management Functions (Management Server)">
 	      <consistency-rationale>This SFR defines management functions for the TOE for functionality specific to this PP-Module. These functions are defined in addition to what 
 	        the Base-PP defines for its own operation.
@@ -2122,114 +2234,7 @@ configure the number of failed validation attempts required to trigger correctiv
           </f-element>
         </f-component> 
         
-        <f-component id="FMT_MOF.1" name="Server Management of Security Functions Behavior">
-          <consistency-rationale>This SFR defines access restrictions for TOE management functions. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
-          </consistency-rationale>
-          <f-element id="FMT_MOF.1.1">
-            <title>The TSF shall restrict the ability to 
-              <selectables>
-                <selectable>determine the behavior of</selectable>
-                <selectable>disable</selectable>
-                <selectable>enable</selectable>
-                <selectable>modify the behavior of</selectable>
-              </selectables>
-              the functions <h:b>
-              <selectables>
-                <selectable>encryption algorithms used</selectable>
-                <selectable>key sizes used</selectable>
-              </selectables></h:b> to [<h:i>administrators</h:i>].
-            </title>
-         
-            
-            <note role="application"> The intent of this SFR is to define a mechanism to distinguish administrators 
-              (who have the ability to configure the TSF and its data) from users (individuals in the enterprise who have FEs on their systems).<h:br/><h:br/>
-              
-              The TSF does not need to provide roles that are explicitly called ‘administrator’ or ‘user’; the ST must logically define the administrator
-              as a combination of one or more roles that are provided by the TOE. A user as defined by this PP-Module may be either a user that is 
-              specifically assigned an unprivileged role by the TSF or it may be characterized by an individual that lacks an administrator account on the TOE<h:br/><h:br/>
-              
-              The TSF may optionally provide the ability to rely on an external authentication mechanism to identify users in the case of a user requesting distribution
-              of a recovery credential. In this situation, the TOE’s reliance on the Operational Environment is functionally equivalent to the TSF
-              maintaining the user role as defined by FMT_SMR.2.1.<h:br/>
-              
-            </note>
-            <aactivity>
-              <TSS>
-              The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
-              The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.<h:br/><h:br/>
-              
-              
-              </TSS>
-<Guidance>
-              The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
-              including any configuration that needs to be performed on the client for remote administration.<h:br/><h:br/>
-              
-              </Guidance>
-<Tests> The evaluator shall perform the following tests:<h:br/>
-              
-              In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
-              each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
-              conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
-              three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
-              
-              
-            </Tests>
-</aactivity>
-          </f-element>
-        </f-component>
-        
-        
-        
-        <f-component id="FMT_MTD.1" name="Management of TSF Data">
-          <consistency-rationale>This SFR defines access restrictions for management of TSF data. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
-          </consistency-rationale>
-          <f-element id="FMT_MTD.1.1">
-            <title>The TSF shall restrict the ability to 
-              <selectables>
-                <selectable>change default</selectable>
-                <selectable>query</selectable>
-                <selectable>modify</selectable>
-                <selectable>delete</selectable>
-                <selectable>clear</selectable>
-                <selectable><assignable>other operations</assignable></selectable>
-              </selectables> the [<h:i>encryption keys and intermediate values</h:i>] to [<h:i>administrators</h:i>] <h:b>at the following times: 
-              <selectables>
-                <selectable>never</selectable>
-                <selectable>during initial provisioning</selectable>
-                <selectable>during recovery</selectable>
-              </selectables></h:b>.
-            </title>
-            <note role="application"> These restrictions apply to modifications on the enterprise server.
-            </note>
-            <aactivity>
-              <TSS>
-              The evaluator shall examine the TSS to determine that, for each administrative function identified in the guidance documentation;
-              those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
-              the TSS details when changes may be made to the encryption keys and/or intermediate values.<h:br/><h:br/>
-              
-              
-              </TSS>
-<Guidance>The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
-              values are allowed to the administrator at what times.<h:br/><h:br/>
-              
-              </Guidance>
-<Tests> The evaluator shall perform the following tests:<h:br/>
-              
-              <testlist>
-                <test>The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
-                  (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration 
-                  of the TOE). This test should fail.</test>
-                
-                <test>The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</test>
-                
-                <test>The evaluator shall try to perform at least one of the actions at the times that are not permitted. This test should fail.</test>
-                
-                <test>The evaluator shall try to perform at least one of the actions at the times are permitted. This test should pass.</test>
-              </testlist>
-            </Tests>
-</aactivity>
-          </f-element>
-        </f-component>
+
         
         
         <f-component id="FMT_SMR.2" name="Restrictions on Security Roles">
@@ -2464,7 +2469,144 @@ configure the number of failed validation attempts required to trigger correctiv
       </subsection></man-sfrs>
     <opt-sfrs></opt-sfrs>
     <sel-sfrs>
-      <subsection title="Cryptographic Support (FCS)" id="fcs">
+      
+      
+      <subsection title="Cryptographic Support (FCS)" id="fcs_sel">
+      <f-component id="FCS_CKM_EXT.3" name="Cryptographic key generation (Password/Passphrase conditioning)"> 
+        <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
+        <consistency-rationale>This SFR defines a key derivation method based on passphrase conditioning. It uses the FCS_RBG_EXT.1 SFR from the Base-PP in its intended manner 
+          but otherwise does not relate to the Base-PP's functionality.</consistency-rationale>
+        <f-element id="FCS_CKM_EXT.3.1">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall support a password/passphrase of up to 
+            <assignable>maximum password size, positive integer of 64 or more</assignable> 
+            characters used to generate a password authorization factor.
+          </title>
+        </f-element>
+        <f-element id="FCS_CKM_EXT.3.2">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
+            lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
+            and
+            <selectables>
+              <selectable><assignable>other supported special characters</assignable></selectable>
+              <selectable>no other characters</selectable>
+            </selectables>.
+          </title>
+        </f-element>
+        <f-element id="FCS_CKM_EXT.3.3">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall perform [<h:i>Password-based Key Derivation
+              Functions</h:i>] in accordance with a specified cryptographic algorithm [<h:i>HMAC-<selectables>
+                <selectable>SHA-256</selectable>
+                <selectable>SHA-384</selectable>
+                <selectable>SHA-512</selectable>
+              </selectables></h:i>], with <assignable>positive integer of 4096 or more</assignable> iterations, and
+            output cryptographic key sizes <selectables>
+              <selectable>128</selectable>
+              <selectable>256</selectable>
+            </selectables> bits that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
+          </title>
+        </f-element>
+        <f-element id="FCS_CKM_EXT.3.4">
+          <title>
+            <h:b>Refinement:</h:b> The TSF shall not accept passwords less than 
+            <selectables>
+              <selectable>a value settable by the administrator</selectable>
+              <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
+            </selectables>
+            and greater than the maximum password length 
+            defined in FCS_CKM_EXT.3.1.</title>
+        </f-element>
+        <f-element id="FCS_CKM_EXT.3.5">
+          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
+            corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
+          
+          <note role="application"> 
+            This applies to passwords on the enterprise server.<h:br/>
+            
+            The password/passphrase is represented on the host machine as a sequence of characters whose 
+            encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.<h:br/><h:br/>
+            
+            For FCS_CKM_EXT.3.1, the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.<h:br/><h:br/>
+            
+            For FCS_CKM_EXT.3.2, the ST author assigns any other supported characters; if there are no other supported characters, 
+            they should select “no other characters”.<h:br/><h:br/>
+            
+            For FCS_CKM_EXT.3.3, the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
+            key sizes in are made to correspond to the symmetric key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
+            
+            The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
+            KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
+            NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.<h:br/><h:br/>
+            
+            Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
+            a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this PP-Module,
+            a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
+            A significantly higher value is recommended to ensure optimal security.<h:br/><h:br/>
+            
+            For FCS_CKM_EXT.3.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
+            for this component for FMT_SMF.1.1(2). If the minimum length
+            is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
+          <aactivity>
+            <TSS> There are two aspects of this component that require
+              evaluation: passwords/passphrases of the length specified in the requirement (at least
+              64 characters) are supported, and that the characters that are input are subject to the
+              selected conditioning function. These activities are separately addressed in the text
+              below. 
+              
+              <h:br/><h:br/>Support for minimum length: The evaluator shall check to ensure that the 
+              TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
+              
+              
+              <h:br/><h:br/>Support for character set: The evaluator shall check to ensure that the 
+              TSS describes the allowable character set and that it contains the characters listed in the SFR.
+              
+              <h:br/><h:br/>Support for PBKDF: The
+              evaluator shall check that the TSS describes the method by which the password/passphrase
+              is first encoded and then fed to the SHA algorithm. The settings for the algorithm
+              (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
+              are supported by the selections in this component as well as the selections concerning
+              the hash function itself. The evaluator shall verify that the TSS contains a description
+              of how the output of the hash function is used to form the submask that will be input
+              into the function and is the same length of the symmetric key selected in FCS_KYC_EXT.1.
+              <h:br/><h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
+              assurance activities will be performed when doing the assurance activities for the
+              appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
+              in forming the submask that will be used to form the FEK or KEK, that process shall be
+              described in the TSS. <h:br/>h:br/>No explicit testing of the formation of the submask from the
+              input password is required. 
+              
+              <h:br/><h:br/> The ST author shall provide a
+              description in the TSS regarding the salt generation. The evaluator shall confirm that
+              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
+                linkend="bibAppPP"/>). <h:br/><h:br/>
+              
+            </TSS>
+            <Guidance>
+              Support for minimum length: The evaluators shall check the Operational Guidance 
+              to determine that there are instructions on how to generate large passwords/passphrases, and
+              instructions on how to configure the password/passphrase length 
+              to provide entropy commensurate with the keys that the authorization factor is protecting.  <h:br/><h:br/>
+              
+            </Guidance>
+            <Tests> Support for Password/Passphrase characteristics: In addition to the analysis above, 
+              the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <h:br/>
+              <testlist>
+                <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
+                <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.3.1. </test>
+                <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.3.4.
+                  If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
+                <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.3.2.</test>
+              </testlist><h:br/>
+              Conditioning: No explicit testing of the formation of the authorization factor
+              from the input password/passphrase is required.  </Tests>
+          </aactivity>
+        </f-element>
+      </f-component>
+      </subsection>
+    
+      <subsection title="Identification and Authentication (FIA)" id="fia_sel">
       <f-component id="FIA_CHR_EXT.1" name="Challenge Response Recovery Credential">
         <selection-depends req="FIA_REC_EXT.1.1"  ids="CR"/>
         <consistency-rationale>This SFR defines the TOE's implementation of recovery credentials. This functionality does not relate to any behavior defined in the Base-PP.
@@ -2555,142 +2697,10 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-element>
       </f-component>
       
-	      
-	      <f-component id="FCS_CKM_EXT.3" name="Cryptographic key generation (Password/Passphrase conditioning)"> 
-        <selection-depends req="FIA_AUT_EXT.2.1" ids="USEPAS"/>
-	        <consistency-rationale>This SFR defines a key derivation method based on passphrase conditioning. It uses the FCS_RBG_EXT.1 SFR from the Base-PP in its intended manner 
-	          but otherwise does not relate to the Base-PP's functionality.</consistency-rationale>
-        <f-element id="FCS_CKM_EXT.3.1">
-          <title>
-            <h:b>Refinement:</h:b> The TSF shall support a password/passphrase of up to 
-            <assignable>maximum password size, positive integer of 64 or more</assignable> 
-            characters used to generate a password authorization factor.
-          </title>
-        </f-element>
-        <f-element id="FCS_CKM_EXT.3.2">
-          <title>
-            <h:b>Refinement:</h:b> The TSF shall allow passwords to be composed of any combination of upper case characters,
-            lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
-            and
-            <selectables>
-              <selectable><assignable>other supported special characters</assignable></selectable>
-              <selectable>no other characters</selectable>
-            </selectables>.
-          </title>
-        </f-element>
-        <f-element id="FCS_CKM_EXT.3.3">
-          <title>
-            <h:b>Refinement:</h:b> The TSF shall perform [<h:i>Password-based Key Derivation
-              Functions</h:i>] in accordance with a specified cryptographic algorithm [<h:i>HMAC-<selectables>
-              <selectable>SHA-256</selectable>
-              <selectable>SHA-384</selectable>
-              <selectable>SHA-512</selectable>
-              </selectables></h:i>], with <assignable>positive integer of 4096 or more</assignable> iterations, and
-            output cryptographic key sizes <selectables>
-              <selectable>128</selectable>
-              <selectable>256</selectable>
-            </selectables> bits that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
-          </title>
-        </f-element>
-        <f-element id="FCS_CKM_EXT.3.4">
-          <title>
-            <h:b>Refinement:</h:b> The TSF shall not accept passwords less than 
-            <selectables>
-              <selectable>a value settable by the administrator</selectable>
-              <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
-            </selectables>
-            and greater than the maximum password length 
-            defined in FCS_CKM_EXT.3.1.</title>
-        </f-element>
-        <f-element id="FCS_CKM_EXT.3.5">
-          <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
-            corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
-          
-          <note role="application"> 
-            This applies to passwords on the enterprise server.<h:br/>
-            
-            The password/passphrase is represented on the host machine as a sequence of characters whose 
-            encoding depends on the TOE and the underlying OS. This sequence must be conditioned into a string of bits that is to be used as a KEK that is the same size as the FEK.<h:br/><h:br/>
-            
-            For FCS_CKM_EXT.3.1, the ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.<h:br/><h:br/>
-            
-            For FCS_CKM_EXT.3.2, the ST author assigns any other supported characters; if there are no other supported characters, 
-            they should select “no other characters”.<h:br/><h:br/>
-            
-            For FCS_CKM_EXT.3.3, the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
-            key sizes in are made to correspond to the symmetric key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
-            
-            The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
-            KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
-            NIST SP 800-132. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function.<h:br/><h:br/>
-            
-            Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive
-            a key from a password and, therefore, increase the workload of performing a password recovery attack. However, for this PP-Module,
-            a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value.
-            A significantly higher value is recommended to ensure optimal security.<h:br/><h:br/>
-            
-            For FCS_CKM_EXT.3.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
-            for this component for FMT_SMF.1.1(2). If the minimum length
-            is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
-          <aactivity>
-            <TSS> There are two aspects of this component that require
-            evaluation: passwords/passphrases of the length specified in the requirement (at least
-            64 characters) are supported, and that the characters that are input are subject to the
-            selected conditioning function. These activities are separately addressed in the text
-            below. 
-            
-              <h:br/><h:br/>Support for minimum length: The evaluator shall check to ensure that the 
-            TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
-            
-            
-              <h:br/><h:br/>Support for character set: The evaluator shall check to ensure that the 
-            TSS describes the allowable character set and that it contains the characters listed in the SFR.
-            
-              <h:br/><h:br/>Support for PBKDF: The
-            evaluator shall check that the TSS describes the method by which the password/passphrase
-            is first encoded and then fed to the SHA algorithm. The settings for the algorithm
-            (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
-            are supported by the selections in this component as well as the selections concerning
-            the hash function itself. The evaluator shall verify that the TSS contains a description
-            of how the output of the hash function is used to form the submask that will be input
-            into the function and is the same length of the symmetric key selected in FCS_KYC_EXT.1.
-              <h:br/><h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
-            assurance activities will be performed when doing the assurance activities for the
-            appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
-            in forming the submask that will be used to form the FEK or KEK, that process shall be
-            described in the TSS. <h:br/>h:br/>No explicit testing of the formation of the submask from the
-            input password is required. 
-            
-              <h:br/><h:br/> The ST author shall provide a
-            description in the TSS regarding the salt generation. The evaluator shall confirm that
-            the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
-              linkend="bibAppPP"/>). <h:br/><h:br/>
-            
-            </TSS>
-<Guidance>
-            Support for minimum length: The evaluators shall check the Operational Guidance 
-            to determine that there are instructions on how to generate large passwords/passphrases, and
-            instructions on how to configure the password/passphrase length 
-            to provide entropy commensurate with the keys that the authorization factor is protecting.  <h:br/><h:br/>
-            
-</Guidance>
-<Tests> Support for Password/Passphrase characteristics: In addition to the analysis above, 
-            the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <h:br/>
-		  <testlist>
-              <test>Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </test>
-              <test>Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.3.1. </test>
-              <test> Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.3.4.
-                If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
-              <test> Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.3.2.</test>
-            </testlist><h:br/>
-            Conditioning: No explicit testing of the formation of the authorization factor
-            from the input password/passphrase is required.  </Tests>
-</aactivity>
-        </f-element>
-      </f-component>
+
       
       </subsection>
-      <subsection title="Protection of the TSF (FPT)" id="fpt">
+      <subsection title="Trusted Path/Channels (FTP)" id="ftp_sel">
         <f-component id="FTP_TRP.1" name="Trusted Path">
           <selection-depends req="FMT_SMR.2.3" ids="remote"/>
           <consistency-rationale>This SFR uses a subset of the protocols defined in the Base-PP for secure communications. This PP-Module extends the functionality by explicitly
