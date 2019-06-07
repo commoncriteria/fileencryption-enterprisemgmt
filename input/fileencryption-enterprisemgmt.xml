@@ -325,9 +325,9 @@
             using insecure tunneling protocols or the presence of an unencrypted path to disclose keys, key material, or recovery
             material transferred between the endpoint and the Management Server.
           </description>
-          <objective-refer ref="O.TRUSTED_COMMUNICATION_CHANNEL">
-            <rationale>The threat T.UNTRUSTED_COMMUNICATION_CHANNELS is countered by O.TRUSTED_COMMUNICATION_CHANNE as this
-              provides a trusted channel for server endpoint communications.</rationale>
+          <objective-refer ref="O.SECURE_CHANNEL">
+            <rationale>The threat T.UNTRUSTED_COMMUNICATION_CHANNELS is countered by O.SECURE_CHANNEL as this
+              provides a trusted channel for any server endpoint communications.</rationale>
           </objective-refer>
         </threat>
         <threat id="T.UNAUTHORIZED_DATA_ACCESS">
@@ -525,23 +525,11 @@
             
             <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
             If the EM Server generates signatures to request or verify certificates, FCS_COP.1(1) ensures correct cryptographic
-            operation in signature generation process. </description>
+            operation in signature generation process. <h:br/><h:br/>
           
-          <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
-          <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
-          <component-refer ref="FPT_DIT_EXT.1 (from Base-PP)"/>
-          <component-refer ref="FPT_ITT.1"/>
-          <component-refer ref="FTP_TRP.1 (selection-based)"/>
-
-          <consistency-rationale>
-            This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. Specifically, this objective
-            expects the communications between distributed TOE components to be protected in a similar manner to the corresponding Base-PP objective.
-          </consistency-rationale>
-        </SO>
-        <SO id="O.TRUSTED_COMMUNICATION_CHANNEL">
-          <description>FTP_TRP.1 addresses the threat of disclosure of keys, key material, or recovery material transferred between
-            the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
-            by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/><h:br/>
+          The TOE is not required to support remote administration. If it does, FTP_TRP.1 addresses the threat of disclosure of keys, key material, or recovery material transferred between
+          the endpoint or a remote administrator and the Management Server when transmitted over untrusted communication channels
+          by requiring use of IPsec, SSH, TLS, and/or TLS/HTTPS protocols when such data passes through those channels.<h:br/><h:br/>
             
             FTP_DIT_EXT.1, which is modified from its definition in the Base-PP to mandate the use of at least one trusted communications protocol, specifies the
             protocols used to ensure that data in transit over this channel is secured.<h:br/><h:br/>
@@ -552,19 +540,22 @@
             If the TSF generates password authorization factors, the requirements of FCS_PCC_EXT.1 and FCS_CKM_EXT.6 ensure that the password data is not subjected
             to unauthorized disclosure or brute force attack.
           </description>
+          
+          <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
+          <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(3) (from Base-PP)"/>
           <component-refer ref="FCS_RBG_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.1 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.2 (from Base-PP)"/>
           <component-refer ref="FIA_X509_EXT.3 (from Base-PP)"/>
-          <component-refer ref="FTP_DIT_EXT.1 (modified from Base-PP)"/>
-          <component-refer ref="FTP_TRP.1 (selection-based)"/>
+          <component-refer ref="FPT_DIT_EXT.1 (modified from Base-PP)"/>
+          <component-refer ref="FPT_ITT.1"/>
           <component-refer ref="FCS_CKM_EXT.6 (selection-based)"/>
-          
-          
+          <component-refer ref="FTP_TRP.1 (selection-based)"/>
+
           <consistency-rationale>
-            This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. This objective sets the same
-            expectation for any remote management interface included with the TOE.
+            This objective is consistent with the Base-PP because the Base-PP defines the O.PROTECTED_COMMS objective for security of data in transit. Specifically, this objective
+            expects the communications between distributed TOE components to be protected in a similar manner to the corresponding Base-PP objective.
           </consistency-rationale>
         </SO>
 	      
