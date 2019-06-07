@@ -975,7 +975,11 @@
           <f-element id="FCS_CKM_EXT.4.2">
             <title>The TSF shall destroy all keys and key material when no longer needed.</title>
             
-            <note role="application">Application Note: Keys, including intermediate keys and key material that are no longer
+            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              Application Note: Keys, including intermediate keys and key material that are no longer
               needed are destroyed by using an approved method, FCS_CKM_EXT.4.1. Examples of keys are
               intermediate keys, submasks. There may be instances where keys or key material
               that are contained in persistent storage are no longer needed and require destruction. 
@@ -1036,7 +1040,10 @@
                 </selectable>
               </selectables></h:b>. 
             </title>
-            <note role="application">
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
               This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
               use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
@@ -1150,7 +1157,11 @@
                     </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
                 </selectables></h:b>.
             </title>
-            <note role="application">:  This requirement is used in the body of the ST if the ST author chooses to
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This requirement is used in the body of the ST if the ST author chooses to
               use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
             </note>
             <aactivity>
@@ -1279,7 +1290,10 @@
                 </selectable>
               </selectables></h:b>.
             </title>
-            <note role="application">: 
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
               This applies to any key encryption occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
               use AES encryption/decryption for protecting the keys as part of the key chaining approach
@@ -1323,7 +1337,11 @@
                   2^32 for a given secret key]</selectable>
               </selectables></selectable>
             </selectables>.</title>
-            <note role="application">This applies to any IV generation occurring on the enterprise server.</note>
+            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This applies to any IV generation occurring on the enterprise server.</note>
             <aactivity>
               <TSS>
               The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
@@ -1369,7 +1387,10 @@
               </selectables>. 
               
             </title>
-            <note role="application">: 
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
               This applies to any key derivation occurring on the enterprise server.
               This requirement establishes acceptable methods for generating a new random key or an
               existing submask to create a new key along the key chain.</note>
@@ -1449,7 +1470,11 @@
                   </selectables></selectable>
               </selectables>.
             </title>
-            <note role="application">Key Chaining is the method of using multiple layers of
+            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              Key Chaining is the method of using multiple layers of
               encryption keys to ultimately secure the a final key. The number of intermediate keys will
               vary. The ST Author should clearly indicate which portions of the key chain are created and 
               maintained by the enterprise server and which are created and maintained by the endpoint.
@@ -1513,7 +1538,11 @@
                   <selectable>HMAC-SHA-512</selectable>
                 </selectables> to generate an intermediary key</selectable>
               </selectables>.</title>
-            <note role="application">This applies to any submask combining occurring on the enterprise server.
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This applies to any submask combining occurring on the enterprise server.
               This requirement specifies the way that a product may combine the
               various submasks by using either an XOR or an approved SHA-hash. </note>
             <aactivity>
@@ -1582,7 +1611,11 @@
                 </selectables>.
               </title>
           
-          <note role="application">The EM PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
+              <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+                the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+                to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+                
+                The EM PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.2.1, 
             used to log in to the EM in accordance with this SFR.</note>
             <aactivity>
               <TSS>
@@ -1677,7 +1710,11 @@
               
             </title>
             
-            <note role="application">This references the validation of an endpoint user to the server.  These activities are performed by the server.</note>
+            <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This references the validation of an endpoint user to the server.  These activities are performed by the server.</note>
             
           <aactivity>
             <TSS>
@@ -1770,7 +1807,10 @@
                 </selectable>
               </selectables>.
             </title>
-            <note role="application"> 
+            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
               This applies to the authorization of administrators on the enterprise server.<h:br/><h:br/>
               
               FCS_RBG_EXT.1 is in the Application Software Protection Profile.<h:br/><h:br/>
@@ -2125,8 +2165,9 @@
                   </selectables></h:b>.
             </title>
             <note role="application"> 
-              The ST author should combine the selections with those in the FMT_SMF.1 requirement in the <cite linkend="bibAppPP"/> to 
-		     form a single FMT_SMF.1 SFR in the ST.<h:br/><h:br/>
+              This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
               Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1(2) SFR in the File Encryption PP-Module.
@@ -2379,7 +2420,11 @@ configure the number of failed validation attempts required to trigger correctiv
                       that is already encrypted as specified in FCS_COP.1(7) or wrapped as specified in FCS_COP.1(5)</selectable>
                   </selectables>.
             </title>
-            <note role="application">This details the key storage requirements for the enterprise server.
+            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
+              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This details the key storage requirements for the enterprise server.
               The plaintext key storage in non-volatile memory is allowed for
               several reasons. If the keys exist within protected memory that is not user accessible
               on the TOE or OE, the only methods that allow it to play a security relevant role for
@@ -2524,7 +2569,10 @@ configure the number of failed validation attempts required to trigger correctiv
           <title>The TSF shall generate all salts using a RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
             corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.3.3.</title>
           
-          <note role="application"> 
+          <note role="application">This SFR is also defined as a selection-based in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+            the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+            to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            
             This applies to passwords on the enterprise server.<h:br/>
             
             The password/passphrase is represented on the host machine as a sequence of characters whose 
