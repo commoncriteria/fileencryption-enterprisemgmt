@@ -1999,17 +1999,16 @@
                 <selectable>configure number of failed authentication attempts before issuing a key destruction of the FEK(s)</selectable>
                 <selectable>configure the number of authentication attempts that can be made within a 24 hour period</selectable>
                 <selectable>configure the number of failed authentication attempts required to begin blocking subsequent attempts</selectable>
-                <selectable><assignable>ability to enable or disable one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event
-of an excessive number of failed validation attempts,
-<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to perform one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-                <selectable><assignable>ability to authorize whether or not users can perform one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
-configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
-			<assignable>other management functions provided by the TSF</assignable></assignable></selectable>
-              </selectables></h:b>.
+                <selectable>ability to enable or disable one or more of the following functions:
+                  <selectables>
+                    <selectable>configure cryptographic functionality</selectable>
+                    <selectable>change authentication factors</selectable>
+                    <selectable>perform a cryptographic erase of the data by the destruction of FEKs or KEKs protecting the FEKs</selectable>
+                    <selectable>configure the number of failed validation attempts required to trigger corrective behavior</selectable>
+                    <selectable>configure the corrective behavior to issue in the event of an excessive number of failed validation attempts</selectable>
+                    <selectable><assignable>other management functions provided by the TSF</assignable></selectable>
+                  </selectables></selectable>
+                  </selectables></h:b>.
             </title>
             <note role="application"> 
               The ST author should combine the selections with those in the FMT_SMF.1 requirement in the <cite linkend="bibAppPP"/> to 
