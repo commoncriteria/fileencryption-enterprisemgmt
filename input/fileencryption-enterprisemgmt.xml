@@ -187,15 +187,15 @@
           </entry>
 		<entry>
             <term>Registration</term>
-            <description>The intial process of associating and endpoint and/or user with the server. </description>
+            <description>The initial process of associating and endpoint and/or user with the server. </description>
           </entry>
           <entry>
             <term>Submask </term>
             <description>A submask is a bit string that can be generated and stored in a number of ways. </description>
           </entry>
 		<entry>
-            <term>System Identiy </term>
-            <description>A composition of a series of identifiers that may vary, but aim to identiy and associate with a specific system.</description>
+            <term>System Identity </term>
+            <description>A composition of a series of identifiers that may vary, but aim to identity and associate with a specific system.</description>
           </entry>
         </glossary>
         
@@ -338,7 +338,7 @@
             the primary threat of unauthorized disclosure of recovery material. </description>
           <objective-refer ref="O.KEY_MATERIAL_PROTECTION">
             <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.KEY_MATERIAL_PROTECTION as this
-              provides for encyption of keys that protect data.</rationale>
+              provides for encryption of keys that protect data.</rationale>
           </objective-refer>
         </threat>
         <threat id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
@@ -406,7 +406,7 @@
           <description>
             <h:b>Protection of Key Material:</h:b> FPT_KYP_EXT.3 requires that the key material, and optionally recovery credentials
             be uniquely associated with the endpoint at a minimum. Additionally, key material may also be associated with a
-            specific system or user to prevent an attacker from accessing the data on the endpoint by transfering the data
+            specific system or user to prevent an attacker from accessing the data on the endpoint by transferring the data
             in a host with weaker security. A product which distributes keys to meet the requirements of FPT_KYP_EXT.3 will
             additionally prevent an attacker from gaining access to the encrypted data. </description>
           <component-refer ref="FPT_KYP_EXT.3"/>
@@ -869,7 +869,7 @@
               keychain in the TSS and identify each instance when a key is destroyed by this method. In each instance the evaluator 
               shall verify all keys capable of decrypting the target key are destroyed in accordance with a specified key destruction 
               method in FCS_CKM_EXT.4.1 The evaluator shall verify that all of the keys capable of decrypting the target key are not 
-              able to be derived to reestabish the keychain after their destruction. <h:br/><h:br/>
+              able to be derived to reestablish the keychain after their destruction. <h:br/><h:br/>
                             
               </TSS>
               <Guidance> There are a variety of concerns that may prevent or delay key destruction in some cases.<h:br/><h:br/>
@@ -926,7 +926,7 @@
                   Steps #1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, 
 			then the test fails.</test>
                 
-                <test>[Contitional] If new value of a key is selected this test does not apply. 
+                <test>[Conditional] If new value of a key is selected this test does not apply. 
                   Applied to each key held in non-volatile memory and subject to destruction by the TOE. <h:br/>
                   The evaluator shall use special tools (as needed), provided by the TOE developer if necessary, 
 			to ensure the tests function as intended.<h:br/>
@@ -983,7 +983,7 @@
               are multiple situations in which key material is no longer necessary, for example, a wrapped
               key may need to be destroyed when a password is changed. However, there are instances
               when keys are allowed to remain in memory, for example, a device identification key. If a
-              PIN was used for a SmartCard and managed by the TOE, ensuring that the PIN was properly destroyed must be addressed.
+              PIN was used for a smart card and managed by the TOE, ensuring that the PIN was properly destroyed must be addressed.
             </note>
             <aactivity>
               <TSS>              
@@ -1037,7 +1037,7 @@
               </selectables></h:b>. 
             </title>
             <note role="application">
-              This applies to any key wrapping occuring on the enterprise server.
+              This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
               use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
             <aactivity>
@@ -1149,7 +1149,7 @@
               </selectables></h:b>.
             </title>
             <note role="application">: 
-              This applies to any key encryption occuring on the entperise server.
+              This applies to any key encryption occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
               use AES encryption/decryption for protecting the keys as part of the key chaining approach
               that is specified in FCS_KYC_EXT.1.</note>
@@ -1245,7 +1245,7 @@
               </test><test>The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
               encryption operation of the TOE using RSADP, and perform the OAEP
               decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
-              HA’ || X. For each HA’, the evalutor shall take the corresponding A and the
+              HA’ || X. For each HA’, the evaluator shall take the corresponding A and the
               specified hash algorithm and verify that HA' = Hash(A). The evaluator
               should[shall?] also force the TOE to perform some RSA-OAEP decryptions
               where the A value is passed incorrectly, and the evaluator shall verify
@@ -1321,7 +1321,7 @@
                   2^32 for a given secret key]</selectable>
               </selectables></selectable>
             </selectables>.</title>
-            <note role="application">This applies to any IV generation occuring on the enterprise server.</note>
+            <note role="application">This applies to any IV generation occurring on the enterprise server.</note>
             <aactivity>
               <TSS>
               The evaluator shall ensure the TSS describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
@@ -1368,7 +1368,7 @@
               
             </title>
             <note role="application">: 
-              This applies to any key derviation occuring on the enterprise server.
+              This applies to any key derivation occurring on the enterprise server.
               This requirement establishes acceptable methods for generating a new random key or an
               existing submask to create a new key along the key chain.</note>
             <aactivity>
@@ -1381,7 +1381,7 @@
               
               <h:h4>KMD</h:h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
               including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
-              The evaluator will confirm the output is of equivelent strength to the FEK(s) it is protecting.<h:br/><h:br/>
+              The evaluator will confirm the output is of equivalent strength to the FEK(s) it is protecting.<h:br/><h:br/>
               
               </TSS>
               <Guidance> None. <h:br/><h:br/>
@@ -1511,7 +1511,7 @@
                   <selectable>HMAC-SHA-512</selectable>
                 </selectables> to generate an intermediary key</selectable>
               </selectables>.</title>
-            <note role="application">This applies to any submark combining occuring on the enteprise server.
+            <note role="application">This applies to any submask combining occurring on the enterprise server.
               This requirement specifies the way that a product may combine the
               various submasks by using either an XOR or an approved SHA-hash. </note>
             <aactivity>
@@ -1589,8 +1589,8 @@
               how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, 
 		    what OE component is being leveraged).  <h:br/>
               
-              The evaluator shall examine the TSS to determine that funcatoins described in FMT_MTD.1.1 and FMT_SMF.1.1(2) are 
-		    only accisible to an adminitrator after authentication.<h:br/><h:br/>
+              The evaluator shall examine the TSS to determine that functions described in FMT_MTD.1.1 and FMT_SMF.1.1(2) are 
+		    only accessible to an administrator after authentication.<h:br/><h:br/>
               
               
               </TSS>
@@ -1675,7 +1675,7 @@
               
             </title>
             
-            <note role="application">This references the validation of a endpoint user to the server.  These activities are performed by the server.</note>
+            <note role="application">This references the validation of an endpoint user to the server.  These activities are performed by the server.</note>
             
           <aactivity>
             <TSS>
@@ -1744,7 +1744,7 @@
               </selectables> based on 
               <selectables>
                 <selectable id="USEPAS"> a password authorization factor conditioned as defined in FCS_CKM_EXT.3</selectable>
-                <selectable> an external Smartcard factor that is at least the same bit-length as the FEK(s), and is protecting a submask that is 
+                <selectable> an external smart card factor that is at least the same bit-length as the FEK(s), and is protecting a submask that is 
                   <selectables>
                     <selectable>generated by the TOE (using the RBG as specified in FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b>)</selectable>
                     <selectable>generated by the platform</selectable>
@@ -1752,7 +1752,7 @@
                   <selectables>
                     <selectable>3072 bits</selectable>
                     <selectable>4096 bits</selectable>
-                  </selectables> with user presence proved by presentation of the smartcard and 
+                  </selectables> with user presence proved by presentation of the smart card and 
                   <selectables>
                     <selectable>none</selectable>
                     <selectable>an OE defined PIN</selectable>
@@ -1769,7 +1769,7 @@
               </selectables>.
             </title>
             <note role="application"> 
-              This applies to the authorization of administartors on the enteprise server.<h:br/><h:br/>
+              This applies to the authorization of administrators on the enterprise server.<h:br/><h:br/>
               
               FCS_RBG_EXT.1 is in the Application Software Protection Profile.<h:br/><h:br/>
               
@@ -1894,7 +1894,7 @@
             </title>
           </f-element>
             <f-element id="FIA_UAU.1.2">
-              <title>The TSF shall require each <h:b>administrator</h:b> to be successfully authenticated before allowing any other TSF-mediated actions on behlaf of that <h:b>administrator</h:b>.</title>
+              <title>The TSF shall require each <h:b>administrator</h:b> to be successfully authenticated before allowing any other TSF-mediated actions on behalf of that <h:b>administrator</h:b>.</title>
             <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
@@ -1943,7 +1943,7 @@
             </title>
           </f-element>
           <f-element id="FIA_UID.1.2">
-            <title>The TSF shal require each <h:b>administrator</h:b> to be successfully identified before allowing any other TSF-mediated actions on behlaf of that <h:b>administrator</h:b>.</title>
+            <title>The TSF shall require each <h:b>administrator</h:b> to be successfully identified before allowing any other TSF-mediated actions on behalf of that <h:b>administrator</h:b>.</title>
             <note role="application"> This requirement defines the timing of administrator capabilities on the enterprise server.
             </note>
             <aactivity>
@@ -2017,7 +2017,7 @@ configure the number of failed validation attempts required to trigger correctiv
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
               Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1(2) SFR in the File Encryption PP-Module.
-		    The final two assignments provide the ST author the ability to indicate when File Encyrption module functionality
+		    The final two assignments provide the ST author the ability to indicate when File Encryption module functionality
 		    (such as configuration of power saving states) can be configured by the Management Server.<h:br/><h:br/>
               
               The TSF’s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the TOE performing those
@@ -2053,7 +2053,7 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:li>Change Recovery Credentials</h:li>
               <h:li>Define Administrators of the TOE</h:li>
               <h:li>Enable/Disable the use of recovery credentials (end users)</h:li>
-              <h:li>Configure the number of failed authentication attempts before issuing a key destructoin of the FEK(s)</h:li>
+              <h:li>Configure the number of failed authentication attempts before issuing a key destruction of the FEK(s)</h:li>
               <h:li>Configure the number of authentication attempts that can be made in a 24 hour period</h:li>
               <h:li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</h:li>
               <h:li>The ability to enable/disable one or more functions defined in the File Encryption module</h:li>
@@ -2101,7 +2101,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
                   their original authorization factor. </test>
                 
-                <test>The evaluator shall verify that the an administor can configure each of the supported authorization factors attempts limits 
+                <test>The evaluator shall verify that the an administrator can configure each of the supported authorization factors attempts limits 
 			and shall verify that the user is denied access after surpassing that limit. </test>
                 
                 <test>If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
@@ -2129,10 +2129,10 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element id="FMT_MOF.1.1">
             <title>The TSF shall restrict the ability to 
               <selectables>
-                <selectable>determine the behaviour of</selectable>
+                <selectable>determine the behavior of</selectable>
                 <selectable>disable</selectable>
                 <selectable>enable</selectable>
-                <selectable>modify the behaviour of</selectable>
+                <selectable>modify the behavior of</selectable>
               </selectables>
               the functions <h:b>
               <selectables>
@@ -2358,7 +2358,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   <selectables>
                     <selectable>wrapped, as specified in FCS_COP.1(5)</selectable>
                     <selectable>encrypted, as specified in FCS_COP.1(1) <h:b>(from <cite linkend="bibAppPP"/>)</h:b></selectable>
-                    <selectable>the plaintext key is stored in the underlying platofrm's keystore as specified by FCS_STO_EXT.1.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b></selectable>
+                    <selectable>the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b></selectable>
                     <selectable>the plaintext key is stored in a SQL database in the Operational Environment</selectable>
                     <selectable>the plaintext key is not part of the key chain as specified in FCS_KYC_EXT.1.</selectable>
                     <selectable>the plaintext key will no longer provide access to the encrypted data after initial provisioning</selectable>
@@ -2373,7 +2373,7 @@ configure the number of failed validation attempts required to trigger correctiv
                       that is already encrypted as specified in FCS_COP.1(7) or wrapped as specified in FCS_COP.1(5)</selectable>
                   </selectables>.
             </title>
-            <note role="application">This details the key storage requierments for the enteprise server.
+            <note role="application">This details the key storage requirements for the enterprise server.
               The plaintext key storage in non-volatile memory is allowed for
               several reasons. If the keys exist within protected memory that is not user accessible
               on the TOE or OE, the only methods that allow it to play a security relevant role for
@@ -2563,7 +2563,7 @@ configure the number of failed validation attempts required to trigger correctiv
 	          but otherwise does not relate to the Base-PP's functionality.</consistency-rationale>
         <f-element id="FCS_CKM_EXT.3.1">
           <title>
-            <h:b>Refinement:</h:b>The TSF shall support a password/passphrase of up to 
+            <h:b>Refinement:</h:b> The TSF shall support a password/passphrase of up to 
             <assignable>maximum password size, positive integer of 64 or more</assignable> 
             characters used to generate a password authorization factor.
           </title>
@@ -2619,7 +2619,7 @@ configure the number of failed validation attempts required to trigger correctiv
             they should select “no other characters”.<h:br/><h:br/>
             
             For FCS_CKM_EXT.3.3, the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
-            key sizes in are made to correspond to the symetric key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
+            key sizes in are made to correspond to the symmetric key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
             
             The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
             KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
@@ -2640,21 +2640,21 @@ configure the number of failed validation attempts required to trigger correctiv
             selected conditioning function. These activities are separately addressed in the text
             below. 
             
-              <h:br/><h:br/>Support for minimum length:The evaluator shall check to ensure that the 
+              <h:br/><h:br/>Support for minimum length: The evaluator shall check to ensure that the 
             TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
             
             
               <h:br/><h:br/>Support for character set: The evaluator shall check to ensure that the 
             TSS describes the allowable character set and that it contains the characters listed in the SFR.
             
-              <h:br/><h:br/>Support for PBKDF:The
+              <h:br/><h:br/>Support for PBKDF: The
             evaluator shall check that the TSS describes the method by which the password/passphrase
             is first encoded and then fed to the SHA algorithm. The settings for the algorithm
             (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
             are supported by the selections in this component as well as the selections concerning
             the hash function itself. The evaluator shall verify that the TSS contains a description
             of how the output of the hash function is used to form the submask that will be input
-            into the function and is the same length of the symetric key selected in FCS_KYC_EXT.1.
+            into the function and is the same length of the symmetric key selected in FCS_KYC_EXT.1.
               <h:br/><h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
             assurance activities will be performed when doing the assurance activities for the
             appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
