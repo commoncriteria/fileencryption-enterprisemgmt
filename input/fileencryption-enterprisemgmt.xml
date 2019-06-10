@@ -1395,7 +1395,10 @@
 	          FCS_RBG_EXT.1 Random Bit Generation Services</dependencies>
 	        
           <f-element id="FCS_KDF_EXT.1.1">
-            <title>
+            <title>test
+              
+              <!--
+              
               The TSF shall <selectables>
                 <selectable>not derive keys</selectable>
                 <selectable>accept
@@ -1417,6 +1420,8 @@
                   equivalent security strength (in number of bits) to the [FEK(s)]
                 </selectable>
               </selectables>. 
+              
+              -->
               
             </title>
             <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
