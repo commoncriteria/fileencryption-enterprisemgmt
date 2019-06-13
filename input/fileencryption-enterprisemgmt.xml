@@ -1812,15 +1812,15 @@
             used to log in to the EM in accordance with this SFR.</note>
             <aactivity>
               <TSS>
-              
-              The evaluator shall examine the TSS to review a high-level description if multiple submasks are used within the TOE,
-              how the submasks are validated (e.g., each submask validated before combining, once combined validation takes place, 
-		    what OE component is being leveraged).  <h:br/>
-              
-              The evaluator shall examine the TSS to determine that functions described in FMT_MTD.1.1 and FMT_SMF.1.1(2) are 
-		    only accessible to an administrator after authentication.<h:br/><h:br/>
-              
-              
+                
+                Conditional: <h:br/>If the TOE performs validation, the evaluator shall examine the TSS to determine which authorization factors support validation.<h:br/><h:br/>
+                Tthe evaluator shall examine the TSS to review a high-level description of how how the submasks are validated. If multiple submasks are used within the TOE, 
+                the TSS shall describe how each is validated(e.g., each submask validated before combining, once combined validation takes place). <h:br/><h:br/>
+                
+                Conditional: <h:br/>If the platform handles the validation the TOE shall describe the enviroments that can be leveraged with the TOE and how each claims to perform validation,
+                the evaluator shall ensure that none of the platform validation mechanisms weaken the key chain of the product.<h:br/><h:br/>
+                
+                
               </TSS>
 <Guidance>If the validation functionality is configurable, the evaluator shall examine the operational guidance
               to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<h:br/><h:br/> 
@@ -1828,16 +1828,8 @@
               </Guidance>
 <Tests>The evaluator shall perform the following tests:<h:br/>
               <testlist>
-		      <test>
-              The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
-              The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
-              protected data. If the limit mechanism includes any “lockout” period, the time period tested should include at least one such
-              period. Then the evaluator will verify that the TOE behaves as described in the TSS. 
-		      </test>
-		      <test>
-              For each validated authorization factor, ensure that when the admin provides an incorrect authorization factor,
-              the TOE prevents the access.
-		      </test>
+                <Tests>There are no test activities for this requirement.
+                </Tests>
 		      </testlist>
 		    
             </Tests>
@@ -2094,7 +2086,7 @@
               <selectables>
                 <selectable>receive assertion of the user’s validity from: 
                   <assignable>Operational Environment component responsible for user authentication</assignable></selectable>
-                <selectable>provide  authorization</selectable>
+                <selectable id="APPAUTH">provide  authorization</selectable>
               </selectables> based on 
               <selectables>
                 <selectable id="USEPAS"> a password authorization factor conditioned as defined in FCS_CKM_EXT.6</selectable>
@@ -3025,6 +3017,72 @@ configure the number of failed validation attempts required to trigger correctiv
           </aactivity>
         </f-element>
       </f-component>
+        
+        
+        <f-component id="fcs_val_ext.2(1)" name="Validation Remediation(Server Administrator)">
+          <selection-depends req="FIA_AUT_EXT.1.1" ids="ADMINAUTH"/>
+          <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can validate the correctness of data input to it 
+            and take security-relevant action if the data is invalid.
+          </consistency-rationale>
+          
+          <comp-lev> requires the TSF to specify what data is being validated, how the validation is performed, and what the TOE’s response is in the event of a validation failure.</comp-lev>
+          <management>The following actions could be considered for the management functions in FMT: <h:ul>
+            <h:li>Configuration of the number of failed validation attempts required to trigger corrective behavior.</h:li>
+            <h:li>Configuration of the corrective behavior to issue in the event of an excessive number of failed validation attempts.</h:li>
+          </h:ul>
+          </management>
+          <audit>The following actions should be auditable if FAU_GEN Security audit data
+            generation is included in the PP/ST:<h:ul>
+              <h:li>Minimal: Change to configuration of validation function behavior.</h:li>
+              <h:li>Minimal: Triggering of excessive validation failure response behavior.</h:li>
+            </h:ul>
+          </audit>
+          <dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
+          
+          
+          <f-element id="FCS_VAL_EXT.2.1(1)">
+            <title>The TSF shall <h:b>
+              <selectables linebreak="yes">
+                <selectable>institute a delay such that only <assignable>ST author specified number or configurable range of attempts</assignable> 
+                  validation attempts can be made within a 24 hour period</selectable>
+                <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
+                  of consecutive failed validation attempts</selectable>
+              </selectables> </h:b>.
+            </title>
+            
+            <note role="Application">
+              This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
+              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
+              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              
+              This requirement is used in the body of the ST if the ST author chooses "provide user authorization" in FIA_AUT_EXT.1.1.</note>          
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS to determine which remediation options are supported for which authentication options.<h:br/><h:br/>
+              </TSS>
+              
+              <Guidance>If the remediation functionality is configurable, the evaluator shall examine the operational guidance
+                to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<h:br/><h:br/>
+                
+              </Guidance>
+              <Tests>The evaluator shall perform the following tests: <h:br/>
+                
+                <testlist>
+                  <test>The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
+                    For each authentication factor supported, the evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
+                    protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such
+                    period. Then the evaluator will verify that the TOE behaves as described in the TSS.</test>
+                  
+                </testlist>
+              </Tests>
+            </aactivity>
+            
+          </f-element>
+          
+          
+        </f-component>
+        
+        
       </subsection>
     
       <subsection title="Identification and Authentication (FIA)" id="fia_sel">
