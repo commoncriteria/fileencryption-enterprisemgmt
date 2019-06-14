@@ -1816,12 +1816,12 @@
             <aactivity>
               <TSS>
                 
-                Conditional: <h:br/>If the TOE performs validation, the evaluator shall examine the TSS to determine which authorization factors support validation.<h:br/><h:br/>
-                Tthe evaluator shall examine the TSS to review a high-level description of how how the submasks are validated. If multiple submasks are used within the TOE, 
-                the TSS shall describe how each is validated(e.g., each submask validated before combining, once combined validation takes place). <h:br/><h:br/>
+                Conditional: <h:br/>If 'validating' is selected, the evaluator shall examine the TSS to determine that it states which authorization factors support validation.<h:br/><h:br/>
+                The evaluator shall also examine the TSS to ensure that it includes a high-level description of how how the submasks are validated. If multiple submasks are used within the TOE, 
+                the evaluator shall confirm that the TSS describes how each is validated (e.g., each submask validated before combining, once combined validation takes place). <h:br/><h:br/>
                 
-                Conditional: <h:br/>If the platform handles the validation the TOE shall describe the enviroments that can be leveraged with the TOE and how each claims to perform validation,
-                the evaluator shall ensure that none of the platform validation mechanisms weaken the key chain of the product.<h:br/><h:br/>
+                Conditional: <h:br/>If 'receiving assertion of the subject's validaity' is selected, the evaluator shall examine the TSS to verify that it describes the enviroments that can be leveraged with the TOE 
+                and how each claims to perform validation. The evaluator shall also ensure that none of the stated platform validation mechanisms weaken the key chain of the product.<h:br/><h:br/>
                 
                 
               </TSS>
@@ -1829,12 +1829,9 @@
               to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<h:br/><h:br/> 
               
               </Guidance>
-<Tests>The evaluator shall perform the following tests:<h:br/>
-              <testlist>
-                <Tests>There are no test activities for this requirement.
-                </Tests>
-		      </testlist>
-		    
+<Tests>
+There are no test activities for this requirement.
+
             </Tests>
 </aactivity>
             
@@ -2085,7 +2082,7 @@
                 This SFR is evaluated through the activities defined for FCS_VAL_EXT.1(2).<h:br/><h:br/>
               </TSS>
               
-              <Guidance>This SFR is evaluated through the activities defined for FCS_VAL_EXT.1(2). </Guidance>
+              <Guidance>This SFR is evaluated through the activities defined for FCS_VAL_EXT.1(2).<h:br/><h:br/> </Guidance>
               <Tests>This SFR is evaluated through the activities defined for FCS_VAL_EXT.1(2).
               </Tests>
             </aactivity>
@@ -3082,7 +3079,7 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:li>Minimal: Triggering of excessive validation failure response behavior.</h:li>
             </h:ul>
           </audit>
-          <dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
+          <dependencies>FCS_VAL_EXT.1 Validation</dependencies>
           
           
           <f-element id="FCS_VAL_EXT.2.1(1)">
