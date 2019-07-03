@@ -54,7 +54,7 @@
     </section>
     
     <section id="glossary" title="Terms">
-      The following sections provide both Common Criteria and technology terms used in this PP-Module. 
+      The following section provide both Common Criteria and technology terms used in this PP-Module. 
       
       <subsection title="Common Criteria Terms">
         <glossary>
@@ -207,7 +207,7 @@
     an FE solution. The EM function is designed to augment the claims made in the File Encryption PP-Module;
     therefore, this functionality is intended to be evaluated in conjunction with a TOE that also
     claims conformance to that module at minimum.
-    The following sections provide an overview of the security functionality of this PP-module.
+    The following section provides an overview of the security functionality of this PP-module.
       <subsection title="TOE Boundary" id="TOEboundary">
         <h:p>
           The application, which consists of the software provided by its vendor,
@@ -630,7 +630,7 @@
       
       <sec-func-req-dir>
         The TOE is expected to rely on some of the security functions implemented by the application as a whole and evaluated against <cite linkend="bibAppPP"/>.
-        The following sections describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.       
+        The following section describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.       
       </sec-func-req-dir>
             
       <modified-sfrs>
