@@ -13,7 +13,7 @@
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2019-06-26</date>
+      <date>2019-07-03</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -209,7 +209,7 @@
     claims conformance to that module at minimum.
     The following section provides an overview of the security functionality of this PP-module.
       <subsection title="TOE Boundary" id="TOEboundary">
-        <h:p>
+         <h:p>
           The application, which consists of the software provided by its vendor,
           is installed onto the platform(s) it operates on.  It executes on the platform, which
           may be an operating system, hardware environment, 
@@ -220,21 +220,15 @@
           platform layers that are abstracted away.
           Some evaluation activities are specific to the particular platform
           on which the application runs, in order to provide precision and
-          repeatability. The only platforms currently recognized by <cite linkend="bibAppPP"/> are those specified in SFR Evaluation Activities.
+          repeatability. The only platforms currently recognized by <cite linkend="bibAppPP"/> and this module are those specified in SFR Evaluation Activities.
           To test on a platform for which there are no EAs, a Vendor should contact NIAP with recommended EAs.
           NIAP will determine if the proposed platform is appropriate for the PP and accept, reject,
           or develop EAs as necessary in coordination with the technical community.
         </h:p><h:p>	
-          Applications include a diverse range of software such as office suites, thin
-          clients, <h:abbr title="Portable Document Format">PDF</h:abbr> readers, downloadable
-          smartphone apps, and apps running in a cloud container. The TOE includes 
+          The TOE includes 
           any software in the application installation package, even those pieces that may 
           extend or modify the functionality of the underlying platform, such as kernel drivers.  
-          Many platforms come bundled with applications
-          such as web browsers, email clients and media players and these too
-          should be considered subject to the requirements defined in this
-          document although the expectation of formal Common Criteria evaluation
-          depends upon the national scheme.  <h:abbr title="Basic Input/Output
+          <h:abbr title="Basic Input/Output
             System">BIOS</h:abbr> and other firmware, the operating system kernel,
           and other systems software (and drivers) provided as part of the
           platform are outside the scope of this document.  
