@@ -733,7 +733,6 @@
           </f-component>
         </subsection>
         </modified-sfrs>
-      <additional-sfrs></additional-sfrs>
       <con-toe> When this <abbr linkend="PP-Module"/> is used to extend the App PP, the TOE type for the overall TOE is still a software application. 
         The TOE boundary is simply extended to include the enterprise management functionality for software file encryption that the application performs.</con-toe>
       
