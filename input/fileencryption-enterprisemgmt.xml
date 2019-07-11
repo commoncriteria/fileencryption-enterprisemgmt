@@ -221,11 +221,7 @@
       
     </section>
     <section title="Compliant Targets of Evaluation" id="complianttargets">     
-    The target of evaluation for this PP-Module is the Enterprise Management (EM) function of
-    an FE solution. The EM function is designed to augment the claims made in the File Encryption PP-Module;
-    therefore, this functionality is intended to be evaluated in conjunction with a TOE that also
-    claims conformance to that module at minimum.
-    The following section provides an overview of the security functionality of this PP-module.
+   The target of evaluation for this PP-Module is the Enterprise Management (EM) function of a FE solution. The EM function is designed to augment the claims made in the File Encryption PP-Module; therefore, this functionality is intended to be evaluated in conjunction with a TOE that also claims conformance to a PP-Configuration that includes the FE PP-Module. The following section provides an overview of the security functionality of this PP-module.
       <subsection title="TOE Boundary" id="TOEboundary">
          <h:p>
           The application, which consists of the software provided by its vendor,
