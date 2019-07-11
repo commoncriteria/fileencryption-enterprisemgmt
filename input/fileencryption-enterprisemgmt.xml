@@ -336,14 +336,14 @@
               provides a trusted channel for any server endpoint communications.</rationale>
           </objective-refer>
         </threat>
-        <threat id="T.UNAUTHORIZED_DATA_ACCESS">
+        <threat id="T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT">
           <description>
              An attacker
             accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
             by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
             the primary threat of unauthorized disclosure of recovery material. </description>
           <objective-refer ref="O.ENTERPRISE_KEY_PROTECTION">
-            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS is countered by O.ENTERPRISE_KEY_PROTECTION as this
+            <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT is countered by O.ENTERPRISE_KEY_PROTECTION as this
               provides for encryption of keys that protect data.</rationale>
           </objective-refer>
         </threat>
@@ -756,7 +756,7 @@
       </con-mod>
       <con-mod id="T.UNTRUSTED_COMMUNICATION_CHANNELS">This threat is a variation on T.NETWORK_ATTACK and T.NETWORK_EAVESDROP defined in the Base-PP. 
       The threat of untrusted communication channels allows for exploitation of the TSF in different ways, depending on how the lack of trust is manifested.</con-mod>
-      <con-mod id="T.UNAUTHORIZED_DATA_ACCESS">This threat is a variation on T.PHYSICAL_ACCESS defined in the Base-PP.
+      <con-mod id="T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT">This threat is a variation on T.PHYSICAL_ACCESS defined in the Base-PP.
         In this case, the "sensitive data at rest" is the data that the TOE is intended to protect.</con-mod>
       <con-mod id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">This threat is a variation on T.PHYSICAL_ACCESS defined in the Base-PP.
         In this case, the "sensitive data at rest" is the data that the TOE is intended to protect.</con-mod>
