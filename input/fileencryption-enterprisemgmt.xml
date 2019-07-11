@@ -3407,7 +3407,7 @@ configure the number of failed validation attempts required to trigger correctiv
       <entry id="bibAppPP">
         <tag>AppPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application Software</h:a>
+          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application Software, Version 1.3</h:a>
         </description>
       </entry>
       <entry id="FIPS140-2">
