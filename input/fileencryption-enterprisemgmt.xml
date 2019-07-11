@@ -137,6 +137,13 @@
               to the TOE to establish that the user is in the community authorized to access  the requested material.
               </description>
           </entry>
+		 <entry>
+            <term>Entropy Source </term>
+            <description>This cryptographic function provides a seed for a random bit generator by
+              accumulating the outputs from one or more noise sources. The functionality includes a
+              measure of the minimum work required to guess a given output and tests to ensure that
+              the noise sources are operating properly. </description>
+          </entry>
           <entry>
             <term>Key Sanitization </term>
             <description>A method of sanitizing encrypted data by securely overwriting the key, as described in the key destruction requirement, that was encrypting the data. 
@@ -190,6 +197,11 @@
           <entry>
             <term>Protected Data</term>
             <description>This refers to all files designated by the user for encryption. </description>
+          </entry>
+		<entry>
+            <term>Random Bit Generator (RBG) </term>
+            <description>A cryptographic function composed of an entropy source and DRBG that is
+              invoked for random bits needed to produce keying material.</description>
           </entry>
 		<entry>
             <term>Registration</term>
