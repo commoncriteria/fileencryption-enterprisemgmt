@@ -122,10 +122,6 @@
             <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
             </description>
           </entry>
-          <entry>
-            <term>Target of Evaluation </term>
-            <description> A set of software, firmware and/or hardware possibly accompanied by guidance. [CC1]</description>
-          </entry>
         </glossary>
       </subsection>
       
