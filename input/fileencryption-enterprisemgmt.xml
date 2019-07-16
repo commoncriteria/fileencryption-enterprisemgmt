@@ -31,7 +31,9 @@
     The use case for a product conforming to the FE module is to protect data at rest on a device
     that is lost or stolen while powered off without any prior access by an adversary. The use case
     where an adversary obtains a device that is in a powered state and is able to make modifications
-    to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. <h:br/><h:br/>
+    to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. The module
+	    does contain protections to mitigate the potential for attack with a powered on device, but they are not sufficient 
+	    to protect data from a skilled adversary with physical access.<h:br/><h:br/>
       
       While that use case is still true for the Enterprise Management PP-Module, this PP-module also
       expands the use case to include protecting the communications between the Enterprise
