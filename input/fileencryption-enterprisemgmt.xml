@@ -2770,10 +2770,10 @@ configure the number of failed validation attempts required to trigger correctiv
             <title>The TSF shall protect TSF data from [<h:i>disclosure, modification</h:i>] when it is transmitted between separate parts
               of the TOE through the use of <h:b>
               <selectables>
-                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
+                <selectable id="IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
                 <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b></selectable>
-                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
-                <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
+                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
+                <selectable>SSH as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Extended Package for Secure Shell</h:i></h:a></selectable>
               </selectables></h:b>.
             </title>
             <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
@@ -3300,11 +3300,11 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element id="FTP_TRP.1.1">
             <title>The TSF shall <h:b>be capable of using 
               <selectables>
-                <selectable id="IPSEC">IPsec by including the PP-Module for VPN Client</selectable>
+             <selectable id="IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
                 <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b></selectable>
-                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
-                <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
-              </selectables>
+                <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
+                <selectable>SSH as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Extended Package for Secure Shell</h:i></h:a></selectable>
+                </selectables>
               to</h:b> provide a communication path between itself and <h:b>authorized remote administrators</h:b> that is logically distinct from other communication paths
               and provides assured identification of its end points and protection of the communicated data from [<h:i>modification, disclosure</h:i>].
             </title>
