@@ -731,6 +731,15 @@
                     set by the evaluator is not found.
                   </test>
                 </testlist>
+			  <subaactivity platform="ios">
+          If "encrypt all transmitted data" is selected, the evaluator shall ensure that the
+          application's Info.plist file does not contain the NSAllowsArbitraryLoads or
+          NSExceptionAllowsInsecureHTTPLoads keys, as these keys disable iOS's Application
+          Transport Security feature.
+          <!-- TODO: Check the strength of iOS's App Transport Security enforcement (if apps
+               can't easily bypass it, then we can skip performing Tests 1, 2, 3 on iOS when
+               App Transport Security isn't explicitly disabled (assuming use of iOS 9 or greater)). -->
+        </subaactivity>
                   </Tests>
               </aactivity>
             </f-element>
