@@ -1064,31 +1064,31 @@
                 </selectable>
               </selectables></h:b>. 
             </title>
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
               use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
             <aactivity>
               <TSS>
-              Conditional: If 'not perform key wrapping' was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
-              Conditional: If 'use platform provided functionality' was selected, then the evaluator shall examine the TSS to verify that it
+              Conditional: If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
+                
+              Conditional: If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
               describes how the FEK encryption/decryption is invoked. <h:br/>
-              Conditional: If 'implement functionality' was selected, the evaluator shall check that the TSS includes
+                
+              Conditional: If implement functionality was selected, the evaluator shall check that the TSS includes
               a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
               selected encryption function includes the key sizes and modes of operations as specified in the selections above.
               The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
               included in the selections made for ‘cryptographic algorithm’ and ‘list of standards’. <h:br/><h:br/>
               
-              The evaluator shall examine the TSS to ensure that the points at which key wrapping and decryption occurs are described,
-              and that the complete data path for key wrapping is described. The evaluator checks that this description is consistent
-              with the relevant parts of the TSS.<h:br/><h:br/> 
-              
-              Assessment of the complete data path for key wrapping includes confirming that the TSS describes the data flow from the
-              device’s host interface to the device’s non-volatile memory storing the data. 
-              
+              The evaluator shall verify the TSS includes a description of the key wrap function(s)
+              and shall verify the key wrap uses an approved key wrap algorithm according to the
+              appropriate specification.<h:br/><h:br/>
+             
+             h:h4>KMD</h:h4>
+                The evaluator shall review the KMD to ensure that all keys are wrapped using the
+                approved method and a description of when the key wrapping occurs.<h:br/><h:br/>
               
               <h:br/><h:br/>
               </TSS>
@@ -1211,9 +1211,7 @@
                     </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
                 </selectables></h:b>.
             </title>
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This requirement is used in the body of the ST if the ST author chooses to
               use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
@@ -1344,9 +1342,7 @@
                 </selectable>
               </selectables></h:b>.
             </title>
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application"> 
               
               This applies to any key encryption occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
@@ -1466,9 +1462,7 @@
               </selectables>. 
               
             </title>
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This applies to any key derivation occurring on the enterprise server.
               This requirement establishes acceptable methods for generating a new random key or an
@@ -1731,9 +1725,7 @@
                   <selectable>HMAC-SHA-512</selectable>
                 </selectables> to generate an intermediate key</selectable>
               </selectables>.</title>
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This applies to any submask combining occurring on the enterprise server.
               This requirement specifies the way that a product may combine the
@@ -1849,9 +1841,7 @@
                 </selectables> </h:b>.
               </title>
           -->
-              <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-                the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-                to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+              <note role="application">
                 
                 This PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.1.1, 
             used to log in to the EM in accordance with this SFR.</note>
@@ -2040,9 +2030,7 @@ There are no test activities for this requirement.
             </title>
             -->
             
-            <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This references the validation of an endpoint user to the server. These activities are performed by the server.</note>
             
@@ -2116,11 +2104,6 @@ There are no test activities for this requirement.
               </selectables>.
             </title>
             
-            <note role="Application">
-              This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
-              </note>          
             <aactivity>
               <TSS>
                 This SFR is evaluated through the activities defined for FCS_VAL_EXT.1(2).<h:br/><h:br/>
@@ -3142,9 +3125,6 @@ configure the number of failed validation attempts required to trigger correctiv
             </title>
             
             <note role="Application">
-              This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-              the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
               
               This requirement must be claimed by the TOE if the ST author chooses "provide user authorization" in FIA_AUT_EXT.1.1.</note>          
             <aactivity>
