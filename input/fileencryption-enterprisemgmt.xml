@@ -6,14 +6,14 @@
     <ReferenceTable>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2019-06-26</PPPubDate>
+      <PPPubDate>2019-07-29</PPPubDate>
      <Keywords>file encryption; encryption</Keywords>
       </ReferenceTable>
   </PPReference>
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2019-07-11</date>
+      <date>2019-07-29</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -21,11 +21,11 @@
     <section title="Overview" id="ppoverview"> 
 	 The scope of the File Encryption Enterprise Management <abbr linkend="PP-Module"/> is to describe the security functionality of a file encryption 
 	    enterprise management product in terms of [<abbr linkend="CC"/>] and to define functional and assurance requirements for such products. 
-      This <abbr linkend="PP-Module"/> is intended for use with the following <abbr linkend="Base-PP"/><h:br/><h:br/> 
+      This <abbr linkend="PP-Module"/> is intended for use with the following Base-PP<h:br/><h:br/> 
       <h:ul>
         <h:li>Application Software Protection Profile, Version 1.3</h:li>
       </h:ul>
-      <h:br/> This <abbr linkend="Base-PP"/>s is valid because a file encryption enterprise management product is
+      <h:br/> This Base-PP is valid because a file encryption enterprise management product is
       a 3rd party application.    
 	    
     
@@ -276,13 +276,16 @@
               <h:ul></h:ul><h:li>PP-Module for VPN Client, Version 2.1</h:li>
               <h:li>PP-Module for File Encryption, Version 2.0</h:li>
           </h:p>
+          <h:br/><h:br/>
+          If claiming compliance to a PP-Configuration that includes multiple PP-Modules, the ST author must ensure any duplicative SFRs are iterated using unique identifiers. This will allow the reader to easily determine which iteration applies to each TOE component.
+          
         </description>
       </cclaim>
       <cclaim title="Package Claims">
         <description>This <abbr linkend="PP-Module"/> is TLS Package Version 1.1
           Conformant.</description>
       </cclaim>
-    </cclaims>
+      </cclaims>
   </chapter>
   
   <chapter title="Security Problem Description" id="spd"> The primary asset that is being protected
@@ -1399,9 +1402,7 @@
                     2^32 for a given secret key</selectable>
                 </selectables></selectable>
             </selectables>.</title>
-            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
-              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This applies to any IV generation occurring on the enterprise server.</note>
             <aactivity>
@@ -1588,9 +1589,7 @@
                   </selectables></selectable>
               </selectables>.
             </title>
-            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
-              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               Key Chaining is the method of using multiple layers of
               encryption keys to ultimately secure the a final key. The number of intermediate keys will
@@ -2194,9 +2193,7 @@ There are no test activities for this requirement.
                 </selectable>
               </selectables>.
             </title>
-            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
-              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application">
               
               This applies to the authorization of administrators on the enterprise server.<h:br/><h:br/>
               
@@ -2567,9 +2564,6 @@ There are no test activities for this requirement.
                   </selectables></h:b>.
             </title>
             <note role="application"> 
-              This SFR is also defined in PP-Module for File Encryption. 
-              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
               Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1(2) SFR in the File Encryption PP-Module.
@@ -2833,9 +2827,7 @@ configure the number of failed validation attempts required to trigger correctiv
                       that is already encrypted as specified in FCS_COP.1(7) or wrapped as specified in FCS_COP.1(5)</selectable>
                   </selectables>.
             </title>
-            <note role="application">This SFR is also defined in PP-Module for File Encryption. 
-              The ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-              to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
+            <note role="application"> 
               
               This details the key storage requirements for the enterprise server.
               The plaintext key storage in non-volatile memory is allowed for
