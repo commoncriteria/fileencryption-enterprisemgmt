@@ -746,6 +746,7 @@
           </f-component>
         </subsection>
         </modified-sfrs>
+    <additional-sfrs></additional-sfrs>
       <con-toe> When this <abbr linkend="PP-Module"/> is used to extend the App PP, the TOE type for the overall TOE is still a software application. 
         The TOE boundary is simply extended to include the enterprise management functionality for software file encryption that the application performs.</con-toe>
       
@@ -2233,8 +2234,8 @@ There are no test activities for this requirement.
               used, the submasks produced must be combined using FCS_SMC_EXT.1.<h:br/><h:br/>
 		    
             </note>
-            <aactivity>The assurance activities for this component will be driven by the selections
-              made by the ST author. This section describes assurance activities for all possible
+            <aactivity>The evaluation activities for this component will be driven by the selections
+              made by the ST author. This section describes evaluation activities for all possible
               selections in an ST; it should be understood that if a capability is not selected in
               the ST, the noted assurance activity does not need to be performed. <h:br/><h:br/>
               
@@ -2799,7 +2800,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
                 </test>
               </testlist>
-              Further assurance activities are associated with the specific protocols.
+              Further evaluation activities are associated with the specific protocols.
               
             
             </Tests>
@@ -3019,10 +3020,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <title>The TSF shall generate all salts using an RBG that meets FCS_RBG_EXT.1 <h:b>(from <cite linkend="bibAppPP"/>)</h:b> and with entropy 
             corresponding to the security strength selected for PBKDF in FCS_CKM_EXT.6.3.</title>
           
-          <note role="application">This SFR is also defined as a selection-based SFR in PP-Module for File Encryption. If the File Encryption portion of the TOE claims this SFR,  
-            the ST author should iterate these SFRs by using "/FE" and "/EM" as unique identifiers for the iterations. This will allow the reader
-            to easily determine which iteration applies to each TOE component.<h:br/><h:br/> 
-            
+          <note role="application">
             This applies to passwords on the enterprise server.<h:br/>
             
             The password/passphrase is represented on the host machine as a sequence of characters whose 
@@ -3034,7 +3032,7 @@ configure the number of failed validation attempts required to trigger correctiv
             they should select “no other characters”.<h:br/><h:br/>
             
             For FCS_CKM_EXT.6.3, the ST author selects the parameters based on the PBKDF used by the TSF. The key cryptographic
-            key sizes in are made to correspond to the symmetric key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
+            key sizes in FCS_CKM_EXT.6.3 are made to correspond to the KEK key sizes selected in FCS_KYC_EXT.1.<h:br/><h:br/>
             
             The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into the
             KEK. Conditioning is performed using one of the identified hash functions in accordance with the process described in
@@ -3047,7 +3045,9 @@ configure the number of failed validation attempts required to trigger correctiv
             
             For FCS_CKM_EXT.6.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
             for this component for FMT_SMF.1.1(2). If the minimum length
-            is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  </note>
+            is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  
+          
+            <h:br/><h:br/>This requirement is selection dependent on FIA_AUT_EXT.1.1.</note>
           <aactivity>
             <TSS> There are two aspects of this component that require
               evaluation: passwords/passphrases of the length specified in the requirement (at least
@@ -3062,22 +3062,28 @@ configure the number of failed validation attempts required to trigger correctiv
               <h:br/><h:br/>Support for character set: The evaluator shall check to ensure that the 
               TSS describes the allowable character set and that it contains the characters listed in the SFR.
               
-              <h:br/><h:br/>Support for PBKDF: The
+              <h:br/><h:br/>Support for PBKDF: The evaluator shall examine the TSS to ensure
+              that the formation of all KEKs or FEKs (as decided in the FCS_CKM_EXT.3 selection) is
+              described and that the key sizes match that described by the ST author. 
+              
+              
+              <h:br/><h:br/>The
               evaluator shall check that the TSS describes the method by which the password/passphrase
               is first encoded and then fed to the SHA algorithm. The settings for the algorithm
               (padding, blocking, etc.) shall be described, and the evaluator shall verify that these
               are supported by the selections in this component as well as the selections concerning
               the hash function itself. The evaluator shall verify that the TSS contains a description
               of how the output of the hash function is used to form the submask that will be input
-              into the function and is the same length of the symmetric key selected in FCS_KYC_EXT.1.
+              into the function and is the same length of the KEK selected in FCS_KYC_EXT.1.
+              
               <h:br/><h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
-              assurance activities will be performed when doing the assurance activities for the
+              evaluation activities will be performed when doing the evaluation activities for the
               appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
               in forming the submask that will be used to form the FEK or KEK, that process shall be
               described in the TSS. <h:br/>h:br/>No explicit testing of the formation of the submask from the
               input password is required. 
               
-              <h:br/><h:br/> The ST author shall provide a
+              <h:br/><h:br/>FCS_CKM_EXT.6.2: The ST author shall provide a
               description in the TSS regarding the salt generation. The evaluator shall confirm that
               the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <cite
                 linkend="bibAppPP"/>). <h:br/><h:br/>
@@ -3344,7 +3350,7 @@ configure the number of failed validation attempts required to trigger correctiv
                     The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
                   </test>
                 </testlist>
-                Further assurance activities are associated with the specific protocols.
+                Further evaluation activities are associated with the specific protocols.
                 
                 
               </Tests>
