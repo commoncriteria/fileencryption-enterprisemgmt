@@ -1086,7 +1086,7 @@
               and shall verify the key wrap uses an approved key wrap algorithm according to the
               appropriate specification.<h:br/><h:br/>
              
-             h:h4>KMD</h:h4>
+             <h:h4>KMD</h:h4>
                 The evaluator shall review the KMD to ensure that all keys are wrapped using the
                 approved method and a description of when the key wrapping occurs.<h:br/><h:br/>
               
