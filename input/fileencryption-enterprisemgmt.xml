@@ -58,7 +58,7 @@
     </section>
     
     <section id="glossary" title="Terms">
-      The following section provide both Common Criteria and technology terms used in this PP-Module. 
+      The following sections provide both Common Criteria and technology terms used in this PP-Module. 
       
       <subsection title="Common Criteria Terms">
         <glossary>
@@ -729,16 +729,16 @@
                     of the captured network packets and verify that the plaintext credential previously
                     set by the evaluator is not found.
                   </test>
-                </testlist>
-			  <subaactivity platform="ios">
-          If "encrypt all transmitted data" is selected, the evaluator shall ensure that the
-          application's Info.plist file does not contain the NSAllowsArbitraryLoads or
-          NSExceptionAllowsInsecureHTTPLoads keys, as these keys disable iOS's Application
-          Transport Security feature.
-          <!-- TODO: Check the strength of iOS's App Transport Security enforcement (if apps
+                     <h:b>For iOS:</h:b>If the platformIf "encrypt all transmitted data" is selected, the evaluator shall ensure that the
+                        application's Info.plist file does not contain the NSAllowsArbitraryLoads or
+                        NSExceptionAllowsInsecureHTTPLoads keys, as these keys disable iOS's Application
+                        Transport Security feature.
+                        <!-- TODO: Check the strength of iOS's App Transport Security enforcement (if apps
                can't easily bypass it, then we can skip performing Tests 1, 2, 3 on iOS when
                App Transport Security isn't explicitly disabled (assuming use of iOS 9 or greater)). -->
-        </subaactivity>
+                </testlist>
+          
+        
                   </Tests>
               </aactivity>
             </f-element>
