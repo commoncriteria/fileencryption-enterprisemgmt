@@ -6,14 +6,14 @@
     <ReferenceTable>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2019-07-29</PPPubDate>
+      <PPPubDate>2019-07-30</PPPubDate>
      <Keywords>file encryption; encryption</Keywords>
       </ReferenceTable>
   </PPReference>
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2019-07-29</date>
+      <date>2019-07-30</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -397,7 +397,7 @@
        </section>
   </chapter>
   <chapter title="Security Objectives" id="obj">The Security Problem described in
-      Section 2 will be addressed by a combination of cryptographic capabilities. Compliant TOEs
+      Section 3 will be addressed by a combination of cryptographic capabilities. Compliant TOEs
       will provide security functionality that addresses threats to the TOE and enforces policies
       that are imposed by law and regulation. The following subsections provide a description of the
       security objectives required to meet the threats/policies previously discussed. The
@@ -406,7 +406,7 @@
       identified (highlighted by O.) and they are matched with the associated security functional
       requirements (SFRs) that provide the mechanisms to satisfy the objectives.<h:br/><h:br/> The Security
       Objectives are the requirements for the Target of Evaluation (TOE) and for the Operational
-      Environment derived from the threats in Section 2. 
+      Environment derived from the threats in Section 3. 
       
     <section title="Security Objectives for the TOE" id="objtoe"> 
       <SOs>
@@ -526,11 +526,12 @@
         </SO>
         <SO id="O.SECURE_CHANNEL">
           <description>
-            <h:b>Secure Channel:</h:b> FPT_ITT.1 ensures protection of intra TOE communication and FPT_DIT_EXT.1 covers all transmitted sensitive data. If server side key generation is implemented, 
+            <h:b>Secure Channel:</h:b> FPT_ITT.1 ensures protection of intra TOE communication and FTP_DIT_EXT.1 covers all transmitted sensitive data. If server side key generation is implemented, 
             FCS_CKM.1(1) ensures sufficiently strong keys correctly generated on the server to meet the requirements of FTP_TRP.1. 
             Products implementing cryptographic communication protocols between the server and managed endpoints must meet the requirements 
-            for the specific protocols as defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, FCS_SSHS_EXT.1}<h:br/><h:br/>
-		  <!--, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}. -->
+            for the specific protocols as defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, 
+		  FCS_SSHS_EXT.1, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}<h:br/><h:br/>
+		  
             
             <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
             If the EM Server generates signatures to request or verify certificates, FCS_COP.1(1) ensures correct cryptographic
@@ -550,7 +551,7 @@
             to unauthorized disclosure or brute force attack.
           </description>
           
-          <component-refer ref="FPT_DIT_EXT.1 (modified from Base-PP)"/>
+          <component-refer ref="FTP_DIT_EXT.1 (modified from Base-PP)"/>
           <component-refer ref="FCS_CKM.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(1) (from Base-PP)"/>
           <component-refer ref="FCS_COP.1(3) (from Base-PP)"/>
@@ -2467,7 +2468,7 @@ There are no test activities for this requirement.
                 
                 In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat
                 each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that
-                conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface; SSH; and TLS/HTTPS; then all
+                conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface, SSH, and TLS/HTTPS, then all
                 three methods of administration must be exercised during the evaluation team’s test activities.<h:br/>
                 
                 
