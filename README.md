@@ -1,52 +1,86 @@
-PP-Module for File Encryption Enterprise Management
-===========
-![Build](https://github.com/commoncriteria/fileencryption-enterprisemgmt/workflows/Build/badge.svg)
-[![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/fileencryption-enterprisemgmt.svg?maxAge=2592000)](https://github.com/commoncriteria/fileencryption-enterprisemgmt/issues)
-![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
+== PP Module for File Encryption Enterprise Management
 
-This repository hosts the draft version of the PP-Module for Software File Encryption Enterprise Managment Version for this technology class of products. This repository is used to facilitate collaboration and development on the draft document. 
-See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
-A list of products that have passed evaluation against this PP-Module can be found [here](https://www.niap-ccevs.org/Product/PCL.cfm).
+[cols="1,1,1,1,1,1,1,1"]
+|===
+8+|fileencryption-enterprisemgmt
+| https://github.com/commoncriteria/fileencryption-enterprisemgmt/tree/master[master] 
+a| https://commoncriteria.github.io/fileencryption-enterprisemgmt/master/fileencryption-enterprisemgmt-release.html[📄]
+a|[link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/ValidationReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/validation.svg[Validation]
+a|[link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/SanityChecksOutput.md]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/warnings.svg[SanityChecks]
+a|[link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/SpellCheckReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/spell-badge.svg[SpellCheck]
+a|[link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/TDValidationReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/tds.svg[TDs]
+a|image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/transforms.svg[transforms,150]
+a| [link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/HTMLs.adoc]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/html_count.svg[HTML Count]
+[link=https://github.com/commoncriteria/fileencryption-enterprisemgmt/blob/gh-pages/master/PDFs.adoc]
+image::https://raw.githubusercontent.com/commoncriteria/fileencryption-enterprisemgmt/gh-pages/master/pdf_count.svg[PDF Count]
+|===
 
-## Draft Version
-* [PP-Module for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-release.html) (html)
-* [Supporting Document for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt-sd.html) (html)
-* [Combined Document for Software File Encryption Enterprise Management Version](https://commoncriteria.github.io/pp/fileencryption-enterprisemgmt/fileencryption-enterprisemgmt.html) (html)
+https://github.com/commoncriteria/fileencryption-enterprisemgmt/issues[image:https://img.shields.io/github/issues/commoncriteria/fileencryption.svg?maxAge=2592000[GitHub
+issues Open]]
 
-## Release Version
+=== Draft Version
 
-* [PP-Module for Software File Encryption Enterprise Management Version 1.0](https://www.niap-ccevs.org/Profile/INSERT)
+* https://commoncriteria.github.io/fileencryption-enterprisemgmt/master/fileencryption-enterprisemgmt-release.html[PP Module for File Encryption Enterprise Management] (html)
 
-## Contributing
+=== Release Version
 
-If you are interested in contributing directly to future versions the this Protection Profile, please consider joining the NIAP technical community.
-* [How to join the NIAP Technical Community (Mailing list and updates)](https://www.niap-ccevs.org/NIAP_Evolution/tech_communities.cfm)
+* https://www.niap-ccevs.org/protectionprofiles/427[PP Module for File Encryption Enterprise Management Version 1.0]
 
-## Feedback
+=== Contributing
 
-Questions, comments, and fixes can be submitted to the [repository issue tracker](https://github.com/commoncriteria/fileencryption-enterprisemgmt/issues)
+If you are interested in contributing directly to future versions the
+this Protection Profile, please consider joining the NIAP technical
+community.
+* https://www.niap-ccevs.org/technical-communities[NIAP Technical Communities]
 
-## Quickstart
+=== Feedback
+
+Questions, comments, and fixes can be submitted to the
+https://github.com/commoncriteria/application/issues[repository issue
+tracker]
+
+=== Quickstart
+
 To clone this project along with its _transforms_ submodule run:
 
-````
+....
   git clone --recursive git@github.com:commoncriteria/fileencryption-enterprisemgmt.git
-````
-To pull updates from the upstream _transforms_ submodule and commit them run:
-````
+....
+
+To pull updates from the upstream _transforms_ submodule and commit them
+run:
+
+....
  git submodule update --remote transforms
  git add transforms
  git commit
-````
+....
 
-### Development Info
-[Help working with Transforms Submodule](https://github.com/commoncriteria/transforms/wiki/Working-with-Transforms-as-a-Submodule)
+==== Development Info
 
-## Repository Content
-* input - Contains the 'meat' of the project. It's the input content (in XML form) that gets transformed to readable html.
-* output - The output directory where the html is placed after transformation.
+* https://github.com/commoncriteria/transforms/wiki/Working-with-Transforms-as-a-Submodule[Help
+working with Transforms Submodule]
+
+=== Repository Content
+
+* input - Contains the `meat' of the project. It’s the input content (in
+XML form) that gets transformed to readable html.
+* output - The output directory where the html is placed after
+transformation.
 * output/images - The directory where images are stored
-* transforms - Points to the transform subproject which is really a repository for resources shared amongst many Common Criteria projects.
+* transforms - Points to the transform subproject which is really a
+repository for resources shared amongst many Common Criteria projects.
+
+=== Links
+
+* https://www.niap-ccevs.org/[National Information Assurance Partnership
+(NIAP)]
+* https://www.commoncriteriaportal.org/[Common Criteria Portal]
 
 ## Links 
 * [National Information Assurance Partnership (NIAP)](https://www.niap-ccevs.org/)
