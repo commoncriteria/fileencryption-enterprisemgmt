@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="..\transforms\pp2html.xsl"?>
 <?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<Module  target-products="File Encryption Enterprise Management" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" name="file encryption enterprise management">  
+<Module target-product="File Encryption Enterprise Management" name="file encryption enterprise management"
+  xmlns="https://niap-ccevs.org/cc/v1"
+  xmlns:sec="https://niap-ccevs.org/cc/v1/section"
+  xmlns:h="http://www.w3.org/1999/xhtml" >  
+
   <PPReference>
     <ReferenceTable>
       <PPVersion>1.0</PPVersion>
@@ -17,22 +21,19 @@
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
-  <chapter title="Introduction" id="int">
-    <section title="Overview" id="ppoverview"> 
-	 The scope of the File Encryption Enterprise Management <abbr linkend="PP-Module"/> is to describe the security functionality of a file encryption 
-	    enterprise management product in terms of [<abbr linkend="CC"/>] and to define functional and assurance requirements for such products. 
-      This <abbr linkend="PP-Module"/> is intended for use with the following Base-PP<h:br/><h:br/> 
+  
+  <sec:Introduction>
+    <sec:Overview>The scope of the File Encryption Enterprise Management PP-Module is to describe the security functionality of a file encryption 
+	    enterprise management product in terms of [CC] and to define functional and assurance requirements for such products. 
+      This PP-Module is intended for use with the following Base-PP<h:br/><h:br/> 
       <h:ul>
         <h:li>Application Software Protection Profile, Version 1.3</h:li>
       </h:ul>
       <h:br/> This Base-PP is valid because a file encryption enterprise management product is
-      a 3rd party application.    
-	    
-    
-    The use case for a product conforming to the FE module is to protect data at rest on a device
-    that is lost or stolen while powered off without any prior access by an adversary. The use case
-    where an adversary obtains a device that is in a powered state and is able to make modifications
-    to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. The module
+      a 3rd party application. The use case for a product conforming to the FE module is to protect data at rest on a device
+      that is lost or stolen while powered off without any prior access by an adversary. The use case
+      where an adversary obtains a device that is in a powered state and is able to make modifications
+      to the environment or the TOE itself (e.g., evil maid attacks) is not addressed by that module. The module
 	    does contain protections to mitigate the potential for attack with a powered on device, but they are not sufficient 
 	    to protect data from a skilled adversary with physical access.<h:br/><h:br/>
       
@@ -56,81 +57,30 @@
       perhaps other services external to the TOE.
       The EM TOE may include or leverage features and functions within the operational
       environment.
-    </section>
-    
-    <section id="glossary" title="Terms">
-      The following sections provide both Common Criteria and technology terms used in this PP-Module. 
+    </sec:Overview>    
+    <tech-terms>
+      <term abbr="AF" full="Authorization factor">A value submitted by the user, present on the host, or present on a separate protected hardware physical 
+        device used to establish that the user (and potentially the host) is in the community authorized to use the TOE. The authorization factors are used
+        to generate the KEK. Note that these AFs are not used to establish the particular identity of the user.</term>      
+      <term full="Entropy Source">This cryptographic function provides a seed for a random bit generator by
+        accumulating the outputs from one or more noise sources. The functionality includes a
+        measure of the minimum work required to guess a given output and tests to ensure that
+        the noise sources are operating properly.</term>            
+      <term abbr="FEK" full="File Encryption Key">The key that is used by the encryption algorithm to encrypt the selected
+        user data on the host machine.</term>
+      <term full="File/Set of files">The user data that is selected to be encrypted, which can include
+        individual file encryption (with a FEK per file) or a set of files encrypted with a
+        single FEK.</term>
       
-      <subsection title="Common Criteria Terms">
-        <glossary>
-          <entry>
-            <term>Assurance</term>
-            <description>Grounds for confidence that a TOE meets the SFRs [CC1]. </description>
-          </entry>
-          <entry>
-            <term><abbr title="Common Criteria">CC</abbr></term>
-            <description>Common Criteria for Information Technology Security
-              Evaluation.</description>
-          </entry>
-          <entry>
-            <term>Distributed TOE</term>
-            <description>A TOE composed of multiple components operating as a logical whole. Specifically for the FE EM, it is an FE EM solution with multiple FE endpoints.</description>
-          </entry>
-          <entry>
-            <term>Operational Environment </term>
-            <description>Hardware and software that are outside the TOE boundary that support the
-              TOE functionality and security policy, including the platform, its firmware, and
-              the operating system. </description>
-          </entry>
-          <entry>
-            <term><abbr title="Protection Profile">PP</abbr></term>
-            <description>An implementation-independent set of security requirements for a category
-              of products.</description>
-          </entry>
-		<entry>
-            <term><abbr title="Protection Profile Configuration">PP-Configuration</abbr></term>
-            <description> A comprehensive set of security requirements for a product type that 
-		    consists of at least one Base-PP and at least one PP-Module.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
-            <description>An implementation-independent statement of security needs for a TOE type complementary to one or more Base Protection Profiles.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Security Target">ST</abbr></term>
-            <description>A set of implementation-dependent security requirements for a specific
-              product.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Target of Evaluation">TOE</abbr></term>
-            <description>The product under evaluation. In this case, file encryption enterprise management software and its
-              supporting documentation.</description>
-          </entry>
-          <entry>
-            <term><abbr title="TOE Security Functionality">TSF</abbr></term>
-            <description>The security functionality of the product under evaluation.</description>
-          </entry>
-          <entry>
-            <term><abbr title="TOE Summary Specification">TSS</abbr></term>
-            <description>A description of how a <abbr linkend="TOE"/> satisfies the SFRs in a <abbr
-              linkend="ST"/>. </description>
-          </entry>
-          <entry>
-            <term><abbr title="Security Functional Requirement">SFR</abbr></term>
-            <description>A requirement for security enforcement by the <abbr linkend="TOE"/>.
-            </description>
-          </entry>
-          <entry>
-            <term><abbr title="Security Assurance Requirement">SAR</abbr></term>
-            <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
-            </description>
-          </entry>
-        </glossary>
-      </subsection>
-      
-      <subsection title="Technical Terms">
-        <glossary>
-          <entry>
+      <term full="Key Chaining">The method of using multiple layers of encryption keys to protect data. 
+        A top layer key encrypts a lower layer key which encrypts the data; this method can have any number of layers.</term>
+      <term abbr="KEK" full="Key Encryption Key">The key that is used to encrypt another key.</term>
+      <term full="Keying Material">The KEK, FEK, authorization factors and random numbers or any other values
+        from which keys are derived.</term>
+      <term full="Key Sanitization"></term>
+    </tech-terms>
+  </sec:Introduction>
+          
             <term>Authorization factor (AF) </term>
             <description>A value that a user knows, has, or is (e.g. password, token, etc.) submitted 
               to the TOE to establish that the user is in the community authorized to access  the requested material.
