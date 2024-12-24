@@ -17,7 +17,7 @@
                 </tr>
             </table>
         </div>
-        <h1 class="title" style="page-break-before:auto;">PP-Module for File Encryption Enterprise Managements</h1>
+        <h1 class="title" style="page-break-before:auto;">PP-Module for File Encryption Enterprise Management</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
         <div class="center">
             <img src="images/niaplogo.png" alt="NIAP Logo">
@@ -568,13 +568,13 @@
                         <span class="note-header">Application Note: </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is modified from its definition in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by removing the first selection (where the application does not transmit any data or sensitive data). By definition, a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that conforms to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must have the ability to transmit sensitive data to another trusted IT product. 
                             <br>
                             <p>
-                                 If <i>encrypt all transmitted</i> is selected and <i>TLS</i> is selected, then evaluation of elements from either <a href="#FCS_TLSC_EXT.1" class="dynref" data-format=""></a> or <a href="#FCS_TLSS_EXT.1" class="dynref" data-format=""></a> is required.
+                                 If <i>encrypt all transmitted</i> is selected and <i>TLS</i> is selected, then evaluation of elements from either <span class="no-link"> FCS_TLSC_EXT.1</span> or <span class="no-link">FCS_TLSS_EXT.1</span> is required.
                             </p>
                             <p>
-                                 If <i>encrypt all transmitted</i> is selected and <i>HTTPS</i> is selected, <a href="#FCS_HTTPS_EXT.1" class="dynref" data-format=""></a> is required.
+                                 If <i>encrypt all transmitted</i> is selected and <i>HTTPS</i> is selected, <span class="no-link">FCS_HTTPS_EXT.1</span> is required.
                             </p>
                             <p>
-                                 If <i>encrypt all transmitted</i> is selected and <i>DTLS</i> is selected, <a href="#FCS_DTLS_EXT.1" class="dynref" data-format=""></a> is required.
+                                 If <i>encrypt all transmitted</i> is selected and <i>DTLS</i> is selected, <span class="no-link">FCS_DTLS_EXT.1</span> is required.
                             </p>
                             <p>
                                  If <i>encrypt all transmitted</i> is selected and <i>SSH</i> is selected, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is required to be validated against the <i>Extended Package for <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">Secure Shell</a></i>.
@@ -1496,7 +1496,7 @@
             </table>
         </p>
         <h3 id="conreq-b-appp" class="indexable" data-level="3">6.1.4 Consistency of Requirements </h3>
-         This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> identifies several <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that are needed to support File Encryption Enterprise Management functionality. This is considered to be consistent because the functionality provided by the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is being used for its intended purpose. The <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> also identifies a number of modified <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that are used entirely to provide functionality for File Encryption Enterprise Managements. The rationale for why this does not conflict with the claims defined by the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> are as follows: 
+         This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> identifies several <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that are needed to support File Encryption Enterprise Management functionality. This is considered to be consistent because the functionality provided by the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is being used for its intended purpose. The <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> also identifies a number of modified <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that are used entirely to provide functionality for File Encryption Enterprise Management. The rationale for why this does not conflict with the claims defined by the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> are as follows: 
         <table>
             <caption>
                 <span class="ctr" data-myid="t-con-reqs" data-counter-type="ct-Table" id="t-con-reqs">Table <span class="counter">5</span></span>: Consistency of Requirements (App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> base) 
@@ -1708,7 +1708,9 @@
         </div>
         <div class="comp" id="FCS_VAL_EXT.2/1">
             <h4>FCS_VAL_EXT.2/1 Validation Remediation (Server Administrator)</h4>
-            <div class="statustag"></div>
+            <div class="statustag">
+                <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</a>. </i></b>
+            </div>
             <div class="element">
                 <div class="reqid" id="FCS_VAL_EXT.2.1/1">
                     <a href="#FCS_VAL_EXT.2.1/1" class="abbr">FCS_VAL_EXT.2.1/1</a>

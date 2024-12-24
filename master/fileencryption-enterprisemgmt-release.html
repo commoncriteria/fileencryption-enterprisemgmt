@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html><head><meta content="text/html;charset=utf-8" http-equiv="Content-Type"></meta><meta content="utf-8" http-equiv="encoding"></meta><title>PP-Module for File Encryption Enterprise Managements</title><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><script type="text/x-mathjax-config">
+<html><head><meta content="text/html;charset=utf-8" http-equiv="Content-Type"></meta><meta content="utf-8" http-equiv="encoding"></meta><title>PP-Module for File Encryption Enterprise Management</title><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><script type="text/x-mathjax-config">
             MathJax.Hub.Config({
             extensions: ["tex2jax.js"],
             jax: ["input/TeX", "output/HTML-CSS"],
@@ -629,7 +629,7 @@ function showTarget(id){
 	            img[src="images/collapsed.png"] { display:none;}
 
           }
-    </style></head><body onLoad="init()"><h1 class="title" style="page-break-before:auto;">PP-Module for File Encryption Enterprise Managements</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
+    </style></head><body onLoad="init()"><h1 class="title" style="page-break-before:auto;">PP-Module for File Encryption Enterprise Management</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
       Version: 1.0<br/>2019-07-30<br/><b>National Information Assurance Partnership</b><br/></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2019-07-30</td><td>Initial Release</td></tr>
 </table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#Overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#Complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#ccl" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_TOE" style="text-indent:10px">4.1<span>Security Objectives for the TOE</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.2<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">4.3<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-b-appp" style="text-indent:10px">5.1<span>
     Protection Profile for Application Software
@@ -1020,11 +1020,12 @@ provide all of its security functionality.
                 
                 <br/>
                 <p> If <i>encrypt all transmitted</i> is selected and <i>TLS</i> is
-                  selected, then evaluation of elements from either <a href="#FCS_TLSC_EXT.1" class="dynref" data-format=""></a> or
-                  <a href="#FCS_TLSS_EXT.1" class="dynref" data-format=""></a> is required.</p>
+                  selected, then evaluation of elements from either <span class="no-link"> FCS_TLSC_EXT.1</span> or
+                  <span class="no-link">FCS_TLSS_EXT.1</span> is required.</p>
                 <p> If <i>encrypt all transmitted</i> is selected and <i>HTTPS</i> is
-                  selected, <a href="#FCS_HTTPS_EXT.1" class="dynref" data-format=""></a> is required.</p> 
-                <p> If <i>encrypt all transmitted</i> is selected and <i>DTLS</i> is selected, <a href="#FCS_DTLS_EXT.1" class="dynref" data-format=""></a> is required.</p>
+                  selected, <span class="no-link">FCS_HTTPS_EXT.1</span> is required.</p> 
+                <p> If <i>encrypt all transmitted</i> is selected and <i>DTLS</i> is
+                  selected, <span class="no-link">FCS_DTLS_EXT.1</span> is required.</p>
                 <p> If <i>encrypt all transmitted</i> is selected and <i>SSH</i> is selected, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is required to be validated against the <i>Extended Package for <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">Secure Shell</a></i>.</p>
                 <p>
                   If <i>encrypt all transmitted</i> is selected the corresponding FCS_COP.1 requirements will be included.
@@ -1659,7 +1660,7 @@ provide all of its security functionality.
           The <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> also identifies a number of modified <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the
           App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>
           that are used entirely to provide functionality for
-	  File Encryption Enterprise Managements.
+	  File Encryption Enterprise Management.
         
           The rationale for why this does not conflict with the claims
       defined by the
@@ -1797,7 +1798,9 @@ provide all of its security functionality.
       </div>
         
         
-        <div class="comp" id="FCS_VAL_EXT.2/1"><h4>FCS_VAL_EXT.2/1 Validation Remediation (Server Administrator)</h4><div class="statustag"></div>
+        <div class="comp" id="FCS_VAL_EXT.2/1"><h4>FCS_VAL_EXT.2/1 Validation Remediation (Server Administrator)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</a>.
+           </i></b></div>
           
           
           

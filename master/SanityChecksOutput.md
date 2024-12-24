@@ -2,8 +2,6 @@
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fcs[1]""/f-component[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to FIA_AUT_EXT.1.1 from attribute
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fcs[1]""/f-component[2]""/depends[1]""/on[1]""
-* Error: Detected dangling id-reference to ADMINAUTH from attribute
-        ids/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fcs[1]""/f-component[2]""/depends[1]""/ids[1]""
 * Error: Detected dangling id-reference to FIA_REC_EXT.1.1 from attribute
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fia[1]""/f-component[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to FMT_SMR.2.3 from attribute
@@ -30,10 +28,6 @@
 * Error: Detected multiple elements with an id of 'IPSEC'.
 * Error: Detected multiple elements with an id of 'sel_all_https'.
 * Error: Detected multiple elements with an id of 'sel_all_tlsc'.
- Failed to find a reference to FCS_TLSC_EXT.1.
- Failed to find a reference to FCS_TLSS_EXT.1.
- Failed to find a reference to FCS_HTTPS_EXT.1.
- Failed to find a reference to FCS_DTLS_EXT.1.
 * Warning: Since FCS_KYC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FIA_AUT_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
