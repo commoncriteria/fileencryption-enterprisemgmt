@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="..\transforms\pp2html.xsl"?>
 <?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<Module target-product="File Encryption Enterprise Management" name="file encryption enterprise management"
+<Module target-product="File Encryption Enterprise Management" target-products="File Encryption Enterprise Management" name="file encryption enterprise management"
   xmlns="https://niap-ccevs.org/cc/v1"
   xmlns:sec="https://niap-ccevs.org/cc/v1/section"
-  xmlns:h="http://www.w3.org/1999/xhtml" >  
+  xmlns:h="http://www.w3.org/1999/xhtml">  
 
   <PPReference>
     <ReferenceTable>
@@ -541,11 +541,12 @@
 	       <h:br/> <h:br/>-->
                 <h:br/>
                 <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>TLS</h:i> is
-                  selected, then evaluation of elements from either <xref to="FCS_TLSC_EXT.1"/> or
-                  <xref to="FCS_TLSS_EXT.1"/> is required.</h:p>
+                  selected, then evaluation of elements from either <no-link> FCS_TLSC_EXT.1</no-link> or
+                  <no-link>FCS_TLSS_EXT.1</no-link> is required.</h:p>
                 <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>HTTPS</h:i> is
-                  selected, <xref to="FCS_HTTPS_EXT.1"/> is required.</h:p> 
-                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>DTLS</h:i> is selected, <xref to="FCS_DTLS_EXT.1"/> is required.</h:p>
+                  selected, <no-link>FCS_HTTPS_EXT.1</no-link> is required.</h:p> 
+                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>DTLS</h:i> is
+                  selected, <no-link>FCS_DTLS_EXT.1</no-link> is required.</h:p>
                 <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>SSH</h:i> is selected, the TSF is required to be validated against the <h:i>Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">Secure Shell</h:a></h:i>.</h:p>
                 <h:p>
                   If <h:i>encrypt all transmitted</h:i> is selected the corresponding FCS_COP.1 requirements will be included.
@@ -2909,7 +2910,7 @@ configure the number of failed validation attempts required to trigger correctiv
         
         <f-component cc-id="fcs_val_ext.2" name="Validation Remediation (Server Administrator)"
           iteration="1">
-          <depends on="FIA_AUT_EXT.1.1" ids="ADMINAUTH"/>
+          <depends on="FIA_AUT_EXT.1.1" ids="APPAUTH"/>
           <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can take security-relevant action if some data input to it is invalid.
           </consistency-rationale>
           
