@@ -2931,7 +2931,8 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element>
             <title>The TSF shall 
               <selectables linebreak="yes">
-                <selectable>institute a delay such that only <assignable>ST author specified number <h:b>or configurable range</h:b> of attempts</assignable> 
+                <selectable>institute a delay such that only <assignable>ST author specified number
+                  <h:b>or configurable range</h:b> of attempts</assignable> 
                   validation attempts can be made within a 24 hour period</selectable>
                 <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
                   of consecutive failed validation attempts</selectable>
