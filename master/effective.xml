@@ -1932,9 +1932,9 @@ There are no test activities for this requirement.
                     <selectable>perform key sanitization</selectable>
                   </selectables>
                   of FEK(s) or an intermediate key</h:i>] upon <h:b><assignable>ST specified number or configurable range of</assignable></h:b> consecutive failed validation attempts</selectable>
-                <selectable>institute a delay such that only <h:b><assignable>ST author specified number or configurable range of attempts</assignable></h:b> can be made within a 24 hour period</selectable>
-                <selectable>block validation after <h:b><assignable>ST author specified number or configurable range of attempts</assignable></h:b> of consecutive failed validation attempts</selectable>
-                <selectable><h:b>terminate the session</h:b> after <h:b><assignable>ST author specified number or configurable range of attempts</assignable></h:b> of consecutive failed validation attempts</selectable>
+                <selectable>institute a delay such that only <assignable>ST author specified number <h:b>or configurable range</h:b> of attempts</assignable> can be made within a 24 hour period</selectable>
+                <selectable>block validation after <assignable>ST author specified number <h:b>or configurable range</h:b> of attempts</assignable> of consecutive failed validation attempts</selectable>
+                <selectable><h:b>terminate the session</h:b> after <assignable>ST author specified number <h:b>or configurable range</h:b> of attempts</assignable> of consecutive failed validation attempts</selectable>
                 
               </selectables>.
             </title>
@@ -2918,11 +2918,11 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element>
             <title>The TSF shall 
               <selectables linebreak="yes">
-                <selectable>institute a delay such that only <assignable>ST author specified number
-                  <h:b>or configurable range</h:b> of attempts</assignable> 
-                  validation attempts can be made within a 24 hour period</selectable>
-                <selectable>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
-                  of consecutive failed validation attempts</selectable>
+               <selectable> <h:b>institute a delay such that only <assignable>ST author specified number
+                  or configurable range of attempts</assignable> 
+                  validation attempts can be made within a 24 hour period</h:b></selectable>
+                <selectable><h:b>block validation after <assignable>ST author specified number or configurable range of attempts</assignable> 
+                  of consecutive failed validation attempts</h:b></selectable>
               </selectables>.
             </title>
             
