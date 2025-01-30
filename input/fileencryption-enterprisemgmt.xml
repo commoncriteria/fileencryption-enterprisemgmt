@@ -485,13 +485,14 @@
           <url>https://github.com/commoncriteria/application</url>
           <branch>master</branch>
         </git>
+        <url>https://commoncriteria.github.io/application/master/application.html</url>
         <sec-func-req-dir>
         The TOE is expected to rely on some of the security functions implemented by the application
         as a whole and evaluated against <xref to="bibAppPP"/>.
         The following section describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.       
       </sec-func-req-dir>
       <modified-sfrs>
-        <sec:ftp title="Trusted Path/Channel (FTP)">
+        <section title="Trusted Path/Channel (FTP)" id="mod-ftp">
           
           <base-sfr-spec cc-id="ftp_dit_ext.1" title="Protection of Data in Transit" id="mod-app-ftp-dit-ext-1">
             
@@ -582,7 +583,7 @@
             
           </base-sfr-spec>
   
-        </sec:ftp>
+        </section>
       </modified-sfrs>
         <additional-sfrs/>
         <con-toe>When this PP-Module is used to extend the App PP, the TOE type for the overall TOE is still a software application. 
