@@ -634,7 +634,7 @@ function showTarget(id){
 </table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#Overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#Complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#ccl" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_TOE" style="text-indent:10px">4.1<span>Security Objectives for the TOE</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.2<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">4.3<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-b-appp" style="text-indent:10px">5.1<span>
     Protection Profile for Application Software
        Security Functional Requirements Direction
-    </span></a><a href="#modsfr-b-appp" style="text-indent:20px">5.1.1<span> Modified SFRs </span></a><a href="#man-sfrs" style="text-indent:10px">5.2<span>TOE Security Functional Requirements</span></a><a href="#fcs" style="text-indent:20px">5.2.1<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">5.2.2<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">5.2.3<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">5.2.4<span>Protection of the TSF (FPT)</span></a><a href="#obj-req-map" style="text-indent:10px">5.3<span>TOE Security Functional Requirements Rationale</span></a><a href="#mod-conrat" style="text-indent:0px">6<span>Consistency Rationale</span></a><a href="#conrat-b-appp" style="text-indent:10px">6.1<span>
+    </span></a><a href="#modsfr-b-appp" style="text-indent:20px">5.1.1<span> Modified SFRs </span></a><a href="#@id" style="text-indent:30px">5.1.1.1<span>Trusted Path/Channel (FTP)</span></a><a href="#man-sfrs" style="text-indent:10px">5.2<span>TOE Security Functional Requirements</span></a><a href="#fcs" style="text-indent:20px">5.2.1<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">5.2.2<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">5.2.3<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">5.2.4<span>Protection of the TSF (FPT)</span></a><a href="#obj-req-map" style="text-indent:10px">5.3<span>TOE Security Functional Requirements Rationale</span></a><a href="#mod-conrat" style="text-indent:0px">6<span>Consistency Rationale</span></a><a href="#conrat-b-appp" style="text-indent:10px">6.1<span>
     Protection Profile for Application Software</span></a><a href="#contoe-b-appp" style="text-indent:20px">6.1.1<span>
 	Consistency of TOE Type
       </span></a><a href="#consecprob-b-appp" style="text-indent:20px">6.1.2<span>
@@ -998,7 +998,37 @@ provide all of its security functionality.
       <h3 id="modsfr-b-appp" class="indexable" data-level="3">5.1.1  Modified SFRs </h3>
 		The <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> listed in this section are defined in the App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> and relevant to the secure operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
 
-		<h2 id="man-sfrs" class="indexable" data-level="2">5.2 TOE Security Functional Requirements</h2>
+		<h4 id="@id" class="indexable" data-level="4">5.1.1.1 Trusted Path/Channel (FTP)</h4><div class="comp" id="@id"><h4>FTP_DIT_EXT.1: Protection of Data in Transit</h4><span class="description">
+              <p>
+              This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is modified from its definition in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by removing the first selection (where the application does not transmit any data or sensitive data).
+              By definition, a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that conforms to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must have the ability to transmit sensitive data to another trusted IT product.
+              </p>
+              <p>
+                The text of the requirement is replaced with:
+              </p>
+              <p>
+                The application shall [<b>selection:</b><i>
+                <ul>
+                  <li>encrypt all transmitted [<b>selection, choose one of:</b> sensitive data, data] with [<b>selection:</b>
+                  <ul>
+                    <li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1/Client</li>
+                    <li>HTTPS as a server in accordance with FCS_HTTPS_EXT.1/Server</li>
+                    <li>HTTPS as a server using mutual authentication in accordance with FCS_HTTPS_EXT.2</li>
+                    <li>TLS as a server as defined in the Functional Package for TLS and also supports functionality for [<b>selection:</b> mutual authentication, none]</li>
+                    <li>TLS as a client as defined in the Functional Package for TLS</li>
+                    <li>DTLS as a server as defined in the Functional Package for TLS and also supports functionality for [<b>selection:</b> mutual authentication, none]</li>
+                    <li>DTLS as a client as defined in the Functional Package for TLS</li>
+                    <li>SSH as defined in the Functional Package for Secure Shell</li>
+                    <li>IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</li>
+                  </ul>
+                    ] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509
+                  </li>
+                  <li>invoke platform-provided functionality to encrypt all transmitted sensitive data with [<b>selection:</b> HTTPS, TLS, DTLS, SSH, IPsec] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
+                  <li>invoke platform-provided functionality to encrypt all transmitted data with [<b>selection:</b> HTTPS, TLS, DTLS, SSH, IPsec] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
+                </ul></i>
+                ] between itself and another trusted IT product.
+              </p>
+            </span></div><h2 id="man-sfrs" class="indexable" data-level="2">5.2 TOE Security Functional Requirements</h2>
 	The following section describes the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that must be satisfied by any <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that claims conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
 	These <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> must be claimed regardless of which <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> is used to define the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
         
