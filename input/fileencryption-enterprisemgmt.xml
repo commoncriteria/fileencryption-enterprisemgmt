@@ -481,7 +481,10 @@
     <sec:Security_Requirements>
       <base-pp name="Application Software" short="App" id="b-appp" version="1.3"
         product="application">
-        <url>https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml</url>
+        <git>
+          <url>https://github.com/commoncriteria/application</url>
+          <branch>master</branch>
+        </git>
         <sec-func-req-dir>
         The TOE is expected to rely on some of the security functions implemented by the application
         as a whole and evaluated against <xref to="bibAppPP"/>.
@@ -489,115 +492,96 @@
       </sec-func-req-dir>
       <modified-sfrs>
         <sec:ftp title="Trusted Path/Channel (FTP)">
-        <f-component cc-id="ftp_dit_ext.1" name="Protection of Data in Transit">
+          
+          <base-sfr-spec cc-id="ftp_dit_ext.1" title="Protection of Data in Transit" id="mod-app-ftp-dit-ext-1">
+            
             <consistency-rationale>This SFR is defined in the Base-PP. This PP-Module modifies it by removing the option not to transmit sensitive data because this particular
               TOE type will always have that capability. It is still consistent with the Base-PP because all selections that the ST author is permitted to make are available options
-              in the Base-PP version of the SFR.</consistency-rationale>
-          <f-element id="ftp-dit-ext-1e1">
-              <title>The TSF shall 
-                <selectables linebreak="yes">
-                  
-                  <selectable>encrypt all transmitted 
-                    <selectables>
-                      <selectable>sensitive data</selectable>
-                      <selectable>data</selectable>
-                    </selectables> with
-                    <selectables>
-                      <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol
-                        Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1 <h:b>(from <xref
-                          to="bibAppPP"/>)</h:b></selectable>
-                      <selectable id="sel_all_tlsc"><h:abbr title="Transport Layer Security">TLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
-                      <selectable id="sel_all_dtls"><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr> as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
-                      <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
-                    </selectables>
-                  </selectable>
-                  
-                  <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with
-                    <selectables>
-                      <selectable><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr></selectable>
-                      <selectable><h:abbr title="Transport Layer Security">TLS</h:abbr></selectable>
-                      <selectable><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr></selectable>
-                      <selectable>SSH</selectable>
-                    </selectables>
-                  </selectable>	    
-                  
-                  <selectable>invoke platform-provided functionality to encrypt all transmitted data with
-                    <selectables>
-                      <selectable><h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr></selectable>
-                      <selectable><h:abbr title="Transport Layer Security">TLS</h:abbr></selectable>
-                      <selectable><h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr></selectable>
-                      <selectable>SSH</selectable>
-                    </selectables>
-                  </selectable>	    
-                  
-                </selectables>
-                between itself and another trusted IT product.
-              </title>
-              <note role="application">This SFR is modified from its definition in the Base-PP by removing the first selection (where the application does not transmit any data or sensitive data).
-                By definition, a TOE that conforms to this PP-Module must have the ability to transmit sensitive data to another trusted IT product.
-                <!--The X509 requirements are invoked based on the selections in FTP_DIT_EXT.1; if you select a protocol that uses certificates,
-	      then you must include the SFRs that address the certificates.   
-	      X509 SFRs shall be included if selections for HTTPS, TLS, or DTLS are included (FCS_HTTPS, FCS_TLSC, FCS_TLSS, FCS_DTLS).
-	       <h:br/> <h:br/>-->
-                <h:br/>
-                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>TLS</h:i> is
-                  selected, then evaluation of elements from either <no-link> FCS_TLSC_EXT.1</no-link> or
-                  <no-link>FCS_TLSS_EXT.1</no-link> is required.</h:p>
-                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>HTTPS</h:i> is
-                  selected, <no-link>FCS_HTTPS_EXT.1</no-link> is required.</h:p> 
-                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>DTLS</h:i> is
-                  selected, <no-link>FCS_DTLS_EXT.1</no-link> is required.</h:p>
-                <h:p> If <h:i>encrypt all transmitted</h:i> is selected and <h:i>SSH</h:i> is selected, the TSF is required to be validated against the <h:i>Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">Secure Shell</h:a></h:i>.</h:p>
-                <h:p>
-                  If <h:i>encrypt all transmitted</h:i> is selected the corresponding FCS_COP.1 requirements will be included.
-                </h:p>
-              </note>  
-              <aactivity>
-                The evaluator shall perform the activities below in addition to the evaluation activities required for this SFR in the Base-PP.
-                <TSS>For platform-provided functionality, the evaluator shall verify the TSS contains the calls to the platform that TOE is leveraging to invoke the functionality.<h:br/><h:br/>
-                </TSS>
-                <Guidance>None.<h:br/><h:br/>
-                </Guidance>
-                  <Tests>The evaluator shall perform the following tests.
-                  
-                    <testlist>
-                  <test>
-                    The evaluator shall exercise the application (attempting to transmit data; for example 
-                    by connecting to remote systems or websites) while capturing packets from the 
-                    application. The evaluator shall verify from the packet capture that the traffic is 
-                    encrypted with <h:abbr title="Hypertext Transfer Protocol Secure">HTTPS</h:abbr>, 
-                    <h:abbr title="Transport Layer Security">TLS</h:abbr>, 
-                    <h:abbr title="Datagram Transport Layer Security">DTLS</h:abbr>, or <h:abbr title="Secure Shell">SSH</h:abbr> in accordance with the 
-                    selection in the ST.
-                  </test>
-                  <test>
-                    The evaluator shall exercise the application (attempting to transmit data; for example by 
-                    connecting to remote systems or websites) while capturing packets from the application.
-                    The evaluator shall review the packet capture and verify that no sensitive data is transmitted 
-                    in the clear.
-                  </test>
-                  <test>
-                    The evaluator shall inspect the TSS to determine if user credentials are
-                    transmitted. If credentials are transmitted the evaluator shall set the
-                    credential to a known value. The evaluator shall capture packets from the application
-                    while causing credentials to be transmitted as described in the TSS.
-                    The evaluator shall perform a string search
-                    of the captured network packets and verify that the plaintext credential previously
-                    set by the evaluator is not found.
-                  </test>
-                     <h:b>For iOS:</h:b>If the platformIf "encrypt all transmitted data" is selected, the evaluator shall ensure that the
-                        application's Info.plist file does not contain the NSAllowsArbitraryLoads or
-                        NSExceptionAllowsInsecureHTTPLoads keys, as these keys disable iOS's Application
-                        Transport Security feature.
-                        <!-- TODO: Check the strength of iOS's App Transport Security enforcement (if apps
-               can't easily bypass it, then we can skip performing Tests 1, 2, 3 on iOS when
-               App Transport Security isn't explicitly disabled (assuming use of iOS 9 or greater)). -->
-                </testlist>
-                  </Tests>
-              </aactivity>
-            </f-element>
-          <audit-event/>
-          </f-component>   
+              in the Base-PP version of the SFR.</consistency-rationale>         
+            
+            <description>
+              <h:p>
+              This SFR is modified from its definition in the Base-PP by removing the first selection (where the application does not transmit any data or sensitive data).
+              By definition, a TOE that conforms to this PP-Module must have the ability to transmit sensitive data to another trusted IT product.
+              </h:p>
+              <h:p>
+                The text of the requirement is replaced with:
+              </h:p>
+              <h:p>
+                The application shall [<h:b>selection:</h:b><h:i>
+                <h:ul>
+                  <h:li>encrypt all transmitted [<h:b>selection, choose one of:</h:b> sensitive data, data] with [<h:b>selection:</h:b>
+                  <h:ul>
+                    <h:li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1/Client</h:li>
+                    <h:li>HTTPS as a server in accordance with FCS_HTTPS_EXT.1/Server</h:li>
+                    <h:li>HTTPS as a server using mutual authentication in accordance with FCS_HTTPS_EXT.2</h:li>
+                    <h:li>TLS as a server as defined in the Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b> mutual authentication, none]</h:li>
+                    <h:li>TLS as a client as defined in the Functional Package for TLS</h:li>
+                    <h:li>DTLS as a server as defined in the Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b> mutual authentication, none]</h:li>
+                    <h:li>DTLS as a client as defined in the Functional Package for TLS</h:li>
+                    <h:li>SSH as defined in the Functional Package for Secure Shell</h:li>
+                    <h:li>IPsec as defined in the PP-Module for VPN Client</h:li>
+                  </h:ul>
+                    ] for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509
+                  </h:li>
+                  <h:li>invoke platform-provided functionality to encrypt all transmitted sensitive data with [<h:b>selection:</h:b> HTTPS, TLS, DTLS, SSH, IPsec] for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li>
+                  <h:li>invoke platform-provided functionality to encrypt all transmitted data with [<h:b>selection:</h:b> HTTPS, TLS, DTLS, SSH, IPsec] for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li>
+                </h:ul></h:i>
+                ] between itself and another trusted IT product.
+              </h:p>
+            </description>
+            
+            <replace>
+              <xpath-specified xpath="*//cc:f-element[@id='fel-transmit']//cc:title">
+                <title>
+                  The application shall 
+                  <selectables linebreak="yes">
+                    <selectable>encrypt all transmitted 
+                      <selectables onlyone="yes">
+                        <selectable>sensitive data</selectable>
+                        <selectable>data</selectable></selectables> with
+                      <selectables>
+                        <selectable id="sel_all_https_cl">HTTPS as a client in accordance with FCS_HTTPS_EXT.1/Client</selectable>
+                        <selectable id="sel_all_https_sv">HTTPS as a server in accordance with FCS_HTTPS_EXT.1/Server</selectable>
+                        <selectable id="sel_all_https_ma">HTTPS as a server using mutual authentication in accordance with FCS_HTTPS_EXT.2</selectable>
+                        <selectable id="sel_all_tlss">TLS as a server as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/439"><h:i>Functional Package for TLS</h:i></h:a> and also supports functionality for
+                          <selectables><selectable>mutual authentication</selectable><selectable>none</selectable></selectables></selectable>
+                        <selectable id="sel_all_tlsc">TLS as a client as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/439"><h:i>Functional Package for TLS</h:i></h:a></selectable>
+                        <selectable id="sel_all_dtlss">DTLS as a server as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/439"><h:i>Functional Package for TLS</h:i></h:a> and also supports functionality for
+                          <selectables><selectable>mutual authentication</selectable><selectable>none</selectable></selectables></selectable>
+                        <selectable id="sel_all_dtlsc">DTLS as a client as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/439"><h:i>Functional Package for TLS</h:i></h:a></selectable>
+                        <selectable id="sel_all_ssh">SSH as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/459"><h:i>Functional Package for Secure Shell</h:i></h:a></selectable>
+                        <selectable id="sel_all_ipsec">IPsec as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/487"><h:i>PP-Module for VPN Client</h:i></h:a></selectable></selectables>
+                      for <assignable>function(s)</assignable>
+                      using certificates as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509</h:a>
+                    </selectable>
+                    <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with
+                      <selectables>
+                        <selectable>HTTPS</selectable>
+                        <selectable>TLS</selectable>
+                        <selectable>DTLS</selectable>
+                        <selectable>SSH</selectable>
+                        <selectable>IPsec</selectable>
+                      </selectables> for <assignable>function(s)</assignable>
+                      using certificates as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509</h:a>
+                    </selectable>	    	      
+                    <selectable>invoke platform-provided functionality to encrypt all transmitted data with
+                      <selectables>
+                        <selectable>HTTPS</selectable>
+                        <selectable>TLS</selectable>
+                        <selectable>DTLS</selectable>
+                        <selectable>SSH</selectable> 
+                        <selectable>IPsec</selectable>
+                      </selectables> for <assignable>function(s)</assignable>
+                      using certificates as defined in the <h:a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509</h:a>
+                    </selectable>
+                  </selectables> between itself and another trusted IT product.
+                </title>
+              </xpath-specified>
+            </replace>
+            
+          </base-sfr-spec>
+  
         </sec:ftp>
       </modified-sfrs>
         <additional-sfrs/>
