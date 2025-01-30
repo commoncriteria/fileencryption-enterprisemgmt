@@ -23,8 +23,6 @@ output/fileencryption-enterprisemgmt-release-linkable.html: KWK
 output/fileencryption-enterprisemgmt-release-linkable.html: MBR
 output/fileencryption-enterprisemgmt-release-linkable.html: NISP
 output/fileencryption-enterprisemgmt-release-linkable.html: NIST800
-output/fileencryption-enterprisemgmt-release-linkable.html: NSAllowsArbitraryLoads
-output/fileencryption-enterprisemgmt-release-linkable.html: NSExceptionAllowsInsecureHTTPLoads
 output/fileencryption-enterprisemgmt-release-linkable.html: OEAP
 output/fileencryption-enterprisemgmt-release-linkable.html: PBKDF
 output/fileencryption-enterprisemgmt-release-linkable.html: PCC
@@ -42,8 +40,6 @@ output/fileencryption-enterprisemgmt-release-linkable.html: keystore
 output/fileencryption-enterprisemgmt-release-linkable.html: lifecycle
 output/fileencryption-enterprisemgmt-release-linkable.html: lifed
 output/fileencryption-enterprisemgmt-release-linkable.html: nLen
-output/fileencryption-enterprisemgmt-release-linkable.html: platformIf
-output/fileencryption-enterprisemgmt-release-linkable.html: plist
 output/fileencryption-enterprisemgmt-release-linkable.html: sanitization
 output/fileencryption-enterprisemgmt-release-linkable.html: unmanaged
 output/fileencryption-enterprisemgmt-release-linkable.html: validaity
@@ -98,8 +94,6 @@ output/fileencryption-enterprisemgmt-sd.html: KWK
 output/fileencryption-enterprisemgmt-sd.html: MBR
 output/fileencryption-enterprisemgmt-sd.html: NISP
 output/fileencryption-enterprisemgmt-sd.html: NIST800
-output/fileencryption-enterprisemgmt-sd.html: NSAllowsArbitraryLoads
-output/fileencryption-enterprisemgmt-sd.html: NSExceptionAllowsInsecureHTTPLoads
 output/fileencryption-enterprisemgmt-sd.html: OEAP
 output/fileencryption-enterprisemgmt-sd.html: PBKDF
 output/fileencryption-enterprisemgmt-sd.html: PCI
@@ -115,8 +109,6 @@ output/fileencryption-enterprisemgmt-sd.html: lifecycle
 output/fileencryption-enterprisemgmt-sd.html: lifed
 output/fileencryption-enterprisemgmt-sd.html: nLen
 output/fileencryption-enterprisemgmt-sd.html: pass’
-output/fileencryption-enterprisemgmt-sd.html: platformIf
-output/fileencryption-enterprisemgmt-sd.html: plist
 output/fileencryption-enterprisemgmt-sd.html: standards’
 output/fileencryption-enterprisemgmt-sd.html: unmanaged
 output/fileencryption-enterprisemgmt-sd.html: validaity
@@ -146,8 +138,6 @@ output/fileencryption-enterprisemgmt.html: KWK
 output/fileencryption-enterprisemgmt.html: MBR
 output/fileencryption-enterprisemgmt.html: NISP
 output/fileencryption-enterprisemgmt.html: NIST800
-output/fileencryption-enterprisemgmt.html: NSAllowsArbitraryLoads
-output/fileencryption-enterprisemgmt.html: NSExceptionAllowsInsecureHTTPLoads
 output/fileencryption-enterprisemgmt.html: OEAP
 output/fileencryption-enterprisemgmt.html: PBKDF
 output/fileencryption-enterprisemgmt.html: PCC
@@ -168,8 +158,6 @@ output/fileencryption-enterprisemgmt.html: keystore
 output/fileencryption-enterprisemgmt.html: lifecycle
 output/fileencryption-enterprisemgmt.html: lifed
 output/fileencryption-enterprisemgmt.html: nLen
-output/fileencryption-enterprisemgmt.html: platformIf
-output/fileencryption-enterprisemgmt.html: plist
 output/fileencryption-enterprisemgmt.html: sanitization
 output/fileencryption-enterprisemgmt.html: standards’
 output/fileencryption-enterprisemgmt.html: unmanaged

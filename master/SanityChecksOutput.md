@@ -6,7 +6,6 @@
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fia[1]""/f-component[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to FMT_SMR.2.3 from attribute
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:ftp[1]""/f-component[1]""/depends[1]""/on[1]""
-* Error: Detected multiple elements with an id of 'sel_all_https'.
 * Error: Detected multiple elements with an id of 'sel_all_tlsc'.
 * Error: Detected multiple elements with an id of 'USEKEYDER'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
