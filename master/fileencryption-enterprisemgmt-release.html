@@ -799,8 +799,16 @@ The following sections list Common Criteria and technology terms used in this do
 					any Protection Profile.
 				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>:
-					<ul><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Clients, Version 2.5</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is not conformant to any 
-						Functional or Assurance Packages.</dd></dl>
+					<ul><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Clients, Version 2.5</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd><ul><li>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is 
+					    Functional Package for TLS Version 2.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is 
+					    Functional Package for SSH Version 2.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not conform to any 
+						assurance packages.</li></ul></dd><p></p><dd>
+		The functional packages to which the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> conforms may include <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that are not mandatory 
+		to claim for the sake of conformance. An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> that claims one or more of these functional 
+		packages may include any non-mandatory <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that are appropriate to claim based on the 
+		capabilities of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and on any triggers for their inclusion based inherently on the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> 
+		selections made. 
+	</dd></dl>
   <h1 class="indexable" data-level="1" id="spd">3 Security Problem Definition</h1>
     The primary asset that is being protected
     is the sensitive user data stored on a system. The threat model thus focuses on a host machine
@@ -1518,11 +1526,11 @@ provide all of its security functionality.
           
           <div class="element"><div class="reqid" id="FPT_ITT.1.1"><a href="#FPT_ITT.1.1" class="abbr">FPT_ITT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall protect <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> data from [<i>disclosure, modification</i>] when it is transmitted between separate parts
               of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> through the use of <b>
-              [<b>selection</b>: <span class="selectable-content" id="IPSEC">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span>, <span class="selectable-content" id="sel_all_https"><abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</abbr> in accordance with FCS_HTTPS_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="sel_all_tlsc">TLS as defined in the Package for Transport Layer Security (<a href="https://www.niap-ccevs.org/protectionprofiles/465">Functional Package for Transport Layer Security (TLS),
+              [<b>selection</b>: <span class="selectable-content" id="IPSEC">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span>, <span class="selectable-content" id="sel_all_https"><abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</abbr> in accordance with FCS_HTTPS_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="sel_all_tlsc">TLS as defined in the <a href="https://www.niap-ccevs.org/protectionprofiles/465">Functional Package for Transport Layer Security (TLS),
         version 
-        2.1</a>)</span>, <span class="selectable-content" id="sel_all_ssh">SSH as defined in the Functional Package for Secure Shell (<a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell (SSH),
+        2.1</a></span>, <span class="selectable-content" id="sel_all_ssh">SSH as defined in the <a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell (SSH),
         version 
-        2.0</a>)</span>]</b>.
+        2.0</a></span>]</b>.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is intended to define protected communications between the Management Server and the endpoints. <br/>
@@ -1840,11 +1848,11 @@ provide all of its security functionality.
           
           
           <div class="element"><div class="reqid" id="FTP_TRP.1.1"><a href="#FTP_TRP.1.1" class="abbr">FTP_TRP.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <b>be capable of using 
-              [<b>selection</b>: <span class="selectable-content" id="IPSEC">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span>, <span class="selectable-content" id="sel_all_https"><abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</abbr> in accordance with FCS_HTTPS_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="sel_all_tlsc">TLS as defined in the Package for Transport Layer Security (<a href="https://www.niap-ccevs.org/protectionprofiles/465">Functional Package for Transport Layer Security (TLS),
+              [<b>selection</b>: <span class="selectable-content" id="IPSEC">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span>, <span class="selectable-content" id="sel_all_https"><abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</abbr> in accordance with FCS_HTTPS_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="sel_all_tlsc">TLS as defined in the <a href="https://www.niap-ccevs.org/protectionprofiles/465">Functional Package for Transport Layer Security (TLS),
         version 
-        2.1</a>)</span>, <span class="selectable-content" id="sel_all_ssh">SSH as defined in the Functional Package for Secure Shell (<a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell (SSH),
+        2.1</a></span>, <span class="selectable-content" id="sel_all_ssh">SSH as defined in the <a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell (SSH),
         version 
-        2.0</a>)</span>]
+        2.0</a></span>]
               to</b> provide a communication path between itself and <b>authorized remote administrators</b> that is logically distinct from other communication paths
               and provides assured identification of its end points and protection of the communicated data from [<i>modification, disclosure</i>].
             </div></div>
@@ -2221,4 +2229,4 @@ provide all of its security functionality.
           Establishment Schemes Using Discrete Logarithm Cryptography (Revised), March 2007
         </span></td></tr><tr><td><span id="SP800-56B">[NIST800-56B]</span></td><td><span class="description">NIST Special Publication 800-56B, Recommendation for Pair-Wise Key
           Establishment Schemes Using Integer Factorization Cryptography, August 2009 </span></td></tr><tr><td><span id="SP800-90">[NIST800-90]</span></td><td><span class="description">NIST Special Publication 800-90, Recommendation for Random Number Generation
-          Using Deterministic Random Bit Generators (Revised), March 2007 </span></td></tr><tr><td><span id="bibSshPkg">[PKG_SSH]</span></td><td><span class="description"><a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell, Version 2.0</a></span></td></tr></table></body></html>
+          Using Deterministic Random Bit Generators (Revised), March 2007 </span></td></tr></table></body></html>

@@ -160,7 +160,10 @@
         <Mod-cc-ref>PP-Module for VPN Clients, Version 2.5</Mod-cc-ref>
         <Mod-cc-ref>PP-Module for File Encryption, Version 2.0</Mod-cc-ref>
       </cc-pp-config-with>
-      <cc-pkg-claim/>
+      <cc-pkg-claim>
+      <FP-cc-ref conf="conformant">Functional Package for TLS Version 2.0</FP-cc-ref>
+      <FP-cc-ref conf="conformant">Functional Package for SSH Version 2.0</FP-cc-ref>
+      </cc-pkg-claim>
     </CClaimsInfo>
   </section>
             
@@ -2645,8 +2648,8 @@ configure the number of failed validation attempts required to trigger correctiv
               <selectables>
                 <selectable id="IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
                 <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1 <h:b>(from <xref to="bibAppPP"/>)</h:b></selectable>
-                <selectable id="sel_all_tlsc">TLS as defined in the Package for Transport Layer Security (<xref to="pkg-tls"/>)</selectable>
-                <selectable id="sel_all_ssh">SSH as defined in the Functional Package for Secure Shell (<xref to="pkg-ssh"/>)</selectable>
+                <selectable id="sel_all_tlsc">TLS as defined in the <xref to="pkg-tls"/></selectable>
+                <selectable id="sel_all_ssh">SSH as defined in the <xref to="pkg-ssh"/></selectable>
               </selectables></h:b>.
             </title>
             <note role="application">This SFR is intended to define protected communications between the Management Server and the endpoints. <h:br/>
@@ -3196,8 +3199,8 @@ configure the number of failed validation attempts required to trigger correctiv
               <selectables>
              <selectable id="IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
                 <selectable id="sel_all_https"><h:abbr title="Hypertext Transfer Protocol                   Secure">HTTPS</h:abbr> in accordance with FCS_HTTPS_EXT.1 <h:b>(from <xref to="bibAppPP"/>)</h:b></selectable>
-                <selectable id="sel_all_tlsc">TLS as defined in the Package for Transport Layer Security (<xref to="pkg-tls"/>)</selectable>
-                <selectable id="sel_all_ssh">SSH as defined in the Functional Package for Secure Shell (<xref to="pkg-ssh"/>)</selectable>
+                <selectable id="sel_all_tlsc">TLS as defined in the <xref to="pkg-tls"/></selectable>
+                <selectable id="sel_all_ssh">SSH as defined in the <xref to="pkg-ssh"/></selectable>
                 </selectables>
               to</h:b> provide a communication path between itself and <h:b>authorized remote administrators</h:b> that is logically distinct from other communication paths
               and provides assured identification of its end points and protection of the communicated data from [<h:i>modification, disclosure</h:i>].
@@ -3368,10 +3371,6 @@ configure the number of failed validation attempts required to trigger correctiv
         <tag>FIPS198-1</tag>
         <description>Federal Information Processing Standards Publication (FIPS-PUB) 198-1, The
           Keyed-Hash Message Authentication Code (HMAC), July 2008 </description>
-      </entry>
-      <entry id="bibSshPkg">
-      <tag>PKG_SSH</tag>
-      <description><h:a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell, Version 2.0</h:a></description>
       </entry>
       <entry id="SP800-38A">
         <tag>NIST800-38A</tag>
