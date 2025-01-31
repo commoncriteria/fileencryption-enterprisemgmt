@@ -274,7 +274,7 @@
    </style></head><body><div style="text-align: center; margin-left: auto; margin-right: auto;"><h1 class="title" style="page-break-before:auto;">Supporting Document<br/>
         Mandatory Technical Document</h1><img src="images/niaplogo.png" alt="NIAP"></img><hr width="50%"></hr><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><br/>
     PP-Module for File Encryption Enterprise Management<br/>
-      Version: 1.0<br/>2019-07-30<br/><b>National Information Assurance Partnership</b></div><div class="foreword"><h1 style="text-align: center">Foreword</h1><p>This is a Supporting Document (SD), intended to complement the Common Criteria version 3
+      Version: 1.1<br/>2025-01-31<br/><b>National Information Assurance Partnership</b></div><div class="foreword"><h1 style="text-align: center">Foreword</h1><p>This is a Supporting Document (SD), intended to complement the Common Criteria version 3
       and the associated Common Evaluation Methodology for
       Information Technology Security Evaluation.</p><p>SDs may be “Guidance Documents”, that highlight specific approaches 
       and application of the standard to areas where no mutual recognition of
@@ -284,7 +284,7 @@
       The usage of the latter class is not only mandatory, but certificates
       issued as a result of their application are recognized under the CCRA.</p><p><b>Technical Editor:</b><br/>
       National Information Assurance Partnership (NIAP)
-      </p><p><b style="page-break-before:always;">Document history:</b><table><tr class="header"><th>Version</th><th>Date</th><th style="align:left;">Comment</th></tr><tr><td>1.0</td><td>2019-07-30</td><td>Initial Release</td></tr></table></p><p><b>General Purpose:</b><br/>
+      </p><p><b style="page-break-before:always;">Document history:</b><table><tr class="header"><th>Version</th><th>Date</th><th style="align:left;">Comment</th></tr><tr><td>1.0</td><td>2019-07-30</td><td>Initial Release</td></tr><tr><td>1.1</td><td>2025-01-31</td><td>Update to CC:2022</td></tr></table></p><p><b>General Purpose:</b><br/>
       The purpose of this SD is to define evaluation methods for the functional behavior of
       File Encryption Enterprise Management      
       products.
@@ -305,7 +305,7 @@
     The PP-Module is intended for use with the following Base-PP:
         <ul><li>Application Software, version 1.3.</li></ul><br/>
     This SD is mandatory for evaluations of TOEs that claim conformance to a PP-Configuration that includes the PP-Module for :
-    <ul><li>File Encryption Enterprise Management, Version 1.0</li></ul>
+    <ul><li>File Encryption Enterprise Management, Version 1.1</li></ul>
     As such it defines Evaluation Activities for the functionality described in the PP-Module as well as any impacts to the Evaluation Activities to the Base-PP(s) it modifies.
     </p><p> 
 Although Evaluation Activities are defined mainly for the evaluators to follow, in general they also help developers to prepare for evaluation by identifying specific requirements for their TOE.
@@ -596,6 +596,9 @@ The following sections list Common Criteria and technology terms used in this do
               
               The assurance activity tests specified for AES in GCM mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
               shall be performed in the case that "GCM" is selected in the requirement.<br/><br/>
+
+              The assurance activity tests specified for AES in CBC mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
+              shall be performed in the case that "CBC" is selected in the requirement.
               
              <p><b>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</b></p>
               <p>
@@ -792,24 +795,7 @@ The following sections list Common Criteria and technology terms used in this do
                     resulting error codes are the same and that no information is given back to the
                     sender on which type of error occurred. The evaluator shall also validate that no
                     intermediate results from the TOE's receiver-side operations (in particular, no Z
-                    values) are revealed to the sender.</li></ul></span></div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/7 Cryptographic operation (Key Encryption)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/7</div>
-              
-
-
-<div class="eacategory">TSS</div><div class="ea"><div class="ea">
-              
-              Conditional: If 'not perform key encryption' was selected, then the evaluator shall only examine the TSS to verify no key encryption is performed. <br/>
-              Requirement met by the platform If the platform provides the FEK
-              encryption/decryption, then the evaluator shall examine the TSS to verify that it
-              describes how the FEK encryption/decryption is invoked. <br/>
-              Requirement met by the TOE The evaluator shall verify the TSS includes a description of the key size used for
-              encryption and the mode used for the key encryption <br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
-              
-              Conditional: If 'not perform key encryption' was selected, no testing is performed.<br/>
-  The assurance activity tests specified for AES in CBC mode in the underlying <a href="#bibAppPP">[AppPP]</a> shall be performed in the case that "CBC" is selected in the requirement.
-            </div></div></span></div><div class="comp" id=""><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_IV_EXT.1</div>
+                    values) are revealed to the sender.</li></ul></span></div></div></span></div><div class="comp" id=""><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_IV_EXT.1</div>
               
 
 
@@ -1464,18 +1450,6 @@ configure the number of failed validation attempts required to trigger correctiv
     and supplement that evaluation with the necessary SFRs that are taken from the PP-Module.
     </p><h1 id="sup-info" class="indexable" data-level="0">4 Required Supplementary Information</h1><p>This Supporting Document has no required supplementary information beyond the ST, operational
 guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appendix A -  References</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr>
-      <tr><td><span id="bibCC"></span>[CC]</td><td>Common Criteria for Information Technology Security Evaluation - <ul>
-          <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part
-                1: Introduction and General Model</a>, CCMB-2017-04-001, Version 3.1 Revision 5,
-              April 2017.</li>
-          <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part
-                2: Security Functional Components</a>, CCMB-2017-04-002, Version 3.1 Revision 5,
-              April 2017.</li>
-          <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part
-                3: Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5,
-              April 2017.</li>
-          </ul></td></tr>
-
       <tr><td><span id="bibAppPP"></span>[AppPP]</td><td>
           <a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application Software, Version 1.3</a>
         </td></tr>
@@ -1496,6 +1470,8 @@ guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appen
 
       <tr><td><span id="FIPS198-1"></span>[FIPS198-1]</td><td>Federal Information Processing Standards Publication (FIPS-PUB) 198-1, The
           Keyed-Hash Message Authentication Code (HMAC), July 2008 </td></tr>
+
+      <tr><td><span id="bibSshPkg"></span>[PKG_SSH]</td><td><a href="https://www.niap-ccevs.org/protectionprofiles/515">Functional Package for Secure Shell, Version 2.0</a></td></tr>
 
       <tr><td><span id="SP800-38A"></span>[NIST800-38A]</td><td>NIST Special Publication 800-38A, Recommendation for Block Cipher Modes of
           Operation: Methods and Techniques, 2001 Edition </td></tr>
