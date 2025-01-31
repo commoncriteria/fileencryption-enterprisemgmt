@@ -898,9 +898,9 @@ provide all of its security functionality.
             
             FTP_DIT_EXT.1 specifies the protocols used to ensure that key material is not exposed through the communication channel between an Enterprise Server and 
             the endpoint. The requirements for establishing keys are validated by FCS_CKM.2 which relies on the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> or package claims selected in FTP_DIT_EXT.1
-            to implement secure communications.  The various iterations of FCS_COP.1 as well as FCS_RBG_EXT.1 all validate that the cryptography used to initiate and protect
+            to implement secure communications.  The various iterations of FCS_COP.1 as well as FCS_RBG.1 all validate that the cryptography used to initiate and protect
             the communication channel protocols between the Enterprise Server and the endpoint, if remote management is supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. If implemented
-            on the server, <a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a> ensures proper destruction of keys and key material on the server when no longer needed.<br/><br/>
+            on the server, <a href="#FCS_CKM.6">FCS_CKM.6</a> ensures proper destruction of keys and key material on the server when no longer needed.<br/><br/>
             
             In order to ensure that a key is only released to the appropriate endpoint, FCS_KYP_EXT.3 ensures that there is attribution of the endpoint
             or encrypted file(s) and a key. The optional Server requirement FCS_CKM.2 ensures that if a key is communicated between the server and the
@@ -1035,15 +1035,31 @@ provide all of its security functionality.
         
       <h3 id="fcs" class="indexable" data-level="3">5.2.1 Cryptographic Support (FCS)</h3>
         
-        <div class="comp" id="FCS_CKM_EXT.4"><h4>FCS_CKM_EXT.4 Cryptographic Key Destruction</h4>
+        <div class="comp" id="FCS_CKM.6"><h4>FCS_CKM.6 Cryptographic Key Destruction</h4>
           
           
           
           
+          <div class="element"><div class="reqid" id="FCS_CKM.6.1"><a href="#FCS_CKM.6.1" class="abbr">FCS_CKM.6.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy [<i>all keys and key material</i>] when <i>no longer needed</i>.<div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+              
+              Keys, including intermediate keys and key material that are no longer
+              needed are destroyed by using an approved method, <a href="#FCS_CKM.6.2">FCS_CKM.6.2</a>. Examples of keys are
+              intermediate keys, submasks. There may be instances where keys or key material
+              that are contained in persistent storage are no longer needed and require destruction. 
+              Base on their implementation, vendors will explain when certain keys are no longer needed. There
+              are multiple situations in which key material is no longer necessary, for example, a wrapped
+              key may need to be destroyed when a password is changed. However, there are instances
+              when keys are allowed to remain in memory, for example, a device identification key. If a
+              PIN was used for a smart card and managed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, ensuring that the PIN was properly destroyed must be addressed.
+              
+              
+            </span></div></div></div>
           
-          
-          
-          <div class="element"><div class="reqid" id="FCS_CKM_EXT.4.1"><a href="#FCS_CKM_EXT.4.1" class="abbr">FCS_CKM_EXT.4.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy cryptographic keys in accordance with a specified cryptographic key destruction method 
+          <div class="element"><div class="reqid" id="FCS_CKM.6.2"><a href="#FCS_CKM.6.2" class="abbr">FCS_CKM.6.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy cryptographic keys and keying material specified by <a href="#FCS_CKM.6.1">FCS_CKM.6.1</a>
+            in accordance with a specified cryptographic key destruction method
+            [<i> 
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_29"> For volatile memory, the destruction shall be executed by a
                   [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_30">single overwrite consisting of 
                       [<b>selection</b>: <span class="selectable-content" id="_s_31">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr></span>, <span class="selectable-content" id="_s_32">zeroes</span>, <span class="selectable-content" id="_s_33">ones</span>, <span class="selectable-content" id="_s_34">new value of a key</span>, <span class="selectable-content" id="_s_35">[<b>assignment</b>: 
@@ -1053,17 +1069,18 @@ provide all of its security functionality.
                   [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_39">destruction of all KEKs protecting the target key,
                       where none of the KEKs protecting the target key are derived
                     </span></li><li style=""><span class="selectable-content" id="_s_40"> the invocation of an interface provided by the underlying platform that
-                      [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_41">logically addresses the storage location of the key and performs a
-                          [<b>selection</b>: <span class="selectable-content" id="_s_42">single</span>, <span class="selectable-content" id="_s_43">[<b>assignment</b>: 
+                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_41">logically addresses the storage location of the key and performs a
+                      [<b>selection</b>: <span class="selectable-content" id="_s_42">single</span>, <span class="selectable-content" id="_s_43">[<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author defined multi-pass</span>]</span>]
-                          overwrite consisting of 
-                          [<b>selection</b>: <span class="selectable-content" id="_s_44">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr></span>, <span class="selectable-content" id="_s_45">zeroes</span>, <span class="selectable-content" id="_s_46">ones</span>, <span class="selectable-content" id="_s_47">new value of a key</span>, <span class="selectable-content" id="_s_48">[<b>assignment</b>: 
+                      overwrite consisting of 
+                      [<b>selection</b>: <span class="selectable-content" id="_s_44">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr></span>, <span class="selectable-content" id="_s_45">zeroes</span>, <span class="selectable-content" id="_s_46">ones</span>, <span class="selectable-content" id="_s_47">new value of a key</span>, <span class="selectable-content" id="_s_48">[<b>assignment</b>: 
      <span class="assignable-content">any value that does not contain any CSP</span>]</span>]
-                        </span></li><li style=""><span class="selectable-content" id="_s_49">instructs the underlying platform to destroy the abstraction that represents the key</span></li></ul>]
+                    </span></li><li style=""><span class="selectable-content" id="_s_49">instructs the underlying platform to destroy the abstraction that represents the key</span></li></ul>]
                     </span></li></ul>]
-                  
-                  
-                </span></li></ul>].
+
+
+                </span></li></ul>]]</i>
+              that meets the following: [<i>no standard</i>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">              
@@ -1086,26 +1103,11 @@ provide all of its security functionality.
               protects the key. If a key is wrapped or encrypted it is not necessary to "overwrite" that key, overwriting the key 
               that is used to wrap or encrypt the key used to encrypt/decrypt data, using the appropriate method for the memory 
               type involved, will suffice. For example, if a product uses a Key Encryption Key (<abbr class="dyn-abbr"><a href="#abbr_KEK">KEK</a></abbr>) to encrypt a File Encryption 
-              Key (<abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>), destroying the <abbr class="dyn-abbr"><a href="#abbr_KEK">KEK</a></abbr> using one of the methods in <a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a> is sufficient, since the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr> would no longer 
+              Key (<abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>), destroying the <abbr class="dyn-abbr"><a href="#abbr_KEK">KEK</a></abbr> using one of the methods in <a href="#FCS_CKM.6">FCS_CKM.6</a> is sufficient, since the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr> would no longer 
               be usable (of course, presumes the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr> is still encrypted and the <abbr class="dyn-abbr"><a href="#abbr_KEK">KEK</a></abbr> cannot be recovered or re-derived). </span></div></div></div>
           
-          <div class="element"><div class="reqid" id="FCS_CKM_EXT.4.2"><a href="#FCS_CKM_EXT.4.2" class="abbr">FCS_CKM_EXT.4.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy all keys and key material when no longer needed.<div class="appnote"><span class="note-header">Application
-      Note:
-    </span><span class="note">
-              
-              Keys, including intermediate keys and key material that are no longer
-              needed are destroyed by using an approved method, <a href="#FCS_CKM_EXT.4.1">FCS_CKM_EXT.4.1</a>. Examples of keys are
-              intermediate keys, submasks. There may be instances where keys or key material
-              that are contained in persistent storage are no longer needed and require destruction. 
-              Base on their implementation, vendors will explain when certain keys are no longer needed. There
-              are multiple situations in which key material is no longer necessary, for example, a wrapped
-              key may need to be destroyed when a password is changed. However, there are instances
-              when keys are allowed to remain in memory, for example, a device identification key. If a
-              PIN was used for a smart card and managed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, ensuring that the PIN was properly destroyed must be addressed.
-              
-              
-            </span></div></div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></div>
+          
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_CKM.6">FCS_CKM.6</a></div>
               
               
               
@@ -1143,7 +1145,7 @@ provide all of its security functionality.
                 where none of the KEKs protecting the target key are derived" is included the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s 
                 keychain in the KMD and identify each instance when a key is destroyed by this method. In each instance the evaluator 
                 shall verify all keys capable of decrypting the target key are destroyed in accordance with a specified key destruction 
-                method in <a href="#FCS_CKM_EXT.4.1">FCS_CKM_EXT.4.1</a>. The evaluator shall verify that all of the keys capable of decrypting the target key are not 
+                method in <a href="#FCS_CKM.6.2">FCS_CKM.6.2</a>. The evaluator shall verify that all of the keys capable of decrypting the target key are not 
                 able to be derived to reestablish the keychain after their destruction. <br/><br/>
                 
                 The evaluator shall verify the KMD includes a description of the areas where keys and
@@ -1152,7 +1154,7 @@ provide all of its security functionality.
                 The evaluator shall verify the KMD includes a key lifecycle, that includes a description
                 where key material reside, how the key material is used, how it is determined that keys
                 and key material are no longer needed, and how the material is destroyed once it is not
-                needed and that the documentation in the KMD follows <a href="#FCS_CKM_EXT.4.1">FCS_CKM_EXT.4.1</a> for the
+                needed and that the documentation in the KMD follows <a href="#FCS_CKM.6.2">FCS_CKM.6.2</a> for the
                 destruction.<br/><br/>
                 
                 
@@ -1184,7 +1186,7 @@ provide all of its security functionality.
                 potentially recoverable data may remain in damaged areas of the drive.<br/><br/>
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> These tests are only for key destruction provided by the application, test 2 does not apply to any keys using the selection "new value of a key": <br/><br/>
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_1" class="defined" href="#_t_1">Test FCS_CKM_EXT.4:1</a>:
+                  <li class="test-"><a id="_t_1" class="defined" href="#_t_1">Test FCS_CKM.6:1</a>:
       Applied to each key held in volatile memory and subject to destruction by overwrite by the 
                     <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (whether or not the value is subsequently encrypted for storage in volatile or non-volatile memory). 
                     In the case where the only selection made for the key destruction method was removal of power, then this test is unnecessary. <br/><br/>
@@ -1205,7 +1207,7 @@ provide all of its security functionality.
                     
                     Steps #1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, then the test fails.</li><br/>
                   
-                  <li class="test-"><a id="_t_2" class="defined" href="#_t_2">Test FCS_CKM_EXT.4:2</a>:
+                  <li class="test-"><a id="_t_2" class="defined" href="#_t_2">Test FCS_CKM.6:2</a>:
       [Conditional] If new value of a key is selected this test does not apply. <br/>
                     Applied to each key held in non-volatile memory and subject to destruction by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <br/>
                     The evaluator shall use special tools (as needed), provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> developer if necessary, to ensure the tests function as intended.<br/>
@@ -1220,7 +1222,7 @@ provide all of its security functionality.
                   
                   Tests 3 and 4 do not apply for the selection instructing the underlying platform to destroy the representation of the key, as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has no visibility into the inner workings and completely relies on the underlying platform.<br/><br/>
                   
-                  <li class="test-"><a id="_t_3" class="defined" href="#_t_3">Test FCS_CKM_EXT.4:3</a>:
+                  <li class="test-"><a id="_t_3" class="defined" href="#_t_3">Test FCS_CKM.6:3</a>:
       Applied to each key held in non-volatile memory and subject to destruction by overwrite by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. The evaluator shall use a tool that provides a logical view of the media (e.g., MBR file system):<br/>
                     
                     1. Record the value of the key in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> subject to clearing.<br/>
@@ -1231,7 +1233,7 @@ provide all of its security functionality.
                     
                     4. Search the logical view that the key was stored in for instances of the known key value from Step #1. If a copy is found, then the test fails. </li><br/>
                   
-                  <li class="test-"><a id="_t_4" class="defined" href="#_t_4">Test FCS_CKM_EXT.4:4</a>:
+                  <li class="test-"><a id="_t_4" class="defined" href="#_t_4">Test FCS_CKM.6:4</a>:
       Applied to each key held in non-volatile memory and subject to destruction by overwrite by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
                     The evaluator shall use a tool that provides a logical view of the media:<br/>
                     
@@ -1256,9 +1258,9 @@ provide all of its security functionality.
               </div></div></div></div></div>
         
 	      
-	      <div class="comp" id="FCS_COP.1/5"><h4>FCS_COP.1/5 Cryptographic operation (Key Wrapping)</h4>
+	      <div class="comp" id="FCS_COP.1/KW"><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4>
 	        
-	        <div class="element"><div class="reqid" id="FCS_COP.1.1/5"><a href="#FCS_COP.1.1/5" class="abbr">FCS_COP.1.1/5</a></div><div class="reqdesc">
+	        <div class="element"><div class="reqid" id="FCS_COP.1.1/KW"><a href="#FCS_COP.1.1/KW" class="abbr">FCS_COP.1.1/KW</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <b> 
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_50">not perform key wrapping</span></li><li style=""><span class="selectable-content" id="_s_51">use platform-provided functionality to perform Key Wrapping</span></li><li style=""><span class="selectable-content" id="_s_52">implement functionality to perform Key Wrapping in accordance with a specified cryptographic algorithm [AES] in the following modes
                   [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_53">Key Wrap</span></li><li style=""><span class="selectable-content" id="_s_54">Key Wrap with Padding</span></li><li style=""><span class="selectable-content" id="_s_55">GCM mode</span></li><li style=""><span class="selectable-content" id="_s_56">CCM mode</span></li><li style=""><span class="selectable-content" id="_s_57">CBC mode</span></li></ul>] and the cryptographic key size [<i>256 bits (AES)</i>] that meet the following: 
@@ -1272,7 +1274,7 @@ provide all of its security functionality.
               This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to
               use key wrapping in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.</span></div></div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/5">FCS_COP.1/5</a></div>
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KW">FCS_COP.1/KW</a></div>
               
 
 
@@ -1395,9 +1397,9 @@ provide all of its security functionality.
             </div></div></div></div></div>
         
         
-        <div class="comp" id="FCS_COP.1/6"><h4>FCS_COP.1/6 Cryptographic operation (Key Transport)</h4>
+        <div class="comp" id="FCS_COP.1/KT"><h4>FCS_COP.1/KT Cryptographic operation (Key Transport)</h4>
           
-          <div class="element"><div class="reqid" id="FCS_COP.1.1/6"><a href="#FCS_COP.1.1/6" class="abbr">FCS_COP.1.1/6</a></div><div class="reqdesc">
+          <div class="element"><div class="reqid" id="FCS_COP.1.1/KT"><a href="#FCS_COP.1.1/KT" class="abbr">FCS_COP.1.1/KT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <b>
                 [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_62">not perform key transport</span></li><li style=""><span class="selectable-content" id="_s_63">perform [key transport] in accordance with a
                     specified cryptographic algorithm [RSA in the following modes 
@@ -1412,7 +1414,7 @@ provide all of its security functionality.
               This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to
               use key transport in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.
             </span></div></div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/6">FCS_COP.1/6</a></div>
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KT">FCS_COP.1/KT</a></div>
               
               
               
@@ -1433,6 +1435,8 @@ provide all of its security functionality.
                 If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                 identifies the key derivation method, the AES-based key wrapping method, the secret
                 value encapsulation technique, and the random number generator. <br/><br/>
+
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
                 For each supported key transport schema, the evaluator shall initiate at least 25
@@ -1443,14 +1447,14 @@ provide all of its security functionality.
                 If the KTS-OAEP scheme was selected, the evaluator shall perform the following
                 tests:
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_5" class="defined" href="#_t_5">Test FCS_COP.1/6:1</a>:
+                  <li class="test-"><a id="_t_5" class="defined" href="#_t_5">Test FCS_COP.1/KT:1</a>:
       The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
                     encryption operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and make sure it is the correct length, either
                     256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
                     the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s RSA-OEAP decryption operation some cipher texts that are the
                     wrong length and verify that the erroneous input is detected and that the
                     decryption operation exits with an error code.
-                  </li><li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FCS_COP.1/6:2</a>:
+                  </li><li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FCS_COP.1/KT:2</a>:
       The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
                     encryption operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to the correct cipher text integer, c, and use the
                     decryption primitive to compute em = RSADP((n,d),c) and convert em to the
@@ -1459,7 +1463,7 @@ provide all of its security functionality.
                     operation some cipher texts where the first byte of EM was set to a value other
                     than 0x00, and verify that the erroneous input is detected and that the decryption
                     operation exits with an error code.
-                  </li><li class="test-"><a id="_t_7" class="defined" href="#_t_7">Test FCS_COP.1/6:3</a>:
+                  </li><li class="test-"><a id="_t_7" class="defined" href="#_t_7">Test FCS_COP.1/KT:3</a>:
       The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
                     encryption operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using RSADP, and perform the OAEP
                     decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
@@ -1468,7 +1472,7 @@ provide all of its security functionality.
                     shall also force the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform some RSA-OAEP decryption
                     where the A value is passed incorrectly, and the evaluator shall verify
                     that an error is detected.
-                  </li><li class="test-"><a id="_t_8" class="defined" href="#_t_8">Test FCS_COP.1/6:4</a>:
+                  </li><li class="test-"><a id="_t_8" class="defined" href="#_t_8">Test FCS_COP.1/KT:4</a>:
       The evaluator shall check the format of the 'X' string recovered in OAEP.Test.3
                     to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
                     more consecutive 0x00 bytes and K is the transported keying material. The
@@ -1477,7 +1481,7 @@ provide all of its security functionality.
                     correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
                     formatted 'X' variables shall be detected by the RSA-OEAP decrypt
                     function.
-                  </li><li class="test-"><a id="_t_9" class="defined" href="#_t_9">Test FCS_COP.1/6:5</a>:
+                  </li><li class="test-"><a id="_t_9" class="defined" href="#_t_9">Test FCS_COP.1/KT:5</a>:
       The evaluator shall trigger all detectable decryption errors and validate that the
                     returned error codes are the same and that no information is given back to the
                     sender on which type of error occurred. The evaluator shall also validate that no
@@ -1486,7 +1490,7 @@ provide all of its security functionality.
                 If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
                 following tests:
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_10" class="defined" href="#_t_10">Test FCS_COP.1/6:6</a>:
+                  <li class="test-"><a id="_t_10" class="defined" href="#_t_10">Test FCS_COP.1/KT:6</a>:
       The evaluator shall inspect each cipher text, C, produced by KTS-KEM-KWS
                     encryption operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and make sure the length (in bytes) of the
                     cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
@@ -1494,7 +1498,7 @@ provide all of its security functionality.
                     supported by the key wrapping algorithm. The evaluator shall feed into the
                     KTS-KEM-KWS decryption operation a cipher text of unsupported length and
                     verify that an error is detected and that the decryption process stops.
-                  </li><li class="test-"><a id="_t_11" class="defined" href="#_t_11">Test FCS_COP.1/6:7</a>:
+                  </li><li class="test-"><a id="_t_11" class="defined" href="#_t_11">Test FCS_COP.1/KT:7</a>:
       The evaluator shall separate the cipher text, C, produced by the sender-side of
                     the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> into its C0 and C1 components and use the RSA decryption primitive to
                     recover the secret value, Z, from C0. The evaluator shall check that the
@@ -1504,7 +1508,7 @@ provide all of its security functionality.
                     KTS-KEM-KWS decryption process detects the error. Similarly, the evaluator
                     shall construct examples where the cipher text is created with a secret value Z =
                     n - 1 and make sure the KTS-KEM-KWS decryption process detects the error.
-                  </li><li class="test-"><a id="_t_12" class="defined" href="#_t_12">Test FCS_COP.1/6:8</a>:
+                  </li><li class="test-"><a id="_t_12" class="defined" href="#_t_12">Test FCS_COP.1/KT:8</a>:
       The evaluator shall attempt to successfully recover the secret value Z, derive the
                     key wrapping key, KWK, and unwrap the KWA-cipher text following the KTS-KEM-KWS
                     decryption process given in NISP SP 800-56B section 7.2.3.4. If the
@@ -1519,7 +1523,7 @@ provide all of its security functionality.
                     evaluator shall attempt at least one decryption where the wrong nonce is given to
                     the KTS-KEM-KWS decryption operation and verify that a decryption error is
                     detected.
-                  </li><li class="test-"><a id="_t_13" class="defined" href="#_t_13">Test FCS_COP.1/6:9</a>:
+                  </li><li class="test-"><a id="_t_13" class="defined" href="#_t_13">Test FCS_COP.1/KT:9</a>:
       The evaluator shall trigger all detectable decryption errors and validate that the
                     resulting error codes are the same and that no information is given back to the
                     sender on which type of error occurred. The evaluator shall also validate that no
@@ -1552,6 +1556,7 @@ provide all of its security functionality.
               The evaluator shall ensure the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how nonces are created uniquely and how IVs and tweaks are handled (based on the AES mode).
               The evaluator shall confirm that the nonces are unique and the IVs and tweaks meet the stated requirements.
               <br/><br/>
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.
               <br/><br/>
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.
@@ -1567,7 +1572,7 @@ provide all of its security functionality.
 	        
 	        
           <div class="element"><div class="reqid" id="FCS_KDF_EXT.1.1"><a href="#FCS_KDF_EXT.1.1" class="abbr">FCS_KDF_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_75">not derive keys</span></li><li style=""><span class="selectable-content" id="_s_76">accept
-                  [<b>selection</b>: <span class="selectable-content" id="_s_77">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_78">a conditioned password</span>, <span class="selectable-content" id="_s_79">an imported submask</span>] to derive an intermediate key, as defined in
+                  [<b>selection</b>: <span class="selectable-content" id="_s_77">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_78">a conditioned password</span>, <span class="selectable-content" id="_s_79">an imported submask</span>] to derive an intermediate key, as defined in
                   [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_80">NIST SP 800-108 
                       [<b>selection</b>: <span class="selectable-content" id="_s_81">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_82">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_83">KDF in Double-Pipeline Iteration Mode</span>]
                     </span></li><li style=""><span class="selectable-content" id="_s_84">NIST SP 800-132</span></li></ul>] using the keyed-hash functions specified in FCS_COP.1<b>(4)</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>, such that the output is at least of
@@ -1668,7 +1673,8 @@ provide all of its security functionality.
               or a compromise of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server and the effective strength of the keys are maintained
               throughout the key chain.<br/><br/>
 
-              
+              <h4>KMD</h4>None.<br/><br/>
+
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
               If there are configurations to enable or disable use of enterprise server, which modify
               the key chain, they shall be described.
@@ -1708,15 +1714,18 @@ provide all of its security functionality.
               shall identify how this is performed (e.g., if there are ordering requirements, checks
               performed, etc.). The evaluator shall also confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the length
               of the output produced is at least the same as that of the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>. <br/><br/>
+
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.<br/><br/>
 </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.
             </div></div></div></div></div>
 	      
         
         
-        
-	      <div class="comp" id="FCS_VAL_EXT.1/1"><h4>FCS_VAL_EXT.1/1 Validation (Server Administrator)</h4>
-          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.1/1"><a href="#FCS_VAL_EXT.1.1/1" class="abbr">FCS_VAL_EXT.1.1/1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform validation of the [<i>admin</i>] by 
+      
+      
+	      <div class="comp" id="FCS_VAL_EXT.1/Admin"><h4>FCS_VAL_EXT.1/Admin Validation (Server Administrator)</h4>
+          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.1/Admin"><a href="#FCS_VAL_EXT.1.1/Admin" class="abbr">FCS_VAL_EXT.1.1/Admin</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform validation of the [<i>admin</i>] by 
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_165">receiving assertion of the subject's validity from [<b>assignment</b>: 
      <span class="assignable-content">Operational Environment component responsible for authentication</span>]</span></li><li style=""><span class="selectable-content" id="_s_166">validating the [<b>selection</b>: <span class="selectable-content" id="_s_167">submask</span>, <span class="selectable-content" id="_s_168">intermediate key</span>] using the following methods: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_169">key wrap as specified in FCS_COP.1<b>(5)</b></span></li><li style=""><span class="selectable-content" id="_s_170">hash the 
                     [<b>selection</b>: <span class="selectable-content" id="_s_171">submask</span>, <span class="selectable-content" id="_s_172">intermediate key</span>, <span class="selectable-content" id="_s_173"><abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr></span>] as specified in FCS_COP.1<b>(2)</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b> and compare it to a stored hash</span></li><li style=""><span class="selectable-content" id="_s_174">decrypt a known value using the 
@@ -1724,7 +1733,7 @@ provide all of its security functionality.
               
             </div></div>
           
-	        <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.2/1"><a href="#FCS_VAL_EXT.1.2/1" class="abbr">FCS_VAL_EXT.1.2/1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require validation of the [<i>admin</i>] prior to [<i>permitting the actions described in <a href="#FMT_MTD.1.1">FMT_MTD.1.1</a> and FMT_SMF.1.1(2)</i>].<div class="appnote"><span class="note-header">Application
+	        <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.2/Admin"><a href="#FCS_VAL_EXT.1.2/Admin" class="abbr">FCS_VAL_EXT.1.2/Admin</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require validation of the [<i>admin</i>] prior to [<i>permitting the actions described in <a href="#FMT_MTD.1.1">FMT_MTD.1.1</a> and FMT_SMF.1.1(2)</i>].<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
                 
@@ -1738,11 +1747,11 @@ provide all of its security functionality.
 	        
 	        
 	        
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.1/1">FCS_VAL_EXT.1/1</a></div>
+      <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.1/Admin">FCS_VAL_EXT.1/Admin</a></div>
               
-
-
-<div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+              
+              
+            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
                 
                 Conditional: <br/>If 'validating' is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that it states which authorization factors support validation.<br/><br/>
                 The evaluator shall also examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it includes a high-level description of how how the submasks are validated. If multiple submasks are used within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
@@ -1751,18 +1760,18 @@ provide all of its security functionality.
                 Conditional: <br/>If 'receiving assertion of the subject's validaity' is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes the enviroments that can be leveraged with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> 
                 and how each claims to perform validation. The evaluator shall also ensure that none of the stated platform validation mechanisms weaken the key chain of the product.<br/><br/>
                 
-                
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the validation functionality is configurable, the evaluator shall examine the operational guidance
               to ensure it describes how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to ensure the limits regarding validation attempts can be established.<br/><br/> 
               
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-There are no test activities for this requirement.
+                There are no test activities for this requirement.
 
-            </div></div></div></div></div>
+              </div></div></div></div></div>
         
-        <div class="comp" id="FCS_VAL_EXT.1/2"><h4>FCS_VAL_EXT.1/2 Validation (User)</h4>
+        <div class="comp" id="FCS_VAL_EXT.1/User"><h4>FCS_VAL_EXT.1/User Validation (User)</h4>
           
-          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.1/2"><a href="#FCS_VAL_EXT.1.1/2" class="abbr">FCS_VAL_EXT.1.1/2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform validation of the [<i>user</i>] by 
+          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.1/User"><a href="#FCS_VAL_EXT.1.1/User" class="abbr">FCS_VAL_EXT.1.1/User</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform validation of the [<i>user</i>] by 
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_178">receiving assertion of the subject's validity from [<b>assignment</b>: 
      <span class="assignable-content">Operational Environment component responsible for authentication</span>]</span></li><li style=""><span class="selectable-content" id="_s_179">validating the [<b>selection</b>: <span class="selectable-content" id="_s_180">submask</span>, <span class="selectable-content" id="_s_181">intermediate key</span>] using the following methods: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_182">key wrap as specified in FCS_COP.1<b>(5)</b></span></li><li style=""><span class="selectable-content" id="_s_183">hash the 
                     [<b>selection</b>: <span class="selectable-content" id="_s_184">submask</span>, <span class="selectable-content" id="_s_185">intermediate key</span>, <span class="selectable-content" id="_s_186"><abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr></span>] as specified in FCS_COP.1<b>(2)</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b> and compare it to a stored hash</span></li><li style=""><span class="selectable-content" id="_s_187">decrypt a known value using the 
@@ -1770,12 +1779,12 @@ There are no test activities for this requirement.
               
             </div></div>
           
-          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.2/2"><a href="#FCS_VAL_EXT.1.2/2" class="abbr">FCS_VAL_EXT.1.2/2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require validation of the [<i>user</i>] prior to [<i>transmitting submasks, FEKs, or keys to decrypt FEKs to the endpoint</i>].<div class="appnote"><span class="note-header">Application
+          <div class="element"><div class="reqid" id="FCS_VAL_EXT.1.2/User"><a href="#FCS_VAL_EXT.1.2/User" class="abbr">FCS_VAL_EXT.1.2/User</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require validation of the [<i>user</i>] prior to [<i>transmitting submasks, FEKs, or keys to decrypt FEKs to the endpoint</i>].<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
               
               This references the validation of an endpoint user to the server. These activities are performed by the server.</span></div></div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.1/2">FCS_VAL_EXT.1/2</a></div>
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a></div>
             
 
 
@@ -1785,7 +1794,7 @@ There are no test activities for this requirement.
             <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes how validation is performed. The evaluator shall verify the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> ensures that the validation process does not expose
             any material that might compromise key material or expose protected data.<br/><br/>
               
-              
+            <h4>KMD</h4>None.<br/><br/>
             </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to ensure it describes how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and Operational Environment to enable the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>
   to provide User identity assertions to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <br/><br/>
             
@@ -1796,13 +1805,13 @@ There are no test activities for this requirement.
             </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
             The evaluator shall perform the following tests:<br/>
             <span class="testlist-"><ul>
-		    <li class="test-"><a id="_t_14" class="defined" href="#_t_14">Test FCS_VAL_EXT.1/2:1</a>:
+		    <li class="test-"><a id="_t_14" class="defined" href="#_t_14">Test FCS_VAL_EXT.1/User:1</a>:
       
             The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> by
             entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
             the time period tested should include at least one such period. Then the evaluator will verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> behaves as described in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.
 		    </li>
-		    <li class="test-"><a id="_t_15" class="defined" href="#_t_15">Test FCS_VAL_EXT.1/2:2</a>:
+		    <li class="test-"><a id="_t_15" class="defined" href="#_t_15">Test FCS_VAL_EXT.1/User:2</a>:
       
             For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> prevents FEKs or keys that decrypt FEKs
             from being forwarded to the endpoint.
@@ -1810,28 +1819,32 @@ There are no test activities for this requirement.
 		  </ul></span>
           </div></div></div></div></div>
  
-        <div class="comp" id="FCS_VAL_EXT.2/2"><h4>FCS_VAL_EXT.2/2 Validation Remediation (User)</h4>
+        
+
+      
+        
+        <div class="comp" id="FCS_VAL_EXT.2/User"><h4>FCS_VAL_EXT.2/User Validation Remediation (User)</h4>
           
+                    
           
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_VAL_EXT.2.1/2"><a href="#FCS_VAL_EXT.2.1/2" class="abbr">FCS_VAL_EXT.2.1/2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_191">[<i>[<b>selection</b>: <span class="selectable-content" id="_s_192">direct the endpoint to perform key sanitization</span>, <span class="selectable-content" id="_s_193">perform key sanitization</span>]
-                  of <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s) or an intermediate key</i>] upon <b>[<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> specified number or configurable range of</span>]</b> consecutive failed validation attempts</span></li><li style=""><span class="selectable-content" id="_s_194">institute a delay such that only [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number <b>or configurable range</b> of attempts</span>] can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_195">block validation after [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number <b>or configurable range</b> of attempts</span>] of consecutive failed validation attempts</span></li><li style=""><span class="selectable-content" id="_s_196"><b>terminate the session</b> after [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number <b>or configurable range</b> of attempts</span>] of consecutive failed validation attempts</span></li></ul>].
+          <div class="element"><div class="reqid" id="FCS_VAL_EXT.2.1/User"><a href="#FCS_VAL_EXT.2.1/User" class="abbr">FCS_VAL_EXT.2.1/User</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_194">institute a delay such that only [<b>assignment</b>: 
+     <span class="assignable-content"><b> <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of</b> </span>] validation attempts can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_195">block validation after [<b>assignment</b>: 
+     <span class="assignable-content"><b><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of</b></span>] consecutive failed validation attempts</span></li><li style=""><span class="selectable-content" id="_s_196">[<i>terminate the session</i>] upon [<b>assignment</b>: 
+     <span class="assignable-content"><b><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of</b></span>] consecutive failed validation attempts</span></li><li style=""><span class="selectable-content" id="_s_197">[<i>[<b>selection</b>: <span class="selectable-content" id="_s_198">direct the endpoint to perform key sanitization</span>, <span class="selectable-content" id="_s_199">perform key sanitization</span>]
+                  of <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s) or an intermediate key</i>] upon [<b>assignment</b>: 
+     <span class="assignable-content"><b><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> specified number or configurable range of</b></span>] consecutive failed validation attempts</span></li></ul>].
             </div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.2/2">FCS_VAL_EXT.2/2</a></div>
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.2/User">FCS_VAL_EXT.2/User</a></div>
               
               
               
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for FCS_VAL_EXT.1(2).<br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for FCS_VAL_EXT.1(2).<br/><br/> </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for FCS_VAL_EXT.1(2).
+                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for <a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a>.<br/><br/>
+
+                <h4>KMD</h4>None.<br/><br/>
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for <a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a>.<br/><br/> </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is evaluated through the activities defined for <a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a>.
               </div></div></div></div></div>
       
       
@@ -1847,16 +1860,16 @@ There are no test activities for this requirement.
           
           
           <div class="element"><div class="reqid" id="FIA_AUT_EXT.1.1"><a href="#FIA_AUT_EXT.1.1" class="abbr">FIA_AUT_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <span class="selectable-content" id="_s_197">receive assertion of the user’s validity from: 
+              [<b>selection</b>: <span class="selectable-content" id="_s_200">receive assertion of the user’s validity from: 
                   [<b>assignment</b>: 
      <span class="assignable-content">Operational Environment component responsible for user authentication</span>]</span>, <span class="selectable-content" id="APPAUTH">provide  authorization</span>] based on 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span></li><li style=""><span class="selectable-content" id="_s_200"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_201">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>)</span>, <span class="selectable-content" id="_s_202">generated by the platform</span>] protected using RSA with key size 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_203">3072 bits</span>, <span class="selectable-content" id="_s_204">4096 bits</span>] with user presence proved by presentation of the smart card and 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_205">no PIN</span>, <span class="selectable-content" id="_s_206">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_207">a configurable PIN</span>]
-                </span></li><li style=""><span class="selectable-content" id="_s_208">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s),
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span></li><li style=""><span class="selectable-content" id="_s_203"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is 
+                  [<b>selection</b>: <span class="selectable-content" id="_s_204">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>)</span>, <span class="selectable-content" id="_s_205">generated by the platform</span>] protected using RSA with key size 
+                  <i>3072 bits</i> with user presence proved by presentation of the smart card and 
+                  [<b>selection</b>: <span class="selectable-content" id="_s_206">no PIN</span>, <span class="selectable-content" id="_s_207">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_208">a configurable PIN</span>]
+                </span></li><li style=""><span class="selectable-content" id="_s_209">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s),
                   and is providing a submask generated by the 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_209"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_210">platform</span>]
+                  [<b>selection</b>: <span class="selectable-content" id="_s_210"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_211">platform</span>]
                 </span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
@@ -1864,7 +1877,7 @@ There are no test activities for this requirement.
               
               This applies to the authorization of administrators on the enterprise server.<br/><br/>
               
-              FCS_RBG_EXT.1 is in the Application Software Protection Profile.<br/><br/>
+              FCS_RBG.1 is in the Application Software Protection Profile.<br/><br/>
               
               This requirement specifies what authorization factors the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> accepts
               from the user. A password entered by the user is one authorization factor that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must 
@@ -1911,7 +1924,8 @@ There are no test activities for this requirement.
               ensure a description is included for how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is invoking the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>
               functionality and how it is getting an authorization value that has appropriate
               entropy. <br/><br/>
-              
+
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the AGD guidance includes instructions for all of the
               authorization factors. The AGD will discuss the characteristics of external
               authorization factors (e.g., how the authorization factor is generated; format(s) or
@@ -1938,9 +1952,9 @@ There are no test activities for this requirement.
 	  
 	  	  
           <div class="element"><div class="reqid" id="FIA_REC_EXT.1.1"><a href="#FIA_REC_EXT.1.1" class="abbr">FIA_REC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <span class="selectable-content" id="_s_211">provide the ability to enable and disable the use of recovery credentials</span>, <span class="selectable-content" id="_s_212">not support recovery</span>].</div></div>
+              [<b>selection</b>: <span class="selectable-content" id="_s_226">provide the ability to enable and disable the use of recovery credentials</span>, <span class="selectable-content" id="_s_227">not support recovery</span>].</div></div>
 	  <div class="element"><div class="reqid" id="FIA_REC_EXT.1.2"><a href="#FIA_REC_EXT.1.2" class="abbr">FIA_REC_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the following recovery mechanisms 
-              [<b>selection</b>: <span class="selectable-content" id="CR">Challenge Response Recovery as defined in <a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></span>, <span class="selectable-content" id="_s_214">None</span>].<div class="appnote"><span class="note-header">Application
+              [<b>selection</b>: <span class="selectable-content" id="CR">Challenge Response Recovery as defined in <a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></span>, <span class="selectable-content" id="_s_229">None</span>].<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> This requirement defines the recovery options supported between the endpoint(s) and the 
 		    enterprise server.  This does not prevent the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> from providing recovery if the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> is managing the authentication 
@@ -1955,6 +1969,7 @@ There are no test activities for this requirement.
 <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"> The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that types of supported recovery
             credential are specified.<br/><br/>
               
+            <h4>KMD</h4>None.<br/><br/>
             </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for turning off the ability of the server to return a recovery credential.<br/><br/>
               
               
@@ -1983,6 +1998,7 @@ There are no test activities for this requirement.
               of the administrator prior to login of the administrator. The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that it describes the list
               of actions that require administrator authentication.<br/><br/>
               
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
               (e.g., establishing credential material such as pre- shared keys, tunnels, certificates, etc.) to logging in are described.
               For each supported login method, the evaluator shall ensure the guidance documentation provides clear instructions for successfully
@@ -2030,6 +2046,7 @@ There are no test activities for this requirement.
 <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"> The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that it describes the list of actions that are performed on behalf of the administrator
               prior to identification of the administrator.<br/><br/>
               
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
               steps for creating and configuring administrator accounts are described.<br/><br/>
               
@@ -2055,9 +2072,9 @@ There are no test activities for this requirement.
         <div class="comp" id="FMT_MOF.1"><h4>FMT_MOF.1 Server Management of Security Functions Behavior</h4>
           
           <div class="element"><div class="reqid" id="FMT_MOF.1.1"><a href="#FMT_MOF.1.1" class="abbr">FMT_MOF.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall restrict the ability to 
-              [<b>selection</b>: <span class="selectable-content" id="_s_215">determine the behavior of</span>, <span class="selectable-content" id="_s_216">disable</span>, <span class="selectable-content" id="_s_217">enable</span>, <span class="selectable-content" id="_s_218">modify the behavior of</span>]
+              [<b>selection</b>: <span class="selectable-content" id="_s_230">determine the behavior of</span>, <span class="selectable-content" id="_s_231">disable</span>, <span class="selectable-content" id="_s_232">enable</span>, <span class="selectable-content" id="_s_233">modify the behavior of</span>]
               the functions <b>
-                [<b>selection</b>: <span class="selectable-content" id="_s_219">encryption algorithms used</span>, <span class="selectable-content" id="_s_220">key sizes used</span>]</b> to [<i>administrators</i>].
+                [<b>selection</b>: <span class="selectable-content" id="_s_234">encryption algorithms used</span>, <span class="selectable-content" id="_s_235">key sizes used</span>]</b> to [<i>administrators</i>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> The intent of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is to define a mechanism to distinguish administrators 
@@ -2080,7 +2097,7 @@ There are no test activities for this requirement.
                 The evaluator shall examine that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> details how Administrators are authenticated and identified by all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. 
                 The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component in this case.<br/><br/>
                 
-                
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
                 The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> both locally and remotely,
                 including any configuration that needs to be performed on the client for remote administration.<br/><br/>
@@ -2100,9 +2117,9 @@ There are no test activities for this requirement.
         <div class="comp" id="FMT_MTD.1"><h4>FMT_MTD.1 Management of TSF Data</h4>
           
           <div class="element"><div class="reqid" id="FMT_MTD.1.1"><a href="#FMT_MTD.1.1" class="abbr">FMT_MTD.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall restrict the ability to 
-              [<b>selection</b>: <span class="selectable-content" id="_s_221">change default</span>, <span class="selectable-content" id="_s_222">query</span>, <span class="selectable-content" id="_s_223">modify</span>, <span class="selectable-content" id="_s_224">delete</span>, <span class="selectable-content" id="_s_225">clear</span>, <span class="selectable-content" id="_s_226">[<b>assignment</b>: 
+              [<b>selection</b>: <span class="selectable-content" id="_s_236">change default</span>, <span class="selectable-content" id="_s_237">query</span>, <span class="selectable-content" id="_s_238">modify</span>, <span class="selectable-content" id="_s_239">delete</span>, <span class="selectable-content" id="_s_240">clear</span>, <span class="selectable-content" id="_s_241">[<b>assignment</b>: 
      <span class="assignable-content">other operations</span>]</span>] the [<i>encryption keys and intermediate values</i>] to [<i>administrators</i>] <b>at the following times: 
-                [<b>selection</b>: <span class="selectable-content" id="_s_227">never</span>, <span class="selectable-content" id="_s_228">during initial provisioning</span>, <span class="selectable-content" id="_s_229">during recovery</span>]</b>.
+                [<b>selection</b>: <span class="selectable-content" id="_s_242">never</span>, <span class="selectable-content" id="_s_243">during initial provisioning</span>, <span class="selectable-content" id="_s_244">during recovery</span>]</b>.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> These restrictions apply to modifications on the enterprise server.
@@ -2116,7 +2133,7 @@ There are no test activities for this requirement.
                 those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
                 the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> details when changes may be made to the encryption keys and/or intermediate values.<br/><br/>
                 
-                
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
                 values are allowed to the administrator at what times.<br/><br/>
                 
@@ -2140,11 +2157,11 @@ There are no test activities for this requirement.
               </div></div></div></div></div>
         
         
-	    <div class="comp" id="FMT_SMF.1/2"><h4>FMT_SMF.1/2 Specification of Management Functions (Management Server)</h4>
+	    <div class="comp" id="FMT_SMF.1/FEEM"><h4>FMT_SMF.1/FEEM Specification of Management Functions (Management Server)</h4>
 	      
-          <div class="element"><div class="reqid" id="FMT_SMF.1.1/2"><a href="#FMT_SMF.1.1/2" class="abbr">FMT_SMF.1.1/2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions: <b>
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_230">register new user</span></li><li style=""><span class="selectable-content" id="_s_231">revoke registration of user</span></li><li style=""><span class="selectable-content" id="_s_232">initiate key generation</span></li><li style=""><span class="selectable-content" id="_s_233">initiate key escrow</span></li><li style=""><span class="selectable-content" id="_s_234">initiate key zeroization</span></li><li style=""><span class="selectable-content" id="_s_235">initiate key recovery</span></li><li style=""><span class="selectable-content" id="_s_236">set encryption policy (supported algorithms and key sizes)</span></li><li style=""><span class="selectable-content" id="_s_237">change administrator passwords</span></li><li style=""><span class="selectable-content" id="_s_238">change user passwords</span></li><li style=""><span class="selectable-content" id="_s_239">change recovery credentials</span></li><li style=""><span class="selectable-content" id="_s_240">define administrators of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_241">enable/disable use of recovery credential</span></li><li style=""><span class="selectable-content" id="_s_242">configure number of failed authentication attempts before issuing a key destruction of the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s)</span></li><li style=""><span class="selectable-content" id="_s_243">configure the number of authentication attempts that can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_244">configure the number of failed authentication attempts required to begin blocking subsequent attempts</span></li><li style=""><span class="selectable-content" id="_s_245">ability to enable or disable one or more of the following functions:
-                  [<b>selection</b>: <span class="selectable-content" id="_s_246">configure cryptographic functionality</span>, <span class="selectable-content" id="_s_247">change authentication factors</span>, <span class="selectable-content" id="_s_248">perform a cryptographic erase of the data by the destruction of FEKs or KEKs protecting the FEKs</span>, <span class="selectable-content" id="_s_249">configure the number of failed validation attempts required to trigger corrective behavior</span>, <span class="selectable-content" id="_s_250">configure the corrective behavior to issue in the event of an excessive number of failed validation attempts</span>, <span class="selectable-content" id="_s_251">[<b>assignment</b>: 
+          <div class="element"><div class="reqid" id="FMT_SMF.1.1/FEEM"><a href="#FMT_SMF.1.1/FEEM" class="abbr">FMT_SMF.1.1/FEEM</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions: <b>
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_245">register new user</span></li><li style=""><span class="selectable-content" id="_s_246">revoke registration of user</span></li><li style=""><span class="selectable-content" id="_s_247">initiate key generation</span></li><li style=""><span class="selectable-content" id="_s_248">initiate key escrow</span></li><li style=""><span class="selectable-content" id="_s_249">initiate key zeroization</span></li><li style=""><span class="selectable-content" id="_s_250">initiate key recovery</span></li><li style=""><span class="selectable-content" id="_s_251">set encryption policy (supported algorithms and key sizes)</span></li><li style=""><span class="selectable-content" id="_s_252">change administrator passwords</span></li><li style=""><span class="selectable-content" id="_s_253">change user passwords</span></li><li style=""><span class="selectable-content" id="_s_254">change recovery credentials</span></li><li style=""><span class="selectable-content" id="_s_255">define administrators of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_256">enable/disable use of recovery credential</span></li><li style=""><span class="selectable-content" id="_s_257">configure number of failed authentication attempts before issuing a key destruction of the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s)</span></li><li style=""><span class="selectable-content" id="_s_258">configure the number of authentication attempts that can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_259">configure the number of failed authentication attempts required to begin blocking subsequent attempts</span></li><li style=""><span class="selectable-content" id="_s_260">ability to enable or disable one or more of the following functions:
+                  [<b>selection</b>: <span class="selectable-content" id="_s_261">configure cryptographic functionality</span>, <span class="selectable-content" id="_s_262">change authentication factors</span>, <span class="selectable-content" id="_s_263">perform a cryptographic erase of the data by the destruction of FEKs or KEKs protecting the FEKs</span>, <span class="selectable-content" id="_s_264">configure the number of failed validation attempts required to trigger corrective behavior</span>, <span class="selectable-content" id="_s_265">configure the corrective behavior to issue in the event of an excessive number of failed validation attempts</span>, <span class="selectable-content" id="_s_266">[<b>assignment</b>: 
      <span class="assignable-content">other management functions provided by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>]</span>]</span></li></ul>]</b>.
             <div class="appnote"><span class="note-header">Application
       Note:
@@ -2163,7 +2180,7 @@ There are no test activities for this requirement.
               
               If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports the use of a recovery credential, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must include the ‘enable/disable use of recovery credential’ selection.
             </span></div></div></div>
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FMT_SMF.1/2">FMT_SMF.1/2</a></div>
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FMT_SMF.1/FEEM">FMT_SMF.1/FEEM</a></div>
               
 
 
@@ -2173,7 +2190,7 @@ There are no test activities for this requirement.
               The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provides the ability to initiate key generation, 
               escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<br/><br/>
               
-              
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
   including any reliance on the Operational Environment if applicable:<br/>
               
@@ -2209,32 +2226,32 @@ configure the number of failed validation attempts required to trigger correctiv
 </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> The evaluator shall perform the following tests for each claimed management function:
               
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FMT_SMF.1/2:1</a>:
+                <li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FMT_SMF.1/FEEM:1</a>:
       The evaluator shall configure the management server and two users according to the guidance documents.
                   The evaluator shall register the users with the management server. The evaluator shall verify that the users
                   are identified by the management server as defined in the guidance documents. This test shall pass.</li>
                 
-                <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FMT_SMF.1/2:2</a>:
+                <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FMT_SMF.1/FEEM:2</a>:
       The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
                   in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
                   displayed as revoked in the console.</li>
                 
-                <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FMT_SMF.1/2:3</a>:
+                <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FMT_SMF.1/FEEM:3</a>:
       The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> performs the actions (e.g. generate key) and
                   sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
                   with the new key, update the encryption algorithm key size or mode and re-encrypt).</li>
                 
-                <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FMT_SMF.1/2:4</a>:
+                <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FMT_SMF.1/FEEM:4</a>:
       For each item that is initiated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> but performed on the endpoint, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> requests the
                   user's client to perform the action (generate a key and encrypt the data, zeroize a key). </li>
                 
-                <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FMT_SMF.1/2:5</a>:
+                <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FMT_SMF.1/FEEM:5</a>:
       For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
                   and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
                   the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
                   denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </li>
                 
-                <li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FMT_SMF.1/2:6</a>:
+                <li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FMT_SMF.1/FEEM:6</a>:
       The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
                   factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
                   The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
@@ -2242,15 +2259,15 @@ configure the number of failed validation attempts required to trigger correctiv
                   or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
                   their original authorization factor. </li>
                 
-                <li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FMT_SMF.1/2:7</a>:
+                <li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FMT_SMF.1/FEEM:7</a>:
       The evaluator shall verify that the an administrator can configure each of the supported authorization factors attempts limits 
 			and shall verify that the user is denied access after surpassing that limit. </li>
                 
-                <li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FMT_SMF.1/2:8</a>:
+                <li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FMT_SMF.1/FEEM:8</a>:
       If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provides the capability to disable management of any capability allowed in the EM <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, the evaluator shall devise a test that
                   ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </li>
                 
-                <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FMT_SMF.1/2:9</a>:
+                <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FMT_SMF.1/FEEM:9</a>:
       If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
                   the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
                   
@@ -2259,7 +2276,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   Verify that the administration of the capability in the EM is successful.
                 </li>
                 
-		      <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FMT_SMF.1/2:10</a>:
+		      <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FMT_SMF.1/FEEM:10</a>:
       The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</li>
                 
               </ul></span>
@@ -2276,7 +2293,7 @@ configure the number of failed validation attempts required to trigger correctiv
           <div class="element"><div class="reqid" id="FMT_SMR.2.2"><a href="#FMT_SMR.2.2" class="abbr">FMT_SMR.2.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to associate users with roles.</div></div>
           
           <div class="element"><div class="reqid" id="FMT_SMR.2.3"><a href="#FMT_SMR.2.3" class="abbr">FMT_SMR.2.3</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that the conditions<b> 
-              [<b>selection</b>: <span class="selectable-content" id="_s_252">the administrator role shall be able to administer the Management Server locally </span>, <span class="selectable-content" id="remote">the administrator role shall be able to administer the Management Server remotely as specified in <a href="#FTP_TRP.1">FTP_TRP.1</a></span>, <span class="selectable-content" id="_s_254">the administrator role shall be able to administer the endpoint(s) locally</span>, <span class="selectable-content" id="_s_255">the administrator role shall be able to administer the endpoint(s) remotely</span>]</b>
+              [<b>selection</b>: <span class="selectable-content" id="_s_267">the administrator role shall be able to administer the Management Server locally </span>, <span class="selectable-content" id="remote">the administrator role shall be able to administer the Management Server remotely as specified in <a href="#FTP_TRP.1">FTP_TRP.1</a></span>, <span class="selectable-content" id="_s_269">the administrator role shall be able to administer the endpoint(s) locally</span>, <span class="selectable-content" id="_s_270">the administrator role shall be able to administer the endpoint(s) remotely</span>]</b>
               are satisfied.
             <div class="appnote"><span class="note-header">Application
       Note:
@@ -2332,7 +2349,7 @@ configure the number of failed validation attempts required to trigger correctiv
               shall also confirm that all protocols listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> for these inter-component communications are specified and included in the 
               requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.<br/><br/>
               
-              
+              <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
               communication channels and protocols between each pair of authorized <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components, and that it contains instructions 
 		    to reestablish a connection should a connection be unintentionally broken. <br/><br/>
@@ -2367,10 +2384,10 @@ configure the number of failed validation attempts required to trigger correctiv
 	        
 	        
           <div class="element"><div class="reqid" id="FPT_KYP_EXT.1.1"><a href="#FPT_KYP_EXT.1.1" class="abbr">FPT_KYP_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall store keys in non-volatile memory only when
-                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_260">wrapped, as specified in FCS_COP.1(5)</span></li><li style=""><span class="selectable-content" id="_s_261">encrypted, as specified in FCS_COP.1(1) <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_262">the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_263">the plaintext key is stored in a SQL database in the Operational Environment</span></li><li style=""><span class="selectable-content" id="_s_264">the plaintext key is not part of the key chain as specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.</span></li><li style=""><span class="selectable-content" id="_s_265">the plaintext key will no longer provide access to the encrypted data after initial provisioning</span></li><li style=""><span class="selectable-content" id="_s_266">the plaintext key is a key split that is combined as specified in <a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a> and another contribution to the split is
-                      [<b>selection</b>: <span class="selectable-content" id="_s_267">wrapped as specified in FCS_COP.1(5)</span>, <span class="selectable-content" id="_s_268">derived and not stored in non-volatile memory</span>]
-                    </span></li><li style=""><span class="selectable-content" id="_s_269">the plaintext key is stored on an external storage device for use as an authorization factor.</span></li><li style=""><span class="selectable-content" id="_s_270">the plaintext key is used tO wrap a key as specified in FCS_COP.1(5) 
-                      that is already wrapped as specified in FCS_COP.1(5)</span></li></ul>].
+                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_275">wrapped, as specified in FCS_COP.1<b>/KW</b></span></li><li style=""><span class="selectable-content" id="_s_276">encrypted, as specified in FCS_COP.1<b>/SKC (from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_277">the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_278">the plaintext key is stored in a SQL database in the Operational Environment</span></li><li style=""><span class="selectable-content" id="_s_279">the plaintext key is not part of the key chain as specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.</span></li><li style=""><span class="selectable-content" id="_s_280">the plaintext key will no longer provide access to the encrypted data after initial provisioning</span></li><li style=""><span class="selectable-content" id="_s_281">the plaintext key is a key split that is combined as specified in <a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a> and another contribution to the split is
+                      [<b>selection</b>: <span class="selectable-content" id="_s_282">wrapped as specified in FCS_COP.1<b>/KW</b></span>, <span class="selectable-content" id="_s_283">derived and not stored in non-volatile memory</span>]
+                    </span></li><li style=""><span class="selectable-content" id="_s_284">the plaintext key is stored on an external storage device for use as an authorization factor.</span></li><li style=""><span class="selectable-content" id="_s_285">the plaintext key is used to wrap a key as specified in FCS_COP.1<b>/KW</b>
+                      that is already wrapped as specified in FCS_COP.1<b>/KW</b></span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> 
@@ -2408,7 +2425,7 @@ configure the number of failed validation attempts required to trigger correctiv
           
           
           <div class="element"><div class="reqid" id="FPT_KYP_EXT.2.1"><a href="#FPT_KYP_EXT.2.1" class="abbr">FPT_KYP_EXT.2.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall maintain an association between stored endpoint keys and user identity, 
-                [<b>selection</b>: <span class="selectable-content" id="_s_271">remote endpoints</span>, <span class="selectable-content" id="_s_272">recovery credential</span>, <span class="selectable-content" id="_s_273">system identity</span>, <span class="selectable-content" id="_s_274">no other subjects</span>].
+                [<b>selection</b>: <span class="selectable-content" id="_s_297">remote endpoints</span>, <span class="selectable-content" id="_s_298">recovery credential</span>, <span class="selectable-content" id="_s_299">system identity</span>, <span class="selectable-content" id="_s_300">no other subjects</span>].
               <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">The intent of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is that at minimum, keys are associated with the users for which it was explicitly created by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
@@ -2444,6 +2461,7 @@ configure the number of failed validation attempts required to trigger correctiv
 <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"> The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes the method by which an association is 
                   maintained and verify it matches the selections.<br/><br/>
                 
+                <h4>KMD</h4>None.<br/><br/>
                 </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, 
   if any configuration is necessary.<br/><br/>
                 
@@ -2497,11 +2515,9 @@ configure the number of failed validation attempts required to trigger correctiv
               in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> version of the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>.</td></tr><tr><th colspan="2"> Additional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th></tr><tr><td colspan="2" style="text-align:center">
 	      This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not add any requirements when the
 	      App <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is the base.
-	    </td></tr><tr><th colspan="2"> Mandatory <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> extends the cryptographic functionality defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by specifying a method for key destruction. 
-            It is consistent with the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> because keys generated by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> portion of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may also be destroyed in the manner specified by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>.
-          </td></tr><tr><td><a href="#FCS_COP.1/5">FCS_COP.1/5</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines usage of AES functionality not defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>. However, this functionality is only used in certain situations that are 
+	    </td></tr><tr><th colspan="2"> Mandatory <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td><a href="#FCS_CKM.6">FCS_CKM.6</a></td><td></td></tr><tr><td><a href="#FCS_COP.1/KW">FCS_COP.1/KW</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines usage of AES functionality not defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>. However, this functionality is only used in certain situations that are 
 	          specific to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> and do not affect the ability of any <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> to be enforced.
-	        </td></tr><tr><td><a href="#FCS_COP.1/6">FCS_COP.1/6</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines key transport functionality that is outside the scope of the original cryptographic operations defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
+	        </td></tr><tr><td><a href="#FCS_COP.1/KT">FCS_COP.1/KT</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines key transport functionality that is outside the scope of the original cryptographic operations defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
           </td></tr><tr><td><a href="#FCS_IV_EXT.1">FCS_IV_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines how IVs for AES keys must be generated. This is consistent with the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> because it supplements the key generation 
             methods specified by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> FCS_CKM.1(2).
           </td></tr><tr><td><a href="#FCS_KDF_EXT.1">FCS_KDF_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines key transport functionality. It uses random bit generation and keyed-hash message authentication functionality from the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> 
@@ -2509,9 +2525,9 @@ configure the number of failed validation attempts required to trigger correctiv
 	        </td></tr><tr><td><a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a></td><td>The <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> defines how stored keys are protected. This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> extends that functionality by defining the logical hierarchy of how keys are logically
 	    protected by other keys or other secret data. 
 	  </td></tr><tr><td><a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> relates to submask combining as a method of generating intermediate keys. Key hierarchy functionality is outside the scope of the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
-	  </td></tr><tr><td><a href="#FCS_VAL_EXT.1/1">FCS_VAL_EXT.1/1</a></td><td></td></tr><tr><td><a href="#FCS_VAL_EXT.1/2">FCS_VAL_EXT.1/2</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can validate the correctness of data input to it.
-          </td></tr><tr><td><a href="#FCS_VAL_EXT.2/2">FCS_VAL_EXT.2/2</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can take security-relevant action if some data input to it is invalid.
-          </td></tr><tr><td><a href="#FIA_AUT_EXT.1">FIA_AUT_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines how administrator requests to access protected data are authorized. It uses FCS_RBG_EXT.1 from the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> in a manner consistent with its 
+	  </td></tr><tr><td><a href="#FCS_VAL_EXT.1/Admin">FCS_VAL_EXT.1/Admin</a></td><td></td></tr><tr><td><a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can validate the correctness of data input to it.
+          </td></tr><tr><td><a href="#FCS_VAL_EXT.2/User">FCS_VAL_EXT.2/User</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can take security-relevant action if some data input to it is invalid.
+          </td></tr><tr><td><a href="#FIA_AUT_EXT.1">FIA_AUT_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines how administrator requests to access protected data are authorized. It uses FCS_RBG.1 from the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> in a manner consistent with its 
             definition, but otherwise does not relate to functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
           </td></tr><tr><td><a href="#FIA_REC_EXT.1">FIA_REC_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s potential support for recovery credentials. This functionality does not relate to any behavior defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
           </td></tr><tr><td><a href="#FIA_UAU.1">FIA_UAU.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> requires administrators to be authenticated prior to accessing management functionality.
@@ -2520,7 +2536,7 @@ configure the number of failed validation attempts required to trigger correctiv
             The <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> does not mandate identification and authentication measures for a management interface but it also does not prohibit them.
           </td></tr><tr><td><a href="#FMT_MOF.1">FMT_MOF.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines access restrictions for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> management functions. This is not defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> but there is nothing in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> that prohibits it.
           </td></tr><tr><td><a href="#FMT_MTD.1">FMT_MTD.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines access restrictions for management of <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> data. This is not defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> but there is nothing in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> that prohibits it.
-          </td></tr><tr><td><a href="#FMT_SMF.1/2">FMT_SMF.1/2</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines management functions for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for functionality specific to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. These functions are defined in addition to what 
+          </td></tr><tr><td><a href="#FMT_SMF.1/FEEM">FMT_SMF.1/FEEM</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines management functions for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for functionality specific to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. These functions are defined in addition to what 
 	        the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> defines for its own operation.
           </td></tr><tr><td><a href="#FMT_SMR.2">FMT_SMR.2</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines administrative roles, which are used by other <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> to derive privileges to interact with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s management functionality.
             This is not defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> but there is nothing in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> that prohibits it.
@@ -2536,9 +2552,8 @@ configure the number of failed validation attempts required to trigger correctiv
 	      This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not define any Objective requirements.
 	    </td></tr></tr><tr><th colspan="2"> Implementation-dependent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td colspan="2" style="text-align:center">
 	      This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not define any Implementation-dependent requirements.
-	    </td></tr></tr><tr><th colspan="2"> Selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td><a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines a key derivation method based on passphrase conditioning. It uses the FCS_RBG_EXT.1 <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> from the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> in its intended manner 
-          but otherwise does not relate to the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>'s functionality.</td></tr><tr><td><a href="#FCS_VAL_EXT.2/1">FCS_VAL_EXT.2/1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can take security-relevant action if some data input to it is invalid.
-          </td></tr><tr><td><a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation of recovery credentials. This functionality does not relate to any behavior defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
+	    </td></tr></tr><tr><th colspan="2"> Selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td><a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines a key derivation method based on passphrase conditioning. It uses the FCS_RBG.1 <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> from the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> in its intended manner 
+          but otherwise does not relate to the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>'s functionality.</td></tr><tr><td><a href="#FCS_VAL_EXT.2/Admin">FCS_VAL_EXT.2/Admin</a></td><td></td></tr><tr><td><a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation of recovery credentials. This functionality does not relate to any behavior defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>.
         </td></tr><tr><td><a href="#FTP_TRP.1">FTP_TRP.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> uses a subset of the protocols defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> for secure communications. This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> extends the functionality by explicitly
             defining a communications path between a remote administrator and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
           </td></tr></tr></table><h1 id="opt-sfrs" class="indexable" data-level="A">Appendix A -  Optional SFRs</h1><h2 id="opt-sfrs" class="indexable" data-level="2">A.1 Strictly Optional Requirements
@@ -2572,22 +2587,24 @@ configure the number of failed validation attempts required to trigger correctiv
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
             and
-            [<b>selection</b>: <span class="selectable-content" id="_s_275">[<b>assignment</b>: 
-     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_276">no other characters</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_301">[<b>assignment</b>: 
+     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_302">no other characters</span>].
           </div></div>
         <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.3"><a href="#FCS_CKM_EXT.6.3" class="abbr">FCS_CKM_EXT.6.3</a></div><div class="reqdesc">
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation
-              Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_277">SHA-256</span>, <span class="selectable-content" id="_s_278">SHA-384</span>, <span class="selectable-content" id="_s_279">SHA-512</span>], with [<b>assignment</b>: 
+              Functions in accordance with a specified cryptographic algorithm HMAC-<i>SHA-384</i>, 
+              with [<b>assignment</b>: 
      <span class="assignable-content">positive integer of 4096 or more</span>] iterations, and
-            output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_280">128</span>, <span class="selectable-content" id="_s_281">256</span>] bits that meet the following: [<i>NIST SP 800-132</i>]. 
+            output cryptographic key sizes <i>256</i>
+           bits that meet the following: [<i>NIST SP 800-132</i>]. 
           </div></div>
         <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.4"><a href="#FCS_CKM_EXT.6.4" class="abbr">FCS_CKM_EXT.6.4</a></div><div class="reqdesc">
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than 
-            [<b>selection</b>: <span class="selectable-content" id="_s_282">a value settable by the administrator</span>, <span class="selectable-content" id="_s_283">[<b>assignment</b>: 
+            [<b>selection</b>: <span class="selectable-content" id="_s_310">a value settable by the administrator</span>, <span class="selectable-content" id="_s_311">[<b>assignment</b>: 
      <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>]
             and greater than the maximum password length 
             defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.</div></div>
-        <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.5"><a href="#FCS_CKM_EXT.6.5" class="abbr">FCS_CKM_EXT.6.5</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG_EXT.1 <b>(from
+        <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.5"><a href="#FCS_CKM_EXT.6.5" class="abbr">FCS_CKM_EXT.6.5</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG.1 <b>(from
             <a href="#bibAppPP">[AppPP]</a>)</b> and with entropy 
             corresponding to the security strength selected for PBKDF in <a href="#FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</a>.<div class="appnote"><span class="note-header">Application
       Note:
@@ -2659,8 +2676,9 @@ configure the number of failed validation attempts required to trigger correctiv
               
               <br/><br/><a href="#FCS_CKM_EXT.6.2">FCS_CKM_EXT.6.2</a>: The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall provide a
               description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> regarding the salt generation. The evaluator shall confirm that
-              the salt is generated using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> described in FCS_RBG_EXT.1 (from the <a href="#bibAppPP">[AppPP]</a>). <br/><br/>
+              the salt is generated using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> described in FCS_RBG.1 (from the <a href="#bibAppPP">[AppPP]</a>). <br/><br/>
               
+              <h4>KMD</h4>None.<br/><br/>
             </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
               Support for minimum length: The evaluators shall check the Operational Guidance 
               to determine that there are instructions on how to generate large passwords/passphrases, and
@@ -2682,27 +2700,18 @@ configure the number of failed validation attempts required to trigger correctiv
               </ul></span><br/>
               Conditioning: No explicit testing of the formation of the authorization factor
               from the input password/passphrase is required.  </div></div></div></div></div>
-        
-        
-        <div class="comp" id="FCS_VAL_EXT.2/1"><h4>FCS_VAL_EXT.2/1 Validation Remediation (Server Administrator)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+      <div class="comp" id="FCS_VAL_EXT.2/Admin"><h4>FCS_VAL_EXT.2/Admin Validation Remediation (Server Administrator)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</a>.
            </i></b></div>
           
           
-          
-          
-          
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_VAL_EXT.2.1/1"><a href="#FCS_VAL_EXT.2.1/1" class="abbr">FCS_VAL_EXT.2.1/1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_284"> <b>institute a delay such that only [<b>assignment</b>: 
+          <div class="element"><div class="reqid" id="FCS_VAL_EXT.2.1/Admin"><a href="#FCS_VAL_EXT.2.1/Admin" class="abbr">FCS_VAL_EXT.2.1/Admin</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_312">institute a delay such that only [<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number
                   or configurable range of attempts</span>] 
-                  validation attempts can be made within a 24 hour period</b></span></li><li style=""><span class="selectable-content" id="_s_285"><b>block validation after [<b>assignment</b>: 
+                  validation attempts can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_313">block validation after [<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] 
-                  of consecutive failed validation attempts</b></span></li></ul>].
+                  of consecutive failed validation attempts</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -2710,20 +2719,22 @@ configure the number of failed validation attempts required to trigger correctiv
               This requirement must be claimed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses "provide user authorization" in <a href="#FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</a>.</span></div></div></div>
           
           
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.2/1">FCS_VAL_EXT.2/1</a></div>
+      <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_VAL_EXT.2/Admin">FCS_VAL_EXT.2/Admin</a></div>
               
               
               
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
                 The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine which remediation options are supported for which authentication options.<br/><br/>
+
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the remediation functionality is configurable, the evaluator shall examine the operational guidance
                 to ensure it describes how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to ensure the limits regarding validation attempts can be established.<br/><br/>
                 
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform the following tests: <br/>
                 
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FCS_VAL_EXT.2/1:1</a>:
+                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FCS_VAL_EXT.2/Admin:1</a>:
       The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
                     For each authentication factor supported, the evaluator will test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> by entering that number of incorrect authorization factors in consecutive attempts to access the
                     protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such
@@ -2748,7 +2759,7 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
         <div class="element"><div class="reqid" id="FIA_CHR_EXT.1.1"><a href="#FIA_CHR_EXT.1.1" class="abbr">FIA_CHR_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for 
-            [<b>selection</b>: <span class="selectable-content" id="_s_286">the user requesting the recovery</span>, <span class="selectable-content" id="_s_287">the user requesting recovery and the device for which the recovery was requested</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_314">the user requesting the recovery</span>, <span class="selectable-content" id="_s_315">the user requesting recovery and the device for which the recovery was requested</span>].
           <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> This requires that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has the ability to attribute key chain information to the appropriate user(s).
@@ -2787,6 +2798,7 @@ configure the number of failed validation attempts required to trigger correctiv
             The evaluator shall also verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> contains the estimation of the strength of the ephemeral response and that it has at least 
             as many potential values as a corresponding password or PIN.<br/><br/>
             
+            <h4>KMD</h4>None.<br/><br/>
             </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
             of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
             consecutive failed validation attempts if this value is configurable.<br/><br/>
@@ -2860,6 +2872,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> in support
                 of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> administration are consistent with those specified in the requirement, and are included in the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.<br/><br/>
                 
+                <h4>KMD</h4>None.<br/><br/>
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for 
                 establishing the remote administrative sessions for each supported method.<br/><br/>
                 
@@ -2897,40 +2910,10 @@ configure the number of failed validation attempts required to trigger correctiv
 <table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">6</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="Cryptographic Support (FCS)"><td>Cryptographic Support (FCS)</td><td>FCS_CKM_EXT Cryptographic Key Management<br/>FCS_IV_EXT Initialization Vector Generation<br/>FCS_KDF_EXT Cryptographic Key Derivation Function<br/>FCS_KYC_EXT Key Chaining and Key Storage<br/>FCS_SMC_EXT Submask Combining<br/>FCS_VAL_EXT Validation<br/></td></tr><tr data-sortkey="Identification and Authentication (FIA)"><td>Identification and Authentication (FIA)</td><td>FIA_AUT_EXT Authorization<br/>FIA_CHR_EXT Challenge/Response Recovery Credential<br/>FIA_REC_EXT Recovery Support<br/></td></tr><tr data-sortkey="Protection of the TSF (FPT)"><td>Protection of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (FPT)</td><td>FPT_KYP_EXT Protection of Key and Key Material<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="Cryptographic Support (FCS)"><h3 id="ext-comp-FCS" class="indexable" data-level="3">C.2.1 Cryptographic Support (FCS)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
 	 FCS class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FCS_CKM_EXT" class="indexable" data-level="4">C.2.1.1 FCS_CKM_EXT Cryptographic Key Management</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for key management activities that are beyond the scope of what is defined in the FCS_CKM family in <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2. 
-          </div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FCS_CKM_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">4</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">6</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a>,
-             Cryptographic Key Destruction,
-              describes supported methods for key destruction.</p><p><a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a>,
+          </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_CKM_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">6</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a>,
              Cryptographic Password/Passphrase Conditioning,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement password/passphrase conditioning using a specified algorithm and with specific constraints on the password/passphrase composition.</p><h4>Management: FCS_CKM_EXT.4</h4><p>The following actions could be considered for the management functions in FMT: <ul>
-            <li>Manually perform cryptographic erasure.</li>
-          </ul>
-          </p><h4>Audit: FCS_CKM_EXT.4</h4><p>The following actions should be auditable if FAU_GEN Security audit data
-            generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
-              <li>Basic: Manual erasure of cryptographic data. </li>
-            </ul>
-          </p><h4>FCS_CKM_EXT.4 Cryptographic Key Destruction</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FCS_CKM_EXT.4.1">FCS_CKM_EXT.4.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy cryptographic keys in accordance with a specified cryptographic key destruction method 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_29"> For volatile memory, the destruction shall be executed by a
-                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_30">single overwrite consisting of 
-                      [<b>selection</b>: <span class="selectable-content" id="_s_31">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr></span>, <span class="selectable-content" id="_s_32">zeroes</span>, <span class="selectable-content" id="_s_33">ones</span>, <span class="selectable-content" id="_s_34">new value of a key</span>, <span class="selectable-content" id="_s_35">[<b>assignment</b>: 
-     <span class="assignable-content">any value that does not contain any CSP</span>]</span>]
-                    </span></li><li style=""><span class="selectable-content" id="_s_36">removal of power to the memory</span></li><li style=""><span class="selectable-content" id="_s_37">destruction of reference to the key directly followed by a request for garbage collection</span></li></ul>]
-                </span></li><li style=""><span class="selectable-content" id="_s_38"> For non-volatile memory, the destruction shall be executed by
-                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_39">destruction of all KEKs protecting the target key,
-                      where none of the KEKs protecting the target key are derived
-                    </span></li><li style=""><span class="selectable-content" id="_s_40"> the invocation of an interface provided by the underlying platform that
-                      [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_41">logically addresses the storage location of the key and performs a
-                          [<b>selection</b>: <span class="selectable-content" id="_s_42">single</span>, <span class="selectable-content" id="_s_43">[<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author defined multi-pass</span>]</span>]
-                          overwrite consisting of 
-                          [<b>selection</b>: <span class="selectable-content" id="_s_44">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr></span>, <span class="selectable-content" id="_s_45">zeroes</span>, <span class="selectable-content" id="_s_46">ones</span>, <span class="selectable-content" id="_s_47">new value of a key</span>, <span class="selectable-content" id="_s_48">[<b>assignment</b>: 
-     <span class="assignable-content">any value that does not contain any CSP</span>]</span>]
-                        </span></li><li style=""><span class="selectable-content" id="_s_49">instructs the underlying platform to destroy the abstraction that represents the key</span></li></ul>]
-                    </span></li></ul>]
-                  
-                  
-                </span></li></ul>].
-            <h4 id="ext-comp-FCS_CKM_EXT.4.2">FCS_CKM_EXT.4.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy all keys and key material when no longer needed.</div><h4>Management: FCS_CKM_EXT.6</h4><p>There are no specific management functions identified.</p><h4>Audit: FCS_CKM_EXT.6</h4><p>There are no auditable events foreseen.</p><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation<br/>
-          FCS_RBG_EXT.1 Random Bit Generation Services</td></tr></table><h4 id="ext-comp-FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</h4>
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement password/passphrase conditioning using a specified algorithm and with specific constraints on the password/passphrase composition.</p><h4>Management: FCS_CKM_EXT.6</h4><p>There are no specific management functions identified.</p><h4>Audit: FCS_CKM_EXT.6</h4><p>There are no auditable events foreseen.</p><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation<br/>
+          FCS_RBG.1 Random Bit Generation</td></tr></table><h4 id="ext-comp-FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</h4>
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a password/passphrase of up to 
             [<b>assignment</b>: 
      <span class="assignable-content">maximum password size, positive integer of 64 or more</span>] 
@@ -2939,20 +2922,21 @@ configure the number of failed validation attempts required to trigger correctiv
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
             and
-            [<b>selection</b>: <span class="selectable-content" id="_s_275">[<b>assignment</b>: 
-     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_276">no other characters</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_301">[<b>assignment</b>: 
+     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_302">no other characters</span>].
           <h4 id="ext-comp-FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</h4>
-            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation
-              Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_277">SHA-256</span>, <span class="selectable-content" id="_s_278">SHA-384</span>, <span class="selectable-content" id="_s_279">SHA-512</span>], with [<b>assignment</b>: 
-     <span class="assignable-content">positive integer of 4096 or more</span>] iterations, and
-            output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_280">128</span>, <span class="selectable-content" id="_s_281">256</span>] bits that meet the following: [<i>NIST SP 800-132</i>]. 
-          <h4 id="ext-comp-FCS_CKM_EXT.6.4">FCS_CKM_EXT.6.4</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation
+              Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_303">SHA-256</span>, <span class="selectable-content" id="_s_304">SHA-384</span>, <span class="selectable-content" id="_s_305">SHA-512</span>], with 
+              [<b>selection</b>: <span class="selectable-content" id="_s_306">[<b>assignment</b>: 
+     <span class="assignable-content">positive integer of 4096 or more</span>] iterations</span>, <span class="selectable-content" id="_s_307">value supported by the platform, greater than 1000</span>], and
+              output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_308">128</span>, <span class="selectable-content" id="_s_309">256</span>] that meet the following: [<b>assignment</b>: 
+     <span class="assignable-content">applicable standard</span>]. 
+            <h4 id="ext-comp-FCS_CKM_EXT.6.4">FCS_CKM_EXT.6.4</h4>
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than 
-            [<b>selection</b>: <span class="selectable-content" id="_s_282">a value settable by the administrator</span>, <span class="selectable-content" id="_s_283">[<b>assignment</b>: 
+            [<b>selection</b>: <span class="selectable-content" id="_s_310">a value settable by the administrator</span>, <span class="selectable-content" id="_s_311">[<b>assignment</b>: 
      <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>]
             and greater than the maximum password length 
-            defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.<h4 id="ext-comp-FCS_CKM_EXT.6.5">FCS_CKM_EXT.6.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG_EXT.1 <b>(from
-            <a href="#bibAppPP">[AppPP]</a>)</b> and with entropy 
+            defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.<h4 id="ext-comp-FCS_CKM_EXT.6.5">FCS_CKM_EXT.6.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG.1 and with entropy 
             corresponding to the security strength selected for PBKDF in <a href="#FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</a>.</div></div><h3 id="ext-comp-FCS_IV_EXT" class="indexable" data-level="4">C.2.1.2 FCS_IV_EXT Initialization Vector Generation</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for initialization vector generation.
           </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_IV_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_IV_EXT.1">FCS_IV_EXT.1</a>,
              Initialization Vector Generation,
@@ -2969,7 +2953,7 @@ configure the number of failed validation attempts required to trigger correctiv
 	        </ul>
 	        </p><h4>Audit: FCS_KDF_EXT.1</h4><p>There are no auditable events foreseen.
 	        </p><h4>FCS_KDF_EXT.1 Cryptographic Key Derivation Function</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation <br/>
-	          FCS_RBG_EXT.1 Random Bit Generation Services</td></tr></table><h4 id="ext-comp-FCS_KDF_EXT.1.1">FCS_KDF_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_85">not derive keys</span></li><li style=""><span class="selectable-content" id="_s_86">accept
+	          FCS_RBG.1 Random Bit Generation</td></tr></table><h4 id="ext-comp-FCS_KDF_EXT.1.1">FCS_KDF_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_85">not derive keys</span></li><li style=""><span class="selectable-content" id="_s_86">accept
                     [<b>selection</b>: <span class="selectable-content" id="_s_87">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1</span>, <span class="selectable-content" id="_s_88">a conditioned password</span>, <span class="selectable-content" id="_s_89">an imported submask</span>] to derive an intermediate key, as defined in
                     [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_90">NIST SP 800-108 
                         [<b>selection</b>: <span class="selectable-content" id="_s_91">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_92">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_93">KDF in Double-Pipeline Iteration Mode</span>]
@@ -3018,10 +3002,10 @@ configure the number of failed validation attempts required to trigger correctiv
           </p><h4>Audit: FCS_SMC_EXT.1</h4><p>There are no auditable events foreseen.
           </p><h4>FCS_SMC_EXT.1 Submask Combining </h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation</td></tr></table><h4 id="ext-comp-FCS_SMC_EXT.1.1">FCS_SMC_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_143">not perform submask combining</span></li><li style=""><span class="selectable-content" id="_s_144">combine submasks using the following method [<b>selection</b>: <span class="selectable-content" id="_s_145">exclusive OR (XOR)</span>, <span class="selectable-content" id="_s_146">SHA-256</span>, <span class="selectable-content" id="_s_147">SHA-384</span>, <span class="selectable-content" id="_s_148">SHA-512</span>, <span class="selectable-content" id="_s_149">HMAC-SHA-256</span>, <span class="selectable-content" id="_s_150">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_151">HMAC-SHA-512</span>] to generate an intermediate key</span></li></ul>].</div></div><h3 id="ext-comp-FCS_VAL_EXT" class="indexable" data-level="4">C.2.1.6 FCS_VAL_EXT Validation</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for validation of data supplied to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and any consequences resulting from failed validation attempts. 
-          </div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FCS_VAL_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2/1</text><rect x="232" y="31" width="36" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p>FCS_VAL_EXT.1,
+          </div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FCS_VAL_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p>FCS_VAL_EXT.1,
              Validation,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify what data is being validated and how the validation is performed.</p><p><a href="#FCS_VAL_EXT.2/1">FCS_VAL_EXT.2/1</a>,
-             Validation Remediation (Server Administrator),
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify what data is being validated and how the validation is performed.</p><p>FCS_VAL_EXT.2,
+             Validation Remediation,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify what the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s response is in the event of a data validation failure.</p><h4>Management: FCS_VAL_EXT.1</h4><p>There are no specific management functions identified.
 	        </p><h4>Audit: FCS_VAL_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security audit data
 	          generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
@@ -3036,21 +3020,22 @@ configure the number of failed validation attempts required to trigger correctiv
               
             <h4 id="ext-comp-FCS_VAL_EXT.1.2">FCS_VAL_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require validation of the [<b>assignment</b>: 
      <span class="assignable-content">subject requiring validation</span>] prior to [<b>assignment</b>: 
-     <span class="assignable-content">action requiring validation</span>].</div><h4>Management: FCS_VAL_EXT.2/1</h4><p>The following actions could be considered for the management functions in FMT: <ul>
+     <span class="assignable-content">action requiring validation</span>].</div><h4>Management: FCS_VAL_EXT.2</h4><p>The following actions could be considered for the management functions in FMT: <ul>
             <li>Configuration of the number of failed validation attempts required to trigger corrective behavior.</li>
             <li>Configuration of the corrective behavior to issue in the event of an excessive number of failed validation attempts.</li>
           </ul>
-          </p><h4>Audit: FCS_VAL_EXT.2/1</h4><p>The following actions should be auditable if FAU_GEN Security audit data
+          </p><h4>Audit: FCS_VAL_EXT.2</h4><p>The following actions should be auditable if FAU_GEN Security audit data
             generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
               <li>Minimal: Triggering of excessive validation failure response behavior.</li>
             </ul>
-          </p><h4>FCS_VAL_EXT.2/1 Validation Remediation (Server Administrator)</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_VAL_EXT.1 Validation</td></tr></table><h4 id="ext-comp-FCS_VAL_EXT.2.1/1">FCS_VAL_EXT.2.1/1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_284"> <b>institute a delay such that only [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number
-                  or configurable range of attempts</span>] 
-                  validation attempts can be made within a 24 hour period</b></span></li><li style=""><span class="selectable-content" id="_s_285"><b>block validation after [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] 
-                  of consecutive failed validation attempts</b></span></li></ul>].
+          </p><h4>FCS_VAL_EXT.2 Validation Remediation</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_VAL_EXT.1 Validation</td></tr></table><h4 id="ext-comp-FCS_VAL_EXT.2.1">FCS_VAL_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_191">institute a delay such that only [<b>assignment</b>: 
+     <span class="assignable-content">specified number of</span>] 
+                  validation attempts can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_192">block validation after [<b>assignment</b>: 
+     <span class="assignable-content">specified number of</span>] 
+                  consecutive failed validation attempts</span></li><li style=""><span class="selectable-content" id="_s_193">[<b>assignment</b>: 
+     <span class="assignable-content">remediation action</span>] upon [<b>assignment</b>: 
+     <span class="assignable-content">specified number of</span>] consecutive failed validation attempts</span></li></ul>].
             </div></div></span><span data-sortkey="Identification and Authentication (FIA)"><h3 id="ext-comp-FIA" class="indexable" data-level="3">C.2.2 Identification and Authentication (FIA)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
 	 FIA class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FIA_AUT_EXT" class="indexable" data-level="4">C.2.2.1 FIA_AUT_EXT Authorization</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for how subject authorization is performed. 
@@ -3067,17 +3052,17 @@ configure the number of failed validation attempts required to trigger correctiv
               <li>Basic: All use of authorization function.</li>
             </ul>
           </p><h4>FIA_AUT_EXT.1 Subject Authorization</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a> Cryptographic Password/Passphrase Conditioning<br/>
-            FCS_RBG_EXT.1 Random Bit Generation Services</td></tr></table><h4 id="ext-comp-FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <span class="selectable-content" id="_s_197">receive assertion of the user’s validity from: 
+            FCS_RBG.1 Random Bit Generation</td></tr></table><h4 id="ext-comp-FIA_AUT_EXT.1.1">FIA_AUT_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
+              [<b>selection</b>: <span class="selectable-content" id="_s_212">receive assertion of the user’s validity from: 
                   [<b>assignment</b>: 
      <span class="assignable-content">Operational Environment component responsible for user authentication</span>]</span>, <span class="selectable-content" id="APPAUTH">provide  authorization</span>] based on 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span></li><li style=""><span class="selectable-content" id="_s_200"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_201">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>)</span>, <span class="selectable-content" id="_s_202">generated by the platform</span>] protected using RSA with key size 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_203">3072 bits</span>, <span class="selectable-content" id="_s_204">4096 bits</span>] with user presence proved by presentation of the smart card and 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_205">no PIN</span>, <span class="selectable-content" id="_s_206">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_207">a configurable PIN</span>]
-                </span></li><li style=""><span class="selectable-content" id="_s_208">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s),
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span></li><li style=""><span class="selectable-content" id="_s_215"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is 
+                  [<b>selection</b>: <span class="selectable-content" id="_s_216">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1)</span>, <span class="selectable-content" id="_s_217">generated by the platform</span>] protected using RSA with key size 
+                  [<b>selection</b>: <span class="selectable-content" id="_s_218">3072 bits</span>, <span class="selectable-content" id="_s_219">4096 bits</span>] with user presence proved by presentation of the smart card and 
+                  [<b>selection</b>: <span class="selectable-content" id="_s_220">no PIN</span>, <span class="selectable-content" id="_s_221">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_222">a configurable PIN</span>]
+                </span></li><li style=""><span class="selectable-content" id="_s_223">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s),
                   and is providing a submask generated by the 
-                  [<b>selection</b>: <span class="selectable-content" id="_s_209"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_210">platform</span>]
+                  [<b>selection</b>: <span class="selectable-content" id="_s_224"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG.1</span>, <span class="selectable-content" id="_s_225">platform</span>]
                 </span></li></ul>].
             </div></div><h3 id="ext-comp-FIA_REC_EXT" class="indexable" data-level="4">C.2.2.2 FIA_REC_EXT Recovery Support</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s support for recovery credentials as an alternate method for user authorization.
           </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FIA_REC_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FIA_REC_EXT.1">FIA_REC_EXT.1</a>,
@@ -3091,8 +3076,8 @@ configure the number of failed validation attempts required to trigger correctiv
 	      <li>Minimal: Configuration of recovery methods.</li>
 	    </ul>
 	  </p><h4>FIA_REC_EXT.1 Recovery Support</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FIA_REC_EXT.1.1">FIA_REC_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <span class="selectable-content" id="_s_211">provide the ability to enable and disable the use of recovery credentials</span>, <span class="selectable-content" id="_s_212">not support recovery</span>].<h4 id="ext-comp-FIA_REC_EXT.1.2">FIA_REC_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the following recovery mechanisms 
-              [<b>selection</b>: <span class="selectable-content" id="CR">Challenge Response Recovery as defined in <a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></span>, <span class="selectable-content" id="_s_214">None</span>].</div></div><h3 id="ext-comp-FIA_CHR_EXT" class="indexable" data-level="4">C.2.2.3 FIA_CHR_EXT Challenge/Response Recovery Credential</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for the use of challenge/response as a recovery method.
+              [<b>selection</b>: <span class="selectable-content" id="_s_226">provide the ability to enable and disable the use of recovery credentials</span>, <span class="selectable-content" id="_s_227">not support recovery</span>].<h4 id="ext-comp-FIA_REC_EXT.1.2">FIA_REC_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the following recovery mechanisms 
+              [<b>selection</b>: <span class="selectable-content" id="CR">Challenge Response Recovery as defined in <a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></span>, <span class="selectable-content" id="_s_229">None</span>].</div></div><h3 id="ext-comp-FIA_CHR_EXT" class="indexable" data-level="4">C.2.2.3 FIA_CHR_EXT Challenge/Response Recovery Credential</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for the use of challenge/response as a recovery method.
           </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FIA_CHR_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a>,
              Challenge/Response Recovery Credential,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement a challenge/response method to generate recovery credentials for an authorized user.</p><h4>Management: FIA_CHR_EXT.1</h4><p>The following actions could be considered for the management functions in FMT: <ul>
@@ -3106,14 +3091,13 @@ configure the number of failed validation attempts required to trigger correctiv
           </ul>
         </p><h4>FIA_CHR_EXT.1 Challenge/Response Recovery Credential</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_VAL_EXT.1 Validation<br/>
         <a href="#FIA_REC_EXT.1">FIA_REC_EXT.1</a> Recovery Support</td></tr></table><h4 id="ext-comp-FIA_CHR_EXT.1.1">FIA_CHR_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for 
-            [<b>selection</b>: <span class="selectable-content" id="_s_286">the user requesting the recovery</span>, <span class="selectable-content" id="_s_287">the user requesting recovery and the device for which the recovery was requested</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_314">the user requesting the recovery</span>, <span class="selectable-content" id="_s_315">the user requesting recovery and the device for which the recovery was requested</span>].
           <h4 id="ext-comp-FIA_CHR_EXT.1.2">FIA_CHR_EXT.1.2</h4>The response shall work only for the user to whom it was generated.
           <h4 id="ext-comp-FIA_CHR_EXT.1.3">FIA_CHR_EXT.1.3</h4>The response shall be used only during the same session in which the request was generated.
           <h4 id="ext-comp-FIA_CHR_EXT.1.4">FIA_CHR_EXT.1.4</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
           <h4 id="ext-comp-FIA_CHR_EXT.1.5">FIA_CHR_EXT.1.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow a maximum of [<b>assignment</b>: 
      <span class="assignable-content">integer value</span>] response entry attempts per boot cycle.
-          <h4 id="ext-comp-FIA_CHR_EXT.1.6">FIA_CHR_EXT.1.6</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform remediation as defined in FCS_VAL_EXT.2(2) for failed challenge recovery attempts.
-          </div></div></span><span data-sortkey="Protection of the TSF (FPT)"><h3 id="ext-comp-FPT" class="indexable" data-level="3">C.2.3 Protection of the TSF (FPT)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
+          <h4 id="ext-comp-FIA_CHR_EXT.1.6">FIA_CHR_EXT.1.6</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform remediation as defined in FCS_VAL_EXT.2 for failed challenge recovery attempts.</div></div></span><span data-sortkey="Protection of the TSF (FPT)"><h3 id="ext-comp-FPT" class="indexable" data-level="3">C.2.3 Protection of the TSF (FPT)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
 	 FPT class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FPT_KYP_EXT" class="indexable" data-level="4">C.2.3.1 FPT_KYP_EXT Protection of Key and Key Material</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define requirements for secure storage of keys.
           </div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FPT_KYP_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p><a href="#FPT_KYP_EXT.1">FPT_KYP_EXT.1</a>,
@@ -3129,10 +3113,10 @@ configure the number of failed validation attempts required to trigger correctiv
 	          <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a> Key Chaining and Key Storage<br/>
 	          <a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a> Submask Combining<br/>
 	          FCS_STO_EXT.1 Storage of Credentials</td></tr></table><h4 id="ext-comp-FPT_KYP_EXT.1.1">FPT_KYP_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall store keys in non-volatile memory only when
-                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_260">wrapped, as specified in FCS_COP.1(5)</span></li><li style=""><span class="selectable-content" id="_s_261">encrypted, as specified in FCS_COP.1(1) <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_262">the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span></li><li style=""><span class="selectable-content" id="_s_263">the plaintext key is stored in a SQL database in the Operational Environment</span></li><li style=""><span class="selectable-content" id="_s_264">the plaintext key is not part of the key chain as specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.</span></li><li style=""><span class="selectable-content" id="_s_265">the plaintext key will no longer provide access to the encrypted data after initial provisioning</span></li><li style=""><span class="selectable-content" id="_s_266">the plaintext key is a key split that is combined as specified in <a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a> and another contribution to the split is
-                      [<b>selection</b>: <span class="selectable-content" id="_s_267">wrapped as specified in FCS_COP.1(5)</span>, <span class="selectable-content" id="_s_268">derived and not stored in non-volatile memory</span>]
-                    </span></li><li style=""><span class="selectable-content" id="_s_269">the plaintext key is stored on an external storage device for use as an authorization factor.</span></li><li style=""><span class="selectable-content" id="_s_270">the plaintext key is used tO wrap a key as specified in FCS_COP.1(5) 
-                      that is already wrapped as specified in FCS_COP.1(5)</span></li></ul>].
+                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_286">wrapped, as specified in FCS_COP.1</span></li><li style=""><span class="selectable-content" id="_s_287">encrypted, as specified in FCS_COP.1</span></li><li style=""><span class="selectable-content" id="_s_288">the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1</span></li><li style=""><span class="selectable-content" id="_s_289">the plaintext key is stored in a SQL database in the Operational Environment</span></li><li style=""><span class="selectable-content" id="_s_290">the plaintext key is not part of the key chain as specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>.</span></li><li style=""><span class="selectable-content" id="_s_291">the plaintext key will no longer provide access to the encrypted data after initial provisioning</span></li><li style=""><span class="selectable-content" id="_s_292">the plaintext key is a key split that is combined as specified in <a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a> and another contribution to the split is
+                      [<b>selection</b>: <span class="selectable-content" id="_s_293">wrapped as specified in FCS_COP.1</span>, <span class="selectable-content" id="_s_294">derived and not stored in non-volatile memory</span>]
+                    </span></li><li style=""><span class="selectable-content" id="_s_295">the plaintext key is stored on an external storage device for use as an authorization factor.</span></li><li style=""><span class="selectable-content" id="_s_296">the plaintext key is used tO wrap a key as specified in FCS_COP.1
+                      that is already wrapped as specified in FCS_COP.1</span></li></ul>].
             </div><h4>Management: FPT_KYP_EXT.2</h4><p>The following actions could be considered for the management functions in FMT: <ul>
             <li>Registration of users.</li>
             <li>Revocation of user registration.</li>
@@ -3142,7 +3126,7 @@ configure the number of failed validation attempts required to trigger correctiv
               <li>Basic: Creation and revocation of user registration.</li>
             </ul>
           </p><h4>FPT_KYP_EXT.2 Attribution of Key and Key Material</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FPT_ITT.1">FPT_ITT.1</a> Basic Internal <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> Data Transfer Protection</td></tr></table><h4 id="ext-comp-FPT_KYP_EXT.2.1">FPT_KYP_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall maintain an association between stored endpoint keys and user identity, 
-                [<b>selection</b>: <span class="selectable-content" id="_s_271">remote endpoints</span>, <span class="selectable-content" id="_s_272">recovery credential</span>, <span class="selectable-content" id="_s_273">system identity</span>, <span class="selectable-content" id="_s_274">no other subjects</span>].
+                [<b>selection</b>: <span class="selectable-content" id="_s_297">remote endpoints</span>, <span class="selectable-content" id="_s_298">recovery credential</span>, <span class="selectable-content" id="_s_299">system identity</span>, <span class="selectable-content" id="_s_300">no other subjects</span>].
               <h4 id="ext-comp-FPT_KYP_EXT.2.2">FPT_KYP_EXT.2.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the ability to register users by exchange of [<b>assignment</b>: 
      <span class="assignable-content">mutually identifying information that allows for an association to be made</span>].
                <h4 id="ext-comp-FPT_KYP_EXT.2.3">FPT_KYP_EXT.2.3</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the ability to revoke the registration of users by [<b>assignment</b>: 
