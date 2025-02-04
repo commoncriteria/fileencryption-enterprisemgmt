@@ -2499,7 +2499,7 @@
                 <selectable>register new user</selectable>
                 <selectable>revoke registration of user</selectable>
                 <selectable>initiate key generation</selectable>
-                <selectable>initiate key escrow</selectable>
+                <selectable>initiate keying escrow</selectable>
                 <selectable>initiate key zeroization</selectable>
                 <selectable>initiate key recovery</selectable>
                 <selectable>set encryption policy (supported algorithms and key sizes)</selectable>
