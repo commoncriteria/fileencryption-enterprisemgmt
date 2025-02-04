@@ -189,30 +189,61 @@
             or any other values that contribute to the creation of keys or authorization factors could allow an unauthorized user to defeat
             the encryption. This PP-Module considers possession of key material of equal importance to the data itself. Threat agents may
             look for key material in unencrypted storage on the Management Server and in external databases in the operating environment (OE), e.g. SQL database. </description>
-          <objective-refer ref="O.KEY_MATERIAL_SERVER">
+          <addressed-by>FCS_CKM.1/SK (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating symmetric encryption keys.</rationale>
+          <addressed-by>FCS_CKM.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating asymmetric encryption keys.</rationale>
+          <addressed-by>FCS_CKM.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely establishing cryptographic keys between entities.</rationale>
+          <addressed-by>FCS_IV_EXT.1</addressed-by><rationale>Mitigates the threat by securely and unpredictably generating IVs.</rationale>
+          <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>Mitigates the threat by encrypting data transmitted to an external entity.</rationale>
+          <addressed-by>FCS_CKM.6</addressed-by><rationale>Mitigates the threat by securely destroying keys and key material when no longer needed.</rationale>
+          <addressed-by>FCS_COP.1/KW</addressed-by><rationale>Mitigates the threat by securely wrapping cryptographic keys using a cryptographic algorithm.</rationale>
+          <addressed-by>FCS_COP.1/KT</addressed-by><rationale>Mitigates the threat by securely transmitting keys using a cryptographic algorithm.</rationale>
+          <addressed-by>FCS_KDF_EXT.1</addressed-by><rationale>Mitigates the threat by securely deriving cryptographic keys.</rationale>
+          <addressed-by>FCS_KYC_EXT.1</addressed-by><rationale>Mitigates the threat by securely storing keys &amp; key chain material.</rationale>
+          <addressed-by>FPT_KYP_EXT.1</addressed-by><rationale>Mitigates the threat by limiting the situations in which plaintext keys may be stored, and storing the keys protected in all other situations.</rationale>
+          <addressed-by>FCS_SMC_EXT.1</addressed-by><rationale>Mitigates the threat by securely generating intermediate keys by combining submasks.</rationale>
+          <addressed-by>FIA_AUT_EXT.1</addressed-by><rationale>Mitigates the threat by authorizing a user based on a secure credential.</rationale>
+          <addressed-by>FMT_MOF.1</addressed-by><rationale>Mitigates the threat by restricting the ability to manage encryption parameters to administrators.</rationale>
+          <addressed-by>FMT_SMF.1/FEEM</addressed-by><rationale>Mitigates the threat by restricting the ability to manage the Management Server to administrators.</rationale>
+          <addressed-by>FPT_ITT.1</addressed-by><rationale>Mitigates the threat by protecting data transmitted within different parts of the TOE.</rationale>
+          <!-- <objective-refer ref="O.KEY_MATERIAL_SERVER">
             <rationale>The threat T.KEYING_MATERIAL_COMPROMISE_SERVER is countered by O.KEY_MATERIAL_SERVER as this
               provides for proper protection of key material on the server.</rationale>
-          </objective-refer>
+          </objective-refer> -->
+
         </threat>
         <threat name="T.MAN_IN_THE_MIDDLE">
           <description>
             An attacker listening on the 
             communication between the Management Server and the Client(s) to obtain the user’s credential, keys, or recovery material.
           </description>
-          <objective-refer ref="O.SECURE_CHANNEL">
+          <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>Mitigates the threat by encrypting sensitive or all data transmitted to an external entity.</rationale>
+          <addressed-by>FCS_CKM.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating asymmetric encryption keys.</rationale>
+          <addressed-by>FCS_COP.1/SKC (from Base-PP)</addressed-by><rationale>Mitigates the threat by utilizing symmetric encryption in communications between servers and clients.</rationale>
+          <addressed-by>FCS_COP.1/Sig (from Base-PP)</addressed-by><rationale>Mitigates the threat by cryptographically signing communications between servers and clients.</rationale>
+          <addressed-by>FCS_RBG.1 (from Base-PP)"</addressed-by><rationale>Mitigates the threat by using a secure RBG to support secure communication.</rationale>
+          <addressed-by>FIA_X509_EXT.1 (from Base-PP)"</addressed-by><rationale>Mitigates the threat by preventing connection to servers or clients with malformed or invalid X.509 certificates.</rationale>
+          <addressed-by>FIA_X509_EXT.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by authenticating entities using X.509 certificates.</rationale>
+          <addressed-by>FPT_ITT.1</addressed-by><rationale>Mitigates the threat by encrypting data transmitted between different parts of the TOE.</rationale>
+          <addressed-by>FCS_CKM_EXT.6 (selection-based)</addressed-by><rationale>Mitigates the threat by conditioning passwords or other credentials to an unreadable form.</rationale>
+          <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>Mitigates the threat by protecting communication with an appropriate secure protocol.</rationale>
+          <!-- <objective-refer ref="O.SECURE_CHANNEL">
             <rationale>The threat T.MAN_IN_THE_MIDDLE is countered by O.SECURE_CHANNEL as this
               protects against man in the middles attacks.</rationale>
-            </objective-refer>
+            </objective-refer> -->
         </threat>
         <threat name="T.UNAUTHORIZED_ADMINISTRATOR_ACCESS">
           <description>
             An attacker masquerading as an administrator to the Management Server to gain access to TOE management functionality to gain unauthorized access to protected data 
             or prevent legitimate users from gaining authorized access.
           </description>
-          <objective-refer ref="O.VERIFIED_ADMIN">
+          <addressed-by>FCS_VAL_EXT.1/Admin</addressed-by><rationale>Mitigates the threat by validating the administrator before allowing any administrative actions.</rationale>
+	        <addressed-by>FIA_UAU.1</addressed-by><rationale>Mitigates the threat by limiting the administrative actions that can be taken before the authentication process must succeed.</rationale>
+          <addressed-by>FIA_UID.1</addressed-by><rationale>Mitigates the threat by limiting the administrative actions that can be taken before the identification process must succeed.</rationale>
+	        <addressed-by>FCS_VAL_EXT.2/Admin (selection-based)</addressed-by><rationale>Mitigates the threat by preventing excessive unsuccessful validation attempts.</rationale>
+          <!-- <objective-refer ref="O.VERIFIED_ADMIN">
             <rationale>The threat T.UNAUTHORIZED_ADMINISTRATOR_ACCESS is countered by O.VERIFIED_ADMIN as this
               provides methods to verify the administrator.</rationale>
-          </objective-refer>
+          </objective-refer> -->
         </threat>
         <threat name="T.UNTRUSTED_COMMUNICATION_CHANNELS">
           <description>
@@ -220,10 +251,10 @@
             using insecure tunneling protocols or the presence of an unencrypted path to disclose keys, key material, or recovery
             material transferred between the endpoint and the Management Server.
           </description>
-          <objective-refer ref="O.SECURE_CHANNEL">
+          <!-- <objective-refer ref="O.SECURE_CHANNEL">
             <rationale>The threat T.UNTRUSTED_COMMUNICATION_CHANNELS is countered by O.SECURE_CHANNEL as this
               provides a trusted channel for any server endpoint communications.</rationale>
-          </objective-refer>
+          </objective-refer> -->
         </threat>
         <threat name="T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT">
           <description>
@@ -231,20 +262,32 @@
             accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled
             by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses
             the primary threat of unauthorized disclosure of recovery material. </description>
-          <objective-refer ref="O.ENTERPRISE_KEY_PROTECTION">
+            <addressed-by>FPT_KYP_EXT.2</addressed-by><rationale>Mitigates the threat by associating keys to user identities and providing a method for revocation of the association.</rationale>
+          <!-- <objective-refer ref="O.ENTERPRISE_KEY_PROTECTION">
             <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT is countered by O.ENTERPRISE_KEY_PROTECTION as this
               provides for encryption of keys that protect data.</rationale>
-          </objective-refer>
+          </objective-refer> -->
         </threat>
         <threat name="T.UNAUTHORIZED_DATA_ACCESS_SERVER">
           <description>
             An attacker accessing the Management Server and generating a recovery key chain for an endpoint. 
             The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
             this adds the Management Server to the scope of the threat. </description>
-          <objective-refer ref="O.RECOVERY_PROTECTION">
+          <addressed-by>FCS_COP.1/SKC (from Base-PP)</addressed-by><rationale>Mitigates the threat by identifying users with a securely-encrypted value.</rationale>
+          <addressed-by>FIA_X509_EXT.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by preventing connection to servers or clients with malformed or invalid X.509 certificates.</rationale>
+          <addressed-by>FIA_X509_EXT.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by authenticating a remote entity using X.509 certificates.</rationale>
+          <addressed-by>FCS_VAL_EXT.1/User</addressed-by><rationale>Mitigates the threat by validating the user before decryption of any data or key.</rationale>
+          <addressed-by>FCS_VAL_EXT.2/User</addressed-by><rationale>Mitigates the threat by preventing excessive unsuccessful validation attempts.</rationale>
+          <addressed-by>FIA_REC_EXT.1</addressed-by><rationale>Mitigates the threat by providing a secure recovery mechanism.</rationale>
+          <addressed-by>FIA_UAU.1</addressed-by><rationale>Mitigates the threat by limiting the administrative actions that can be taken before the authentication process must succeed.</rationale>
+          <addressed-by>FIA_UID.1</addressed-by><rationale>Mitigates the threat by limiting the administrative actions that can be taken before the identification process must succeed.</rationale>
+          <addressed-by>FMT_MTD.1</addressed-by><rationale>Mitigates the threat by restricting the times at which certain cryptographic parameters can be modified on the server.</rationale>
+          <addressed-by>FMT_SMR.2</addressed-by><rationale>Mitigates the threat by maintaining separate security roles for administrators and users.</rationale>
+          <addressed-by>FIA_CHR_EXT.1 (selection-based)</addressed-by><rationale>Mitigates the threat by providing a limited-time and limited-scope challenge-response recovery credential.</rationale>
+          <!-- <objective-refer ref="O.RECOVERY_PROTECTION">
             <rationale>The threat T.UNAUTHORIZED_DATA_ACCESS_SERVER is countered by O.RECOVERY_PROTECTION as this
               provides for protection of recovery information.</rationale>
-          </objective-refer>
+          </objective-refer> -->
         </threat>
       </threats>
     </sec:Threats>
@@ -297,7 +340,7 @@
       Objectives are the requirements for the Target of Evaluation (TOE) and for the Operational
       Environment derived from the threats in Section 3. 
       
-    <sec:Security_Objectives_for_the_TOE> 
+    <!-- <sec:Security_Objectives_for_the_TOE> 
       <SOs>
        <SO name="O.ENTERPRISE_KEY_PROTECTION">
           <description>
@@ -343,8 +386,8 @@
             
             FTP_DIT_EXT.1 specifies the protocols used to ensure that key material is not exposed through the communication channel between an Enterprise Server and 
             the endpoint. The requirements for establishing keys are validated by FCS_CKM.2 which relies on the SFRs or package claims selected in FTP_DIT_EXT.1
-            to implement secure communications. <!-- <h:li>FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites) </h:li>
-            --> The various iterations of FCS_COP.1 as well as FCS_RBG.1 all validate that the cryptography used to initiate and protect
+            to implement secure communications. <h:li>FCS_TLSS_EXT.1 (and optionally FCS_TLSS_EXT.3 depending on the claimed ciphersuites) </h:li>
+             The various iterations of FCS_COP.1 as well as FCS_RBG.1 all validate that the cryptography used to initiate and protect
             the communication channel protocols between the Enterprise Server and the endpoint, if remote management is supported by the TSF. If implemented
             on the server, FCS_CKM.6 ensures proper destruction of keys and key material on the server when no longer needed.<h:br/><h:br/>
             
@@ -413,7 +456,7 @@
             for the specific protocols as defined in any of {FCS_HTTPS_EXT.1, PP-Module for VPN Client, FCS_SSHC_EXT.1, 
 		        FCS_SSHS_EXT.1, FCS_TLSC_EXT.1, FCS_TLSS_EXT.1}<h:br/><h:br/>
 		            
-            <!--If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. -->
+            If TLS is supported, then FCS_TLSC_EXT.3 and/or FCS_TLSS_EXT.3 may also apply, depending on the claimed TLS ciphersuites. 
             If the EM Server generates signatures to request or verify certificates, FCS_COP.1(1) ensures correct cryptographic
             operation in signature generation process. <h:br/><h:br/>
           
@@ -464,7 +507,7 @@
 	        <addressed-by><xref to="FCS_VAL_EXT.2(1) (selection-based)"/></addressed-by><rationale/>          
         </SO>               
       </SOs>
-    </sec:Security_Objectives_for_the_TOE>
+    </sec:Security_Objectives_for_the_TOE> -->
     
     <sec:Security_Objectives_for_the_Operational_Environment>     
       <SOEs>
@@ -893,7 +936,7 @@
             
           </f-element>
           
-          
+          <audit-event/>
         </f-component>
         
 	      
@@ -903,33 +946,38 @@
 	        </consistency-rationale>
 	        <f-element>
             <title>
-              The TSF shall <h:b> 
+              The TSF shall <h:s>perform</h:s>[<h:i> 
               <selectables>
                 <selectable>not perform key wrapping</selectable>
                 <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
-                <selectable>implement functionality to perform Key Wrapping in accordance with a specified cryptographic algorithm [AES] in the following modes
-                  <selectables linebreak="yes">
-                    <selectable>Key Wrap</selectable>
-                    <selectable>Key Wrap with Padding</selectable>
-                    <selectable>GCM mode</selectable>
-                    <selectable>CCM mode</selectable>
-                    <selectable>CBC mode</selectable>
-                  </selectables> and the cryptographic key size [<h:i>256 bits (AES)</h:i>] that meet the following: 
-                  <selectables linebreak="yes">
+                <selectable>implement functionality to perform Key Wrapping</selectable> </selectables>]</h:i>
+                in accordance with a specified cryptographic algorithm [<h:i>
+                  <selectables><selectable>AES in the following mode
+                    <selectables linebreak="yes">
+                        <selectable>Key Wrap</selectable>
+                        <selectable>Key Wrap with Padding</selectable>
+                        <selectable>GCM mode</selectable>
+                        <selectable>CCM mode</selectable>
+                    </selectables>
+                  </selectable>
+                  <selectable>no algorithm</selectable>
+                  </selectables>
+                </h:i>] and cryptographic key sizes [<h:i>256 bits (AES)</h:i>] that meet the following: 
+                  [<h:i><selectables linebreak="yes">
                     <selectable>“NIST SP 800-38C”</selectable>
                     <selectable>“NIST SP 800-38D”</selectable>
                     <selectable>“NIST SP 800-38F”</selectable>
                     <selectable>“NIST SP 800-38A”</selectable>
-                  </selectables>
-		   and no other standards
-                </selectable>
-              </selectables></h:b>. 
+                    <selectable>no standard</selectable>
+                  </selectables></h:i>].
             </title>
             <note role="application">
               
               This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
-              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.</note>
+              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.
+              If "not perform key wrapping" is selected, "no algorithm" and "no standard" should be selected.
+              Otherwise, the cryptographic parameters used to perform key wrapping should be selected.</note>
             <aactivity>
               <TSS>
               Conditional: If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <h:br/>
@@ -1052,6 +1100,7 @@
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         
@@ -1060,7 +1109,7 @@
           </consistency-rationale>
           <f-element>
             <title>
-              The TSF shall <h:b>
+              The TSF shall <h:s>perform</h:s>[<h:i>
                 <selectables>
                   <selectable>not perform key transport</selectable>
                   <selectable>perform [key transport] in accordance with a
@@ -1069,14 +1118,11 @@
                       <selectable>KTS-OAEP</selectable>
                       <selectable>KTS-KEM-KWS</selectable>
                     </selectables> and the cryptographic key size 
-                    <selectables>
-                      <selectable>3072</selectable>
-                      <selectable>4096</selectable>
-                    </selectables>bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
+                    [<h:i>3072</h:i>] bits that meet the following: [NIST SP 800-56B, Revision 1].</selectable>
                     <selectable>perform [<h:i>key transport</h:i>] in accordance with a 
                     specified cryptographic algorithm [RSA in the following modes: KTS-OAEP] 
                     and the cryptographic key size [<h:i>3072</h:i>] bits that meet the following: [<h:i>NIST SP 800-56B, Revision 2</h:i>]</selectable>
-                </selectables></h:b>.
+                </selectables></h:i>].
             </title>
             <note role="application">
               
@@ -1190,6 +1236,7 @@
                     values) are revealed to the sender.</test></testlist></Tests>
             </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         
@@ -1199,7 +1246,7 @@
         </ext-comp-def>
         <f-component cc-id="fcs_iv_ext.1" name="Initialization Vector Generation">
           <consistency-rationale>This SFR defines how IVs for AES keys must be generated. This is consistent with the Base-PP because it supplements the key generation 
-            methods specified by the Base-PP SFR FCS_CKM.1(2).
+            methods specified by the Base-PP SFR FCS_CKM.1/SK.
           </consistency-rationale>
           
           <comp-lev> specifies the required initialization vector generation methods used by the TSF for various cryptographic algorithms.</comp-lev>
@@ -1239,6 +1286,7 @@
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         <ext-comp-def fam-id="FCS_KDF_EXT" title="Cryptographic Key Derivation Function">
@@ -1278,7 +1326,7 @@
                       </selectables>
                     </selectable>
                     <selectable>NIST SP 800-132</selectable>
-                  </selectables> using the keyed-hash functions specified in FCS_COP.1<h:b>(4)</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b>, such that the output is at least of
+                  </selectables> using the keyed-hash functions specified in FCS_COP.1<h:b>/KeyedHash</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b>, such that the output is at least of
                   equivalent security strength (in number of bits) to the [FEK(s)]
                 </selectable>
               </selectables>. 
@@ -1362,7 +1410,7 @@
               
             </title>
           -->
-	        
+	        <audit-event/>
         </f-component>
         
         <ext-comp-def fam-id="FCS_KYC_EXT" title="Key Chaining and Key Storage">
@@ -1397,24 +1445,17 @@
                     <selectable>utilization of platform key storage that performs key wrap with a
                       TSF provided key</selectable>
                     <selectable id="USEKEYDER">implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
-                    <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1<h:b>(5)</h:b></selectable>
+                    <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                     <selectable id="USEKEYCOM">implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
-                    <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1<h:b>(6)</h:b></selectable>
+                    <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1<h:b>/KT</h:b></selectable>
                   </selectables> 
                   while maintaining an effective strength of 
                     <selectables>
                       <selectable>
-                        <selectables>
-                          <selectable>128 bits</selectable>
-                          <selectable>256 bits</selectable>
-                        </selectables> for symmetric keys
+                        <h:i>256 bits</h:i> for symmetric keys
                       </selectable>
                       <selectable>
-                        <selectables>
-                          <selectable>128 bits</selectable>
-                          <selectable>192 bits</selectable>
-                          <selectable>256 bits</selectable>
-                        </selectables> for asymmetric keys
+                        <h:i>256 bits</h:i> for asymmetric keys
                       </selectable>
                     </selectables>
                   commensurate with the strength of the FEK
@@ -1426,9 +1467,9 @@
                     <selectable>utilization of the platform key storage</selectable>
                     <selectable>utilization of platform key storage that performs key wrap with a
                       TSF provided key</selectable>
-                    <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1<h:b>(5)</h:b></selectable>
+                    <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                     <selectable id="USEKEYCOM">implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
-                    <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1<h:b>(6)</h:b></selectable>
+                    <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1<h:b>/KT</h:b></selectable>
                     <selectable id="USEKEYDER">implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
                   </selectables></selectable>
               </selectables>.
@@ -1533,7 +1574,7 @@
               </Tests>
 </aactivity>
           </f-element>
-	  
+          <audit-event/>
         </f-component>
         
 	      
@@ -1558,16 +1599,19 @@
             <title>The TSF shall 
               <selectables>
                 <selectable>not perform submask combining</selectable>
-                <selectable>combine submasks using the following method <selectables>
+                <selectable>combine submasks using the following method: [<h:i><selectables>
                   <selectable>exclusive OR (XOR)</selectable>
-                  <selectable>SHA-256</selectable>
                   <selectable>SHA-384</selectable>
-                  <selectable>SHA-512</selectable>
-                  <selectable>HMAC-SHA-256</selectable>
                   <selectable>HMAC-SHA-384</selectable>
-                  <selectable>HMAC-SHA-512</selectable>
-                </selectables> to generate an intermediate key</selectable>
+                </selectables></h:i>] to generate an intermediate key</selectable>
               </selectables>.</title>
+              <ext-comp-def-title>
+              <title>The TSF shall 
+              <selectables>
+                <selectable>not perform submask combining</selectable>
+                <selectable>combine submasks using the following method: <assignable>submask combination method</assignable> to generate an intermediate key</selectable>
+              </selectables>.</title>
+              </ext-comp-def-title>
             <note role="application">
               
               This applies to any submask combining occurring on the enterprise server.
@@ -1590,7 +1634,7 @@
             </Tests>
 </aactivity>
           </f-element>
-          
+          <audit-event/>
         </f-component>
 	      
         <ext-comp-def fam-id="FCS_VAL_EXT" title="Validation">
@@ -1654,20 +1698,20 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable>key wrap as specified in FCS_COP.1<h:b>(5)</h:b></selectable>
+                  <selectable>key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable> 
-                    </selectables> as specified in FCS_COP.1<h:b>(2)</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
+                    </selectables> as specified in FCS_COP.1<h:b>/Hash</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
                   <selectable>decrypt a known value using the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable>
                       
-                    </selectables> as specified in FCS_COP.1<h:b>(1)</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
+                    </selectables> as specified in FCS_COP.1<h:b>/SKC</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
                 </selectables></selectable>
               </selectables>. 
               
@@ -1705,7 +1749,7 @@
           </f-element>
           
 	        <f-element id="fcs-val-ext-1e2">
-              <title>The TSF shall require validation of the [<h:i>admin</h:i>] prior to [<h:i>permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1(2)</h:i>].</title>
+              <title>The TSF shall require validation of the [<h:i>admin</h:i>] prior to [<h:i>permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1/FEEM</h:i>].</title>
             
             
             <!--
@@ -1803,7 +1847,7 @@
             </title>
           </f-element-ecd>
           -->
-	        
+	      <audit-event/>  
       </f-component>
         
         <f-component cc-id="fcs_val_ext.1" name="Validation (User)" iteration="User">
@@ -1817,20 +1861,20 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable>key wrap as specified in FCS_COP.1<h:b>(5)</h:b></selectable>
+                  <selectable>key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable> 
-                    </selectables> as specified in FCS_COP.1<h:b>(2)</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
+                    </selectables> as specified in FCS_COP.1<h:b>/Hash</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
                   <selectable>decrypt a known value using the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable>
                       
-                    </selectables> as specified in FCS_COP.1<h:b>(1)</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
+                    </selectables> as specified in FCS_COP.1<h:b>/SKC</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
                 </selectables></selectable>
               </selectables>. 
               
@@ -1947,6 +1991,7 @@
 </aactivity>
             
           </f-element>
+          <audit-event/>
         </f-component>
  
         <f-component cc-id="fcs_val_ext.2" name="Validation Remediation" status="invisible">
@@ -1977,7 +2022,7 @@
               </selectables>.
             </title>
           </f-element>
-        
+          <audit-event/>
         </f-component>
 
       
@@ -2013,6 +2058,7 @@
               </Tests>
             </aactivity>            
           </f-element>
+          <audit-event/>
         </f-component>
       </sec:fcs>
       
@@ -2176,6 +2222,7 @@
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         <ext-comp-def fam-id="FIA_REC_EXT" title="Recovery Support">
@@ -2237,6 +2284,7 @@
 </aactivity>
             
           </f-element>
+          <audit-event/>
         </f-component>
               
 	      
@@ -2288,6 +2336,7 @@
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         <f-component cc-id="fia_uid.1" name="Timing of Identification">
@@ -2329,13 +2378,14 @@
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
       </sec:fia>
       
       <sec:fmt title="Security Management (FMT)">
         
         
-        <f-component cc-id="fmt_mof.1" name="Server Management of Security Functions Behavior">
+        <f-component cc-id="fmt_mof.1" name="Management of Security Functions Behaviour">
           <consistency-rationale>This SFR defines access restrictions for TOE management functions. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
           </consistency-rationale>
           <f-element>
@@ -2389,6 +2439,7 @@
               </Tests>
             </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         
@@ -2442,6 +2493,7 @@
               </Tests>
             </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         
@@ -2482,7 +2534,7 @@
             <note role="application"> 
 		    
 		    This SFR refers specifically to the management functions that can be performed by the Management Server. 
-              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1(2) SFR in the File Encryption PP-Module.
+              Functions that are performed by the rest of the TOE are addressed by the FMT_SMF.1/FEEM SFR in the File Encryption PP-Module.
 		    The final two assignments provide the ST author the ability to indicate when File Encryption module functionality
 		    (such as configuration of power saving states) can be configured by the Management Server.<h:br/><h:br/>
               
@@ -2510,7 +2562,7 @@
               <h:li>Register new user</h:li>
               <h:li>Revoke registration of an user</h:li>
               <h:li>Initiate key generation</h:li>
-              <h:li>Initiate key escrow</h:li>
+              <h:li>Initiate keying escrow</h:li>
               <h:li>Initiate key recovery</h:li>
               <h:li>Initiate key zeroization</h:li>
               <h:li>Set encryption policy (supported algorithms and key sizes)</h:li>
@@ -2587,6 +2639,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component> 
         
 
@@ -2644,6 +2697,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
       </sec:fmt>
       <sec:fpt title="Protection of the TSF (FPT)">
@@ -2697,6 +2751,7 @@ configure the number of failed validation attempts required to trigger correctiv
             </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         <ext-comp-def fam-id="FPT_KYP_EXT" title="Protection of Key and Key Material">
@@ -2778,7 +2833,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 <h:h4>KMD</h:h4>The evaluator shall verify
                 the KMD to ensure it describes the storage location of all keys and the protection of
                 all keys stored in non-volatile memory. The description of the key chain shall be
-                reviewed to ensure FCS_COP.1(5) is followed for the storage of wrapped or encrypted
+                reviewed to ensure FCS_COP.1/KW is followed for the storage of wrapped or encrypted
                 keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. <h:br/><h:br/>
                 
@@ -2788,6 +2843,7 @@ configure the number of failed validation attempts required to trigger correctiv
 <Tests> None. </Tests>
 </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
         
         <f-component cc-id="fpt_kyp_ext.2" name="Attribution of Key and Key Material">
@@ -2863,6 +2919,7 @@ configure the number of failed validation attempts required to trigger correctiv
               </Tests>
 </aactivity>
             </f-element>
+            <audit-event/>
           </f-component>
       </sec:fpt>
     </man-sfrs>
@@ -2969,7 +3026,7 @@ configure the number of failed validation attempts required to trigger correctiv
             A significantly higher value is recommended to ensure optimal security.<h:br/><h:br/>
             
             For FCS_CKM_EXT.6.4 If the minimum password length is settable, then ST author chooses “a value settable by the administrator
-            for this component for FMT_SMF.1.1(2). If the minimum length
+            for this component for FMT_SMF.1.1/FEEM. If the minimum length
             is not settable, the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).  
           
             <h:br/><h:br/>This requirement is selection dependent on FIA_AUT_EXT.1.1.</note>
@@ -3003,7 +3060,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               <h:br/><h:br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
               evaluation activities will be performed when doing the evaluation activities for the
-              appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
+              appropriate requirements (FCS_COP.1.1/KeyedHash). If any manipulation of the key is performed
               in forming the submask that will be used to form the FEK or KEK, that process shall be
               described in the TSS. <h:br/>h:br/>No explicit testing of the formation of the submask from the
               input password is required. 
@@ -3034,6 +3091,7 @@ configure the number of failed validation attempts required to trigger correctiv
               from the input password/passphrase is required.  </Tests>
           </aactivity>
         </f-element>
+        <audit-event/>
       </f-component>
       <f-component cc-id="fcs_val_ext.2" name="Validation Remediation (Server Administrator)"
           iteration="Admin">
@@ -3078,7 +3136,7 @@ configure the number of failed validation attempts required to trigger correctiv
             
           </f-element>
           
-          
+          <audit-event/>
       </f-component>
       </sec:fcs>
         
@@ -3146,7 +3204,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-element>
         
         <f-element id="fia-chr-ext-1e6">
-          <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2(2) for failed challenge recovery attempts.
+          <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2/User for failed challenge recovery attempts.
           </title>
           <ext-comp-def-title>
           <title>The TSF shall perform remediation as defined in FCS_VAL_EXT.2 for failed challenge recovery attempts.</title>
@@ -3196,6 +3254,7 @@ configure the number of failed validation attempts required to trigger correctiv
 </aactivity>
           
         </f-element>
+        <audit-event/>
       </f-component>
       </sec:fia>
 
@@ -3265,6 +3324,7 @@ configure the number of failed validation attempts required to trigger correctiv
               </Tests>
             </aactivity>
           </f-element>
+          <audit-event/>
         </f-component>
       </sec:ftp>    
     </sel-sfrs>
@@ -3368,10 +3428,10 @@ configure the number of failed validation attempts required to trigger correctiv
         <description> Federal Information Processing Standards Publication (FIPS-PUB) 180-4, Secure
           Hash Standard, March, 2012 </description>
       </entry>
-      <entry id="FIPS186-4">
-        <tag>FIPS186-4</tag>
-        <description> Federal Information Processing Standard Publication (FIPS-PUB) 186-4, Digital
-          Signature Standard (DSS), National Institute of Standards and Technology, July 2013
+      <entry id="FIPS186-5">
+        <tag>FIPS186-5</tag>
+        <description> Federal Information Processing Standard Publication (FIPS-PUB) 186-5, Digital
+          Signature Standard (DSS), National Institute of Standards and Technology, February 2023
         </description>
       </entry>
       <entry id="FIPS197">
