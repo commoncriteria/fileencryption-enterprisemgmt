@@ -1062,7 +1062,7 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 
               </ul></span>
-            </div></div></span></div><h2 class="indexable" data-level="2" id="fmt">2.2.3 Security Management (FMT)</h2><div class="comp" id=""><h4>FMT_MOF.1 Server Management of Security Functions Behavior</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_MOF.1</div>
+            </div></div></span></div><h2 class="indexable" data-level="2" id="fmt">2.2.3 Security Management (FMT)</h2><div class="comp" id=""><h4>FMT_MOF.1 Management of Security Functions Behaviour</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_MOF.1</div>
               
               
               
@@ -1130,7 +1130,7 @@ The following sections list Common Criteria and technology terms used in this do
               <li>Register new user</li>
               <li>Revoke registration of an user</li>
               <li>Initiate key generation</li>
-              <li>Initiate key escrow</li>
+              <li>Initiate keying escrow</li>
               <li>Initiate key recovery</li>
               <li>Initiate key zeroization</li>
               <li>Set encryption policy (supported algorithms and key sizes)</li>
@@ -1269,7 +1269,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 <h4>KMD</h4>The evaluator shall verify
                 the KMD to ensure it describes the storage location of all keys and the protection of
                 all keys stored in non-volatile memory. The description of the key chain shall be
-                reviewed to ensure FCS_COP.1(5) is followed for the storage of wrapped or encrypted
+                reviewed to ensure FCS_COP.1/KW is followed for the storage of wrapped or encrypted
                 keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. <br/><br/>
                 
@@ -1321,7 +1321,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               <br/><br/>For the NIST SP 800-132-based conditioning of the password/passphrase, the required
               evaluation activities will be performed when doing the evaluation activities for the
-              appropriate requirements (FCS_COP.1.1(4)). If any manipulation of the key is performed
+              appropriate requirements (FCS_COP.1.1/KeyedHash). If any manipulation of the key is performed
               in forming the submask that will be used to form the FEK or KEK, that process shall be
               described in the TSS. <br/>h:br/&gt;No explicit testing of the formation of the submask from the
               input password is required. 
@@ -1479,8 +1479,8 @@ guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appen
       <tr><td><span id="FIPS180-4"></span>[FIPS180-4]</td><td> Federal Information Processing Standards Publication (FIPS-PUB) 180-4, Secure
           Hash Standard, March, 2012 </td></tr>
 
-      <tr><td><span id="FIPS186-4"></span>[FIPS186-4]</td><td> Federal Information Processing Standard Publication (FIPS-PUB) 186-4, Digital
-          Signature Standard (DSS), National Institute of Standards and Technology, July 2013
+      <tr><td><span id="FIPS186-5"></span>[FIPS186-5]</td><td> Federal Information Processing Standard Publication (FIPS-PUB) 186-5, Digital
+          Signature Standard (DSS), National Institute of Standards and Technology, February 2023
         </td></tr>
 
       <tr><td><span id="FIPS197"></span>[FIPS197]</td><td>Federal Information Processing Standards Publication (FIPS-PUB) 197,
