@@ -683,7 +683,8 @@
           </fam-behavior>
         </ext-comp-def>
         <f-component cc-id="fcs_ckm.6" name="Cryptographic Key Destruction">
-          <consistency-rationale/>
+          <consistency-rationale>This SFR requires destruction of cryptographic keys when they are no longer needed. 
+          The Base-PP does not mandate key destruction but it also does not prohibit it.</consistency-rationale>
           
           <!-- <comp-lev> describes supported methods for key destruction.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT: <h:ul>
@@ -1210,6 +1211,8 @@
         </f-component>
       
 	      <f-component cc-id="fcs_val_ext.1" name="Validation (Server Administrator)" iteration="Admin">
+        <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can validate the correctness of data input to it.
+	      </consistency-rationale>
           <f-element id="fcs-val-ext-admin-1e1">
             <title>The TSF shall perform validation of the [<h:i>admin</h:i>] by 
               <selectables>
@@ -2614,7 +2617,9 @@ configure the number of failed validation attempts required to trigger correctiv
               
               This applies to any key wrapping occurring on the enterprise server.
               This requirement is used in the body of the ST if the ST author chooses to
-              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1.
+              use key wrapping in the key chaining approach that is specified in FCS_KYC_EXT.1,
+              key wrap in the admin validation approach that is specified in FCS_VAL_EXT.1.1/Admin,
+              or key wrap in the user validation approach that is specified in FCS_VAL_EXT.1.1/User.
               </note>
             <aactivity>
               <TSS>              
@@ -3046,7 +3051,8 @@ configure the number of failed validation attempts required to trigger correctiv
       <f-component cc-id="fcs_val_ext.2" name="Validation Remediation (Server Administrator)"
           iteration="Admin">
           <depends on="FIA_AUT_EXT.1.1" ids="APPAUTH"/>
-          
+          <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can take security-relevant action if some data input to it is invalid.
+        </consistency-rationale>
           <f-element>
             <title>The TSF shall 
               <selectables linebreak="yes">
