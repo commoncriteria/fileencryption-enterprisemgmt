@@ -383,6 +383,7 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><div id="Protected_Data">Protected Data</div></td><td>This refers to all files designated by the user for encryption.</td></tr>
 <tr><td><div id="Random_Bit_Generator">Random Bit Generator (RBG)</div></td><td>A cryptographic function composed of an entropy source and DRBG that is
               invoked for random bits needed to produce keying material.</td></tr>
+<tr><td><div id="Recovery_Value">Recovery Value</div></td><td>A secondary credential that can be used to validate a user in the event the primary one is lost.</td></tr>
 <tr><td><div id="Registration">Registration</div></td><td>The initial process of associating and endpoint and/or user with the server.</td></tr>
 <tr><td><div id="Submask">Submask</div></td><td>A submask is a bit string that can be generated and stored in a number of ways</td></tr>
 <tr><td><div id="System_Identity">System Identity</div></td><td>A composition of a series of identifiers that may vary, but aim to identity and associate with a specific system</td></tr>
@@ -563,241 +564,7 @@ The following sections list Common Criteria and technology terms used in this do
                   
                 </ul></span>
                 
-              </div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KW</div>
-              
-
-
-<div class="eacategory">TSS</div><div class="ea"><div class="ea">
-              Conditional: If not perform key wrapping was selected, then the evaluator shall only examine the TSS to verify no key wrapping is performed. <br/>
-                
-              Conditional: If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
-              describes how the FEK encryption/decryption is invoked. <br/>
-                
-              Conditional: If implement functionality was selected, the evaluator shall check that the TSS includes
-              a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
-              selected encryption function includes the key sizes and modes of operations as specified in the selections above.
-              The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
-              included in the selections made for ‘cryptographic algorithm’ and ‘list of standards’. <br/><br/>
-              
-              The evaluator shall verify the TSS includes a description of the key wrap function(s)
-              and shall verify the key wrap uses an approved key wrap algorithm according to the
-              appropriate specification.<br/><br/>
-             
-             <h4>KMD</h4>
-                The evaluator shall review the KMD to ensure that all keys are wrapped using the
-                approved method and a description of when the key wrapping occurs.<br/><br/>
-              
-              <br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> If multiple encryption modes are supported, the evaluator examines the guidance documentation
-              to determine that the method of choosing a specific mode/key size is described.
-              <br/><br/>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-  Conditional: If 'not perform key wrapping' was selected, no testing is performed.<br/><br/>
-              
-              The assurance activity tests specified for AES in GCM mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
-              shall be performed in the case that "GCM" is selected in the requirement.<br/><br/>
-
-              The assurance activity tests specified for AES in CBC mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
-              shall be performed in the case that "CBC" is selected in the requirement.
-              
-             <p><b>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</b></p>
-              <p>
-		The evaluator will test the authenticated encryption functionality of AES-KW for EACH
-		combination of the following input parameter lengths:
-              <ul>
-                <li>128 and 256 bit key encryption keys (KEKs)</li>
-                <li>Three plaintext lengths. One of the plaintext lengths shall be two semi-blocks (128
-                  bits). One of the plaintext lengths shall be three semi-blocks (192 bits). The third data
-                  unit length shall be the longest supported plaintext length less than or equal to 64
-                  semi-blocks (4096 bits).
-                </li>
-              </ul>
-              using a set of 100 key and plaintext pairs and obtain the ciphertext that results from AES-KW
-              authenticated encryption. To determine correctness, the evaluator will use the AES-KW
-              authenticated-encryption function of a known good implementation.
-	      </p>
-	      <p>
-
-              The evaluator will test the authenticated-decryption functionality of AES-KW using the
-              same test as for authenticated-encryption, replacing plaintext values with ciphertext values
-              and AES-KW authenticated-encryption with AES-KW authenticated-decryption.
-	      </p>
-	      <p>
-              The evaluator will test the authenticated-encryption functionality of AES-KWP using the
-              same test as for AES-KW authenticated-encryption with the following change in the three
-              plaintext lengths:
-              <ul>
-                <li>One plaintext length shall be one octet. One plaintext length shall be 20 octets (160
-                  bits).</li>
-                <li>
-                  One plaintext length shall be the longest supported plaintext length less than or equal
-                  to 512 octets (4096 bits).
-                </li>
-              </ul>
-              The evaluator will test the authenticated-decryption functionality of AES-KWP using the
-              same test as for AES-KWP authenticated-encryption, replacing plaintext values with
-              ciphertext values and AES-KWP authenticated-encryption with AES-KWP authenticated-decryption.
-              </p><br/><br/>
-              
-              AES-CCM Tests<br/>
-              
-              It is not recommended that evaluators use values obtained from static sources such as 
-              http://csrc.nist.gov/groups/STM/cavp/documents/mac/ccmtestvectors.zip
-              or use values not generated expressly to exercise the AES-CCM implementation.<br/><br/>
-              
-              The evaluator shall test the generation-encryption and decryption-verification
-              functionality of AES-CCM for the following input parameter and tag lengths:<br/>
-  Keys: All supported and selected key sizes (e.g., 128, 256 bits).<br/><br/>
-              Associated Data: Two or three values for associated data length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported associated data lengths, and 2^16 (65536) bytes, if supported.<br/>
-  Payload: Two values for payload length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported payload lengths.<br/><br/>
-  Nonces: All supported nonce lengths (7, 8, 9, 10, 11, 12, 13) in bytes.<br/><br/>
-  Tag: All supported tag lengths (4, 6, 8, 10, 12, 14, 16) in bytes.<br/><br/>
-              
-              The testing for CCM consists of five tests. To determine correctness in each of the below tests, 
-		    the evaluator shall compare the ciphertext with the result of encryption of the same inputs 
-		    with a known good implementation.<br/><br/>
-              
-              Variable Associated Data Test<br/>
-              For each supported key size and associated data length, and any supported payload length, nonce length, and tag 
-		    length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload 
-		    values, and obtain the resulting ciphertext.<br/><br/>
-              
-              Variable Payload Test<br/>
-              For each supported key size and payload length, and any supported associated data length, nonce length, and tag length, 
-		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
-		    obtain the resulting ciphertext.<br/><br/>
-              
-              Variable Nonce Test<br/>
-              For each supported key size and nonce length, and any supported associated data length, payload length, and tag length, 
-		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
-		    obtain the resulting ciphertext.<br/><br/>
-              
-              Variable Tag Test<br/>
-              For each supported key size and tag length, and any supported associated data length, payload length, and nonce length, 
-		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
-		    obtain the resulting ciphertext.<br/><br/>
-              
-              Decryption-Verification Process Test<br/>
-              To test the decryption-verification functionality of AES-CCM, for each combination of supported associated data length, 
-		    payload length, nonce length, and tag length, the evaluator shall supply a key value and 15 sets of input plus 
-		    ciphertext, and obtain the decrypted payload. Ten of the 15 input sets supplied should fail verification and five 
-		    should pass.<br/>
-              
-            </div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/KT Cryptographic operation (Key Transport)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KT</div>
-              
-              
-              
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
-                Conditional: If 'not perform key transport' was selected, then the evaluator shall only examine 
-                the TSS to verify no key transport is performed. <br/>
-                
-                The evaluator shall verify the TSS provides a high level description of the RSA
-                scheme and the cryptographic key size that is being used, and that the asymmetric
-                algorithm being used for key transport is RSA. If more than one scheme/key size are
-                allowed, then the evaluator shall make sure and test all combinations of scheme and
-                key size. There may be more than one key size to specify - an RSA modulus size
-                (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
-                size.<br/><br/>
-                If the KTS-OAEP scheme was selected, the evaluator shall verify that the TSS
-                identifies the hash function, the mask generating function, the random bit generator,
-                the encryption primitive and decryption primitive.
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
-                identifies the key derivation method, the AES-based key wrapping method, the secret
-                value encapsulation technique, and the random number generator. <br/><br/>
-
-                <h4>KMD</h4>None.<br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
-                For each supported key transport schema, the evaluator shall initiate at least 25
-                sessions that require key transport with an independently developed remote instance
-                of a key transport entity, using known RSA key-pairs. The evaluator shall observe
-                traffic passed from the sender-side and to the receiver-side of the TOE, and shall
-                perform the following tests, specific to which key transport scheme was employed.
-                If the KTS-OAEP scheme was selected, the evaluator shall perform the following
-                tests:
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_5" class="defined" href="#_t_5">Test FCS_COP.1/KT:1</a>:
-      The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
-                    encryption operation of the TOE and make sure it is the correct length, either
-                    256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
-                    the TOE's RSA-OEAP decryption operation some cipher texts that are the
-                    wrong length and verify that the erroneous input is detected and that the
-                    decryption operation exits with an error code.
-                  </li><li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FCS_COP.1/KT:2</a>:
-      The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
-                    encryption operation of the TOE to the correct cipher text integer, c, and use the
-                    decryption primitive to compute em = RSADP((n,d),c) and convert em to the
-                    encoded message EM. The evaluator shall then check that the first byte of EM
-                    is 0x00. The evaluator shall also feed into the TOE's RSA-OEAP decryption
-                    operation some cipher texts where the first byte of EM was set to a value other
-                    than 0x00, and verify that the erroneous input is detected and that the decryption
-                    operation exits with an error code.
-                  </li><li class="test-"><a id="_t_7" class="defined" href="#_t_7">Test FCS_COP.1/KT:3</a>:
-      The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
-                    encryption operation of the TOE using RSADP, and perform the OAEP
-                    decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
-                    HA' || X. For each HA', the evaluator shall take the corresponding A and the
-                    specified hash algorithm and verify that HA' = Hash(A). The evaluator
-                    shall also force the TOE to perform some RSA-OAEP decryption
-                    where the A value is passed incorrectly, and the evaluator shall verify
-                    that an error is detected.
-                  </li><li class="test-"><a id="_t_8" class="defined" href="#_t_8">Test FCS_COP.1/KT:4</a>:
-      The evaluator shall check the format of the 'X' string recovered in OAEP.Test.3
-                    to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
-                    more consecutive 0x00 bytes and K is the transported keying material. The
-                    evaluator shall also feed into the TOE's RSA-OEAP decryption
-                    operation some cipher texts for which the resulting 'X' strings do not have the
-                    correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
-                    formatted 'X' variables shall be detected by the RSA-OEAP decrypt
-                    function.
-                  </li><li class="test-"><a id="_t_9" class="defined" href="#_t_9">Test FCS_COP.1/KT:5</a>:
-      The evaluator shall trigger all detectable decryption errors and validate that the
-                    returned error codes are the same and that no information is given back to the
-                    sender on which type of error occurred. The evaluator shall also validate that no
-                    intermediate results from the TOE's receiver-side operations are revealed to the
-                    sender.</li></ul></span><br/>
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
-                following tests:
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_10" class="defined" href="#_t_10">Test FCS_COP.1/KT:6</a>:
-      The evaluator shall inspect each cipher text, C, produced by KTS-KEM-KWS
-                    encryption operation of the TOE and make sure the length (in bytes) of the
-                    cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
-                    the RSA public key) and that cLen - nLen is consistent with the byte lengths
-                    supported by the key wrapping algorithm. The evaluator shall feed into the
-                    KTS-KEM-KWS decryption operation a cipher text of unsupported length and
-                    verify that an error is detected and that the decryption process stops.
-                  </li><li class="test-"><a id="_t_11" class="defined" href="#_t_11">Test FCS_COP.1/KT:7</a>:
-      The evaluator shall separate the cipher text, C, produced by the sender-side of
-                    the TOE into its C0 and C1 components and use the RSA decryption primitive to
-                    recover the secret value, Z, from C0. The evaluator shall check that the
-                    unsigned integer represented by Z is greater than 1 and less than n-1, where n is
-                    the modulus of the RSA public key. The evaluator shall construct examples
-                    where the cipher text is created with a secret value Z = 1 and make sure the
-                    KTS-KEM-KWS decryption process detects the error. Similarly, the evaluator
-                    shall construct examples where the cipher text is created with a secret value Z =
-                    n - 1 and make sure the KTS-KEM-KWS decryption process detects the error.
-                  </li><li class="test-"><a id="_t_12" class="defined" href="#_t_12">Test FCS_COP.1/KT:8</a>:
-      The evaluator shall attempt to successfully recover the secret value Z, derive the
-                    key wrapping key, KWK, and unwrap the KWA-cipher text following the KTS-KEM-KWS
-                    decryption process given in NISP SP 800-56B section 7.2.3.4. If the
-                    key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
-                    of any (unwrapped) associated data, A, that was passed with the wrapped keying
-                    material is correct The evaluator shall feed into the TOE's KTS-KEM-KWS
-                    decryption operation examples of incorrect cipher text and verify that a
-                    decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong value of A is
-                    given to the KTS-KEM-KWS decryption operation and verify that a decryption
-                    error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong nonce is given to
-                    the KTS-KEM-KWS decryption operation and verify that a decryption error is
-                    detected.
-                  </li><li class="test-"><a id="_t_13" class="defined" href="#_t_13">Test FCS_COP.1/KT:9</a>:
-      The evaluator shall trigger all detectable decryption errors and validate that the
-                    resulting error codes are the same and that no information is given back to the
-                    sender on which type of error occurred. The evaluator shall also validate that no
-                    intermediate results from the TOE's receiver-side operations (in particular, no Z
-                    values) are revealed to the sender.</li></ul></span></div></div></span></div><div class="comp" id=""><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_IV_EXT.1</div>
+              </div></div></span></div><div class="comp" id=""><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_IV_EXT.1</div>
               
 
 
@@ -809,24 +576,6 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.
               <br/><br/>
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.
-            </div></div></span></div><div class="comp" id=""><h4>FCS_KDF_EXT.1 Cryptographic Key Derivation Function</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_KDF_EXT.1</div>
-              
-              
-
-<div class="eacategory">TSS</div><div class="ea"><div class="ea">
-                Conditional: If 'not derive keys' was selected, then the evaluator shall only examine the TSS to verify no key derivation is performed. <br/><br/>
-              
-              The evaluator shall verify the TSS includes a description of the key derivation
-              function and shall verify the key derivation uses an approved derivation mode and
-              key expansion algorithm according to SP 800-108 and SP 800-132. <br/><br/>
-              
-              <h4>KMD</h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
-              including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
-              The evaluator will confirm the output is of equivalent strength to the FEK(s) it is protecting.<br/><br/>
-              
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
-              
-</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> None. 
             </div></div></span></div><div class="comp" id=""><h4>FCS_KYC_EXT.1 Key Chaining and Key Storage</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_KYC_EXT.1</div>
               
 
@@ -863,22 +612,7 @@ The following sections list Common Criteria and technology terms used in this do
               
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> None.
               
-              </div></div></span></div><div class="comp" id=""><h4>FCS_SMC_EXT.1 Submask Combining </h4><span class="activity_pane_body"><div class="component-activity-header">FCS_SMC_EXT.1</div>
-              
-              
-
-<div class="eacategory">TSS</div><div class="ea"><div class="ea">
-              Conditional: If 'not perform submask combining' was selected, then the evaluator shall only examine the TSS to verify no submask combining is performed. <br/>
-              
-                <br/>If keys are XORed together to form an intermediate key, the TSS section
-              shall identify how this is performed (e.g., if there are ordering requirements, checks
-              performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. <br/><br/>
-
-              <h4>KMD</h4>None.<br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.<br/><br/>
-</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.
-            </div></div></span></div><div class="comp" id=""><h4>FCS_VAL_EXT.1/Admin Validation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.1/Admin</div>
+              </div></div></span></div><div class="comp" id=""><h4>FCS_VAL_EXT.1/Admin Validation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.1/Admin</div>
               
               
               
@@ -919,13 +653,13 @@ The following sections list Common Criteria and technology terms used in this do
             </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
             The evaluator shall perform the following tests:<br/>
             <span class="testlist-"><ul>
-		    <li class="test-"><a id="_t_14" class="defined" href="#_t_14">Test FCS_VAL_EXT.1/User:1</a>:
+		    <li class="test-"><a id="_t_5" class="defined" href="#_t_5">Test FCS_VAL_EXT.1/User:1</a>:
       
             The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
             entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
             the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.
 		    </li>
-		    <li class="test-"><a id="_t_15" class="defined" href="#_t_15">Test FCS_VAL_EXT.1/User:2</a>:
+		    <li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FCS_VAL_EXT.1/User:2</a>:
       
             For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
             from being forwarded to the endpoint.
@@ -1020,19 +754,19 @@ The following sections list Common Criteria and technology terms used in this do
               
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">	The evaluator shall perform the following tests:<br/>
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_16" class="defined" href="#_t_16">Test FIA_UAU.1:1</a>:
+                <li class="test-"><a id="_t_7" class="defined" href="#_t_7">Test FIA_UAU.1:1</a>:
       The evaluator shall verify that the list of actions allowed without administrator login completes 
                   successfully without requiring administrator login and make sure this list is consistent with the TSS. </li>
                 
-                <li class="test-"><a id="_t_17" class="defined" href="#_t_17">Test FIA_UAU.1:2</a>:
+                <li class="test-"><a id="_t_8" class="defined" href="#_t_8">Test FIA_UAU.1:2</a>:
       The evaluator shall verify that attempting any other action requires successful entry of an administrator credential. </li>
                 
-                <li class="test-"><a id="_t_18" class="defined" href="#_t_18">Test FIA_UAU.1:3</a>:
+                <li class="test-"><a id="_t_9" class="defined" href="#_t_9">Test FIA_UAU.1:3</a>:
       The evaluator shall use the guidance documentation to configure the appropriate credential supported for the login method.
                 For that credential/login method, the evaluator shall show that providing correct I&amp;A information results in the ability to access the system,
                 while providing incorrect information results in denial of access.</li>
                 
-                <li class="test-"><a id="_t_19" class="defined" href="#_t_19">Test FIA_UAU.1:4</a>:
+                <li class="test-"><a id="_t_10" class="defined" href="#_t_10">Test FIA_UAU.1:4</a>:
       The evaluator shall configure the services allowed (if any) according to the guidance documentation, and then determine
                   the services available to an external remote entity. The evaluator shall determine that the list of services available is limited to those specified in the requirement. </li>
                 
@@ -1052,11 +786,11 @@ The following sections list Common Criteria and technology terms used in this do
               
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> The evaluator shall perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_20" class="defined" href="#_t_20">Test FIA_UID.1:1</a>:
+                <li class="test-"><a id="_t_11" class="defined" href="#_t_11">Test FIA_UID.1:1</a>:
       The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without
                   requiring the administrator to be identified and make sure this list is consistent with the TSS. </li>
                 
-                <li class="test-"><a id="_t_21" class="defined" href="#_t_21">Test FIA_UID.1:2</a>:
+                <li class="test-"><a id="_t_12" class="defined" href="#_t_12">Test FIA_UID.1:2</a>:
       The evaluator shall verify that attempting any other action requires successful entry of an administrator
                   account name and successful entry of the administrator account credential.  </li>
                 
@@ -1099,18 +833,18 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> The evaluator shall perform the following tests:<br/>
                 
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_22" class="defined" href="#_t_22">Test FMT_MTD.1:1</a>:
+                  <li class="test-"><a id="_t_13" class="defined" href="#_t_13">Test FMT_MTD.1:1</a>:
       The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
                     (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration 
                     of the TOE). This test should fail.</li>
                   
-                  <li class="test-"><a id="_t_23" class="defined" href="#_t_23">Test FMT_MTD.1:2</a>:
+                  <li class="test-"><a id="_t_14" class="defined" href="#_t_14">Test FMT_MTD.1:2</a>:
       The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</li>
                   
-                  <li class="test-"><a id="_t_24" class="defined" href="#_t_24">Test FMT_MTD.1:3</a>:
+                  <li class="test-"><a id="_t_15" class="defined" href="#_t_15">Test FMT_MTD.1:3</a>:
       The evaluator shall try to perform at least one of the actions at the times that are not permitted. This test should fail.</li>
                   
-                  <li class="test-"><a id="_t_25" class="defined" href="#_t_25">Test FMT_MTD.1:4</a>:
+                  <li class="test-"><a id="_t_16" class="defined" href="#_t_16">Test FMT_MTD.1:4</a>:
       The evaluator shall try to perform at least one of the actions at the times are permitted. This test should pass.</li>
                 </ul></span>
               </div></div></span></div><div class="comp" id=""><h4>FMT_SMF.1/FEEM Specification of Management Functions (Management Server)</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_SMF.1/FEEM</div>
@@ -1159,32 +893,32 @@ configure the number of failed validation attempts required to trigger correctiv
 </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> The evaluator shall perform the following tests for each claimed management function:
               
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FMT_SMF.1/FEEM:1</a>:
+                <li class="test-"><a id="_t_17" class="defined" href="#_t_17">Test FMT_SMF.1/FEEM:1</a>:
       The evaluator shall configure the management server and two users according to the guidance documents.
                   The evaluator shall register the users with the management server. The evaluator shall verify that the users
                   are identified by the management server as defined in the guidance documents. This test shall pass.</li>
                 
-                <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FMT_SMF.1/FEEM:2</a>:
+                <li class="test-"><a id="_t_18" class="defined" href="#_t_18">Test FMT_SMF.1/FEEM:2</a>:
       The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
                   in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
                   displayed as revoked in the console.</li>
                 
-                <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FMT_SMF.1/FEEM:3</a>:
+                <li class="test-"><a id="_t_19" class="defined" href="#_t_19">Test FMT_SMF.1/FEEM:3</a>:
       The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
                   sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
                   with the new key, update the encryption algorithm key size or mode and re-encrypt).</li>
                 
-                <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FMT_SMF.1/FEEM:4</a>:
+                <li class="test-"><a id="_t_20" class="defined" href="#_t_20">Test FMT_SMF.1/FEEM:4</a>:
       For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
                   user's client to perform the action (generate a key and encrypt the data, zeroize a key). </li>
                 
-                <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FMT_SMF.1/FEEM:5</a>:
+                <li class="test-"><a id="_t_21" class="defined" href="#_t_21">Test FMT_SMF.1/FEEM:5</a>:
       For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
                   and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
                   the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
                   denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </li>
                 
-                <li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FMT_SMF.1/FEEM:6</a>:
+                <li class="test-"><a id="_t_22" class="defined" href="#_t_22">Test FMT_SMF.1/FEEM:6</a>:
       The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
                   factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
                   The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
@@ -1192,15 +926,15 @@ configure the number of failed validation attempts required to trigger correctiv
                   or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
                   their original authorization factor. </li>
                 
-                <li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FMT_SMF.1/FEEM:7</a>:
+                <li class="test-"><a id="_t_23" class="defined" href="#_t_23">Test FMT_SMF.1/FEEM:7</a>:
       The evaluator shall verify that the an administrator can configure each of the supported authorization factors attempts limits 
 			and shall verify that the user is denied access after surpassing that limit. </li>
                 
-                <li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FMT_SMF.1/FEEM:8</a>:
+                <li class="test-"><a id="_t_24" class="defined" href="#_t_24">Test FMT_SMF.1/FEEM:8</a>:
       If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
                   ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </li>
                 
-                <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FMT_SMF.1/FEEM:9</a>:
+                <li class="test-"><a id="_t_25" class="defined" href="#_t_25">Test FMT_SMF.1/FEEM:9</a>:
       If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
                   the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
                   
@@ -1209,7 +943,7 @@ configure the number of failed validation attempts required to trigger correctiv
                   Verify that the administration of the capability in the EM is successful.
                 </li>
                 
-		      <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FMT_SMF.1/FEEM:10</a>:
+		      <li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FMT_SMF.1/FEEM:10</a>:
       The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</li>
                 
               </ul></span>
@@ -1243,14 +977,14 @@ configure the number of failed validation attempts required to trigger correctiv
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
               The evaluator shall perform the following tests:<br/>
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FPT_ITT.1:1</a>:
+                <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FPT_ITT.1:1</a>:
       The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
                   tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful. 
                 </li>
-                <li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FPT_ITT.1:2</a>:
+                <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FPT_ITT.1:2</a>:
       The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
                 </li>
-                <li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FPT_ITT.1:3</a>:
+                <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FPT_ITT.1:3</a>:
       The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
                   The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
                 </li>
@@ -1288,7 +1022,236 @@ configure the number of failed validation attempts required to trigger correctiv
                 
                 </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.
               
-              </div></div></span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="fcs">2.4.1 Cryptographic Support (FCS)</h2><div class="comp" id=""><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM_EXT.6</div>
+              </div></div></span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="fcs">2.4.1 Cryptographic Support (FCS)</h2><div class="comp" id=""><h4>FCS_COP.1/KT Cryptographic operation (Key Transport)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KT</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                
+                The evaluator shall verify the TSS provides a high level description of the RSA
+                scheme and the cryptographic key size that is being used, and that the asymmetric
+                algorithm being used for key transport is RSA. If more than one scheme/key size are
+                allowed, then the evaluator shall make sure and test all combinations of scheme and
+                key size. There may be more than one key size to specify - an RSA modulus size
+                (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
+                size.<br/><br/>
+                If the KTS-OAEP scheme was selected, the evaluator shall verify that the TSS
+                identifies the hash function, the mask generating function, the random bit generator,
+                the encryption primitive and decryption primitive.
+                If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
+                identifies the key derivation method, the AES-based key wrapping method, the secret
+                value encapsulation technique, and the random number generator. <br/><br/>
+
+                <h4>KMD</h4>None.<br/><br/>
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
+              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
+                For each supported key transport schema, the evaluator shall initiate at least 25
+                sessions that require key transport with an independently developed remote instance
+                of a key transport entity, using known RSA key-pairs. The evaluator shall observe
+                traffic passed from the sender-side and to the receiver-side of the TOE, and shall
+                perform the following tests, specific to which key transport scheme was employed.
+                If the KTS-OAEP scheme was selected, the evaluator shall perform the following
+                tests:
+                <span class="testlist-"><ul>
+                  <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FCS_COP.1/KT:1</a>:
+      The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE and make sure it is the correct length, either
+                    256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
+                    the TOE's RSA-OEAP decryption operation some cipher texts that are the
+                    wrong length and verify that the erroneous input is detected and that the
+                    decryption operation exits with an error code.
+                  </li><li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FCS_COP.1/KT:2</a>:
+      The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE to the correct cipher text integer, c, and use the
+                    decryption primitive to compute em = RSADP((n,d),c) and convert em to the
+                    encoded message EM. The evaluator shall then check that the first byte of EM
+                    is 0x00. The evaluator shall also feed into the TOE's RSA-OEAP decryption
+                    operation some cipher texts where the first byte of EM was set to a value other
+                    than 0x00, and verify that the erroneous input is detected and that the decryption
+                    operation exits with an error code.
+                  </li><li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FCS_COP.1/KT:3</a>:
+      The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE using RSADP, and perform the OAEP
+                    decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
+                    HA' || X. For each HA', the evaluator shall take the corresponding A and the
+                    specified hash algorithm and verify that HA' = Hash(A). The evaluator
+                    shall also force the TOE to perform some RSA-OAEP decryption
+                    where the A value is passed incorrectly, and the evaluator shall verify
+                    that an error is detected.
+                  </li><li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FCS_COP.1/KT:4</a>:
+      The evaluator shall check the format of the 'X' string recovered in OAEP.Test.3
+                    to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
+                    more consecutive 0x00 bytes and K is the transported keying material. The
+                    evaluator shall also feed into the TOE's RSA-OEAP decryption
+                    operation some cipher texts for which the resulting 'X' strings do not have the
+                    correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
+                    formatted 'X' variables shall be detected by the RSA-OEAP decrypt
+                    function.
+                  </li><li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FCS_COP.1/KT:5</a>:
+      The evaluator shall trigger all detectable decryption errors and validate that the
+                    returned error codes are the same and that no information is given back to the
+                    sender on which type of error occurred. The evaluator shall also validate that no
+                    intermediate results from the TOE's receiver-side operations are revealed to the
+                    sender.</li></ul></span><br/>
+                If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
+                following tests:
+                <span class="testlist-"><ul>
+                  <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_COP.1/KT:6</a>:
+      The evaluator shall inspect each cipher text, C, produced by KTS-KEM-KWS
+                    encryption operation of the TOE and make sure the length (in bytes) of the
+                    cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
+                    the RSA public key) and that cLen - nLen is consistent with the byte lengths
+                    supported by the key wrapping algorithm. The evaluator shall feed into the
+                    KTS-KEM-KWS decryption operation a cipher text of unsupported length and
+                    verify that an error is detected and that the decryption process stops.
+                  </li><li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_COP.1/KT:7</a>:
+      The evaluator shall separate the cipher text, C, produced by the sender-side of
+                    the TOE into its C0 and C1 components and use the RSA decryption primitive to
+                    recover the secret value, Z, from C0. The evaluator shall check that the
+                    unsigned integer represented by Z is greater than 1 and less than n-1, where n is
+                    the modulus of the RSA public key. The evaluator shall construct examples
+                    where the cipher text is created with a secret value Z = 1 and make sure the
+                    KTS-KEM-KWS decryption process detects the error. Similarly, the evaluator
+                    shall construct examples where the cipher text is created with a secret value Z =
+                    n - 1 and make sure the KTS-KEM-KWS decryption process detects the error.
+                  </li><li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_COP.1/KT:8</a>:
+      The evaluator shall attempt to successfully recover the secret value Z, derive the
+                    key wrapping key, KWK, and unwrap the KWA-cipher text following the KTS-KEM-KWS
+                    decryption process given in NISP SP 800-56B section 7.2.3.4. If the
+                    key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
+                    of any (unwrapped) associated data, A, that was passed with the wrapped keying
+                    material is correct The evaluator shall feed into the TOE's KTS-KEM-KWS
+                    decryption operation examples of incorrect cipher text and verify that a
+                    decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
+                    evaluator shall attempt at least one decryption where the wrong value of A is
+                    given to the KTS-KEM-KWS decryption operation and verify that a decryption
+                    error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
+                    evaluator shall attempt at least one decryption where the wrong nonce is given to
+                    the KTS-KEM-KWS decryption operation and verify that a decryption error is
+                    detected.
+                  </li><li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_COP.1/KT:9</a>:
+      The evaluator shall trigger all detectable decryption errors and validate that the
+                    resulting error codes are the same and that no information is given back to the
+                    sender on which type of error occurred. The evaluator shall also validate that no
+                    intermediate results from the TOE's receiver-side operations (in particular, no Z
+                    values) are revealed to the sender.</li></ul></span></div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KW</div>
+              
+
+
+<div class="eacategory">TSS</div><div class="ea"><div class="ea">              
+              Conditional: If use platform provided functionality was selected, then the evaluator shall examine the TSS to verify that it
+              describes how the FEK encryption/decryption is invoked. <br/>
+                
+              Conditional: If implement functionality was selected, the evaluator shall check that the TSS includes
+              a description of encryption function(s) used for key wrapping. The evaluator should check that this description of the
+              selected encryption function includes the key sizes and modes of operations as specified in the selections above.
+              The evaluator shall check that the TSS describes the means by which the TOE satisfies constraints on algorithm parameters
+              included in the selections made for ‘cryptographic algorithm’ and ‘list of standards’. <br/><br/>
+              
+              The evaluator shall verify the TSS includes a description of the key wrap function(s)
+              and shall verify the key wrap uses an approved key wrap algorithm according to the
+              appropriate specification.<br/><br/>
+             
+             <h4>KMD</h4>
+                The evaluator shall review the KMD to ensure that all keys are wrapped using the
+                approved method and a description of when the key wrapping occurs.<br/><br/>
+              
+              <br/><br/>
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> If multiple encryption modes are supported, the evaluator examines the guidance documentation
+              to determine that the method of choosing a specific mode/key size is described.
+              <br/><br/>
+              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+              
+              The assurance activity tests specified for AES in GCM mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
+              shall be performed in the case that "GCM" is selected in the requirement.<br/><br/>
+
+              The assurance activity tests specified for AES in CBC mode in the underlying <a href="#bibAppPP">[AppPP]</a> 
+              shall be performed in the case that "CBC" is selected in the requirement.
+              
+             <p><b>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</b></p>
+              <p>
+		The evaluator will test the authenticated encryption functionality of AES-KW for EACH
+		combination of the following input parameter lengths:
+              <ul>
+                <li>128 and 256 bit key encryption keys (KEKs)</li>
+                <li>Three plaintext lengths. One of the plaintext lengths shall be two semi-blocks (128
+                  bits). One of the plaintext lengths shall be three semi-blocks (192 bits). The third data
+                  unit length shall be the longest supported plaintext length less than or equal to 64
+                  semi-blocks (4096 bits).
+                </li>
+              </ul>
+              using a set of 100 key and plaintext pairs and obtain the ciphertext that results from AES-KW
+              authenticated encryption. To determine correctness, the evaluator will use the AES-KW
+              authenticated-encryption function of a known good implementation.
+	      </p>
+	      <p>
+
+              The evaluator will test the authenticated-decryption functionality of AES-KW using the
+              same test as for authenticated-encryption, replacing plaintext values with ciphertext values
+              and AES-KW authenticated-encryption with AES-KW authenticated-decryption.
+	      </p>
+	      <p>
+              The evaluator will test the authenticated-encryption functionality of AES-KWP using the
+              same test as for AES-KW authenticated-encryption with the following change in the three
+              plaintext lengths:
+              <ul>
+                <li>One plaintext length shall be one octet. One plaintext length shall be 20 octets (160
+                  bits).</li>
+                <li>
+                  One plaintext length shall be the longest supported plaintext length less than or equal
+                  to 512 octets (4096 bits).
+                </li>
+              </ul>
+              The evaluator will test the authenticated-decryption functionality of AES-KWP using the
+              same test as for AES-KWP authenticated-encryption, replacing plaintext values with
+              ciphertext values and AES-KWP authenticated-encryption with AES-KWP authenticated-decryption.
+              </p><br/><br/>
+              
+              AES-CCM Tests<br/>
+              
+              It is not recommended that evaluators use values obtained from static sources such as 
+              http://csrc.nist.gov/groups/STM/cavp/documents/mac/ccmtestvectors.zip
+              or use values not generated expressly to exercise the AES-CCM implementation.<br/><br/>
+              
+              The evaluator shall test the generation-encryption and decryption-verification
+              functionality of AES-CCM for the following input parameter and tag lengths:<br/>
+  Keys: All supported and selected key sizes (e.g., 128, 256 bits).<br/><br/>
+              Associated Data: Two or three values for associated data length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported associated data lengths, and 2^16 (65536) bytes, if supported.<br/>
+  Payload: Two values for payload length: The minimum (≥ 0 bytes) and maximum (≤ 32 bytes) supported payload lengths.<br/><br/>
+  Nonces: All supported nonce lengths (7, 8, 9, 10, 11, 12, 13) in bytes.<br/><br/>
+  Tag: All supported tag lengths (4, 6, 8, 10, 12, 14, 16) in bytes.<br/><br/>
+              
+              The testing for CCM consists of five tests. To determine correctness in each of the below tests, 
+		    the evaluator shall compare the ciphertext with the result of encryption of the same inputs 
+		    with a known good implementation.<br/><br/>
+              
+              Variable Associated Data Test<br/>
+              For each supported key size and associated data length, and any supported payload length, nonce length, and tag 
+		    length, the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload 
+		    values, and obtain the resulting ciphertext.<br/><br/>
+              
+              Variable Payload Test<br/>
+              For each supported key size and payload length, and any supported associated data length, nonce length, and tag length, 
+		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
+		    obtain the resulting ciphertext.<br/><br/>
+              
+              Variable Nonce Test<br/>
+              For each supported key size and nonce length, and any supported associated data length, payload length, and tag length, 
+		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
+		    obtain the resulting ciphertext.<br/><br/>
+              
+              Variable Tag Test<br/>
+              For each supported key size and tag length, and any supported associated data length, payload length, and nonce length, 
+		    the evaluator shall supply one key value, one nonce value, and 10 pairs of associated data and payload values, and 
+		    obtain the resulting ciphertext.<br/><br/>
+              
+              Decryption-Verification Process Test<br/>
+              To test the decryption-verification functionality of AES-CCM, for each combination of supported associated data length, 
+		    payload length, nonce length, and tag length, the evaluator shall supply a key value and 15 sets of input plus 
+		    ciphertext, and obtain the decrypted payload. Ten of the 15 input sets supplied should fail verification and five 
+		    should pass.<br/>
+              
+            </div></div></span></div><div class="comp" id=""><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM_EXT.6</div>
             
             
             
@@ -1351,7 +1314,33 @@ configure the number of failed validation attempts required to trigger correctiv
        Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.6.2.</li>
               </ul></span><br/>
               Conditioning: No explicit testing of the formation of the authorization factor
-              from the input password/passphrase is required.  </div></div></span></div><div class="comp" id=""><h4>FCS_VAL_EXT.2/Admin Validation Remediation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.2/Admin</div>
+              from the input password/passphrase is required.  </div></div></span></div><div class="comp" id=""><h4>FCS_KDF_EXT.1 Cryptographic Key Derivation Function</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_KDF_EXT.1</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                Conditional: If 'not derive keys' was selected, then the evaluator shall only examine the TSS to verify no key derivation is performed. <br/><br/>
+              
+              The evaluator shall verify the TSS includes a description of the key derivation
+              function and shall verify the key derivation uses an approved derivation mode and
+              key expansion algorithm according to SP 800-108 and SP 800-132. <br/><br/>
+              
+              <h4>KMD</h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
+              including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
+              The evaluator will confirm the output is of equivalent strength to the FEK(s) it is protecting.<br/><br/>
+              
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> None.</div></div></span></div><div class="comp" id=""><h4>FCS_SMC_EXT.1 Submask Combining</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_SMC_EXT.1</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+              If keys are XORed together to form an intermediate key, the TSS section
+              shall identify how this is performed (e.g., if there are ordering requirements, checks
+              performed, etc.). The evaluator shall also confirm that the TSS describes how the length
+              of the output produced is at least the same as that of the FEK. <br/><br/>
+
+              <h4>KMD</h4>None.<br/><br/>
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id=""><h4>FCS_VAL_EXT.2/Admin Validation Remediation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.2/Admin</div>
               
               
               
