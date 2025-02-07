@@ -1400,7 +1400,7 @@
                 <th colspan="2"> Mandatory <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th>
             </tr>
             <tr>
-                <td><a href="#FCS_CKM.6">FCS_CKM.6</a></td><td></td>
+                <td><a href="#FCS_CKM.6">FCS_CKM.6</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> requires destruction of cryptographic keys when they are no longer needed. The <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> does not mandate key destruction but it also does not prohibit it.</td>
             </tr>
             <tr>
                 <td><a href="#FCS_IV_EXT.1">FCS_IV_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines how IVs for AES keys must be generated. This is consistent with the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> because it supplements the key generation methods specified by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> FCS_CKM.1/SK. </td>
@@ -1409,7 +1409,7 @@
                 <td><a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a></td><td>The <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> defines how stored keys are protected. This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> extends that functionality by defining the logical hierarchy of how keys are logically protected by other keys or other secret data. </td>
             </tr>
             <tr>
-                <td><a href="#FCS_VAL_EXT.1/Admin">FCS_VAL_EXT.1/Admin</a></td><td></td>
+                <td><a href="#FCS_VAL_EXT.1/Admin">FCS_VAL_EXT.1/Admin</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can validate the correctness of data input to it. </td>
             </tr>
             <tr>
                 <td><a href="#FCS_VAL_EXT.1/User">FCS_VAL_EXT.1/User</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can validate the correctness of data input to it. </td>
@@ -1487,7 +1487,7 @@
                 <td><a href="#FCS_SMC_EXT.1">FCS_SMC_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> relates to submask combining as a method of generating intermediate keys. Key hierarchy functionality is outside the scope of the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>. </td>
             </tr>
             <tr>
-                <td><a href="#FCS_VAL_EXT.2/Admin">FCS_VAL_EXT.2/Admin</a></td><td></td>
+                <td><a href="#FCS_VAL_EXT.2/Admin">FCS_VAL_EXT.2/Admin</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> goes beyond the functionality defined by the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> by defining a method by which the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can take security-relevant action if some data input to it is invalid. </td>
             </tr>
             <tr>
                 <td><a href="#FIA_CHR_EXT.1">FIA_CHR_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation of recovery credentials. This functionality does not relate to any behavior defined in the <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr>. </td>
@@ -1579,7 +1579,7 @@
                         </ul>
                         ]</i>]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> This applies to any key wrapping occurring on the enterprise server. This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to use key wrapping in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>. </span>
+                        <span class="note-header">Application Note: </span><span class="note"> This applies to any key wrapping occurring on the enterprise server. This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to use key wrapping in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>, key wrap in the admin validation approach that is specified in <a href="#FCS_VAL_EXT.1.1/Admin">FCS_VAL_EXT.1.1/Admin</a>, or key wrap in the user validation approach that is specified in <a href="#FCS_VAL_EXT.1.1/User">FCS_VAL_EXT.1.1/User</a>. </span>
                     </div>
                 </div>
             </div>
