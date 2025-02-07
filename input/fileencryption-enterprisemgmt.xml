@@ -1182,7 +1182,7 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable id="VALKEYWRA">key wrap as specified in FCS_COP.1</selectable>
+                  <selectable>key wrap as specified in FCS_COP.1</selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
@@ -1210,7 +1210,7 @@
         </f-component>
       
 	      <f-component cc-id="fcs_val_ext.1" name="Validation (Server Administrator)" iteration="Admin">
-          <f-element id="fcs-val-ext-1e1">
+          <f-element id="fcs-val-ext-admin-1e1">
             <title>The TSF shall perform validation of the [<h:i>admin</h:i>] by 
               <selectables>
                 <selectable>receiving assertion of the subject's validity from <assignable>Operational Environment component responsible for authentication</assignable></selectable>
@@ -1218,7 +1218,7 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable>key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
+                  <selectable id="ADMVALKEYWRA">key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
@@ -1268,7 +1268,7 @@
             
           </f-element>
           
-	        <f-element id="fcs-val-ext-1e2">
+	        <f-element id="fcs-val-ext-admin-1e2">
               <title>The TSF shall require validation of the [<h:i>admin</h:i>] prior to [<h:i>permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1/FEEM</h:i>].</title>
             
             
@@ -1373,7 +1373,7 @@
         <f-component cc-id="fcs_val_ext.1" name="Validation (User)" iteration="User">
           <consistency-rationale>This SFR goes beyond the functionality defined by the Base-PP by defining a method by which the TSF can validate the correctness of data input to it.
           </consistency-rationale>
-          <f-element id="fcs-val-ext-1e1">
+          <f-element id="fcs-val-ext-user-1e1">
             <title>The TSF shall perform validation of the [<h:i>user</h:i>] by 
               <selectables>
                 <selectable>receiving assertion of the subject's validity from <assignable>Operational Environment component responsible for authentication</assignable></selectable>
@@ -1381,7 +1381,7 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable>key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
+                  <selectable id="USRVALKEYWRA">key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
@@ -1429,7 +1429,7 @@
             -->
           </f-element>
           
-          <f-element id="fcs-val-ext-1e2">
+          <f-element id="fcs-val-ext-user-1e2">
             <title>The TSF shall require validation of the [<h:i>user</h:i>] prior to [<h:i>transmitting submasks, FEKs, or keys to decrypt FEKs to the endpoint</h:i>].</title>
           
           
@@ -2583,7 +2583,8 @@ configure the number of failed validation attempts required to trigger correctiv
 
         <f-component cc-id="fcs_cop.1" name="Cryptographic operation (Key Wrapping)" iteration="KW">
           <depends on-sel="USEKEYWRA"/>
-          <depends on-sel="VALKEYWRA"/>
+          <depends on-sel="ADMVALKEYWRA"/>
+          <depends on-sel="USRVALKEYWRA"/>
 	        <consistency-rationale>This SFR defines usage of AES functionality not defined by the Base-PP. However, this functionality is only used in certain situations that are 
 	          specific to this PP-Module and do not affect the ability of any Base-PP SFRs to be enforced.
 	        </consistency-rationale>
