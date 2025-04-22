@@ -576,13 +576,9 @@
                 [<h:b>selection:, choose one of: </h:b>sensitive data, data] with [<h:b>selection:</h:b>
                     <h:li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1</h:li>
                     <h:li>HTTPS as a server in accordance with FCS_HTTPS_EXT.1</h:li>
-                    <h:li>TLS as a server as defined in Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b>
-                      <h:li>mutual authentication</h:li>
-                      <h:li>none</h:li>]</h:li>
+                    <h:li>TLS as a server as defined in Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b> mutual authentication, none]</h:li>
                     <h:li>TLS as a client as defined in Functional Package for TLS</h:li>
-                    <h:li>DTLS as a server as defined in Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b>
-                      <h:li>mutual authentication</h:li>
-                      <h:li>none</h:li>]</h:li>
+                    <h:li>DTLS as a server as defined in Functional Package for TLS and also supports functionality for [<h:b>selection:</h:b> mutual authentication,none]</h:li>
                     <h:li>DTLS as a client as defined in Functional Package for TLS</h:li>
                     <h:li>SSH as defined in the Functional Package for Secure Shell</h:li>
                     <h:li>IPsec as defined in the VPN Client PP-Module, version 2.6</h:li>
