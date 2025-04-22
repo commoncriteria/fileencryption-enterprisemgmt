@@ -2732,7 +2732,11 @@ configure the number of failed validation attempts required to trigger correctiv
         <f-element id="fcs_ckm-ext-6e3">
           <title>
             The TSF shall perform Password-based Key Derivation
-              Functions in accordance with a specified cryptographic algorithm HMAC-<h:i>SHA-384</h:i>, 
+              Functions in accordance with a specified cryptographic algorithm 
+              <selectables>
+                <selectable>HMAC-<h:i>SHA-384</h:i></selectable>
+                <selectable>HMAC-<h:i>SHA-512</h:i></selectable>
+              </selectables>, 
               with <assignable>positive integer of 4096 or more</assignable> iterations, and
             output cryptographic key sizes <h:i>256</h:i>
            bits that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
