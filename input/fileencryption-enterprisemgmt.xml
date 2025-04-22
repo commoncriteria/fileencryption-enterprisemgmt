@@ -595,7 +595,7 @@
                       for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li>
                <h:li>invoke platform-provided functionality to encrypt all transmitted data with [<h:b>selection: </h:b>HTTPS, TLS, DTLS, SSH, IPsec]
                  for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li></h:i>
-                      between itself and another trusted IT product.
+                     ] between itself and another trusted IT product.
               </h:p>
             </description>
             
