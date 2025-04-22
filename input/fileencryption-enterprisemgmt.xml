@@ -1876,7 +1876,11 @@
                 <selectables>
                   <selectable>encryption algorithms used</selectable>
                   <selectable>key sizes used</selectable>
-                </selectables></h:b> to [<h:i>administrators</h:i>].
+                </selectables></h:b> to 
+              <selectables>
+                  <selectable>no users</selectable>
+                <selectable>[<h:i>administrators</h:i>]</selectable>
+                </selectables>.
             </title>
             
             
