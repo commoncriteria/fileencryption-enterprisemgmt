@@ -571,8 +571,8 @@
                 The text of the requirement is replaced with:
               </h:p>
               <h:p>
-               The application shall [<h:b>selection</h:b> 
-                <h:li>encrypt all transmitted 
+               The application shall [<h:b>selection:</h:b> 
+                <h:i><h:li>encrypt all transmitted 
                 [<h:b>selection:, choose one of: </h:b>sensitive data, data] with
                   [<h:b>selection:</h:b>
                     <h:li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1</h:li>
@@ -591,7 +591,7 @@
                <h:li>invoke platform-provided functionality to encrypt all transmitted sensitive data with [<h:b>selection: </h:b>HTTPS, TLS, DTLS, SSH, IPsec]
                       for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li>
                <h:li>invoke platform-provided functionality to encrypt all transmitted data with [<h:b>selection: </h:b>HTTPS, TLS, DTLS, SSH, IPsec]
-                      for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li></h:li>
+                 for [<h:b>assignment:</h:b> function(s)] using certificates as defined in the Functional Package for X.509</h:li></h:li></h:i>
                       between itself and another trusted IT product.
               </h:p>
             </description>
