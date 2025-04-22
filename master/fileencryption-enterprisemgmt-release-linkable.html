@@ -899,26 +899,28 @@ provide all of its security functionality<a id="period_93" href="#period_93">. <
                 The text of the requirement is replaced with:
               </p>
               <p>
-                The application shall [<b>selection:</b><i>
-                <ul>
-                  <li>encrypt all transmitted [<b>selection, choose one of:</b> sensitive data, data] with [<b>selection:</b>
-                  <ul>
-                    <li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1/Client</li>
-                    <li>HTTPS as a server in accordance with FCS_HTTPS_EXT.1/Server</li>
-                    <li>HTTPS as a server using mutual authentication in accordance with FCS_HTTPS_EXT.2</li>
-                    <li>TLS as a server as defined in the Functional Package for TLS and also supports functionality for [<b>selection:</b> mutual authentication, none]</li>
-                    <li>TLS as a client as defined in the Functional Package for TLS</li>
-                    <li>DTLS as a server as defined in the Functional Package for TLS and also supports functionality for [<b>selection:</b> mutual authentication, none]</li>
-                    <li>DTLS as a client as defined in the Functional Package for TLS</li>
+               The application shall
+               [<b>selection, choose one of:</b> encrypt all transmitted 
+                [<b>selection: </b>sensitive data, data] with
+                  [<b>selection:</b>
+                    <li>HTTPS as a client in accordance with FCS_HTTPS_EXT.1</li>
+                    <li>HTTPS as a server in accordance with FCS_HTTPS_EXT.1</li>
+                    <li>TLS as a server as defined in Functional Package for TLS and also supports functionality for [<b>selection:</b>
+                      <li>mutual authentication</li>
+                      <li>none</li>]
+                    <li>TLS as a client as defined in Functional Package for TLS</li>
+                    <li>DTLS as a server as defined in Functional Package for TLS and also supports functionality for [<b>selection:</b>
+                      <li>mutual authentication</li>
+                      <li>none</li>]
+                    <li>DTLS as a client as defined in Functional Package for TLS</li>
                     <li>SSH as defined in the Functional Package for Secure Shell</li>
-                    <li>IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</li>
-                  </ul>
-                    ] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509
-                  </li>
-                  <li>invoke platform-provided functionality to encrypt all transmitted sensitive data with [<b>selection:</b> HTTPS, TLS, DTLS, SSH, IPsec] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
-                  <li>invoke platform-provided functionality to encrypt all transmitted data with [<b>selection:</b> HTTPS, TLS, DTLS, SSH, IPsec] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
-                </ul></i>
-                ] between itself and another trusted IT product<a id="period_128" href="#period_128">. </a>              </p>
+                    <li>IPsec as defined in the VPN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, version 2.6</li>
+                    ] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
+               <li>invoke platform-provided functionality to encrypt all transmitted sensitive data with [<b>selection: </b>HTTPS, TLS, DTLS, SSH, IPsec]
+                      for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li>
+               <li>invoke platform-provided functionality to encrypt all transmitted data with [<b>selection: </b>HTTPS, TLS, DTLS, SSH, IPsec]
+                      for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</li></li>
+                      between itself and another trusted IT product<a id="period_128" href="#period_128">. </a>              </p>
             </span></div><h2 id="man-sfrs" class="indexable" data-level="2">5.2 TOE Security Functional Requirements</h2>
 	The following section describes the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that must be satisfied by any <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that claims conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr><a id="period_129" href="#period_129">. </a>	These <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> must be claimed regardless of which <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> is used to define the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr><a id="period_130" href="#period_130">. </a>        
       <h3 id="fcs" class="indexable" data-level="3">5.2.1 Cryptographic Support (FCS)</h3>
