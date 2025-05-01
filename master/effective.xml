@@ -2219,21 +2219,21 @@ configure the number of failed validation attempts required to trigger correctiv
           <f-element>
             <title>The TSF shall store keys in non-volatile memory only when
                   <selectables>
-                    <selectable>wrapped, as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
-                    <selectable>encrypted, as specified in FCS_COP.1<h:b>/SKC (from <xref to="bibAppPP"/>)</h:b></selectable>
+                    <selectable>wrapped, as specified in FCS_COP.1/KW</selectable>
+                    <selectable>encrypted, as specified in FCS_COP.1/SKC (from <xref to="bibAppPP"/>)</selectable>
                     <selectable>the plaintext key is stored in the underlying platform's keystore as specified by FCS_STO_EXT.1 <h:b>(from <xref to="bibAppPP"/>)</h:b></selectable>
                     <selectable>the plaintext key is stored in a SQL database in the Operational Environment</selectable>
                     <selectable>the plaintext key is not part of the key chain as specified in FCS_KYC_EXT.1.</selectable>
                     <selectable>the plaintext key will no longer provide access to the encrypted data after initial provisioning</selectable>
                     <selectable>the plaintext key is a key split that is combined as specified in FCS_SMC_EXT.1 and another contribution to the split is
                       <selectables>
-                        <selectable>wrapped as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
+                        <selectable>wrapped as specified in FCS_COP.1/KW</selectable>
                         <selectable>derived and not stored in non-volatile memory</selectable>
                       </selectables>
                     </selectable>
                     <selectable>the plaintext key is stored on an external storage device for use as an authorization factor.</selectable>
-                    <selectable>the plaintext key is used to wrap a key as specified in FCS_COP.1<h:b>/KW</h:b>
-                      that is already wrapped as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
+                    <selectable>the plaintext key is used to wrap a key as specified in FCS_COP.1/KW
+                      that is already wrapped as specified in FCS_COP.1/KW</selectable>
                   </selectables>.
             </title>
             <ext-comp-def-title>
