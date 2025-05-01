@@ -1302,20 +1302,20 @@
                   <selectable>submask</selectable>
                   <selectable>intermediate key</selectable>
                 </selectables> using the following methods: <selectables>
-                  <selectable id="USRVALKEYWRA">key wrap as specified in FCS_COP.1<h:b>/KW</h:b></selectable>
+                  <selectable id="USRVALKEYWRA">key wrap as specified in FCS_COP.1/KW</selectable>
                   <selectable>hash the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable> 
-                    </selectables> as specified in FCS_COP.1<h:b>/Hash</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
+                    </selectables> as specified in FCS_COP.1/Hash <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it to a stored hash</selectable> 
                   <selectable>decrypt a known value using the 
                     <selectables>
                       <selectable>submask</selectable>
                       <selectable>intermediate key</selectable>
                       <selectable>FEK</selectable>
                       
-                    </selectables> as specified in FCS_COP.1<h:b>/SKC</h:b> <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
+                    </selectables> as specified in FCS_COP.1/SKC <h:b>(from <xref to="bibAppPP"/>)</h:b> and compare it against a stored known value</selectable>
                 </selectables></selectable>
               </selectables>. 
               
