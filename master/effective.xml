@@ -2515,8 +2515,8 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
                 <selectable>implement functionality to perform Key Wrapping</selectable> </selectables>]</h:i>
                 in accordance with a specified cryptographic algorithm [<h:i>
-                  AES in the following mode
-                    <selectables linebreak="yes">
+                  AES</h:i>] in the following mode
+                  <h:i><selectables linebreak="yes">
                         <selectable>Key Wrap</selectable>
                         <selectable>Key Wrap with Padding</selectable>
                         <selectable>GCM mode</selectable>
