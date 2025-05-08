@@ -1481,16 +1481,11 @@
                     <a href="#FCS_COP.1.1/KT" class="abbr">FCS_COP.1.1/KT</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i> [<b>selection</b>: 
-                        <ul>
-                            <li style="">
-                                <span class="selectable-content" id="_s_233">[key transport] in accordance with a specified cryptographic algorithm [RSA in the following modes [<b>selection</b>: <span class="selectable-content" id="_s_234">KTS-OAEP</span>, <span class="selectable-content" id="_s_235">KTS-KEM-KWS</span>] and the cryptographic key size [<i>3072</i>] bits that meet the following: [NIST SP 800-56B, Revision 1].</span>
-                            </li>
-                            <li style="">
-                                <span class="selectable-content" id="_s_236">[<i>key transport</i>] in accordance with a specified cryptographic algorithm [RSA in the following modes: KTS-OAEP] and the cryptographic key size [<i>3072</i>] bits that meet the following: [<i>NIST SP 800-56B, Revision 2</i>]</span>
-                            </li>
-                        </ul>
-                        ]</i>]. 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key transport</i>] in accordance with a specified cryptographic algorithm [<i>RSA</i>] in the following modes: <b></b>
+                    <li>
+                        <b>KTS-OAEP</b>
+                    </li>
+                     and cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_233">3072</span>, <span class="selectable-content" id="_s_234">4096</span>] that meet the following: [<i>NIST SP 800-56B, Revision 2</i>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to use key transport in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>. </span>
                     </div>
@@ -1507,34 +1502,34 @@
                     <a href="#FCS_COP.1.1/KW" class="abbr">FCS_COP.1.1/KW</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <s>perform</s> [<i> [<b>selection</b>: <span class="selectable-content" id="_s_237">use platform-provided functionality to perform Key Wrapping</span>, <span class="selectable-content" id="_s_238">implement functionality to perform Key Wrapping</span>]]</i> in accordance with a specified cryptographic algorithm [<i> AES</i>] in the following mode <i>[<b>selection</b>: 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <s>perform</s> [<i> [<b>selection</b>: <span class="selectable-content" id="_s_235">use platform-provided functionality to perform Key Wrapping</span>, <span class="selectable-content" id="_s_236">implement functionality to perform Key Wrapping</span>]]</i> in accordance with a specified cryptographic algorithm [<i> AES</i>] in the following mode <i>[<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_239">Key Wrap</span>
+                                <span class="selectable-content" id="_s_237">Key Wrap</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_240">Key Wrap with Padding</span>
+                                <span class="selectable-content" id="_s_238">Key Wrap with Padding</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_241">GCM mode</span>
+                                <span class="selectable-content" id="_s_239">GCM mode</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_242">CCM mode</span>
+                                <span class="selectable-content" id="_s_240">CCM mode</span>
                             </li>
                         </ul>
                         ] </i>] and cryptographic key sizes [<i>256 bits (AES)</i>] that meet the following: [<i>[<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_243">&ldquo;NIST SP 800-38C&rdquo;</span>
+                                <span class="selectable-content" id="_s_241">&ldquo;NIST SP 800-38C&rdquo;</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_244">&ldquo;NIST SP 800-38D&rdquo;</span>
+                                <span class="selectable-content" id="_s_242">&ldquo;NIST SP 800-38D&rdquo;</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_245">&ldquo;NIST SP 800-38F&rdquo;</span>
+                                <span class="selectable-content" id="_s_243">&ldquo;NIST SP 800-38F&rdquo;</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_246">&ldquo;NIST SP 800-38A&rdquo;</span>
+                                <span class="selectable-content" id="_s_244">&ldquo;NIST SP 800-38A&rdquo;</span>
                             </li>
                         </ul>
                         ]</i>]. 
@@ -1562,7 +1557,7 @@
                     <a href="#FCS_CKM_EXT.6.2" class="abbr">FCS_CKM_EXT.6.2</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: &ldquo;!&rdquo;, &ldquo;@&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;^&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;*&rdquo;, &ldquo;(&ldquo;, and &ldquo;)&rdquo;, and [<b>selection</b>: <span class="selectable-content" id="_s_247">[<b>assignment</b>: <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_248">no other characters</span>]. 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: &ldquo;!&rdquo;, &ldquo;@&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;^&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;*&rdquo;, &ldquo;(&ldquo;, and &ldquo;)&rdquo;, and [<b>selection</b>: <span class="selectable-content" id="_s_245">[<b>assignment</b>: <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_246">no other characters</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -1570,7 +1565,7 @@
                     <a href="#FCS_CKM_EXT.6.3" class="abbr">FCS_CKM_EXT.6.3</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [<b>selection</b>: <span class="selectable-content" id="_s_249">HMAC-<i>SHA-384</i></span>, <span class="selectable-content" id="_s_250">HMAC-<i>SHA-512</i></span>], with [<b>assignment</b>: <span class="assignable-content">positive integer of 4096 or more</span>] iterations, and output cryptographic key sizes <i>256</i> bits that meet the following: [<i>NIST SP 800-132</i>]. 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [<b>selection</b>: <span class="selectable-content" id="_s_247">HMAC-<i>SHA-384</i></span>, <span class="selectable-content" id="_s_248">HMAC-<i>SHA-512</i></span>], with [<b>assignment</b>: <span class="assignable-content">positive integer of 4096 or more</span>] iterations, and output cryptographic key sizes <i>256</i> bits that meet the following: [<i>NIST SP 800-132</i>]. 
                 </div>
             </div>
             <div class="element">
@@ -1578,7 +1573,7 @@
                     <a href="#FCS_CKM_EXT.6.4" class="abbr">FCS_CKM_EXT.6.4</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than [<b>selection</b>: <span class="selectable-content" id="_s_258">a value settable by the administrator</span>, <span class="selectable-content" id="_s_259">[<b>assignment</b>: <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>] and greater than the maximum password length defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than [<b>selection</b>: <span class="selectable-content" id="_s_256">a value settable by the administrator</span>, <span class="selectable-content" id="_s_257">[<b>assignment</b>: <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>] and greater than the maximum password length defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.
                 </div>
             </div>
             <div class="element">
@@ -1626,13 +1621,13 @@
                     <a href="#FCS_KDF_EXT.1.1" class="abbr">FCS_KDF_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept [<b>selection</b>: <span class="selectable-content" id="_s_260">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_261">a conditioned password</span>, <span class="selectable-content" id="_s_262">an imported submask</span>] to derive an intermediate key, as defined in [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept [<b>selection</b>: <span class="selectable-content" id="_s_258">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_259">a conditioned password</span>, <span class="selectable-content" id="_s_260">an imported submask</span>] to derive an intermediate key, as defined in [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_263">NIST SP 800-108 [<b>selection</b>: <span class="selectable-content" id="_s_264">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_265">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_266">KDF in Double-Pipeline Iteration Mode</span>] </span>
+                            <span class="selectable-content" id="_s_261">NIST SP 800-108 [<b>selection</b>: <span class="selectable-content" id="_s_262">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_263">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_264">KDF in Double-Pipeline Iteration Mode</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_267">NIST SP 800-132</span>
+                            <span class="selectable-content" id="_s_265">NIST SP 800-132</span>
                         </li>
                     </ul>
                     ] using the keyed-hash functions specified in FCS_COP.1<b>/KeyedHash</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>, such that the output is at least of equivalent security strength (in number of bits) to the [<abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s)] . 
@@ -1652,7 +1647,7 @@
                     <a href="#FCS_SMC_EXT.1.1" class="abbr">FCS_SMC_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall combine submasks using the following method: [<i>[<b>selection</b>: <span class="selectable-content" id="_s_276">exclusive OR (XOR)</span>, <span class="selectable-content" id="_s_277">SHA-384</span>, <span class="selectable-content" id="_s_278">SHA-512</span>, <span class="selectable-content" id="_s_279">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_280">HMAC-SHA-512</span>]</i>] to generate an intermediate key .
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall combine submasks using the following method: [<i>[<b>selection</b>: <span class="selectable-content" id="_s_274">exclusive OR (XOR)</span>, <span class="selectable-content" id="_s_275">SHA-384</span>, <span class="selectable-content" id="_s_276">SHA-512</span>, <span class="selectable-content" id="_s_277">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_278">HMAC-SHA-512</span>]</i>] to generate an intermediate key .
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requirement is used in the body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses to use key combining in the key chaining approach that is specified in <a href="#FCS_KYC_EXT.1">FCS_KYC_EXT.1</a>. This applies to any submask combining occurring on the enterprise server. This requirement specifies the way that a product may combine the various submasks by using either an XOR or an approved SHA-hash. </span>
                     </div>
@@ -1672,10 +1667,10 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_281">institute a delay such that only [<b>assignment</b>: <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] validation attempts can be made within a 24 hour period</span>
+                            <span class="selectable-content" id="_s_279">institute a delay such that only [<b>assignment</b>: <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] validation attempts can be made within a 24 hour period</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_282">block validation after [<b>assignment</b>: <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] of consecutive failed validation attempts</span>
+                            <span class="selectable-content" id="_s_280">block validation after [<b>assignment</b>: <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] of consecutive failed validation attempts</span>
                         </li>
                     </ul>
                     ]. 
@@ -1696,7 +1691,7 @@
                     <a href="#FIA_CHR_EXT.1.1" class="abbr">FIA_CHR_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for [<b>selection</b>: <span class="selectable-content" id="_s_283">the user requesting the recovery</span>, <span class="selectable-content" id="_s_284">the user requesting recovery and the device for which the recovery was requested</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for [<b>selection</b>: <span class="selectable-content" id="_s_281">the user requesting the recovery</span>, <span class="selectable-content" id="_s_282">the user requesting recovery and the device for which the recovery was requested</span>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requires that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has the ability to attribute key chain information to the appropriate user(s). </span>
                     </div>
@@ -1864,11 +1859,11 @@
                         <h4 id="ext-comp-FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</h4>
                          The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a password/passphrase of up to [<b>assignment</b>: <span class="assignable-content">maximum password size, positive integer of 64 or more</span>] characters used to generate a password authorization factor. 
                         <h4 id="ext-comp-FCS_CKM_EXT.6.2">FCS_CKM_EXT.6.2</h4>
-                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: &ldquo;!&rdquo;, &ldquo;@&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;^&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;*&rdquo;, &ldquo;(&ldquo;, and &ldquo;)&rdquo;, and [<b>selection</b>: <span class="selectable-content" id="_s_247">[<b>assignment</b>: <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_248">no other characters</span>]. 
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: &ldquo;!&rdquo;, &ldquo;@&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;^&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;*&rdquo;, &ldquo;(&ldquo;, and &ldquo;)&rdquo;, and [<b>selection</b>: <span class="selectable-content" id="_s_245">[<b>assignment</b>: <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_246">no other characters</span>]. 
                         <h4 id="ext-comp-FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</h4>
-                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_251">SHA-256</span>, <span class="selectable-content" id="_s_252">SHA-384</span>, <span class="selectable-content" id="_s_253">SHA-512</span>], with [<b>selection</b>: <span class="selectable-content" id="_s_254">[<b>assignment</b>: <span class="assignable-content">positive integer of 4096 or more</span>] iterations</span>, <span class="selectable-content" id="_s_255">value supported by the platform, greater than 1000</span>], and output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_256">128</span>, <span class="selectable-content" id="_s_257">256</span>] that meet the following: [<b>assignment</b>: <span class="assignable-content">applicable standard</span>]. 
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_249">SHA-256</span>, <span class="selectable-content" id="_s_250">SHA-384</span>, <span class="selectable-content" id="_s_251">SHA-512</span>], with [<b>selection</b>: <span class="selectable-content" id="_s_252">[<b>assignment</b>: <span class="assignable-content">positive integer of 4096 or more</span>] iterations</span>, <span class="selectable-content" id="_s_253">value supported by the platform, greater than 1000</span>], and output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_254">128</span>, <span class="selectable-content" id="_s_255">256</span>] that meet the following: [<b>assignment</b>: <span class="assignable-content">applicable standard</span>]. 
                         <h4 id="ext-comp-FCS_CKM_EXT.6.4">FCS_CKM_EXT.6.4</h4>
-                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than [<b>selection</b>: <span class="selectable-content" id="_s_258">a value settable by the administrator</span>, <span class="selectable-content" id="_s_259">[<b>assignment</b>: <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>] and greater than the maximum password length defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than [<b>selection</b>: <span class="selectable-content" id="_s_256">a value settable by the administrator</span>, <span class="selectable-content" id="_s_257">[<b>assignment</b>: <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>] and greater than the maximum password length defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.
                         <h4 id="ext-comp-FCS_CKM_EXT.6.5">FCS_CKM_EXT.6.5</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG_EXT.1 and with entropy corresponding to the security strength selected for PBKDF in <a href="#FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</a>.
                     </div>
@@ -2127,13 +2122,13 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FCS_KDF_EXT.1.1">FCS_KDF_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept [<b>selection</b>: <span class="selectable-content" id="_s_268">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1</span>, <span class="selectable-content" id="_s_269">a conditioned password</span>, <span class="selectable-content" id="_s_270">an imported submask</span>] to derive an intermediate key, as defined in [<b>selection</b>: 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept [<b>selection</b>: <span class="selectable-content" id="_s_266">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1</span>, <span class="selectable-content" id="_s_267">a conditioned password</span>, <span class="selectable-content" id="_s_268">an imported submask</span>] to derive an intermediate key, as defined in [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_271">NIST SP 800-108 [<b>selection</b>: <span class="selectable-content" id="_s_272">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_273">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_274">KDF in Double-Pipeline Iteration Mode</span>] </span>
+                                <span class="selectable-content" id="_s_269">NIST SP 800-108 [<b>selection</b>: <span class="selectable-content" id="_s_270">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_271">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_272">KDF in Double-Pipeline Iteration Mode</span>] </span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_275">NIST SP 800-132</span>
+                                <span class="selectable-content" id="_s_273">NIST SP 800-132</span>
                             </li>
                         </ul>
                         ] using the keyed-hash functions specified in FCS_COP.1, such that the output is at least of equivalent security strength (in number of bits) to the [<b>assignment</b>: <span class="assignable-content">key that is being derived</span>]. 
@@ -2332,7 +2327,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FIA_CHR_EXT.1.1">FIA_CHR_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for [<b>selection</b>: <span class="selectable-content" id="_s_283">the user requesting the recovery</span>, <span class="selectable-content" id="_s_284">the user requesting recovery and the device for which the recovery was requested</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for [<b>selection</b>: <span class="selectable-content" id="_s_281">the user requesting the recovery</span>, <span class="selectable-content" id="_s_282">the user requesting recovery and the device for which the recovery was requested</span>]. 
                         <h4 id="ext-comp-FIA_CHR_EXT.1.2">FIA_CHR_EXT.1.2</h4>
                         The response shall work only for the user to whom it was generated. 
                         <h4 id="ext-comp-FIA_CHR_EXT.1.3">FIA_CHR_EXT.1.3</h4>

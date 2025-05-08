@@ -1012,34 +1012,13 @@ configure the number of failed validation attempts required to trigger correctiv
               
               </div></div></span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="fcs">2.4.1 Cryptographic Support (FCS)</h2><div class="comp" id=""><h4>FCS_COP.1/KT Cryptographic operation (Key Transport)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KT</div>
               
-              
-              
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
-                
-                The evaluator shall verify the TSS provides a high level description of the RSA
-                scheme and the cryptographic key size that is being used, and that the asymmetric
-                algorithm being used for key transport is RSA. If more than one scheme/key size are
-                allowed, then the evaluator shall make sure and test all combinations of scheme and
-                key size. There may be more than one key size to specify - an RSA modulus size
-                (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
-                size.<br/><br/>
-                If the KTS-OAEP scheme was selected, the evaluator shall verify that the TSS
-                identifies the hash function, the mask generating function, the random bit generator,
-                the encryption primitive and decryption primitive.
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the TSS
-                identifies the key derivation method, the AES-based key wrapping method, the secret
-                value encapsulation technique, and the random number generator. <br/><br/>
-
-                <h4>KMD</h4>None.<br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
+            <div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
                 For each supported key transport schema, the evaluator shall initiate at least 25
                 sessions that require key transport with an independently developed remote instance
                 of a key transport entity, using known RSA key-pairs. The evaluator shall observe
                 traffic passed from the sender-side and to the receiver-side of the TOE, and shall
                 perform the following tests, specific to which key transport scheme was employed.
-                If the KTS-OAEP scheme was selected, the evaluator shall perform the following
-                tests:
+                
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FCS_COP.1/KT:1</a>:
       The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
@@ -1081,48 +1060,7 @@ configure the number of failed validation attempts required to trigger correctiv
                     sender on which type of error occurred. The evaluator shall also validate that no
                     intermediate results from the TOE's receiver-side operations are revealed to the
                     sender.</li></ul></span><br/>
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
-                following tests:
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_COP.1/KT:6</a>:
-      The evaluator shall inspect each cipher text, C, produced by KTS-KEM-KWS
-                    encryption operation of the TOE and make sure the length (in bytes) of the
-                    cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
-                    the RSA public key) and that cLen - nLen is consistent with the byte lengths
-                    supported by the key wrapping algorithm. The evaluator shall feed into the
-                    KTS-KEM-KWS decryption operation a cipher text of unsupported length and
-                    verify that an error is detected and that the decryption process stops.
-                  </li><li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_COP.1/KT:7</a>:
-      The evaluator shall separate the cipher text, C, produced by the sender-side of
-                    the TOE into its C0 and C1 components and use the RSA decryption primitive to
-                    recover the secret value, Z, from C0. The evaluator shall check that the
-                    unsigned integer represented by Z is greater than 1 and less than n-1, where n is
-                    the modulus of the RSA public key. The evaluator shall construct examples
-                    where the cipher text is created with a secret value Z = 1 and make sure the
-                    KTS-KEM-KWS decryption process detects the error. Similarly, the evaluator
-                    shall construct examples where the cipher text is created with a secret value Z =
-                    n - 1 and make sure the KTS-KEM-KWS decryption process detects the error.
-                  </li><li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_COP.1/KT:8</a>:
-      The evaluator shall attempt to successfully recover the secret value Z, derive the
-                    key wrapping key, KWK, and unwrap the KWA-cipher text following the KTS-KEM-KWS
-                    decryption process given in NISP SP 800-56B section 7.2.3.4. If the
-                    key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
-                    of any (unwrapped) associated data, A, that was passed with the wrapped keying
-                    material is correct The evaluator shall feed into the TOE's KTS-KEM-KWS
-                    decryption operation examples of incorrect cipher text and verify that a
-                    decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong value of A is
-                    given to the KTS-KEM-KWS decryption operation and verify that a decryption
-                    error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong nonce is given to
-                    the KTS-KEM-KWS decryption operation and verify that a decryption error is
-                    detected.
-                  </li><li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_COP.1/KT:9</a>:
-      The evaluator shall trigger all detectable decryption errors and validate that the
-                    resulting error codes are the same and that no information is given back to the
-                    sender on which type of error occurred. The evaluator shall also validate that no
-                    intermediate results from the TOE's receiver-side operations (in particular, no Z
-                    values) are revealed to the sender.</li></ul></span></div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KW</div>
+              </div></div></span></div><div class="comp" id=""><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KW</div>
               
 
 
@@ -1291,14 +1229,14 @@ configure the number of failed validation attempts required to trigger correctiv
             </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> Support for Password/Passphrase characteristics: In addition to the analysis above, 
               the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <br/>
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FCS_CKM_EXT.6:1</a>:
+                <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_CKM_EXT.6:1</a>:
       Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </li>
-                <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FCS_CKM_EXT.6:2</a>:
+                <li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_CKM_EXT.6:2</a>:
       Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.6.1. </li>
-                <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FCS_CKM_EXT.6:3</a>:
+                <li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_CKM_EXT.6:3</a>:
        Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.6.4.
                   If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</li>
-                <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FCS_CKM_EXT.6:4</a>:
+                <li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_CKM_EXT.6:4</a>:
        Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.6.2.</li>
               </ul></span><br/>
               Conditioning: No explicit testing of the formation of the authorization factor
@@ -1343,7 +1281,7 @@ configure the number of failed validation attempts required to trigger correctiv
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform the following tests: <br/>
                 
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FCS_VAL_EXT.2/Admin:1</a>:
+                  <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FCS_VAL_EXT.2/Admin:1</a>:
       The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
                     For each authentication factor supported, the evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
                     protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such
@@ -1377,21 +1315,21 @@ configure the number of failed validation attempts required to trigger correctiv
             The evaluator shall perform the following tests: <br/>
             
             <span class="testlist-"><ul>
-              <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_CHR_EXT.1:1</a>:
+              <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FIA_CHR_EXT.1:1</a>:
       The evaluator shall configure the Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</li>
-              <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FIA_CHR_EXT.1:2</a>:
+              <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FIA_CHR_EXT.1:2</a>:
       The evaluator shall configure Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </li>
-               <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FIA_CHR_EXT.1:3</a>:
+               <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FIA_CHR_EXT.1:3</a>:
       The evaluator shall issue a challenge on behalf of a managed user and ensure that 
                 the response received successfully will log the user in on that device.</li>
-              <li class="test-"><a id="_t_47" class="defined" href="#_t_47">Test FIA_CHR_EXT.1:4</a>:
+              <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FIA_CHR_EXT.1:4</a>:
       The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</li>
-              <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FIA_CHR_EXT.1:5</a>:
+              <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_CHR_EXT.1:5</a>:
       The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
                 reboot the system [system terminates the session] and enter the response. This should fail.</li>
-              <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FIA_CHR_EXT.1:6</a>:
+              <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FIA_CHR_EXT.1:6</a>:
       The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
                 incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
                 conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</li>
@@ -1412,18 +1350,18 @@ configure the number of failed validation attempts required to trigger correctiv
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests:
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_50" class="defined" href="#_t_50">Test FTP_TRP.1:1</a>:
+                  <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FTP_TRP.1:1</a>:
       The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
                     the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
                   </li>
-                  <li class="test-"><a id="_t_51" class="defined" href="#_t_51">Test FTP_TRP.1:2</a>:
+                  <li class="test-"><a id="_t_47" class="defined" href="#_t_47">Test FTP_TRP.1:2</a>:
       For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
                     that in fact the communication channel can be initiated from the TOE. 
                   </li>
-                  <li class="test-"><a id="_t_52" class="defined" href="#_t_52">Test FTP_TRP.1:3</a>:
+                  <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FTP_TRP.1:3</a>:
       The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
                   </li>
-                  <li class="test-"><a id="_t_53" class="defined" href="#_t_53">Test FTP_TRP.1:4</a>:
+                  <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FTP_TRP.1:4</a>:
       The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
                     The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
                   </li>

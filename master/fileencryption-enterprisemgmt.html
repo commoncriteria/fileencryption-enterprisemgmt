@@ -2161,13 +2161,11 @@ configure the number of failed validation attempts required to trigger correctiv
       
           
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KT"><a href="#FCS_COP.1.1/KT" class="abbr">FCS_COP.1.1/KT</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>
-                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_233">[key transport] in accordance with a
-                    specified cryptographic algorithm [RSA in the following modes 
-                    [<b>selection</b>: <span class="selectable-content" id="_s_234">KTS-OAEP</span>, <span class="selectable-content" id="_s_235">KTS-KEM-KWS</span>] and the cryptographic key size 
-                    [<i>3072</i>] bits that meet the following: [NIST SP 800-56B, Revision 1].</span></li><li style=""><span class="selectable-content" id="_s_236">[<i>key transport</i>] in accordance with a 
-                    specified cryptographic algorithm [RSA in the following modes: KTS-OAEP] 
-                    and the cryptographic key size [<i>3072</i>] bits that meet the following: [<i>NIST SP 800-56B, Revision 2</i>]</span></li></ul>]</i>].
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key transport</i>] in accordance with a
+              specified cryptographic algorithm [<i>RSA</i>] in the following modes: 
+              <b><li>KTS-OAEP</li></b> 
+              and cryptographic key sizes 
+              [<b>selection</b>: <span class="selectable-content" id="_s_233">3072</span>, <span class="selectable-content" id="_s_234">4096</span>] that meet the following: [<i>NIST SP 800-56B, Revision 2</i>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -2178,34 +2176,13 @@ configure the number of failed validation attempts required to trigger correctiv
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KT">FCS_COP.1/KT</a></div>
               
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                
-                The evaluator shall verify the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> provides a high level description of the RSA
-                scheme and the cryptographic key size that is being used, and that the asymmetric
-                algorithm being used for key transport is RSA. If more than one scheme/key size are
-                allowed, then the evaluator shall make sure and test all combinations of scheme and
-                key size. There may be more than one key size to specify - an RSA modulus size
-                (and/or encryption exponent size), an AES key size, hash sizes, MAC key/MAC tag
-                size.<br/><br/>
-                If the KTS-OAEP scheme was selected, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
-                identifies the hash function, the mask generating function, the random bit generator,
-                the encryption primitive and decryption primitive.
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
-                identifies the key derivation method, the AES-based key wrapping method, the secret
-                value encapsulation technique, and the random number generator. <br/><br/>
-
-                <h4>KMD</h4>None.<br/><br/>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
+            <div class="eacategory">Tests</div><div class="ea"><div class="ea"> 
                 For each supported key transport schema, the evaluator shall initiate at least 25
                 sessions that require key transport with an independently developed remote instance
                 of a key transport entity, using known RSA key-pairs. The evaluator shall observe
                 traffic passed from the sender-side and to the receiver-side of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, and shall
                 perform the following tests, specific to which key transport scheme was employed.
-                If the KTS-OAEP scheme was selected, the evaluator shall perform the following
-                tests:
+                
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FCS_COP.1/KT:1</a>:
       The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
@@ -2247,48 +2224,7 @@ configure the number of failed validation attempts required to trigger correctiv
                     sender on which type of error occurred. The evaluator shall also validate that no
                     intermediate results from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s receiver-side operations are revealed to the
                     sender.</li></ul></span><br/>
-                If the KTS-KEM-KWS scheme was selected, the evaluator shall perform the
-                following tests:
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_COP.1/KT:6</a>:
-      The evaluator shall inspect each cipher text, C, produced by KTS-KEM-KWS
-                    encryption operation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and make sure the length (in bytes) of the
-                    cipher text, cLen, is greater than nLen (the length, in bytes, of the modulus of
-                    the RSA public key) and that cLen - nLen is consistent with the byte lengths
-                    supported by the key wrapping algorithm. The evaluator shall feed into the
-                    KTS-KEM-KWS decryption operation a cipher text of unsupported length and
-                    verify that an error is detected and that the decryption process stops.
-                  </li><li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_COP.1/KT:7</a>:
-      The evaluator shall separate the cipher text, C, produced by the sender-side of
-                    the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> into its C0 and C1 components and use the RSA decryption primitive to
-                    recover the secret value, Z, from C0. The evaluator shall check that the
-                    unsigned integer represented by Z is greater than 1 and less than n-1, where n is
-                    the modulus of the RSA public key. The evaluator shall construct examples
-                    where the cipher text is created with a secret value Z = 1 and make sure the
-                    KTS-KEM-KWS decryption process detects the error. Similarly, the evaluator
-                    shall construct examples where the cipher text is created with a secret value Z =
-                    n - 1 and make sure the KTS-KEM-KWS decryption process detects the error.
-                  </li><li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_COP.1/KT:8</a>:
-      The evaluator shall attempt to successfully recover the secret value Z, derive the
-                    key wrapping key, KWK, and unwrap the KWA-cipher text following the KTS-KEM-KWS
-                    decryption process given in NISP SP 800-56B section 7.2.3.4. If the
-                    key-wrapping algorithm is AES-CCM, the evaluator shall verify that the value
-                    of any (unwrapped) associated data, A, that was passed with the wrapped keying
-                    material is correct The evaluator shall feed into the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s KTS-KEM-KWS
-                    decryption operation examples of incorrect cipher text and verify that a
-                    decryption error is detected. If the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong value of A is
-                    given to the KTS-KEM-KWS decryption operation and verify that a decryption
-                    error is detected. Similarly, if the key-wrapping algorithm is AES-CCM, the
-                    evaluator shall attempt at least one decryption where the wrong nonce is given to
-                    the KTS-KEM-KWS decryption operation and verify that a decryption error is
-                    detected.
-                  </li><li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_COP.1/KT:9</a>:
-      The evaluator shall trigger all detectable decryption errors and validate that the
-                    resulting error codes are the same and that no information is given back to the
-                    sender on which type of error occurred. The evaluator shall also validate that no
-                    intermediate results from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s receiver-side operations (in particular, no Z
-                    values) are revealed to the sender.</li></ul></span></div></div></div></div></div>
+              </div></div></div></div></div>
 
         <div class="comp" id="FCS_COP.1/KW"><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FCS_KYC_EXT.1.1">FCS_KYC_EXT.1.1</a>, <a href="#FCS_VAL_EXT.1.1/Admin">FCS_VAL_EXT.1.1/Admin</a>, <a href="#FCS_VAL_EXT.1.1/User">FCS_VAL_EXT.1.1/User</a>.
@@ -2299,12 +2235,12 @@ configure the number of failed validation attempts required to trigger correctiv
 	        
 	        <div class="element"><div class="reqid" id="FCS_COP.1.1/KW"><a href="#FCS_COP.1.1/KW" class="abbr">FCS_COP.1.1/KW</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <s>perform</s> [<i> 
-              [<b>selection</b>: <span class="selectable-content" id="_s_237">use platform-provided functionality to perform Key Wrapping</span>, <span class="selectable-content" id="_s_238">implement functionality to perform Key Wrapping</span>]]</i>
+              [<b>selection</b>: <span class="selectable-content" id="_s_235">use platform-provided functionality to perform Key Wrapping</span>, <span class="selectable-content" id="_s_236">implement functionality to perform Key Wrapping</span>]]</i>
                 in accordance with a specified cryptographic algorithm [<i>
                   AES</i>] in the following mode
-                  <i>[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_239">Key Wrap</span></li><li style=""><span class="selectable-content" id="_s_240">Key Wrap with Padding</span></li><li style=""><span class="selectable-content" id="_s_241">GCM mode</span></li><li style=""><span class="selectable-content" id="_s_242">CCM mode</span></li></ul>]
+                  <i>[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_237">Key Wrap</span></li><li style=""><span class="selectable-content" id="_s_238">Key Wrap with Padding</span></li><li style=""><span class="selectable-content" id="_s_239">GCM mode</span></li><li style=""><span class="selectable-content" id="_s_240">CCM mode</span></li></ul>]
                 </i>] and cryptographic key sizes [<i>256 bits (AES)</i>] that meet the following: 
-                  [<i>[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_243">“NIST SP 800-38C”</span></li><li style=""><span class="selectable-content" id="_s_244">“NIST SP 800-38D”</span></li><li style=""><span class="selectable-content" id="_s_245">“NIST SP 800-38F”</span></li><li style=""><span class="selectable-content" id="_s_246">“NIST SP 800-38A”</span></li></ul>]</i>].
+                  [<i>[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_241">“NIST SP 800-38C”</span></li><li style=""><span class="selectable-content" id="_s_242">“NIST SP 800-38D”</span></li><li style=""><span class="selectable-content" id="_s_243">“NIST SP 800-38F”</span></li><li style=""><span class="selectable-content" id="_s_244">“NIST SP 800-38A”</span></li></ul>]</i>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -2456,13 +2392,13 @@ configure the number of failed validation attempts required to trigger correctiv
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
             and
-            [<b>selection</b>: <span class="selectable-content" id="_s_247">[<b>assignment</b>: 
-     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_248">no other characters</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_245">[<b>assignment</b>: 
+     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_246">no other characters</span>].
           </div></div>
         <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.3"><a href="#FCS_CKM_EXT.6.3" class="abbr">FCS_CKM_EXT.6.3</a></div><div class="reqdesc">
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation
               Functions in accordance with a specified cryptographic algorithm 
-              [<b>selection</b>: <span class="selectable-content" id="_s_249">HMAC-<i>SHA-384</i></span>, <span class="selectable-content" id="_s_250">HMAC-<i>SHA-512</i></span>], 
+              [<b>selection</b>: <span class="selectable-content" id="_s_247">HMAC-<i>SHA-384</i></span>, <span class="selectable-content" id="_s_248">HMAC-<i>SHA-512</i></span>], 
               with [<b>assignment</b>: 
      <span class="assignable-content">positive integer of 4096 or more</span>] iterations, and
             output cryptographic key sizes <i>256</i>
@@ -2470,7 +2406,7 @@ configure the number of failed validation attempts required to trigger correctiv
           </div></div>
         <div class="element"><div class="reqid" id="FCS_CKM_EXT.6.4"><a href="#FCS_CKM_EXT.6.4" class="abbr">FCS_CKM_EXT.6.4</a></div><div class="reqdesc">
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than 
-            [<b>selection</b>: <span class="selectable-content" id="_s_258">a value settable by the administrator</span>, <span class="selectable-content" id="_s_259">[<b>assignment</b>: 
+            [<b>selection</b>: <span class="selectable-content" id="_s_256">a value settable by the administrator</span>, <span class="selectable-content" id="_s_257">[<b>assignment</b>: 
      <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>]
             and greater than the maximum password length 
             defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.</div></div>
@@ -2559,14 +2495,14 @@ configure the number of failed validation attempts required to trigger correctiv
             </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> Support for Password/Passphrase characteristics: In addition to the analysis above, 
               the evaluator shall also perform the following tests on a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> configured according to the Operational Guidance: <br/>
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FCS_CKM_EXT.6:1</a>:
+                <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_CKM_EXT.6:1</a>:
       Ensure that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports passwords/passphrases of a minimum length of 64 characters. </li>
-                <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FCS_CKM_EXT.6:2</a>:
+                <li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_CKM_EXT.6:2</a>:
       Ensure that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept more than the maximum number of characters specified in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>. </li>
-                <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FCS_CKM_EXT.6:3</a>:
+                <li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_CKM_EXT.6:3</a>:
        Ensure that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept less than the minimum number of characters specified in <a href="#FCS_CKM_EXT.6.4">FCS_CKM_EXT.6.4</a>.
                   If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</li>
-                <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FCS_CKM_EXT.6:4</a>:
+                <li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_CKM_EXT.6:4</a>:
        Ensure that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports passwords consisting of all characters listed in <a href="#FCS_CKM_EXT.6.2">FCS_CKM_EXT.6.2</a>.</li>
               </ul></span><br/>
               Conditioning: No explicit testing of the formation of the authorization factor
@@ -2585,10 +2521,10 @@ configure the number of failed validation attempts required to trigger correctiv
 	        
 	        
           <div class="element"><div class="reqid" id="FCS_KDF_EXT.1.1"><a href="#FCS_KDF_EXT.1.1" class="abbr">FCS_KDF_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept
-                  [<b>selection</b>: <span class="selectable-content" id="_s_260">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_261">a conditioned password</span>, <span class="selectable-content" id="_s_262">an imported submask</span>] to derive an intermediate key, as defined in
-                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_263">NIST SP 800-108 
-                      [<b>selection</b>: <span class="selectable-content" id="_s_264">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_265">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_266">KDF in Double-Pipeline Iteration Mode</span>]
-                    </span></li><li style=""><span class="selectable-content" id="_s_267">NIST SP 800-132</span></li></ul>] using the keyed-hash functions specified in FCS_COP.1<b>/KeyedHash</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>, such that the output is at least of
+                  [<b>selection</b>: <span class="selectable-content" id="_s_258">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_259">a conditioned password</span>, <span class="selectable-content" id="_s_260">an imported submask</span>] to derive an intermediate key, as defined in
+                  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_261">NIST SP 800-108 
+                      [<b>selection</b>: <span class="selectable-content" id="_s_262">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_263">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_264">KDF in Double-Pipeline Iteration Mode</span>]
+                    </span></li><li style=""><span class="selectable-content" id="_s_265">NIST SP 800-132</span></li></ul>] using the keyed-hash functions specified in FCS_COP.1<b>/KeyedHash</b> <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>, such that the output is at least of
                   equivalent security strength (in number of bits) to the [<abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s)]
               . 
               
@@ -2630,7 +2566,7 @@ configure the number of failed validation attempts required to trigger correctiv
           
           
           
-          <div class="element"><div class="reqid" id="FCS_SMC_EXT.1.1"><a href="#FCS_SMC_EXT.1.1" class="abbr">FCS_SMC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall combine submasks using the following method: [<i>[<b>selection</b>: <span class="selectable-content" id="_s_276">exclusive OR (XOR)</span>, <span class="selectable-content" id="_s_277">SHA-384</span>, <span class="selectable-content" id="_s_278">SHA-512</span>, <span class="selectable-content" id="_s_279">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_280">HMAC-SHA-512</span>]</i>] to generate an intermediate key
+          <div class="element"><div class="reqid" id="FCS_SMC_EXT.1.1"><a href="#FCS_SMC_EXT.1.1" class="abbr">FCS_SMC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall combine submasks using the following method: [<i>[<b>selection</b>: <span class="selectable-content" id="_s_274">exclusive OR (XOR)</span>, <span class="selectable-content" id="_s_275">SHA-384</span>, <span class="selectable-content" id="_s_276">SHA-512</span>, <span class="selectable-content" id="_s_277">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_278">HMAC-SHA-512</span>]</i>] to generate an intermediate key
               .<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -2659,10 +2595,10 @@ configure the number of failed validation attempts required to trigger correctiv
           
           
           <div class="element"><div class="reqid" id="FCS_VAL_EXT.2.1/Admin"><a href="#FCS_VAL_EXT.2.1/Admin" class="abbr">FCS_VAL_EXT.2.1/Admin</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall 
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_281">institute a delay such that only [<b>assignment</b>: 
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_279">institute a delay such that only [<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number
                   or configurable range of attempts</span>] 
-                  validation attempts can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_282">block validation after [<b>assignment</b>: 
+                  validation attempts can be made within a 24 hour period</span></li><li style=""><span class="selectable-content" id="_s_280">block validation after [<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specified number or configurable range of attempts</span>] 
                   of consecutive failed validation attempts</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
@@ -2687,7 +2623,7 @@ configure the number of failed validation attempts required to trigger correctiv
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform the following tests: <br/>
                 
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FCS_VAL_EXT.2/Admin:1</a>:
+                  <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FCS_VAL_EXT.2/Admin:1</a>:
       The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
                     For each authentication factor supported, the evaluator will test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> by entering that number of incorrect authorization factors in consecutive attempts to access the
                     protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such
@@ -2712,7 +2648,7 @@ configure the number of failed validation attempts required to trigger correctiv
         
         
         <div class="element"><div class="reqid" id="FIA_CHR_EXT.1.1"><a href="#FIA_CHR_EXT.1.1" class="abbr">FIA_CHR_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for 
-            [<b>selection</b>: <span class="selectable-content" id="_s_283">the user requesting the recovery</span>, <span class="selectable-content" id="_s_284">the user requesting recovery and the device for which the recovery was requested</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_281">the user requesting the recovery</span>, <span class="selectable-content" id="_s_282">the user requesting recovery and the device for which the recovery was requested</span>].
           <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> This requires that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has the ability to attribute key chain information to the appropriate user(s).
@@ -2769,21 +2705,21 @@ configure the number of failed validation attempts required to trigger correctiv
             The evaluator shall perform the following tests: <br/>
             
             <span class="testlist-"><ul>
-              <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_CHR_EXT.1:1</a>:
+              <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FIA_CHR_EXT.1:1</a>:
       The evaluator shall configure the Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of a managed user and ensure that <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully generates the response.</li>
-              <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FIA_CHR_EXT.1:2</a>:
+              <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FIA_CHR_EXT.1:2</a>:
       The evaluator shall configure Challenge/Response recovery to validate the user. 
                 The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </li>
-               <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FIA_CHR_EXT.1:3</a>:
+               <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FIA_CHR_EXT.1:3</a>:
       The evaluator shall issue a challenge on behalf of a managed user and ensure that 
                 the response received successfully will log the user in on that device.</li>
-              <li class="test-"><a id="_t_47" class="defined" href="#_t_47">Test FIA_CHR_EXT.1:4</a>:
+              <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FIA_CHR_EXT.1:4</a>:
       The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</li>
-              <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FIA_CHR_EXT.1:5</a>:
+              <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_CHR_EXT.1:5</a>:
       The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
                 reboot the system [system terminates the session] and enter the response. This should fail.</li>
-              <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FIA_CHR_EXT.1:6</a>:
+              <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FIA_CHR_EXT.1:6</a>:
       The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
                 incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
                 conform to the assignments/selections in <a href="#FIA_CHR_EXT.1.5">FIA_CHR_EXT.1.5</a> and <a href="#FIA_CHR_EXT.1.6">FIA_CHR_EXT.1.6</a>.</li>
@@ -2834,18 +2770,18 @@ configure the number of failed validation attempts required to trigger correctiv
               </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests:
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_50" class="defined" href="#_t_50">Test FTP_TRP.1:1</a>:
+                  <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FTP_TRP.1:1</a>:
       The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
                     the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
                   </li>
-                  <li class="test-"><a id="_t_51" class="defined" href="#_t_51">Test FTP_TRP.1:2</a>:
+                  <li class="test-"><a id="_t_47" class="defined" href="#_t_47">Test FTP_TRP.1:2</a>:
       For each protocol that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
                     that in fact the communication channel can be initiated from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
                   </li>
-                  <li class="test-"><a id="_t_52" class="defined" href="#_t_52">Test FTP_TRP.1:3</a>:
+                  <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FTP_TRP.1:3</a>:
       The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
                   </li>
-                  <li class="test-"><a id="_t_53" class="defined" href="#_t_53">Test FTP_TRP.1:4</a>:
+                  <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FTP_TRP.1:4</a>:
       The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
                     The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
                   </li>
@@ -2877,18 +2813,18 @@ configure the number of failed validation attempts required to trigger correctiv
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow passwords to be composed of any combination of upper case characters,
             lower case characters, numbers, and the following special characters: “!”, “@”, “#”, “$”, “%”, “^”, “&amp;”, “*”, “(“, and “)”,
             and
-            [<b>selection</b>: <span class="selectable-content" id="_s_247">[<b>assignment</b>: 
-     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_248">no other characters</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_245">[<b>assignment</b>: 
+     <span class="assignable-content">other supported special characters</span>]</span>, <span class="selectable-content" id="_s_246">no other characters</span>].
           <h4 id="ext-comp-FCS_CKM_EXT.6.3">FCS_CKM_EXT.6.3</h4>
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-based Key Derivation
-              Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_251">SHA-256</span>, <span class="selectable-content" id="_s_252">SHA-384</span>, <span class="selectable-content" id="_s_253">SHA-512</span>], with 
-              [<b>selection</b>: <span class="selectable-content" id="_s_254">[<b>assignment</b>: 
-     <span class="assignable-content">positive integer of 4096 or more</span>] iterations</span>, <span class="selectable-content" id="_s_255">value supported by the platform, greater than 1000</span>], and
-              output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_256">128</span>, <span class="selectable-content" id="_s_257">256</span>] that meet the following: [<b>assignment</b>: 
+              Functions in accordance with a specified cryptographic algorithm HMAC-[<b>selection</b>: <span class="selectable-content" id="_s_249">SHA-256</span>, <span class="selectable-content" id="_s_250">SHA-384</span>, <span class="selectable-content" id="_s_251">SHA-512</span>], with 
+              [<b>selection</b>: <span class="selectable-content" id="_s_252">[<b>assignment</b>: 
+     <span class="assignable-content">positive integer of 4096 or more</span>] iterations</span>, <span class="selectable-content" id="_s_253">value supported by the platform, greater than 1000</span>], and
+              output cryptographic key sizes [<b>selection</b>: <span class="selectable-content" id="_s_254">128</span>, <span class="selectable-content" id="_s_255">256</span>] that meet the following: [<b>assignment</b>: 
      <span class="assignable-content">applicable standard</span>]. 
             <h4 id="ext-comp-FCS_CKM_EXT.6.4">FCS_CKM_EXT.6.4</h4>
             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not accept passwords less than 
-            [<b>selection</b>: <span class="selectable-content" id="_s_258">a value settable by the administrator</span>, <span class="selectable-content" id="_s_259">[<b>assignment</b>: 
+            [<b>selection</b>: <span class="selectable-content" id="_s_256">a value settable by the administrator</span>, <span class="selectable-content" id="_s_257">[<b>assignment</b>: 
      <span class="assignable-content">minimum password length accepted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, must be &gt;= 1</span>]</span>]
             and greater than the maximum password length 
             defined in <a href="#FCS_CKM_EXT.6.1">FCS_CKM_EXT.6.1</a>.<h4 id="ext-comp-FCS_CKM_EXT.6.5">FCS_CKM_EXT.6.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate all salts using an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> that meets FCS_RBG_EXT.1 and with entropy 
@@ -2962,10 +2898,10 @@ configure the number of failed validation attempts required to trigger correctiv
 	        </p><h4>Audit: FCS_KDF_EXT.1</h4><p>There are no auditable events foreseen.
 	        </p><h4>FCS_KDF_EXT.1 Cryptographic Key Derivation Function</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation <br/>
 	          FCS_RBG_EXT.1 Random Bit Generation</td></tr></table><h4 id="ext-comp-FCS_KDF_EXT.1.1">FCS_KDF_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall accept
-                    [<b>selection</b>: <span class="selectable-content" id="_s_268">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1</span>, <span class="selectable-content" id="_s_269">a conditioned password</span>, <span class="selectable-content" id="_s_270">an imported submask</span>] to derive an intermediate key, as defined in
-                    [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_271">NIST SP 800-108 
-                        [<b>selection</b>: <span class="selectable-content" id="_s_272">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_273">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_274">KDF in Double-Pipeline Iteration Mode</span>]
-                      </span></li><li style=""><span class="selectable-content" id="_s_275">NIST SP 800-132</span></li></ul>] using the keyed-hash functions specified in FCS_COP.1, such that the output is at least of
+                    [<b>selection</b>: <span class="selectable-content" id="_s_266">a submask generated by an <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1</span>, <span class="selectable-content" id="_s_267">a conditioned password</span>, <span class="selectable-content" id="_s_268">an imported submask</span>] to derive an intermediate key, as defined in
+                    [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_269">NIST SP 800-108 
+                        [<b>selection</b>: <span class="selectable-content" id="_s_270">KDF in Counter Mode</span>, <span class="selectable-content" id="_s_271">KDF in Feedback Mode</span>, <span class="selectable-content" id="_s_272">KDF in Double-Pipeline Iteration Mode</span>]
+                      </span></li><li style=""><span class="selectable-content" id="_s_273">NIST SP 800-132</span></li></ul>] using the keyed-hash functions specified in FCS_COP.1, such that the output is at least of
                     equivalent security strength (in number of bits) to the [<b>assignment</b>: 
      <span class="assignable-content">key that is being derived</span>]. 
                 
@@ -3032,7 +2968,7 @@ configure the number of failed validation attempts required to trigger correctiv
           </ul>
         </p><h4>FIA_CHR_EXT.1 Challenge/Response Recovery Credential</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_VAL_EXT.1 Validation<br/>
         <a href="#FIA_REC_EXT.1">FIA_REC_EXT.1</a> Recovery Support</td></tr></table><h4 id="ext-comp-FIA_CHR_EXT.1.1">FIA_CHR_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate a response only if it is able to access recovery information for 
-            [<b>selection</b>: <span class="selectable-content" id="_s_283">the user requesting the recovery</span>, <span class="selectable-content" id="_s_284">the user requesting recovery and the device for which the recovery was requested</span>].
+            [<b>selection</b>: <span class="selectable-content" id="_s_281">the user requesting the recovery</span>, <span class="selectable-content" id="_s_282">the user requesting recovery and the device for which the recovery was requested</span>].
           <h4 id="ext-comp-FIA_CHR_EXT.1.2">FIA_CHR_EXT.1.2</h4>The response shall work only for the user to whom it was generated.
           <h4 id="ext-comp-FIA_CHR_EXT.1.3">FIA_CHR_EXT.1.3</h4>The response shall be used only during the same session in which the request was generated.
           <h4 id="ext-comp-FIA_CHR_EXT.1.4">FIA_CHR_EXT.1.4</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate an ephemeral response that has at least as many potential values as a corresponding password or PIN.
