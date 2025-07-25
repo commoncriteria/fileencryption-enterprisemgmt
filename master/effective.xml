@@ -966,8 +966,10 @@
                     <selectable>utilization of the platform key storage</selectable>
                     <selectable>utilization of platform key storage that performs key wrap with a
                       TSF provided key</selectable>
+                    <selectable id="USEKEYWRA">implementation of key establishment as specified in FCS_CKM.2 (from the Base-PP)</selectable>
                     <selectable id="USEKEYDER">implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
                     <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1/KW</selectable>
+                    <selectable id="USEKEYENC">implementation of key encryption as specified in FCS_COP.1/KE</selectable>
                     <selectable id="USEKEYCOM">implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
                     <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1/KT</selectable>
                   </selectables> 
@@ -980,50 +982,35 @@
                     <selectable>utilization of the platform key storage</selectable>
                     <selectable>utilization of platform key storage that performs key wrap with a
                       TSF provided key</selectable>
-                    <selectable id="USEKEYWRA">implementation of key wrapping as specified in FCS_COP.1/KW</selectable>
-                    <selectable id="USEKEYCOM">implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
-                    <selectable id="USEKEYTRA">implementation of key transport as specified in FCS_COP.1/KT</selectable>
-                    <selectable id="USEKEYDER">implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
+                    <selectable id="SUPPKEYEST">implementation of key establishment as specified in FCS_CKM.2 (from the Base-PP)</selectable>
+                    <selectable id="SUPPKEYENC">implementation of key encryption as specified in FCS_COP.1/KE</selectable>
+                    <selectable id="SUPPKEYTRA">implementation of key transport as specified in FCS_COP.1/KT</selectable>
+                    <selectable id="SUPPKEYWRA">implementation of key wrapping as specified in FCS_COP.1/KW</selectable>
+                    <selectable id="SUPPKEYDER">implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
+                    <selectable id="SUPPKEYCOM">implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
                   </selectables></selectable>
               </selectables>.
             </title>
             <ext-comp-def-title>
-            <title> The TSF shall maintain a key chain of: 
-              <selectables linebreak="yes">
-                <selectable>a conditioned password as the <assignable>key type</assignable></selectable>
-                <selectable id="HASKEK"><assignable>key type</assignable> originating from 
-                <assignable>origin of key</assignable> 
-                 to 
-                 <assignable>end point of key chain</assignable>
-                  using the following method(s): 
-                  <selectables linebreak="yes">
-                    <selectable>utilization of the platform key storage</selectable>
-                    <selectable>utilization of platform key storage that performs key wrap with a
-                      TSF provided key</selectable>
-                    <selectable>implementation of key wrapping as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
-                    <selectable>implementation of key encryption as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key transport as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
-                  </selectables> while maintaining an effective strength of commensurate with the strength of the FEK
-                </selectable>
-              </selectables> 
-              and 
-              <selectables>
-                <selectable> no supplemental key chains</selectable>
-                <selectable> other supplemental key chains that protect a key or keys in the primary key chain using the following method(s):
-                  <selectables linebreak="yes">
-                    <selectable>utilization of the platform key storage</selectable>
-                    <selectable>utilization of platform key storage that performs key wrap with a
-                      TSF provided key</selectable>
-                    <selectable>implementation of key wrapping as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key combining as specified in FCS_SMC_EXT.1</selectable>
-                    <selectable>implementation of key encryption as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key transport as specified in FCS_COP.1</selectable>
-                    <selectable>implementation of key derivation as specified in FCS_KDF_EXT.1</selectable>
-                  </selectables></selectable>
-              </selectables>.
-            </title>
+              <title> The TSF shall maintain a key chain of: 
+                <selectables linebreak="yes">
+                  <selectable>a conditioned password as the <assignable>key type</assignable></selectable>
+                  <selectable> <assignable>key type</assignable> originating from
+                    <assignable>origin of key</assignable> 
+                    to 
+                    <assignable>end point of key chain</assignable>
+                    using the following method(s): <assignable>list of supported key protection methods</assignable>
+                    while maintaining an effective strength of commensurate with the strength of the FEK
+                  </selectable>
+                </selectables> 
+                and 
+                <selectables>
+                  <selectable> no supplemental key chains</selectable>
+                  <selectable> other supplemental key chains that protect a key or keys in the primary key chain using the following method(s):
+                    <assignable>list of supported key protection methods</assignable>
+                  </selectable>
+                </selectables>.
+              </title>
             </ext-comp-def-title>
             <note role="application">
               
@@ -2629,20 +2616,19 @@ configure the number of failed validation attempts required to trigger correctiv
         <f-element id="fcs_ckm-ext-6e3">
           <title>
             The TSF shall perform Password-based Key Derivation
-              Functions in accordance with a specified cryptographic algorithm 
+              Functions in accordance with a specified cryptographic algorithm HMAC-
               <selectables>
-                <selectable>HMAC-<h:i>SHA-384</h:i></selectable>
-                <selectable>HMAC-<h:i>SHA-512</h:i></selectable>
+                <selectable>SHA-384</selectable>
+                <selectable>SHA-512</selectable>
               </selectables>, 
               with <assignable>positive integer of 4096 or more</assignable> iterations, and
-            output cryptographic key sizes <h:i>256</h:i>
+            output cryptographic key sizes [<h:i>256</h:i>]
            bits that meet the following: [<h:i>NIST SP 800-132</h:i>]. 
           </title>
           <ext-comp-def-title>
             <title>
               The TSF shall perform Password-based Key Derivation
               Functions in accordance with a specified cryptographic algorithm HMAC-<selectables>
-                <selectable>SHA-256</selectable>
                 <selectable>SHA-384</selectable>
                 <selectable>SHA-512</selectable>
               </selectables>, with 
@@ -2650,10 +2636,8 @@ configure the number of failed validation attempts required to trigger correctiv
                 <selectable><assignable>positive integer of 4096 or more</assignable> iterations</selectable>
                 <selectable>value supported by the platform, greater than 1000</selectable>
               </selectables>, and
-              output cryptographic key sizes <selectables>
-                <selectable>128</selectable>
-                <selectable>256</selectable>
-              </selectables> that meet the following: <assignable>applicable standard</assignable>. 
+              output cryptographic key sizes <assignable>output key size</assignable> 
+              that meet the following: <assignable>applicable standard</assignable>. 
             </title>
             </ext-comp-def-title>
         </f-element>

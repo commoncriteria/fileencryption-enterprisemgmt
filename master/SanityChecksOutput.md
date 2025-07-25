@@ -8,14 +8,8 @@
         on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:ftp[1]""/f-component[1]""/depends[1]""/on[1]""
 * Error: Detected multiple elements with an id of 'sel_all_tlsc'.
 * Error: Detected multiple elements with an id of 'sel_all_ssh'.
-* Error: Detected multiple elements with an id of 'USEKEYDER'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
-* Error: Detected multiple elements with an id of 'USEKEYCOM'.
-* Error: Detected multiple elements with an id of 'USEKEYTRA'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
-* Error: Detected multiple elements with an id of 'USEKEYCOM'.
-* Error: Detected multiple elements with an id of 'USEKEYTRA'.
-* Error: Detected multiple elements with an id of 'USEKEYDER'.
 * Error: Detected multiple elements with an id of 'APPAUTH'.
 * Error: Detected multiple elements with an id of 'USEPAS'.
 * Error: Detected multiple elements with an id of 'APPAUTH'.

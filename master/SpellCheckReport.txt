@@ -17,6 +17,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: FIPS140
 output/fileencryption-enterprisemgmt-release-linkable.html: FIPS180
 output/fileencryption-enterprisemgmt-release-linkable.html: FIPS186
 output/fileencryption-enterprisemgmt-release-linkable.html: FIPS198
+output/fileencryption-enterprisemgmt-release-linkable.html: KE
 output/fileencryption-enterprisemgmt-release-linkable.html: KMD
 output/fileencryption-enterprisemgmt-release-linkable.html: MBR
 output/fileencryption-enterprisemgmt-release-linkable.html: NIST800
@@ -52,6 +53,7 @@ output/fileencryption-enterprisemgmt-release.html: FIPS140
 output/fileencryption-enterprisemgmt-release.html: FIPS180
 output/fileencryption-enterprisemgmt-release.html: FIPS186
 output/fileencryption-enterprisemgmt-release.html: FIPS198
+output/fileencryption-enterprisemgmt-release.html: KE
 output/fileencryption-enterprisemgmt-release.html: NIST800
 output/fileencryption-enterprisemgmt-release.html: PBKDF
 output/fileencryption-enterprisemgmt-release.html: PRF
@@ -118,6 +120,7 @@ output/fileencryption-enterprisemgmt.html: FIPS140
 output/fileencryption-enterprisemgmt.html: FIPS180
 output/fileencryption-enterprisemgmt.html: FIPS186
 output/fileencryption-enterprisemgmt.html: FIPS198
+output/fileencryption-enterprisemgmt.html: KE
 output/fileencryption-enterprisemgmt.html: KMD
 output/fileencryption-enterprisemgmt.html: MBR
 output/fileencryption-enterprisemgmt.html: NIST800
