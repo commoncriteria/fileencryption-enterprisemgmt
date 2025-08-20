@@ -314,7 +314,7 @@
                 The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>: 
                 <ul>
                     <li>
-                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Clients, Version 2.5
+                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Clients, Version 3.0
                     </li>
                     <li>
                         <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption, Version 2.0
@@ -326,10 +326,10 @@
             <dd>
                 <ul>
                     <li>
-                        This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is Functional Package for TLS Version 2.0 conformant.
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is Functional Package for SSH Version 2.0 conformant.
                     </li>
                     <li>
-                        This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is Functional Package for SSH Version 2.0 conformant.
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is Functional Package for TLS Version 2.1 conformant.
                     </li>
                     <li>
                         This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not conform to any assurance packages.
@@ -365,7 +365,7 @@
             </dd>
             <dt class="threat defined" id="T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT">T.UNAUTHORIZED_DATA_ACCESS_ENDPOINT</dt>
             <dd>
-                <span class="description"> An attacker accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled by the attacker and using the key material, or optionally a recovery credential to access the data. The file encryption module addresses the primary threat of unauthorized disclosure of recovery material. </span>
+                <span class="description"> An attacker accessing the data on the encrypted file(s) by getting access to a protected file(s), attaching it to a host system controlled by the attacker and using the key material, or optionally a recovery credential to access the data. The <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption addresses the primary threat of unauthorized disclosure of recovery material. </span>
             </dd>
             <dt class="threat defined" id="T.UNAUTHORIZED_DATA_ACCESS_SERVER">T.UNAUTHORIZED_DATA_ACCESS_SERVER</dt>
             <dd>
@@ -509,7 +509,7 @@
                             </ul>
                             <ul>
                                 <li>
-                                    IPsec as defined in the VPN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, version 2.6
+                                    IPsec as defined in the VPN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, version 3.0
                                 </li>
                             </ul>
                              ] for [<b>assignment:</b> function(s)] using certificates as defined in the Functional Package for X.509</i>
@@ -666,7 +666,7 @@
                     </ul>
                     ]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> Key Chaining is the method of using multiple layers of encryption keys to ultimately secure the a final key. The number of intermediate keys will vary. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author should clearly indicate which portions of the key chain are created and maintained by the enterprise server and which are created and maintained by the endpoint. This requirement is in addition to the same requirement in the File Encryption Module, it covers a different section of the keychain, if both modules are included both requirements must be included.</span>
+                        <span class="note-header">Application Note: </span><span class="note"> Key Chaining is the method of using multiple layers of encryption keys to ultimately secure the a final key. The number of intermediate keys will vary. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author should clearly indicate which portions of the key chain are created and maintained by the enterprise server and which are created and maintained by the endpoint. This requirement is in addition to the same requirement in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption, it covers a different section of the keychain, if both modules are included both requirements must be included.</span>
                     </div>
                 </div>
             </div>
@@ -797,7 +797,7 @@
                             <span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_125"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is [<b>selection</b>: <span class="selectable-content" id="_s_126">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>)</span>, <span class="selectable-content" id="_s_127">generated by the platform</span>] protected using assymetric keys as defined in FCS_CKM.1.1/AK (from <a href="#bibAppPP">[AppPP]</a>) with user presence proved by presentation of the smart card and [<b>selection</b>: <span class="selectable-content" id="_s_128">no PIN</span>, <span class="selectable-content" id="_s_129">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_130">a configurable PIN</span>] </span>
+                            <span class="selectable-content" id="_s_125"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is [<b>selection</b>: <span class="selectable-content" id="_s_126">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b>)</span>, <span class="selectable-content" id="_s_127">generated by the platform</span>] protected using asymmetric keys as defined in FCS_CKM.1.1/AK (from <a href="#bibAppPP">[AppPP]</a>) with user presence proved by presentation of the smart card and [<b>selection</b>: <span class="selectable-content" id="_s_128">no PIN</span>, <span class="selectable-content" id="_s_129">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_130">a configurable PIN</span>] </span>
                         </li>
                         <li style="">
                             <span class="selectable-content" id="_s_131">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is providing a submask generated by the [<b>selection</b>: <span class="selectable-content" id="_s_132"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1 <b>(from <a href="#bibAppPP">[AppPP]</a>)</b></span>, <span class="selectable-content" id="_s_133">platform</span>] </span>
@@ -988,7 +988,7 @@
                         </ul>
                         ]</b>. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> refers specifically to the management functions that can be performed by the Management Server. Functions that are performed by the rest of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are addressed by the <a href="#FMT_SMF.1/FEEM">FMT_SMF.1/FEEM</a> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> in the File Encryption <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. The final two assignments provide the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author the ability to indicate when File Encryption module functionality (such as configuration of power saving states) can be configured by the Management Server.
+                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> refers specifically to the management functions that can be performed by the Management Server. Functions that are performed by the rest of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are addressed by the <a href="#FMT_SMF.1/FEEM">FMT_SMF.1/FEEM</a> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> in the File Encryption <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. The final two assignments provide the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author the ability to indicate when the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption functionality (such as configuration of power saving states) can be configured by the Management Server.
                             <br>
                             <br>
                              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>&rsquo;s ability to initiate key generation, escrow, zeroization, and/or recovery may be accomplished either by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> performing those functions or by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> issuing a request to a remote client to perform the functions. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must indicate which case is provided by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> performs any of the cryptographic functions that are selected as being initiated in this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must include the equivalent FCS <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> from the File Encryption <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> as part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, specifically indicating that these functions are provided by the Management Server component of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
@@ -2181,7 +2181,7 @@
                                 <span class="selectable-content" id="USEPAS"> a password authorization factor conditioned as defined in <a href="#FCS_CKM_EXT.6">FCS_CKM_EXT.6</a></span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_137"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is [<b>selection</b>: <span class="selectable-content" id="_s_138">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1)</span>, <span class="selectable-content" id="_s_139">generated by the platform</span>] protected using assymetric keys as defined in FCS_CKM.1.1/AK (from <a href="#bibAppPP">[AppPP]</a>) with user presence proved by presentation of the smart card and [<b>selection</b>: <span class="selectable-content" id="_s_140">no PIN</span>, <span class="selectable-content" id="_s_141">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_142">a configurable PIN</span>] </span>
+                                <span class="selectable-content" id="_s_137"> an external smart card factor that is at least the same bit-length as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is protecting a submask that is [<b>selection</b>: <span class="selectable-content" id="_s_138">generated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1)</span>, <span class="selectable-content" id="_s_139">generated by the platform</span>] protected using asymmetric keys as defined in FCS_CKM.1.1/AK (from <a href="#bibAppPP">[AppPP]</a>) with user presence proved by presentation of the smart card and [<b>selection</b>: <span class="selectable-content" id="_s_140">no PIN</span>, <span class="selectable-content" id="_s_141">an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> defined PIN</span>, <span class="selectable-content" id="_s_142">a configurable PIN</span>] </span>
                             </li>
                             <li style="">
                                 <span class="selectable-content" id="_s_143">an external USB token factor that is at least the same security strength as the <abbr class="dyn-abbr"><a href="#abbr_FEK">FEK</a></abbr>(s), and is providing a submask generated by the [<b>selection</b>: <span class="selectable-content" id="_s_144"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, using the <abbr class="dyn-abbr"><a href="#abbr_RBG">RBG</a></abbr> as specified in FCS_RBG_EXT.1</span>, <span class="selectable-content" id="_s_145">platform</span>] </span>
@@ -2374,7 +2374,7 @@
                                 <span class="selectable-content" id="_s_217">the plaintext key is stored on an external storage device for use as an authorization factor.</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_218">the plaintext key is used tO wrap a key as specified in FCS_COP.1 that is already wrapped as specified in FCS_COP.1</span>
+                                <span class="selectable-content" id="_s_218">the plaintext key is used to wrap a key as specified in FCS_COP.1 that is already wrapped as specified in FCS_COP.1</span>
                             </li>
                         </ul>
                         ]. 
@@ -2416,7 +2416,7 @@
                 </div>
             </span></span>
         <h1 id="KMD" class="indexable" data-level="A">Appendix D - Key Management Description</h1>
-         This appendix should be combined with the appendix in the File Encryption Module if it is also being evaluated. The documentation of the product&rsquo;s encryption key management should be detailed enough that, after reading, the evaluator will thoroughly understand the product&rsquo;s key management and how it meets the requirements to ensure the keys are adequately protected. This documentation should include an essay and diagram(s). This documentation is not required to be part of the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> - it can be submitted as a separate document and marked as developer proprietary. 
+         This appendix should be combined with the appendix in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for File Encryption if it is also being evaluated. The documentation of the product&rsquo;s encryption key management should be detailed enough that, after reading, the evaluator will thoroughly understand the product&rsquo;s key management and how it meets the requirements to ensure the keys are adequately protected. This documentation should include an essay and diagram(s). This documentation is not required to be part of the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> - it can be submitted as a separate document and marked as developer proprietary. 
         <br>
         <br>
          Essay: 
