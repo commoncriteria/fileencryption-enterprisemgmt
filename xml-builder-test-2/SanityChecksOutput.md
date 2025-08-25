@@ -1,13 +1,13 @@
 * Error: f-element .1  appears not to have an associated evaluation activity.:
         /Module[1]""/sec:Security_Requirements[1]""/base-pp[1]""/modified-sfrs[1]""/section[1]""/base-sfr-spec[1]""/replace[1]""/xpath-specified[1]""/f-element[1]""
 * Error: Detected dangling id-reference to FIA_AUT_EXT.1.1 from attribute
-        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[1]""/f-component[1]""/depends[1]""/on-sel[1]""
+        on-sel/Module[1]""/sec:Security_Requirements[1]""/man-sfrs[1]""/section[4]""/f-component[1]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to FIA_AUT_EXT.1.1 from attribute
-        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[1]""/f-component[6]""/depends[1]""/on-sel[1]""
+        on-sel/Module[1]""/sec:Security_Requirements[1]""/man-sfrs[1]""/section[4]""/f-component[6]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to FIA_REC_EXT.1.1 from attribute
-        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[2]""/f-component[1]""/depends[1]""/on-sel[1]""
+        on-sel/Module[1]""/sec:Security_Requirements[1]""/man-sfrs[1]""/section[4]""/f-component[7]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to FMT_SMR.2.3 from attribute
-        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[3]""/f-component[1]""/depends[1]""/on-sel[1]""
+        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[1]""/f-component[1]""/depends[1]""/on-sel[1]""
 * Error: Detected multiple elements with an id of 'sel_all_tlsc'.
 * Error: Detected multiple elements with an id of 'sel_all_ssh'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
@@ -42,20 +42,6 @@
 * Warning: Since FCS_VAL_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_VAL_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_CKM_EXT.6.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_CKM_EXT.6.4 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_VAL_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_VAL_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FIA_REC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FIA_REC_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FIA_CHR_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FIA_REC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        

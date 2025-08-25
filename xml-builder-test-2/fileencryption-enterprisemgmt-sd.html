@@ -294,7 +294,7 @@
       Technical Community members, with representatives from industry, government 
       agencies, Common Criteria Test Laboratories, and members of academia.
       </p></div><h1>Table of Contents</h1><div id="toc"><a href="#introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#scope" style="text-indent:10px">1.1<span>Technology Area and Scope of Supporting Document</span></a><a href="#structure" style="text-indent:10px">1.2<span>Structure of the Document</span></a><a href="#glossary" style="text-indent:10px">1.3<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.3.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.3.2<span>Technical Terms</span></a><a href="#sfr" style="text-indent:0px">2<span>Evaluation Activities for SFRs</span></a><a href="#aa-b-appp" style="text-indent:10px">2.1<span>Application Software</span></a><a href="#qq-sfrs-b-appp-Modified" style="text-indent:20px">2.1.1<span>Modified SFRs
-        </span></a><a href="#man-sfrs" style="text-indent:10px">2.2<span>TOE SFR Evaluation Activities</span></a><a href="#fcs-mandatory" style="text-indent:20px">2.2.1<span>Cryptographic Support (FCS)</span></a><a href="#fia-mandatory" style="text-indent:20px">2.2.2<span>Identification and Authentication (FIA)</span></a><a href="#fmt-mandatory" style="text-indent:20px">2.2.3<span>Security Management (FMT)</span></a><a href="#fpt-mandatory" style="text-indent:20px">2.2.4<span>Protection of the TSF (FPT)</span></a><a href="#opt-sfrs" style="text-indent:10px">2.3<span>Evaluation Activities for Optional SFRs</span></a><a href="#sel-sfrs" style="text-indent:10px">2.4<span>Evaluation Activities for Selection-Based SFRs</span></a><a href="#fcs-selectionBased" style="text-indent:20px">2.4.1<span>Cryptographic Support (FCS)</span></a><a href="#fia-selectionBased" style="text-indent:20px">2.4.2<span>Identification and Authentication (FIA)</span></a><a href="#ftp-selectionBased" style="text-indent:20px">2.4.3<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-sfrs" style="text-indent:10px">2.5<span>Evaluation Activities for Objective SFRs</span></a><a href="#impl-sfrs-" style="text-indent:10px">2.6<span>Evaluation Activities for Implementation-dependent SFRs</span></a><a href="#sar_aas" style="text-indent:0px">3<span>Evaluation Activities for SARs</span></a><a href="#sup-info" style="text-indent:0px">4<span>Required Supplementary Information</span></a><a href="#biblio" style="text-indent:0px">Appendix A - <span>References</span></a></div><h1 id="introduction" class="indexable" data-level="0">1 Introduction</h1><h2 id="scope" class="indexable" data-level="1">1.1 Technology Area and Scope of Supporting Document</h2><p>The scope of the 
+        </span></a><a href="#man-sfrs" style="text-indent:10px">2.2<span>TOE SFR Evaluation Activities</span></a><a href="#fcs" style="text-indent:20px">2.2.1<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">2.2.2<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">2.2.3<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">2.2.4<span>Protection of the TSF (FPT)</span></a><a href="#opt-sfrs" style="text-indent:10px">2.3<span>Evaluation Activities for Optional SFRs</span></a><a href="#sel-sfrs" style="text-indent:10px">2.4<span>Evaluation Activities for Selection-Based SFRs</span></a><a href="#ftp" style="text-indent:20px">2.4.1<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-sfrs" style="text-indent:10px">2.5<span>Evaluation Activities for Objective SFRs</span></a><a href="#impl-sfrs-" style="text-indent:10px">2.6<span>Evaluation Activities for Implementation-dependent SFRs</span></a><a href="#sar_aas" style="text-indent:0px">3<span>Evaluation Activities for SARs</span></a><a href="#sup-info" style="text-indent:0px">4<span>Required Supplementary Information</span></a><a href="#biblio" style="text-indent:0px">Appendix A - <span>References</span></a></div><h1 id="introduction" class="indexable" data-level="0">1 Introduction</h1><h2 id="scope" class="indexable" data-level="1">1.1 Technology Area and Scope of Supporting Document</h2><p>The scope of the 
     PP-Module for File Encryption Enterprise Management is
     to describe the security functionality of 
     File Encryption Enterprise Management
@@ -416,7 +416,7 @@ The following sections list Common Criteria and technology terms used in this do
         </h3>
 	  The PP-Module does not modify any requirements when the 
 	  App PP is the base.
-	<h2 class="indexable" data-level="1" id="man-sfrs">2.2 TOE SFR Evaluation Activities</h2><h2 class="indexable" data-level="2" id="fcs-mandatory">2.2.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS-CKM-6"><h4>FCS_CKM.6 Cryptographic Key Destruction</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM.6</div>
+	<h2 class="indexable" data-level="1" id="man-sfrs">2.2 TOE SFR Evaluation Activities</h2><h2 class="indexable" data-level="2" id="fcs">2.2.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS-CKM-6"><h4>FCS_CKM.6 Cryptographic Key Destruction</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM.6</div>
               
               
               
@@ -425,7 +425,7 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 The evaluator shall verify the TSS provides a high level description of what it means
                 for keys and key material to be no longer needed and when then should be expected to
-                be destroyed. <br/><br/><h4>KMD</h4>   
+                be destroyed. <br/><br/>   
                 The evaluator examines the KMD to ensure it describes how the keys are managed in volatile memory. 
                 This description includes details of how each identified key is introduced into volatile memory (e.g. by derivation 
                 from user input, or by unwrapping a wrapped key stored in non-volatile memory) and how they are overwritten.<br/><br/>
@@ -482,20 +482,73 @@ The following sections list Common Criteria and technology terms used in this do
                 upon their deletion. If a RAID array is being used, only set-ups that support TRIM are utilized. If the drive is 
                 connected via PCI-Express, the operating system supports TRIM over that channel.<br/><br/>
                 
-                The drive should be healthy and contains minimal corrupted data and should be end-of-lifed before a significant 
+                The drive should be healthy and contain minimal corrupted data and should be at end-of-life before a significant 
                 amount of damage to drive health occurs, this minimizes the risk that small amounts of 
                 potentially recoverable data may remain in damaged areas of the drive.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 These tests are only for key destruction provided by the application, test 2 does not apply to any keys using the selection "new value of a key": <br/> <br/>
                 <span class="testlist-"><ul>
                    <br/><br/>  <br/><br/> Tests 3 and 4 do not apply for the selection instructing the underlying platform to destroy the representation of the key, as the TOE has no visibility into the inner workings and completely relies on the underlying platform. <br/><br/>  <br/><br/>  <br/><br/> 
                   <li class="test-"><a id="_t_1" class="defined" href="#_t_1">Test FCS_CKM.6:1</a>:
-      Applied to each key held in volatile memory and subject to destruction by overwrite by the TOE (whether or not the value is subsequently encrypted for storage in volatile or non-volatile memory). In the case where the only selection made for the key destruction method was removal of power, then this test is unnecessary. <br/><br/>  <br/><br/> The evaluator shall: <br/><br/>  <br/><br/> 1. Record the value of the key in the TOE subject to clearing. <br/><br/> 2. Cause the cause the TOE or the underlying platform to dump to perform a normal cryptographic processing with the key from Step #1. <br/><br/> 3. Cause the TOE to clear the key. <br/><br/> 4. Cause the TOE to stop the execution but not exit. <br/><br/> 5. Cause the TOE to dump the entire memory of the TOE into a binary file. <br/><br/> 6. Search the content of the binary file created in Step #5 for instances of the known key value from Step #1. <br/><br/> Steps #1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, then the test fails.</li>
+      Applied to each key held in volatile memory and subject to destruction by overwrite by the 
+                    TOE (whether or not the value is subsequently encrypted for storage in volatile or non-volatile memory). 
+                    In the case where the only selection made for the key destruction method was removal of power, then this test is unnecessary. <br/><br/>
+                    
+                    The evaluator shall:<br/><br/>
+                    
+                    1. Record the value of the key in the TOE subject to clearing.<br/>
+                    
+                    2. Cause the cause the TOE or the underlying platform to dump to perform a normal cryptographic processing with the key from Step #1.<br/>
+                    
+                    3. Cause the TOE to clear the key.<br/>
+                    
+                    4. Cause the TOE to stop the execution but not exit.<br/>
+                    
+                    5. Cause the TOE to dump the entire memory of the TOE into a binary file.<br/>
+                    
+                    6. Search the content of the binary file created in Step #5 for instances of the known key value from Step #1.<br/>
+                    
+                    Steps #1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, then the test fails.</li>
                   <li class="test-"><a id="_t_2" class="defined" href="#_t_2">Test FCS_CKM.6:2</a>:
-      [Conditional] If new value of a key is selected this test does not apply. <br/><br/> Applied to each key held in non-volatile memory and subject to destruction by the TOE. <br/><br/> The evaluator shall use special tools (as needed), provided by the TOE developer if necessary, to ensure the tests function as intended. <br/><br/> 1. Identify the purpose of the key and what access should fail when it is deleted. (e.g. the file encryption key being deleted would cause data decryption to fail.) <br/><br/> 2. Cause the TOE to clear the key. <br/><br/> 3. Have the TOE attempt the functionality that the cleared key would be necessary for. <br/><br/> 4. The test succeeds if Step #3 fails.</li>
+      [Conditional] If new value of a key is selected this test does not apply. <br/>
+                    Applied to each key held in non-volatile memory and subject to destruction by the TOE. <br/>
+                    The evaluator shall use special tools (as needed), provided by the TOE developer if necessary, to ensure the tests function as intended.<br/>
+                    
+                    1. Identify the purpose of the key and what access should fail when it is deleted. (e.g. the file encryption key being deleted would cause data decryption to fail.)<br/>
+                    
+                    2. Cause the TOE to clear the key.<br/>
+                    
+                    3. Have the TOE attempt the functionality that the cleared key would be necessary for.<br/>
+                    
+                    4. The test succeeds if Step #3 fails.</li>
                   <li class="test-"><a id="_t_3" class="defined" href="#_t_3">Test FCS_CKM.6:3</a>:
-      Applied to each key held in non-volatile memory and subject to destruction by overwrite by the TOE. The evaluator shall use a tool that provides a logical view of the media (e.g., MBR file system): <br/><br/> 1. Record the value of the key in the TOE subject to clearing. <br/><br/> 2. Cause the TOE to perform a normal cryptographic processing with the key from Step #1. <br/><br/> 3. Cause the TOE to clear the key. <br/><br/> 4. Search the logical view that the key was stored in for instances of the known key value from Step #1. If a copy is found, then the test fails.</li>
+      Applied to each key held in non-volatile memory and subject to destruction by overwrite by the TOE. The evaluator shall use a tool that provides a logical view of the media (e.g., MBR file system):<br/>
+                    
+                    1. Record the value of the key in the TOE subject to clearing.<br/>
+                    
+                    2. Cause the TOE to perform a normal cryptographic processing with the key from Step #1.<br/>
+                    
+                    3. Cause the TOE to clear the key.<br/>
+                    
+                    4. Search the logical view that the key was stored in for instances of the known key value from Step #1. If a copy is found, then the test fails. </li>
                   <li class="test-"><a id="_t_4" class="defined" href="#_t_4">Test FCS_CKM.6:4</a>:
-      Applied to each key held in non-volatile memory and subject to destruction by overwrite by the TOE. The evaluator shall use a tool that provides a logical view of the media: <br/><br/> 1. Record the logical storage location of the key in the TOE subject to clearing. <br/><br/> 2. Cause the TOE to perform a normal cryptographic processing with the key from Step #1. <br/><br/> 3. Cause the TOE to clear the key. <br/><br/> 4. Read the logical storage location in Step #1 of non-volatile memory to ensure the appropriate pattern is utilized. <br/><br/> The test succeeds if correct pattern is used to overwrite the key in the memory location. If the pattern is not found the test fails.</li>
+      Applied to each key held in non-volatile memory and subject to destruction by overwrite by the TOE. 
+                    The evaluator shall use a tool that provides a logical view of the media:<br/>
+                    
+                    
+                    1. Record the logical storage location of the key in the TOE subject to clearing.<br/>
+                    
+                    
+                    2. Cause the TOE to perform a normal cryptographic processing with the key from Step #1.<br/>
+                    
+                    
+                    3. Cause the TOE to clear the key.<br/>
+                    
+                    
+                    4. Read the logical storage location in Step #1 of non-volatile memory to ensure the appropriate pattern is utilized.<br/>
+                    
+                    
+                    The test succeeds if correct pattern is used to overwrite the key in the memory location. 
+                    If the pattern is not found the test fails.</li>
                    <br/><br/> 
                 </ul></span>
               </div></div></span></div><div class="comp" id="FCS-KYC-EXT-1"><h4>FCS_KYC_EXT.1 Key Chaining and Key Storage</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_KYC_EXT.1</div>
@@ -522,7 +575,7 @@ The following sections list Common Criteria and technology terms used in this do
               evaluator shall examine the key chain to ensure that at no point the chain could be
               broken without a cryptographic exhaust, the initial authorization value, recovery value
               or a compromise of the TOE server and the effective strength of the keys are maintained
-              throughout the key chain.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+              throughout the key chain.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
               If there are configurations to enable or disable use of enterprise server, which modify
               the key chain, they shall be described.
               If there are configurations on to enable recovery mechanisms, they shall be described.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FCS-VAL-EXT-1-ADMIN"><h4>FCS_VAL_EXT.1/Admin Validation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.1/Admin</div>
@@ -534,7 +587,7 @@ The following sections list Common Criteria and technology terms used in this do
                 the evaluator shall confirm that the TSS describes how each is validated (e.g., each submask validated before combining, once combined validation takes place). <br/><br/>
                 
                 Conditional: <br/>If 'receiving assertion of the subject's validity' is selected, the evaluator shall examine the TSS to verify that it describes the environments that can be leveraged with the TOE 
-                and how each claims to perform validation. The evaluator shall also ensure that none of the stated platform validation mechanisms weaken the key chain of the product.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the validation functionality is configurable, the evaluator shall examine the operational guidance
+                and how each claims to perform validation. The evaluator shall also ensure that none of the stated platform validation mechanisms weaken the key chain of the product.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the validation functionality is configurable, the evaluator shall examine the operational guidance
               to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">There are no test activities for this requirement.</div></div></span></div><div class="comp" id="FCS-VAL-EXT-1-USER"><h4>FCS_VAL_EXT.1/User Validation (User)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.1/User</div>
               
               
@@ -542,7 +595,7 @@ The following sections list Common Criteria and technology terms used in this do
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine which component of the Operational Environment is used to assert the User’s identity. <br/><br/>
             The evaluator shall examine the TSS to determine how the TOE responds to an assertion by the Operational Environment. The evaluator shall examine the
             TSS to verify that it describes how validation is performed. The evaluator shall verify the TSS ensures that the validation process does not expose
-            any material that might compromise key material or expose protected data.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operational Environment to enable the OE
+            any material that might compromise key material or expose protected data.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to ensure it describes how to configure the TOE and Operational Environment to enable the OE
   to provide User identity assertions to the TOE. <br/><br/>
             
             (conditional) If the number of User authentication attempts is configurable in the TOE, the examiner shall examine the operational guidance to ensure it describes
@@ -550,15 +603,22 @@ The following sections list Common Criteria and technology terms used in this do
                 The evaluator shall perform the following tests: <br/>
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_5" class="defined" href="#_t_5">Test FCS_VAL_EXT.1/User:1</a>:
-      The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period, the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.</li>
+      
+            The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. The evaluator will test the TOE by
+            entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any “lockout” period,
+            the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.
+		    </li>
                   <li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FCS_VAL_EXT.1/User:2</a>:
-      For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs from being forwarded to the endpoint.</li>
+      
+            For each validated authorization factor, ensure that when the user provides an incorrect authorization factor, the TOE prevents FEKs or keys that decrypt FEKs
+            from being forwarded to the endpoint.
+		    </li>
                 </ul></span>
               </div></div></span></div><div class="comp" id="FCS-VAL-EXT-2-USER"><h4>FCS_VAL_EXT.2/User Validation Remediation (User)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.2/User</div>
               
               
               
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.</div></div></span></div><h2 class="indexable" data-level="2" id="fia-mandatory">2.2.2 Identification and Authentication (FIA)</h2><div class="comp" id="FIA-AUT-EXT-1"><h4>FIA_AUT_EXT.1 Subject Authorization</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_AUT_EXT.1</div>
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">This SFR is evaluated through the activities defined for FCS_VAL_EXT.1/User.</div></div></span></div><h2 class="indexable" data-level="2" id="fia">2.2.2 Identification and Authentication (FIA)</h2><div class="comp" id="FIA-AUT-EXT-1"><h4>FIA_AUT_EXT.1 Subject Authorization</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_AUT_EXT.1</div>
               The evaluation activities for this component will be driven by the selections
               made by the ST author. This section describes evaluation activities for all possible
               selections in an ST; it should be understood that if a capability is not selected in
@@ -587,7 +647,7 @@ The following sections list Common Criteria and technology terms used in this do
               Requirement met by the OE:<br/> The evaluator shall examine the TSS to
               ensure a description is included for how the TOE is invoking the OE
               functionality and how it is getting an authorization value that has appropriate
-              entropy. <br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the AGD guidance includes instructions for all of the
+              entropy. <br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the AGD guidance includes instructions for all of the
               authorization factors. The AGD will discuss the characteristics of external
               authorization factors (e.g., how the authorization factor is generated; format(s) or
               standards that the authorization factor must meet, configuration of the TPM device
@@ -596,13 +656,13 @@ The following sections list Common Criteria and technology terms used in this do
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that types of supported recovery
-            credential are specified.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for turning off the ability of the server to return a recovery credential.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall disable the ability of a server to return a recovery credential. The evaluator should then attempt to obtain the recovery credential and this should fail.</div></div></span></div><div class="comp" id="FIA-UAU-1"><h4>FIA_UAU.1 Timing of Authentication</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_UAU.1</div>
+            credential are specified.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for turning off the ability of the server to return a recovery credential.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall disable the ability of a server to return a recovery credential. The evaluator should then attempt to obtain the recovery credential and this should fail.</div></div></span></div><div class="comp" id="FIA-UAU-1"><h4>FIA_UAU.1 Timing of Authentication</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_UAU.1</div>
               
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf
               of the administrator prior to login of the administrator. The evaluator shall examine the TSS to determine that it describes the list
-              of actions that require administrator authentication.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
+              of actions that require administrator authentication.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall examine the guidance documentation to determine that any necessary preparatory steps 
               (e.g., establishing credential material such as pre- shared keys, tunnels, certificates, etc.) to logging in are described.
               For each supported login method, the evaluator shall ensure the guidance documentation provides clear instructions for successfully
               logging on. If configuration is necessary to ensure the services provided before login are limited, the evaluator shall determine
@@ -610,34 +670,40 @@ The following sections list Common Criteria and technology terms used in this do
                 The evaluator shall perform the following tests: <br/>
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_7" class="defined" href="#_t_7">Test FIA_UAU.1:1</a>:
-      The evaluator shall verify that the list of actions allowed without administrator login completes successfully without requiring administrator login and make sure this list is consistent with the TSS.</li>
+      The evaluator shall verify that the list of actions allowed without administrator login completes 
+                  successfully without requiring administrator login and make sure this list is consistent with the TSS. </li>
                   <li class="test-"><a id="_t_8" class="defined" href="#_t_8">Test FIA_UAU.1:2</a>:
-      The evaluator shall verify that attempting any other action requires successful entry of an administrator credential.</li>
+      The evaluator shall verify that attempting any other action requires successful entry of an administrator credential. </li>
                   <li class="test-"><a id="_t_9" class="defined" href="#_t_9">Test FIA_UAU.1:3</a>:
-      The evaluator shall use the guidance documentation to configure the appropriate credential supported for the login method. For that credential/login method, the evaluator shall show that providing correct I&amp;A information results in the ability to access the system, while providing incorrect information results in denial of access.</li>
+      The evaluator shall use the guidance documentation to configure the appropriate credential supported for the login method.
+                For that credential/login method, the evaluator shall show that providing correct I&amp;A information results in the ability to access the system,
+                while providing incorrect information results in denial of access.</li>
                   <li class="test-"><a id="_t_10" class="defined" href="#_t_10">Test FIA_UAU.1:4</a>:
-      The evaluator shall configure the services allowed (if any) according to the guidance documentation, and then determine the services available to an external remote entity. The evaluator shall determine that the list of services available is limited to those specified in the requirement.</li>
+      The evaluator shall configure the services allowed (if any) according to the guidance documentation, and then determine
+                  the services available to an external remote entity. The evaluator shall determine that the list of services available is limited to those specified in the requirement. </li>
                 </ul></span>
               </div></div></span></div><div class="comp" id="FIA-UID-1"><h4>FIA_UID.1 Timing of Identification</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_UID.1</div>
               
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf of the administrator
-              prior to identification of the administrator.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
+              prior to identification of the administrator.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
               steps for creating and configuring administrator accounts are described.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests:
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_11" class="defined" href="#_t_11">Test FIA_UID.1:1</a>:
-      The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without requiring the administrator to be identified and make sure this list is consistent with the TSS.</li>
+      The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without
+                  requiring the administrator to be identified and make sure this list is consistent with the TSS. </li>
                   <li class="test-"><a id="_t_12" class="defined" href="#_t_12">Test FIA_UID.1:2</a>:
-      The evaluator shall verify that attempting any other action requires successful entry of an administrator account name and successful entry of the administrator account credential.</li>
+      The evaluator shall verify that attempting any other action requires successful entry of an administrator
+                  account name and successful entry of the administrator account credential.  </li>
                 </ul></span>
-              </div></div></span></div><h2 class="indexable" data-level="2" id="fmt-mandatory">2.2.3 Security Management (FMT)</h2><div class="comp" id="FMT-MOF-1"><h4>FMT_MOF.1 Management of Security Functions Behaviour</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_MOF.1</div>
+              </div></div></span></div><h2 class="indexable" data-level="2" id="fmt">2.2.3 Security Management (FMT)</h2><div class="comp" id="FMT-MOF-1"><h4>FMT_MOF.1 Management of Security Functions Behaviour</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_MOF.1</div>
               
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine that the TSS details how Administrators are authenticated and identified by all TOE components. 
-                The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+                The evaluator shall examine that authentication and identification of Administrators cannot be compromised for any TOE component in this case.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
                 The evaluator shall review the guidance documentation to ensure that it contains instructions for administering the TOE both locally and remotely,
                 including any configuration that needs to be performed on the client for remote administration.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform the following tests: <br/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the TOE that conforms to the requirements of this PP-Module be tested; for instance, if the TOE can be administered through a local hardware interface, SSH, and TLS/HTTPS, then all three methods of administration must be exercised during the evaluation team’s test activities. <br/></div></div></span></div><div class="comp" id="FMT-MTD-1"><h4>FMT_MTD.1 Management of TSF Data</h4><span class="activity_pane_body"><div class="component-activity-header">FMT_MTD.1</div>
               
@@ -645,12 +711,14 @@ The following sections list Common Criteria and technology terms used in this do
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that, for each administrative function identified in the guidance documentation;
                 those that are available to the administrator are identified. For each of these functions, the evaluator shall also confirm that
-                the TSS details when changes may be made to the encryption keys and/or intermediate values.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
+                the TSS details when changes may be made to the encryption keys and/or intermediate values.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that the guidance document describes what operations on the encryption keys and intermediate
                 values are allowed to the administrator at what times.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests: <br/>
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_13" class="defined" href="#_t_13">Test FMT_MTD.1:1</a>:
-      The evaluator shall try to perform at least one of the related actions without prior authentication as administrator (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration of the TOE). This test should fail.</li>
+      The evaluator shall try to perform at least one of the related actions without prior authentication as administrator 
+                    (either by authentication as a user with no administrator privileges or without user authentication at all – depending on the configuration 
+                    of the TOE). This test should fail.</li>
                   <li class="test-"><a id="_t_14" class="defined" href="#_t_14">Test FMT_MTD.1:2</a>:
       The evaluator shall try to perform at least one of the related actions with prior authentication as administrator. This test should pass.</li>
                   <li class="test-"><a id="_t_15" class="defined" href="#_t_15">Test FMT_MTD.1:3</a>:
@@ -665,8 +733,8 @@ The following sections list Common Criteria and technology terms used in this do
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to ensure that it describes which of the selections are provided by the TOE.
               Additionally, the TSS shall describe which of the configurable selections can be disabled on the Enterprise Management Server.
               The evaluator shall examine the TSS to ensure that it describes whether the TOE provides the ability to initiate key generation, 
-              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
-  including any reliance on the Operational Environment if applicable:<br/><li>Register new user</li> <li>Revoke registration of an user</li> <li>Initiate key generation</li> <li>Initiate keying escrow</li> <li>Initiate key recovery</li> <li>Initiate key zeroization</li> <li>Set encryption policy (supported algorithms and key sizes)</li> <li>Change Administrator passwords</li> <li>Change user passwords</li> <li>Change Recovery Credentials</li> <li>Define Administrators of the TOE</li> <li>Enable/Disable the use of recovery credentials (end users)</li> <li>Configure the number of failed authentication attempts before issuing a key destruction of the FEK(s)</li> <li>Configure the number of authentication attempts that can be made in a 24 hour period</li> <li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</li> <li>The ability to enable/disable one or more functions defined in the File Encryption module</li> <li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</li> <li>ability to enable or disable one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
+              escrow, zeroization and/or recovery or whether it requests the client to perform those functions.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the Guidance Documents to ensure that, if supported, configuration of the following options is described,
+  including any reliance on the Operational Environment if applicable:<br/><li>Register new user</li> <li>Revoke registration of an user</li> <li>Initiate key generation</li> <li>Initiate keying escrow</li> <li>Initiate key recovery</li> <li>Initiate key zeroization</li> <li>Set encryption policy (supported algorithms and key sizes)</li> <li>Change Administrator passwords</li> <li>Change user passwords</li> <li>Change Recovery Credentials</li> <li>Define Administrators of the TOE</li> <li>Enable/Disable the use of recovery credentials (end users)</li> <li>Configure the number of failed authentication attempts before issuing a key destruction of the FEK(s)</li> <li>Configure the number of authentication attempts that can be made in a 24 hour period</li> <li>Configure the number of failed authentication attempts required to begin blocking subsequent attempts</li> <li>The ability to enable/disable one or more functions defined in the PP-Module for File Encryption</li> <li>The ability to authorize whether or not users can perform one or more of the functions in the File Encryption PP-Module.</li> <li>ability to enable or disable one or more of the following functions (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
 	[other management functions provided by the TSF]</li> <li>ability to perform one or more of the following functions  (configure cryptographic functionality, change authentication factors, perform a cryptograph erase of the data by the destruction of FEKs or KEKs protecting the FEKs,
 configure the number of failed validation attempts required to trigger corrective behavior, configure the corrective behavior to issue in the event of an excessive number of failed validation attempts,
@@ -676,23 +744,46 @@ configure the number of failed validation attempts required to trigger correctiv
                 The evaluator shall perform the following tests for each claimed management function:
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_17" class="defined" href="#_t_17">Test FMT_SMF.1/FEEM:1</a>:
-      The evaluator shall configure the management server and two users according to the guidance documents. The evaluator shall register the users with the management server. The evaluator shall verify that the users are identified by the management server as defined in the guidance documents. This test shall pass.</li>
+      The evaluator shall configure the management server and two users according to the guidance documents.
+                  The evaluator shall register the users with the management server. The evaluator shall verify that the users
+                  are identified by the management server as defined in the guidance documents. This test shall pass.</li>
                   <li class="test-"><a id="_t_18" class="defined" href="#_t_18">Test FMT_SMF.1/FEEM:2</a>:
-      The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is displayed as revoked in the console.</li>
+      The evaluator shall disconnect the second user from the network. The evaluator shall revoke the registration of the second user
+                  in the management server. The evaluator shall attempt to connect the second user to the network and verify the endpoint fails to connect or is
+                  displayed as revoked in the console.</li>
                   <li class="test-"><a id="_t_19" class="defined" href="#_t_19">Test FMT_SMF.1/FEEM:3</a>:
-      The evaluator shall verify that the TOE performs the actions (e.g. generate key) and sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data with the new key, update the encryption algorithm key size or mode and re-encrypt).</li>
+      The evaluator shall verify that the TOE performs the actions (e.g. generate key) and
+                  sends the result to the user's client. The user's client shall perform the actions necessary to accept the updated configuration (e.g. encrypt the data
+                  with the new key, update the encryption algorithm key size or mode and re-encrypt).</li>
                   <li class="test-"><a id="_t_20" class="defined" href="#_t_20">Test FMT_SMF.1/FEEM:4</a>:
-      For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the user's client to perform the action (generate a key and encrypt the data, zeroize a key).</li>
+      For each item that is initiated by the TOE but performed on the endpoint, the evaluator shall verify that the TOE requests the
+                  user's client to perform the action (generate a key and encrypt the data, zeroize a key). </li>
                   <li class="test-"><a id="_t_21" class="defined" href="#_t_21">Test FMT_SMF.1/FEEM:5</a>:
-      For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server, and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.</li>
+      For each method of changing a credential, the evaluator shall first provision the initial authorization factor(s) in the Enterprise Server,
+                  and then verify all authorization values supported allow the user access to the encrypted data on the user's client. Then the evaluator shall exercise
+                  the management functions to change the authorization factor values to a new one on the Enterprise Server. Then he or she will verify that the user's client
+                  denies access to the user’s encrypted data when he or she uses the old or original authorization factor values to gain access.  </li>
                   <li class="test-"><a id="_t_22" class="defined" href="#_t_22">Test FMT_SMF.1/FEEM:6</a>:
-      The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors. The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server. Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with their original authorization factor.</li>
+      The evaluator shall add two administrators to the administrator group in the Enterprise Server and provision authorization
+                  factor(s) for each administrator. The evaluator shall verify that both administrators can log into the Enterprise Server using the provided authorization factors.
+                  The evaluator shall then exercise the management functions to change the authorization factor values for the first administrator to a new one on the Enterprise Server.
+                  Then he or she will verify that the Enterprise Server denies the first administrator access to the Management Console when the first administrator logs in with the old
+                  or original authorization factor to gain access. The evaluator shall also verify that the second administrator is still able to log in to the Enterprise Server with
+                  their original authorization factor. </li>
                   <li class="test-"><a id="_t_23" class="defined" href="#_t_23">Test FMT_SMF.1/FEEM:7</a>:
-      The evaluator shall verify that the an administrator can configure each of the supported authorization factors attempts limits and shall verify that the user is denied access after surpassing that limit.</li>
+      The evaluator shall verify that the an administrator can configure each of the supported authorization factors attempts limits 
+			and shall verify that the user is denied access after surpassing that limit. </li>
                   <li class="test-"><a id="_t_24" class="defined" href="#_t_24">Test FMT_SMF.1/FEEM:8</a>:
-      If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor.</li>
+      If the TOE provides the capability to disable management of any capability allowed in the EM PP-Module, the evaluator shall devise a test that
+                  ensures that each capability which can be disabled has been or can be disabled following guidance provided by the vendor. </li>
                   <li class="test-"><a id="_t_25" class="defined" href="#_t_25">Test FMT_SMF.1/FEEM:9</a>:
-      If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients, the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows: Disable the administrative capability in a File Encryption Client and enable it in the EM. Verify that the administration of the capability in the EM is successful.</li>
+      If the TOE provides the capability to manage capabilities in place of the File Encryption Clients, where those administrative capabilities are then disabled in the File Encryption Clients,
+                  the evaluator shall devise a test that ensures that each capability which can be disabled in the File Encryption Clients and can be subsequently managed by the EM is tested as follows:
+                  
+                  Disable the administrative capability in a File Encryption Client and enable it in the EM.
+                  
+                  Verify that the administration of the capability in the EM is successful.
+                </li>
                   <li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FMT_SMF.1/FEEM:10</a>:
       The evaluator shall verify the encryption policy enforcement by changing the permitted algorithms and verifying the changes take place.</li>
                 </ul></span>
@@ -701,43 +792,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">Refer to the evaluation activities for FMT_MOF.1.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-              Refer to the evaluation activities for FMT_MOF.1.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">Refer to the evaluation activities for FMT_MOF.1.</div></div></span></div><h2 class="indexable" data-level="2" id="fpt-mandatory">2.2.4 Protection of the TSF (FPT)</h2><div class="comp" id="FPT-ITT-1"><h4>FPT_ITT.1 Basic Internal TSF Data Transfer Protection</h4><span class="activity_pane_body"><div class="component-activity-header">FPT_ITT.1</div>
-              
-              
-              
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
-              each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
-              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the 
-              requirements in the ST.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
-              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions 
-		    to reestablish a connection should a connection be unintentionally broken. <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The evaluator shall perform the following tests: <br/>
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FPT_ITT.1:1</a>:
-      The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.</li>
-                  <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FPT_ITT.1:2</a>:
-      The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.</li>
-                  <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FPT_ITT.1:3</a>:
-      The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</li>
-                </ul></span>
-                Further evaluation activities are associated with the specific protocols.
-              </div></div></span></div><div class="comp" id="FPT-KYP-EXT-1"><h4>FPT_KYP_EXT.1 Protection of Keys and Key Material </h4><span class="activity_pane_body"><div class="component-activity-header">FPT_KYP_EXT.1</div>
-              
-              
-              
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall verify the TSS for a high level description of the method(s) used
-                to protect keys stored in non-volatile memory.<br/><br/><h4>KMD</h4>The evaluator shall verify
-                the KMD to ensure it describes the storage location of all keys and the protection of
-                all keys stored in non-volatile memory. The description of the key chain shall be
-                reviewed to ensure FCS_COP.1/KW is followed for the storage of wrapped or encrypted
-                keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
-                criteria for storage. <br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FPT-KYP-EXT-2"><h4>FPT_KYP_EXT.2 Attribution of Key and Key Material</h4><span class="activity_pane_body"><div class="component-activity-header">FPT_KYP_EXT.2</div>
-              
-              
-              
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to verify that it describes the method by which an association is 
-                  maintained and verify it matches the selections.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, 
-  if any configuration is necessary.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.</div></div></span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="fcs-selectionBased">2.4.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS-CKM-EXT-6"><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM_EXT.6</div>
+              Refer to the evaluation activities for FMT_MOF.1.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">Refer to the evaluation activities for FMT_MOF.1.</div></div></span></div><h2 class="indexable" data-level="2" id="fpt">2.2.4 Protection of the TSF (FPT)</h2><div class="comp" id="FCS-CKM-EXT-6"><h4>FCS_CKM_EXT.6 Cryptographic Password/Passphrase Conditioning</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_CKM_EXT.6</div>
               
               
               
@@ -777,21 +832,22 @@ configure the number of failed validation attempts required to trigger correctiv
               
               <br/><br/>FCS_CKM_EXT.6.2: The ST author shall provide a
               description in the TSS regarding the salt generation. The evaluator shall confirm that
-              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <a href="#bibAppPP">[AppPP]</a>). <br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <a href="#bibAppPP">[AppPP]</a>). <br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
               Support for minimum length: The evaluators shall check the Operational Guidance 
               to determine that there are instructions on how to generate large passwords/passphrases, and
               instructions on how to configure the password/passphrase length 
               to provide entropy commensurate with the keys that the authorization factor is protecting.  <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 Support for Password/Passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance: <br/>
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FCS_CKM_EXT.6:1</a>:
-      Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters.</li>
-                  <li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FCS_CKM_EXT.6:2</a>:
-      Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.6.1.</li>
-                  <li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FCS_CKM_EXT.6:3</a>:
-      Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.6.4. If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</li>
-                  <li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FCS_CKM_EXT.6:4</a>:
-      Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.6.2.</li>
+                  <li class="test-"><a id="_t_27" class="defined" href="#_t_27">Test FCS_CKM_EXT.6:1</a>:
+      Ensure that the TOE supports passwords/passphrases of a minimum length of 64 characters. </li>
+                  <li class="test-"><a id="_t_28" class="defined" href="#_t_28">Test FCS_CKM_EXT.6:2</a>:
+      Ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.6.1. </li>
+                  <li class="test-"><a id="_t_29" class="defined" href="#_t_29">Test FCS_CKM_EXT.6:3</a>:
+       Ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.6.4.
+                  If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</li>
+                  <li class="test-"><a id="_t_30" class="defined" href="#_t_30">Test FCS_CKM_EXT.6:4</a>:
+       Ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.6.2.</li>
                 </ul></span>
                  <br/>Conditioning: No explicit testing of the formation of the authorization factor from the input password/passphrase is required.
               </div></div></span></div><div class="comp" id="FCS-COP-1-KT"><h4>FCS_COP.1/KT Cryptographic operation (Key Transport)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KT</div>
@@ -803,16 +859,50 @@ configure the number of failed validation attempts required to trigger correctiv
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 For each supported key transport schema, the evaluator shall initiate at least 25 sessions that require key transport with an independently developed remote instance of a key transport entity, using known RSA key-pairs. The evaluator shall observe traffic passed from the sender-side and to the receiver-side of the TOE, and shall perform the following tests, specific to which key transport scheme was employed.
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FCS_COP.1/KT:1</a>:
-      The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP encryption operation of the TOE and make sure it is the correct length, either 256 or 384 bytes depending on RSA key size. The evaluator shall also feed into the TOE's RSA-OEAP decryption operation some cipher texts that are the wrong length and verify that the erroneous input is detected and that the decryption operation exits with an error code.</li>
-                  <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_COP.1/KT:2</a>:
-      The evaluator shall convert each cipher text, C, produced by the RSA-OAEP encryption operation of the TOE to the correct cipher text integer, c, and use the decryption primitive to compute em = RSADP((n,d),c) and convert em to the encoded message EM. The evaluator shall then check that the first byte of EM is 0x00. The evaluator shall also feed into the TOE's RSA-OEAP decryption operation some cipher texts where the first byte of EM was set to a value other than 0x00, and verify that the erroneous input is detected and that the decryption operation exits with an error code.</li>
-                  <li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_COP.1/KT:3</a>:
-      The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP encryption operation of the TOE using RSADP, and perform the OAEP decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover HA' || X. For each HA', the evaluator shall take the corresponding A and the specified hash algorithm and verify that HA' = Hash(A). The evaluator shall also force the TOE to perform some RSA-OAEP decryption where the A value is passed incorrectly, and the evaluator shall verify that an error is detected.</li>
-                  <li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FCS_COP.1/KT:4</a>:
-      The evaluator shall check the format of the 'X' string recovered in OAEP.Test.3 to ensure that the format is of the form PS || 01 || K, where PS consists of zero or more consecutive 0x00 bytes and K is the transported keying material. The evaluator shall also feed into the TOE's RSA-OEAP decryption operation some cipher texts for which the resulting 'X' strings do not have the correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly formatted 'X' variables shall be detected by the RSA-OEAP decrypt function.</li>
-                  <li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FCS_COP.1/KT:5</a>:
-      The evaluator shall trigger all detectable decryption errors and validate that the returned error codes are the same and that no information is given back to the sender on which type of error occurred. The evaluator shall also validate that no intermediate results from the TOE's receiver-side operations are revealed to the sender.</li>
+                  <li class="test-"><a id="_t_31" class="defined" href="#_t_31">Test FCS_COP.1/KT:1</a>:
+      The evaluator shall inspect each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE and make sure it is the correct length, either
+                    256 or 384 bytes depending on RSA key size. The evaluator shall also feed into
+                    the TOE's RSA-OEAP decryption operation some cipher texts that are the
+                    wrong length and verify that the erroneous input is detected and that the
+                    decryption operation exits with an error code.
+                  </li>
+                  <li class="test-"><a id="_t_32" class="defined" href="#_t_32">Test FCS_COP.1/KT:2</a>:
+      The evaluator shall convert each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE to the correct cipher text integer, c, and use the
+                    decryption primitive to compute em = RSADP((n,d),c) and convert em to the
+                    encoded message EM. The evaluator shall then check that the first byte of EM
+                    is 0x00. The evaluator shall also feed into the TOE's RSA-OEAP decryption
+                    operation some cipher texts where the first byte of EM was set to a value other
+                    than 0x00, and verify that the erroneous input is detected and that the decryption
+                    operation exits with an error code.
+                  </li>
+                  <li class="test-"><a id="_t_33" class="defined" href="#_t_33">Test FCS_COP.1/KT:3</a>:
+      The evaluator shall decrypt each cipher text, C, produced by the RSA-OAEP
+                    encryption operation of the TOE using RSADP, and perform the OAEP
+                    decoding operation (described in NIST SP 800-56B section 7.2.2.4) to recover
+                    HA' || X. For each HA', the evaluator shall take the corresponding A and the
+                    specified hash algorithm and verify that HA' = Hash(A). The evaluator
+                    shall also force the TOE to perform some RSA-OAEP decryption
+                    where the A value is passed incorrectly, and the evaluator shall verify
+                    that an error is detected.
+                  </li>
+                  <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FCS_COP.1/KT:4</a>:
+      The evaluator shall check the format of the 'X' string recovered in OAEP.Test.3
+                    to ensure that the format is of the form PS || 01 || K, where PS consists of zero or
+                    more consecutive 0x00 bytes and K is the transported keying material. The
+                    evaluator shall also feed into the TOE's RSA-OEAP decryption
+                    operation some cipher texts for which the resulting 'X' strings do not have the
+                    correct format (i.e., the leftmost non-zero byte is not 0x01). These incorrectly 
+                    formatted 'X' variables shall be detected by the RSA-OEAP decrypt
+                    function.
+                  </li>
+                  <li class="test-"><a id="_t_35" class="defined" href="#_t_35">Test FCS_COP.1/KT:5</a>:
+      The evaluator shall trigger all detectable decryption errors and validate that the
+                    returned error codes are the same and that no information is given back to the
+                    sender on which type of error occurred. The evaluator shall also validate that no
+                    intermediate results from the TOE's receiver-side operations are revealed to the
+                    sender.</li>
                 </ul></span>
                  <br/>
               </div></div></span></div><div class="comp" id="FCS-COP-1-KW"><h4>FCS_COP.1/KW Cryptographic operation (Key Wrapping)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_COP.1/KW</div>
@@ -830,7 +920,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               The evaluator shall verify the TSS includes a description of the key wrap function(s)
               and shall verify the key wrap uses an approved key wrap algorithm according to the
-              appropriate specification.<br/><br/><h4>KMD</h4>
+              appropriate specification.<br/><br/>
                 The evaluator shall review the KMD to ensure that all keys are wrapped using the
                 approved method and a description of when the key wrapping occurs.<br/><br/><br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> If multiple encryption modes are supported, the evaluator examines the guidance documentation
               to determine that the method of choosing a specific mode/key size is described.
@@ -870,7 +960,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               The evaluator shall verify the TSS includes a description of the key derivation
               function and shall verify the key derivation uses an approved derivation mode and
-              key expansion algorithm according to SP 800-108 and SP 800-132. <br/><br/><h4>KMD</h4>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
+              key expansion algorithm according to SP 800-108 and SP 800-132. <br/><br/>The evaluator shall examine the vendor’s KMD to ensure that all keys used are derived using an approved method and a description of how and when the keys are derived,
               including the input values.  The evaluator shall confirm the input values are from the sources listed in the requirement.  
               The evaluator will confirm the output is of equivalent strength to the FEK(s) it is protecting.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None. <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FCS-SMC-EXT-1"><h4>FCS_SMC_EXT.1 Submask Combining</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_SMC_EXT.1</div>
               
@@ -879,60 +969,117 @@ configure the number of failed validation attempts required to trigger correctiv
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">If keys are XORed together to form an intermediate key, the TSS section
               shall identify how this is performed (e.g., if there are ordering requirements, checks
               performed, etc.). The evaluator shall also confirm that the TSS describes how the length
-              of the output produced is at least the same as that of the FEK. <br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FCS-VAL-EXT-2-ADMIN"><h4>FCS_VAL_EXT.2/Admin Validation Remediation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.2/Admin</div>
+              of the output produced is at least the same as that of the FEK. <br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">None.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FCS-VAL-EXT-2-ADMIN"><h4>FCS_VAL_EXT.2/Admin Validation Remediation (Server Administrator)</h4><span class="activity_pane_body"><div class="component-activity-header">FCS_VAL_EXT.2/Admin</div>
               
               
               
-            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine which remediation options are supported for which authentication options.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the remediation functionality is configurable, the evaluator shall examine the operational guidance
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine which remediation options are supported for which authentication options.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">If the remediation functionality is configurable, the evaluator shall examine the operational guidance
                 to ensure it describes how to configure the TOE to ensure the limits regarding validation attempts can be established.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests: <br/>
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FCS_VAL_EXT.2/Admin:1</a>:
-      The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts. For each authentication factor supported, the evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such period. Then the evaluator will verify that the TOE behaves as described in the TSS.</li>
+                  <li class="test-"><a id="_t_36" class="defined" href="#_t_36">Test FCS_VAL_EXT.2/Admin:1</a>:
+      The evaluator shall determine the limit on the average rate of the number of consecutive failed authorization attempts.
+                    For each authentication factor supported, the evaluator will test the TOE by entering that number of incorrect authorization factors in consecutive attempts to access the
+                    protected data. If the limit mechanism includes any "lockout" period, the time period tested should include at least one such
+                    period. Then the evaluator will verify that the TOE behaves as described in the TSS.</li>
                 </ul></span>
-              </div></div></span></div><h2 class="indexable" data-level="2" id="fia-selectionBased">2.4.2 Identification and Authentication (FIA)</h2><div class="comp" id="FIA-CHR-EXT-1"><h4>FIA_CHR_EXT.1 Challenge/Response Recovery Credential</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_CHR_EXT.1</div>
+              </div></div></span></div><div class="comp" id="FIA-CHR-EXT-1"><h4>FIA_CHR_EXT.1 Challenge/Response Recovery Credential</h4><span class="activity_pane_body"><div class="component-activity-header">FIA_CHR_EXT.1</div>
               
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that the methods for requesting a Recovery credential are specified. 
             The TSS shall also describe the methods used to verify user requesting the Recovery credential. 
             The evaluator shall also verify that the TSS contains the estimation of the strength of the ephemeral response and that it has at least 
-            as many potential values as a corresponding password or PIN.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
+            as many potential values as a corresponding password or PIN.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall confirm that the guidance documentation contains instructions for enforcing verification
             of the user for which the Recovery credential is requested. The guidance shall also describe configuring of the limit for
             consecutive failed validation attempts if this value is configurable.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall ensure that a response is only generated if the user for which recovery is requested are verified as specified in TSS. The evaluator shall also ensure that the response is applicable only on behalf of the requesting user with the constraints specified for consecutive failed authentication attempts. <br/> <br/>The term “managed” below is used to refer a user or device which is registered on the server, i.e. their identity can be successfully verified by either administrator or TSF. The “unmanaged” presumes that the user/device cannot be successfully verified. <br/> <br/>The evaluator shall perform the following tests: <br/>
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FIA_CHR_EXT.1:1</a>:
-      The evaluator shall configure the Challenge/Response recovery to validate the user. The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</li>
-                  <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FIA_CHR_EXT.1:2</a>:
-      The evaluator shall configure Challenge/Response recovery to validate the user. The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail.</li>
-                  <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FIA_CHR_EXT.1:3</a>:
-      The evaluator shall issue a challenge on behalf of a managed user and ensure that the response received successfully will log the user in on that device.</li>
-                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FIA_CHR_EXT.1:4</a>:
+                  <li class="test-"><a id="_t_37" class="defined" href="#_t_37">Test FIA_CHR_EXT.1:1</a>:
+      The evaluator shall configure the Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of a managed user and ensure that TSF successfully generates the response.</li>
+                  <li class="test-"><a id="_t_38" class="defined" href="#_t_38">Test FIA_CHR_EXT.1:2</a>:
+      The evaluator shall configure Challenge/Response recovery to validate the user. 
+                The evaluator shall then issue a challenge on behalf of managed User A and attempt to use it as an unmanaged User B to obtain a response. This should fail. </li>
+                  <li class="test-"><a id="_t_39" class="defined" href="#_t_39">Test FIA_CHR_EXT.1:3</a>:
+      The evaluator shall issue a challenge on behalf of a managed user and ensure that 
+                the response received successfully will log the user in on that device.</li>
+                  <li class="test-"><a id="_t_40" class="defined" href="#_t_40">Test FIA_CHR_EXT.1:4</a>:
       The evaluator shall attempt to reuse the response of User A with User B on the same system and it should fail.</li>
-                  <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_CHR_EXT.1:5</a>:
-      The evaluator shall issue a challenge on behalf of a managed user from a managed system, reboot the system [system terminates the session] and enter the response. This should fail.</li>
-                  <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FIA_CHR_EXT.1:6</a>:
-      The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</li>
+                  <li class="test-"><a id="_t_41" class="defined" href="#_t_41">Test FIA_CHR_EXT.1:5</a>:
+      The evaluator shall issue a challenge on behalf of a managed user from a managed system, 
+                reboot the system [system terminates the session] and enter the response. This should fail.</li>
+                  <li class="test-"><a id="_t_42" class="defined" href="#_t_42">Test FIA_CHR_EXT.1:6</a>:
+      The evaluator shall issue a challenge on behalf of a managed user and attempt to enter an 
+                incorrect response on the system the number of times described in the Guidance Documents. The observed behavior shall 
+                conform to the assignments/selections in FIA_CHR_EXT.1.5 and FIA_CHR_EXT.1.6.</li>
                 </ul></span>
-              </div></div></span></div><h2 class="indexable" data-level="2" id="ftp-selectionBased">2.4.3 Trusted Path/Channels (FTP)</h2><div class="comp" id="FTP-TRP-1"><h4>FTP_TRP.1 Trusted Path</h4><span class="activity_pane_body"><div class="component-activity-header">FTP_TRP.1</div>
+              </div></div></span></div><div class="comp" id="FPT-ITT-1"><h4>FPT_ITT.1 Basic Internal TSF Data Transfer Protection</h4><span class="activity_pane_body"><div class="component-activity-header">FPT_ITT.1</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that, for all communications between components of a distributed TOE,
+              each communications mechanism is identified in terms of the allowed protocols and intra-TOE configurations for that IT entity. The evaluator
+              shall also confirm that all protocols listed in the TSS for these inter-component communications are specified and included in the 
+              requirements in the ST.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for establishing the relevant allowed  
+              communication channels and protocols between each pair of authorized TOE components, and that it contains instructions 
+		    to reestablish a connection should a connection be unintentionally broken. <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                The evaluator shall perform the following tests: <br/>
+                <span class="testlist-"><ul>
+                  <li class="test-"><a id="_t_43" class="defined" href="#_t_43">Test FPT_ITT.1:1</a>:
+      The evaluator shall ensure that communications using each supported protocol between each pair of authorized TOE components is
+                  tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful. 
+                </li>
+                  <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FPT_ITT.1:2</a>:
+      The evaluator shall ensure, for each communication channel with an endpoint or server, the channel data is not sent in plaintext.
+                </li>
+                  <li class="test-"><a id="_t_45" class="defined" href="#_t_45">Test FPT_ITT.1:3</a>:
+      The evaluator shall, for each protocol associated with each authorized IT entity tested during Test 1, physically interrupt the connection.
+                  The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected. 
+                </li>
+                </ul></span>
+                Further evaluation activities are associated with the specific protocols.
+              </div></div></span></div><div class="comp" id="FPT-KYP-EXT-1"><h4>FPT_KYP_EXT.1 Protection of Keys and Key Material </h4><span class="activity_pane_body"><div class="component-activity-header">FPT_KYP_EXT.1</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall verify the TSS for a high level description of the method(s) used
+                to protect keys stored in non-volatile memory.<br/><br/>The evaluator shall verify
+                the KMD to ensure it describes the storage location of all keys and the protection of
+                all keys stored in non-volatile memory. The description of the key chain shall be
+                reviewed to ensure FCS_COP.1/KW is followed for the storage of wrapped or encrypted
+                keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the
+                criteria for storage. <br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> None.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">None.</div></div></span></div><div class="comp" id="FPT-KYP-EXT-2"><h4>FPT_KYP_EXT.2 Attribution of Key and Key Material</h4><span class="activity_pane_body"><div class="component-activity-header">FPT_KYP_EXT.2</div>
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to verify that it describes the method by which an association is 
+                  maintained and verify it matches the selections.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall verify the guidance documentation provides instructions on how to configure the association, 
+  if any configuration is necessary.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">For each method of association, the evaluator shall change the configuration so that the associate is broken and verify that enterprise functions do not work.</div></div></span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="ftp">2.4.1 Trusted Path/Channels (FTP)</h2><div class="comp" id="FTP-TRP-1"><h4>FTP_TRP.1 Trusted Path</h4><span class="activity_pane_body"><div class="component-activity-header">FTP_TRP.1</div>
               
               
               
             <div class="eacategory">TSS</div><div class="ea"><div class="ea">The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
                 along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
-                of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for 
+                of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<br/><br/>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">	The evaluator shall confirm that the guidance documentation contains instructions for 
                 establishing the remote administrative sessions for each supported method.<br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The evaluator shall perform the following tests:
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FTP_TRP.1:1</a>:
-      The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.</li>
+      The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during
+                    the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.
+                  </li>
                   <li class="test-"><a id="_t_47" class="defined" href="#_t_47">Test FTP_TRP.1:2</a>:
-      For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be initiated from the TOE.</li>
+      For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure
+                    that in fact the communication channel can be initiated from the TOE. 
+                  </li>
                   <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FTP_TRP.1:3</a>:
-      The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.</li>
+      The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.
+                  </li>
                   <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FTP_TRP.1:4</a>:
-      The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</li>
+      The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted.
+                    The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.
+                  </li>
                 </ul></span>
                 Further evaluation activities are associated with the specific protocols.
               </div></div></span></div><h2 class="indexable" data-level="1" id="obj-sfrs">2.5 Evaluation Activities for Objective SFRs</h2>The PP-Module does not define any objective requirements.<h2 class="indexable" data-level="1" id="impl-sfrs-">2.6 Evaluation Activities for Implementation-dependent SFRs</h2>The PP-Module does not define any implementation-dependent requirements.<h1 id="sar_aas" class="indexable" data-level="0">3 Evaluation Activities for SARs</h1><p>The PP-Module does not define any SARs beyond those defined within the
