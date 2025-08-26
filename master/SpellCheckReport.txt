@@ -9,6 +9,8 @@ output/fileencryption-enterprisemgmt-release-linkable.html: 56B
 output/fileencryption-enterprisemgmt-release-linkable.html: AGD
 output/fileencryption-enterprisemgmt-release-linkable.html: Behaviour
 output/fileencryption-enterprisemgmt-release-linkable.html: CEM
+output/fileencryption-enterprisemgmt-release-linkable.html: CNSA
+output/fileencryption-enterprisemgmt-release-linkable.html: CNSA2
 output/fileencryption-enterprisemgmt-release-linkable.html: CSP
 output/fileencryption-enterprisemgmt-release-linkable.html: CSPs
 output/fileencryption-enterprisemgmt-release-linkable.html: FEKs
@@ -27,6 +29,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: PCI
 output/fileencryption-enterprisemgmt-release-linkable.html: PRF
 output/fileencryption-enterprisemgmt-release-linkable.html: RSADP
 output/fileencryption-enterprisemgmt-release-linkable.html: SKC
+output/fileencryption-enterprisemgmt-release-linkable.html: SP800
 output/fileencryption-enterprisemgmt-release-linkable.html: STO
 output/fileencryption-enterprisemgmt-release-linkable.html: Sanitization
 output/fileencryption-enterprisemgmt-release-linkable.html: intra
@@ -43,6 +46,8 @@ output/fileencryption-enterprisemgmt-release.html: 56A
 output/fileencryption-enterprisemgmt-release.html: 56B
 output/fileencryption-enterprisemgmt-release.html: Behaviour
 output/fileencryption-enterprisemgmt-release.html: CEM
+output/fileencryption-enterprisemgmt-release.html: CNSA
+output/fileencryption-enterprisemgmt-release.html: CNSA2
 output/fileencryption-enterprisemgmt-release.html: CSP
 output/fileencryption-enterprisemgmt-release.html: FEKs
 output/fileencryption-enterprisemgmt-release.html: FEs
@@ -55,6 +60,7 @@ output/fileencryption-enterprisemgmt-release.html: NIST800
 output/fileencryption-enterprisemgmt-release.html: PBKDF
 output/fileencryption-enterprisemgmt-release.html: PRF
 output/fileencryption-enterprisemgmt-release.html: SKC
+output/fileencryption-enterprisemgmt-release.html: SP800
 output/fileencryption-enterprisemgmt-release.html: STO
 output/fileencryption-enterprisemgmt-release.html: Sanitization
 output/fileencryption-enterprisemgmt-release.html: administrator’
@@ -106,6 +112,8 @@ output/fileencryption-enterprisemgmt.html: 56B
 output/fileencryption-enterprisemgmt.html: AGD
 output/fileencryption-enterprisemgmt.html: Behaviour
 output/fileencryption-enterprisemgmt.html: CEM
+output/fileencryption-enterprisemgmt.html: CNSA
+output/fileencryption-enterprisemgmt.html: CNSA2
 output/fileencryption-enterprisemgmt.html: CSP
 output/fileencryption-enterprisemgmt.html: CSPs
 output/fileencryption-enterprisemgmt.html: FEKs
@@ -124,6 +132,7 @@ output/fileencryption-enterprisemgmt.html: PCI
 output/fileencryption-enterprisemgmt.html: PRF
 output/fileencryption-enterprisemgmt.html: RSADP
 output/fileencryption-enterprisemgmt.html: SKC
+output/fileencryption-enterprisemgmt.html: SP800
 output/fileencryption-enterprisemgmt.html: STO
 output/fileencryption-enterprisemgmt.html: Sanitization
 output/fileencryption-enterprisemgmt.html: administrator’
