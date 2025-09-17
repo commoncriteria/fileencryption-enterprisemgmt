@@ -193,7 +193,7 @@
           <addressed-by>FCS_CKM.1/SK (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating symmetric encryption keys.</rationale>
           <addressed-by>FCS_CKM.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating asymmetric encryption keys.</rationale>
           <addressed-by>FCS_CKM.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely establishing cryptographic keys between entities.</rationale>
-          <addressed-by>FCS_IV_EXT.1</addressed-by><rationale>Mitigates the threat by securely and unpredictably generating IVs.</rationale>
+          
           <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>Mitigates the threat by encrypting data transmitted to an external entity.</rationale>
           <addressed-by>FCS_CKM.6</addressed-by><rationale>Mitigates the threat by securely destroying keys and key material when no longer needed.</rationale>
           <addressed-by>FCS_KYC_EXT.1</addressed-by><rationale>Mitigates the threat by securely storing keys &amp; key chain material.</rationale>
