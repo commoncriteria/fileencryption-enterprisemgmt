@@ -269,9 +269,11 @@
         <branch>master</branch>
       </git>
       <url>https://github.com/commoncriteria/application</url>
-      <sec-func-req-dir>The TOE is expected to rely on some of the security functions implemented by the application
-        as a whole and evaluated against .
-        The following section describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.</sec-func-req-dir>
+      <sec-func-req-dir>
+        The TOE is expected to rely on some of the security functions implemented by the application
+        as a whole and evaluated against <xref to="bibAppPP"/>.
+        The following section describe any modifications that the ST author must make to the SFRs defined in the Base-PP in addition to what is mandated by section 5.2.       
+      </sec-func-req-dir>
       <!-- 5.1.1 Modified SFRs -->
       <modified-sfrs>
         <section title="Trusted Path/Channel (FTP)" id="mod-ftp">
@@ -583,7 +585,7 @@
             </title>
           </f-element>
           <f-element id="fcs-val-ext-admin-1e2">
-            <title>The TSF shall require validation of the [<h:i>admin</h:i>] prior to [<h:i>permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1/FEEM</h:i></title>
+            <title>The TSF shall require validation of the [<h:i>admin</h:i>] prior to [<h:i>permitting the actions described in FMT_MTD.1.1 and FMT_SMF.1.1/FEEM</h:i>].</title>
             <note role="application">
                 
                 This PP-Module performs validation of any administrator credential on the management server, as described in FIA_AUT_EXT.1.1, 
@@ -612,7 +614,7 @@
             </title>
           </f-element>
           <f-element id="fcs-val-ext-user-1e2">
-            <title>The TSF shall require validation of the [<h:i>user</h:i>] prior to [<h:i>transmitting submasks, FEKs, or keys to decrypt FEKs to the endpoint</h:i></title>
+            <title>The TSF shall require validation of the [<h:i>user</h:i>] prior to [<h:i>transmitting submasks, FEKs, or keys to decrypt FEKs to the endpoint</h:i>].</title>
             <note role="application">
               
               This references the validation of an endpoint user to the server. These activities are performed by the server.</note>
@@ -831,19 +833,6 @@
                <assignable>list of TSF-mediated actions</assignable> 
               on behalf of the administrator to be performed before the <h:b>administrator</h:b> is identified.
             </title>
-            <aactivity level="element">
-              <TSS>The evaluator shall examine the TSS to determine that it describes the list of actions that are performed on behalf of the administrator
-              prior to identification of the administrator.<h:br/><h:br/><h:h4>KMD</h:h4>None.<h:br/><h:br/></TSS>
-              <Guidance> The evaluator shall examine the guidance documentation to determine that any necessary preparatory
-              steps for creating and configuring administrator accounts are described.<h:br/><h:br/></Guidance>
-              <Tests>
-                The evaluator shall perform the following tests:
-                <testlist>
-                  <test>The evaluator shall verify that the list of actions allowed without administrator identification completes successfully without requiring the administrator to be identified and make sure this list is consistent with the TSS.</test>
-                  <test>The evaluator shall verify that attempting any other action requires successful entry of an administrator account name and successful entry of the administrator account credential.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
           </f-element>
           <f-element id="fia-uid-ext-1e2">
             <title>The TSF shall require each <h:b>administrator</h:b> to be successfully identified before allowing any other TSF-mediated actions on behalf of that <h:b>administrator</h:b>.</title>
@@ -1586,23 +1575,6 @@ configure the number of failed validation attempts required to trigger correctiv
               to</h:b> provide a communication path between itself and <h:b>authorized remote administrators</h:b> that is logically distinct from other communication paths
               and provides assured identification of its end points and protection of the communicated data from [<h:i>modification, disclosure</h:i>].
             </title>
-            <aactivity level="element">
-              <TSS>The evaluator shall examine the TSS to determine that the methods of remote TOE administration are indicated,
-                along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the TSS in support
-                of TOE administration are consistent with those specified in the requirement, and are included in the requirements in the ST.<h:br/><h:br/><h:h4>KMD</h:h4>None.<h:br/><h:br/></TSS>
-              <Guidance>	The evaluator shall confirm that the guidance documentation contains instructions for 
-                establishing the remote administrative sessions for each supported method.<h:br/><h:br/></Guidance>
-              <Tests>
-                The evaluator shall perform the following tests:
-                <testlist>
-                  <test>The evaluators shall ensure that communications using each specified (in the guidance documentation) remote administration method are tested during the course of the evaluation, setting up the connections as described in the guidance documentation and ensuring that communication is successful.</test>
-                  <test>For each protocol that the TOE can initiate as defined in the requirement, the evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be initiated from the TOE.</test>
-                  <test>The evaluator shall ensure, for each communication channel with an authorized IT entity, the channel data is not sent in plaintext.</test>
-                  <test>The evaluator shall ensure that, for each protocol associated with each authorized IT entity tested during test 1, the connection is physically interrupted. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</test>
-                </testlist>
-                Further evaluation activities are associated with the specific protocols.
-              </Tests>
-            </aactivity>
           </f-element>
           <f-element id="ftp-trp-1e2">
             <title>The TSF shall permit <h:b>remote administrators</h:b> to initiate communication via the trusted path.
@@ -1637,7 +1609,7 @@ configure the number of failed validation attempts required to trigger correctiv
     <obj-sfrs/>
     <impl-dep-sfrs/>
   </sec:Security_Requirements>
-  <appendix title="Appendix - Key Management Description" id="KMD"> 
+  <appendix title="Key Management Description" id="KMD"> 
     This appendix should be combined with the appendix in the PP-Module for File Encryption if it is also being evaluated.
     
     The documentation of the product’s encryption key management should be detailed enough
