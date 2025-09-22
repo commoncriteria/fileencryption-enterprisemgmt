@@ -191,7 +191,7 @@
             the encryption. This PP-Module considers possession of key material of equal importance to the data itself. Threat agents may
             look for key material in unencrypted storage on the Management Server and in external databases in the operating environment (OE), e.g. SQL database. </description>
           <addressed-by>FCS_CKM.1/SK (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating symmetric encryption keys.</rationale>
-          <addressed-by>FCS_CKM.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating asymmetric encryption keys.</rationale>
+          <addressed-by>FCS_CKM_EXT.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by ensuring that a key generation mechanism exists for the TOE to use.</rationale>
           <addressed-by>FCS_CKM.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely establishing cryptographic keys between entities.</rationale>
           
           <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>Mitigates the threat by encrypting data transmitted to an external entity.</rationale>
@@ -218,12 +218,10 @@
             communication between the Management Server and the Client(s) to obtain the user’s credential, keys, or recovery material.
           </description>
           <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>Mitigates the threat by encrypting sensitive or all data transmitted to an external entity.</rationale>
-          <addressed-by>FCS_CKM.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by securely generating asymmetric encryption keys.</rationale>
+          <addressed-by>FCS_CKM_EXT.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by ensuring that a key generation mechanism exists for the TOE to use.</rationale>
           <addressed-by>FCS_COP.1/SKC (from Base-PP)</addressed-by><rationale>Mitigates the threat by utilizing symmetric encryption in communications between servers and clients.</rationale>
-          <addressed-by>FCS_COP.1/Sig (from Base-PP)</addressed-by><rationale>Mitigates the threat by cryptographically signing communications between servers and clients.</rationale>
+          <addressed-by>FCS_COP.1/SigGen (from Base-PP)</addressed-by><rationale>Mitigates the threat by cryptographically signing communications between servers and clients.</rationale>
           <addressed-by>FCS_RBG_EXT.1 (from Base-PP)"</addressed-by><rationale>Mitigates the threat by using a secure RBG to support secure communication.</rationale>
-          <addressed-by>FIA_X509_EXT.1 (from Base-PP)"</addressed-by><rationale>Mitigates the threat by preventing connection to servers or clients with malformed or invalid X.509 certificates.</rationale>
-          <addressed-by>FIA_X509_EXT.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by authenticating entities using X.509 certificates.</rationale>
           <addressed-by>FPT_ITT.1</addressed-by><rationale>Mitigates the threat by encrypting data transmitted between different parts of the TOE.</rationale>
           <addressed-by>FCS_CKM_EXT.6 (selection-based)</addressed-by><rationale>Mitigates the threat by conditioning passwords or other credentials to an unreadable form.</rationale>
           <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>Mitigates the threat by protecting communication with an appropriate secure protocol.</rationale>
@@ -275,8 +273,7 @@
             The File Encryption PP-Module addresses the primary threat of unauthorized disclosure of data protected on the endpoint;
             this adds the Management Server to the scope of the threat. </description>
           <addressed-by>FCS_COP.1/SKC (from Base-PP)</addressed-by><rationale>Mitigates the threat by identifying users with a securely-encrypted value.</rationale>
-          <addressed-by>FIA_X509_EXT.1 (from Base-PP)</addressed-by><rationale>Mitigates the threat by preventing connection to servers or clients with malformed or invalid X.509 certificates.</rationale>
-          <addressed-by>FIA_X509_EXT.2 (from Base-PP)</addressed-by><rationale>Mitigates the threat by authenticating a remote entity using X.509 certificates.</rationale>
+
           <addressed-by>FCS_VAL_EXT.1/User</addressed-by><rationale>Mitigates the threat by validating the user before decryption of any data or key.</rationale>
           <addressed-by>FCS_VAL_EXT.2/User</addressed-by><rationale>Mitigates the threat by preventing excessive unsuccessful validation attempts.</rationale>
           <addressed-by>FIA_REC_EXT.1</addressed-by><rationale>Mitigates the threat by providing a secure recovery mechanism.</rationale>
