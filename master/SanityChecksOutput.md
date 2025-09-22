@@ -1,26 +1,26 @@
-* Error: Detected dangling id-reference to FIA_AUT_EXT.1.1 from attribute
-        on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fcs[1]""/f-component[3]""/depends[1]""/on[1]""
-* Error: Detected dangling id-reference to FIA_AUT_EXT.1.1 from attribute
-        on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fcs[1]""/f-component[6]""/depends[1]""/on[1]""
-* Error: Detected dangling id-reference to FIA_REC_EXT.1.1 from attribute
-        on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:fia[1]""/f-component[1]""/depends[1]""/on[1]""
-* Error: Detected dangling id-reference to FMT_SMR.2.3 from attribute
-        on/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/sec:ftp[1]""/f-component[1]""/depends[1]""/on[1]""
-* Error: Detected multiple elements with an id of 'sel_all_tlsc'.
-* Error: Detected multiple elements with an id of 'sel_all_ssh'.
+* Error: Detected multiple elements with an id of 'DRVFEKPAS'.
+* Error: Detected multiple elements with an id of 'DRVFEKPAS'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
 * Error: Detected multiple elements with an id of 'USEKEYWRA'.
+* Error: Detected multiple elements with an id of 'PLATAUTH'.
 * Error: Detected multiple elements with an id of 'APPAUTH'.
 * Error: Detected multiple elements with an id of 'USEPAS'.
+* Error: Detected multiple elements with an id of 'USECAR'.
+* Error: Detected multiple elements with an id of 'PLATAUTH'.
 * Error: Detected multiple elements with an id of 'APPAUTH'.
 * Error: Detected multiple elements with an id of 'USEPAS'.
-* Error: Detected multiple elements with an id of 'IPSEC'.
-* Error: Detected multiple elements with an id of 'sel_all_https'.
-* Error: Detected multiple elements with an id of 'sel_all_tlsc'.
-* Error: Detected multiple elements with an id of 'sel_all_ssh'.
-* Error: Detected multiple elements with an id of 'IPSEC'.
-* Error: Detected multiple elements with an id of 'sel_all_https'.
-* Error: Detected multiple elements with an id of 'sel_all_tlsc'.
-* Error: Detected multiple elements with an id of 'sel_all_ssh'.
-* Warning: Since FIA_REC_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+* Error: Detected multiple elements with an id of 'USECAR'.
+* Warning: Since FCS_CKM_EXT.6.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FCS_CKM_EXT.6.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FCS_CKM_EXT.6.4 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FDP_PRT_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FDP_PRT_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FDP_PRT_EXT.3.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FDP_AUT_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
