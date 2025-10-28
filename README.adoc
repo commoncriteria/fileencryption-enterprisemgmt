@@ -44,6 +44,7 @@ issues Open]]
 
 === Release Version
 
+* https://www.niap-ccevs.org/protectionprofiles/521[PP Module for File Encryption Enterprise Management Version 2.0]
 * https://www.niap-ccevs.org/protectionprofiles/427[PP Module for File Encryption Enterprise Management Version 1.0]
 
 === Contributing
