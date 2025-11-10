@@ -778,7 +778,7 @@ configure the number of failed validation attempts required to trigger correctiv
               
               <br/><br/>FCS_CKM_EXT.6.2: The ST author shall provide a
               description in the TSS regarding the salt generation. The evaluator shall confirm that
-              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <a href="#bibAppPP">[AppPP]</a>). <br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+              the salt is generated using an RBG described in FCS_RBG_EXT.1 (from the <span href="#bibAppPP" class="dynref" data-format=""></span>). <br/><br/><h4>KMD</h4>None.<br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
               Support for minimum length: The evaluators shall check the Operational Guidance 
               to determine that there are instructions on how to generate large passwords/passphrases, and
               instructions on how to configure the password/passphrase length 
@@ -835,7 +835,7 @@ configure the number of failed validation attempts required to trigger correctiv
                 The evaluator shall review the KMD to ensure that all keys are wrapped using the
                 approved method and a description of when the key wrapping occurs.<br/><br/><br/><br/></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> If multiple encryption modes are supported, the evaluator examines the guidance documentation
               to determine that the method of choosing a specific mode/key size is described.
-              <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The assurance activity tests specified for AES in GCM mode in the underlying <a href="#bibAppPP">[AppPP]</a> shall be performed in the case that "GCM" is selected in the requirement. <br/> <br/>The assurance activity tests specified for AES in CBC mode in the underlying <a href="#bibAppPP">[AppPP]</a> shall be performed in the case that "CBC" is selected in the requirement. <p><b>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</b></p> <p>
+              <br/><br/></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The assurance activity tests specified for AES in GCM mode in the underlying <span href="#bibAppPP" class="dynref" data-format=""></span> shall be performed in the case that "GCM" is selected in the requirement. <br/> <br/>The assurance activity tests specified for AES in CBC mode in the underlying <span href="#bibAppPP" class="dynref" data-format=""></span> shall be performed in the case that "CBC" is selected in the requirement. <p><b>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</b></p> <p>
 		The evaluator will test the authenticated encryption functionality of AES-KW for EACH
 		combination of the following input parameter lengths:
               <ul><li>128 and 256 bit key encryption keys (KEKs)</li> <li>Three plaintext lengths. One of the plaintext lengths shall be two semi-blocks (128
@@ -950,8 +950,6 @@ configure the number of failed validation attempts required to trigger correctiv
     and supplement that evaluation with the necessary SFRs that are taken from the PP-Module.
     </p><h1 id="sup-info" class="indexable" data-level="0">4 Required Supplementary Information</h1><p>This Supporting Document has no required supplementary information beyond the ST, operational
 guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appendix A -  References</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr>
-    <tr><td><span id="bibAppPP"></span>[AppPP]</td><td><a href="https://www.niap-ccevs.org/protectionprofiles/516">Protection Profile for Application Software, Version 2.0, June 16, 2025</a></td></tr>
-
     <tr><td><span id="FIPS140-2"></span>[FIPS140-2]</td><td> Federal Information Processing Standard Publication (FIPS-PUB) 140-2, Security
           Requirements for Cryptographic Modules, National Institute of Standards and Technology,
           March 19, 2007 </td></tr>
