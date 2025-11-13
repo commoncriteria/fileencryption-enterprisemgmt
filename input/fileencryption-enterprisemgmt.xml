@@ -1293,7 +1293,9 @@ configure the number of failed validation attempts required to trigger correctiv
                 This requirement is used in the body of the ST if the ST author chooses to
                 use key transport in the key chaining approach that is specified in FCS_KYC_EXT.1.
               </h:p> <h:p>
-                When describing the hybrid key-transport methods, Section 9.3 of NIST SP 800-56B only mentions using the key establishment schemes contained in SP800-56B to establish a shared symmetric key encryption key (KEK) for the transport; however any approved symmetric key establishment method could easily be substituted. This PP-Module allows the use of ML-KEM key establishment schemes with the hybrid key-transport methods described in SP800-56B to provide a CNSA2-compliant key-transport method.</h:p> <h:p>
+                When describing the hybrid key-transport methods, Section 9.3 of NIST SP 800-56B
+                only mentions using the key establishment schemes contained in SP 800-56B to
+                establish a shared symmetric key encryption key (KEK) for the transport; however any approved symmetric key establishment method could easily be substituted. This PP-Module allows the use of ML-KEM key establishment schemes with the hybrid key-transport methods described in SP 800-56B to provide a CNSA2-compliant key-transport method.</h:p> <h:p>
                 Future versions of this PP-Module may support the use of a key-encapsulation mechanism (KEM) for key transport as defined in NIST SP 800-227 (in draft as of the publication of this PP-Module), sections 5.1 and 6.2.1.
               </h:p></note>
             <aactivity>
@@ -1658,60 +1660,60 @@ configure the number of failed validation attempts required to trigger correctiv
       when a user or administrator first provisions the product.</h:li></appendix>
   <bibliography>
     <entry id="FIPS140-2">
-      <tag>FIPS140-2</tag>
+      <tag>FIPS 140-2</tag>
       <description> Federal Information Processing Standard Publication (FIPS-PUB) 140-2, Security
           Requirements for Cryptographic Modules, National Institute of Standards and Technology,
           March 19, 2007 </description>
     </entry>
     <entry id="FIPS180-4">
-      <tag>FIPS180-4</tag>
+      <tag>FIPS 180-4</tag>
       <description> Federal Information Processing Standards Publication (FIPS-PUB) 180-4, Secure
           Hash Standard, March, 2012 </description>
     </entry>
     <entry id="FIPS186-5">
-      <tag>FIPS186-5</tag>
+      <tag>FIPS 186-5</tag>
       <description> Federal Information Processing Standard Publication (FIPS-PUB) 186-5, Digital
           Signature Standard (DSS), National Institute of Standards and Technology, February 2023
         </description>
     </entry>
     <entry id="FIPS197">
-      <tag>FIPS197</tag>
+      <tag>FIPS 197</tag>
       <description>Federal Information Processing Standards Publication (FIPS-PUB) 197,
           Specification for the Advanced Encryption Standard (AES), November 26, 2001 </description>
     </entry>
     <entry id="FIPS198-1">
-      <tag>FIPS198-1</tag>
+      <tag>FIPS 198-1</tag>
       <description>Federal Information Processing Standards Publication (FIPS-PUB) 198-1, The
           Keyed-Hash Message Authentication Code (HMAC), July 2008 </description>
     </entry>
     <entry id="SP800-38A">
-      <tag>NIST800-38A</tag>
+      <tag>NIST 800-38A</tag>
       <description>NIST Special Publication 800-38A, Recommendation for Block Cipher Modes of
           Operation: Methods and Techniques, 2001 Edition </description>
     </entry>
     <entry id="SP800-56A">
-      <tag>NIST800-56A</tag>
+      <tag>NIST 800-56A</tag>
       <description>NIST Special Publication 800-56A, Recommendation for Pair-Wise Key
           Establishment Schemes Using Discrete Logarithm Cryptography (Revised), March 2007
         </description>
     </entry>
     <entry id="SP800-56B">
-      <tag>NIST800-56B</tag>
+      <tag>NIST 800-56B</tag>
       <description>NIST Special Publication 800-56B, Recommendation for Pair-Wise Key
           Establishment Schemes Using Integer Factorization Cryptography, August 2009 </description>
     </entry>
     <entry id="SP800-90">
-      <tag>NIST800-90</tag>
+      <tag>NIST 800-90</tag>
       <description>NIST Special Publication 800-90, Recommendation for Random Number Generation
           Using Deterministic Random Bit Generators (Revised), March 2007 </description>
     </entry>
     <entry id="SP800-132">
-      <tag>NIST800-132</tag>
+      <tag>NIST 800-132</tag>
       <description>NIST Special Publication 800-132, Recommendation for Password-Based Key
           Derivation, December 2010 </description>
     </entry>
     <entry id="SP800-38F">
-      <tag>NIST800-38F</tag>
+      <tag>NIST 800-38F</tag>
       <description>NIST Special Publication 800-38F,Recommendation for Block Cipher Modes of
           Operation: Methods for Key Wrapping, December 2012 </description>
     </entry>
