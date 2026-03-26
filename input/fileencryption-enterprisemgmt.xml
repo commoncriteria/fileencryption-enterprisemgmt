@@ -278,7 +278,7 @@
       </sec-func-req-dir>
       <!-- 5.1.1 Modified SFRs -->
       <modified-sfrs>
-        <section title="Trusted Path/Channel (FTP)" id="mod-ftp">
+        <section title="Class FTP: Trusted Path/Channel" id="mod-ftp">
           <!-- FTP_DIT_EXT.1 Protection of Data in Transit -->
           <base-sfr-spec cc-id="ftp_dit_ext.1" id="mod-app-ftp-dit-ext-1" title="Protection of Data in Transit">
             <consistency-rationale>This SFR is defined in the Base-PP. This PP-Module modifies it by removing the option not to transmit sensitive data because this particular
@@ -336,7 +336,7 @@
     <!-- 5.2 TOE Security Functional Requirements -->
     <man-sfrs>
       <!-- 5.2.1 Cryptographic Support (FCS) -->
-      <section title="Cryptographic Support (FCS)" id="fcs-mandatory">
+      <section title="Class FCS: Cryptographic Support" id="fcs-mandatory">
         <ext-comp-def title="Cryptographic Key Management" fam-id="FCS_CKM_EXT">
           <fam-behavior>Components in this family define requirements for key management activities that are beyond the scope of what is defined in the FCS_CKM family in CC Part 2.</fam-behavior>
         </ext-comp-def>
@@ -670,7 +670,7 @@
         </f-component>
       </section>
       <!-- 5.2.2 Identification and Authentication (FIA) -->
-      <section title="Identification and Authentication (FIA)" id="fia-mandatory">
+      <section title="Class FIA: Identification and Authentication" id="fia-mandatory">
         <ext-comp-def title="Authorization" fam-id="FIA_AUT_EXT">
           <fam-behavior>Components in this family define requirements for how subject authorization is performed. Where FIA_UAU in CC Part 2 defines circumstances where authentication is required, this family describes the specific computational methods used to determine whether a subject’s presented authentication data is valid.</fam-behavior>
         </ext-comp-def>
@@ -855,7 +855,7 @@
         </f-component>
       </section>
       <!-- 5.2.3 Security Management (FMT) -->
-      <section title="Security Management (FMT)" id="fmt-mandatory">
+      <section title="Class FMT: Security Management" id="fmt-mandatory">
         <!-- FMT_MOF.1 Management of Security Functions Behaviour -->
         <f-component cc-id="fmt_mof.1" id="fmt-mof-1" name="Management of Security Functions Behaviour">
           <consistency-rationale>This SFR defines access restrictions for TOE management functions. This is not defined in the Base-PP but there is nothing in the Base-PP that prohibits it.
@@ -1005,7 +1005,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-component>
       </section>
       <!-- 5.2.4 Protection of the TSF (FPT) -->
-      <section title="Protection of the TSF (FPT)" id="fpt-mandatory">
+      <section title="Class FPT: Protection of the TSF" id="fpt-mandatory">
         <ext-comp-def title="Protection of Key and Key Material" fam-id="FPT_KYP_EXT">
           <fam-behavior>Components in this family define requirements for secure storage of keys.</fam-behavior>
         </ext-comp-def>
@@ -1133,7 +1133,7 @@ configure the number of failed validation attempts required to trigger correctiv
     <opt-sfrs/>
     <sel-sfrs>
       <!-- 5.2.5 Cryptographic Support (FCS) -->
-      <section title="Cryptographic Support (FCS)" id="fcs-selectionBased">
+      <section title="Class FCS: Cryptographic Support" id="fcs-selectionBased">
         <ext-comp-def title="Cryptographic Key Derivation Function" fam-id="FCS_KDF_EXT">
           <fam-behavior>Components in this family define requirements for the implementation of cryptographic key derivation functions</fam-behavior>
         </ext-comp-def>
@@ -1492,7 +1492,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-component>
       </section>
       <!-- 5.2.6 Identification and Authentication (FIA) -->
-      <section title="Identification and Authentication (FIA)" id="fia-selectionBased">
+      <section title="Class FIA: Identification and Authentication" id="fia-selectionBased">
         <ext-comp-def title="Challenge/Response Recovery Credential" fam-id="FIA_CHR_EXT">
           <fam-behavior>Components in this family define requirements for the use of challenge/response as a recovery method.</fam-behavior>
         </ext-comp-def>
@@ -1564,7 +1564,7 @@ configure the number of failed validation attempts required to trigger correctiv
         </f-component>
       </section>
       <!-- 5.2.7 Trusted Path/Channels (FTP) -->
-      <section title="Trusted Path/Channels (FTP)" id="ftp-selectionBased">
+      <section title="Class FTP: Trusted Path/Channels" id="ftp-selectionBased">
         <!-- FTP_TRP.1 Trusted Path -->
         <f-component cc-id="ftp_trp.1" id="ftp-trp-1" name="Trusted Path">
           <depends on-sel="remote"/>
