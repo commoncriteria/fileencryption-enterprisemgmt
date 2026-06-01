@@ -24,6 +24,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: PCI
 output/fileencryption-enterprisemgmt-release-linkable.html: PRF
 output/fileencryption-enterprisemgmt-release-linkable.html: RSADP
 output/fileencryption-enterprisemgmt-release-linkable.html: SKC
+output/fileencryption-enterprisemgmt-release-linkable.html: SPD
 output/fileencryption-enterprisemgmt-release-linkable.html: STO
 output/fileencryption-enterprisemgmt-release-linkable.html: Sanitization
 output/fileencryption-enterprisemgmt-release-linkable.html: SigGen
@@ -50,6 +51,7 @@ output/fileencryption-enterprisemgmt-release.html: KE
 output/fileencryption-enterprisemgmt-release.html: PBKDF
 output/fileencryption-enterprisemgmt-release.html: PRF
 output/fileencryption-enterprisemgmt-release.html: SKC
+output/fileencryption-enterprisemgmt-release.html: SPD
 output/fileencryption-enterprisemgmt-release.html: STO
 output/fileencryption-enterprisemgmt-release.html: Sanitization
 output/fileencryption-enterprisemgmt-release.html: SigGen
@@ -76,6 +78,7 @@ output/fileencryption-enterprisemgmt-sd.html: OEAP
 output/fileencryption-enterprisemgmt-sd.html: PBKDF
 output/fileencryption-enterprisemgmt-sd.html: PCI
 output/fileencryption-enterprisemgmt-sd.html: RSADP
+output/fileencryption-enterprisemgmt-sd.html: SPD
 output/fileencryption-enterprisemgmt-sd.html: Sanitization
 output/fileencryption-enterprisemgmt-sd.html: algorithm’
 output/fileencryption-enterprisemgmt-sd.html: evaluator’s
@@ -112,6 +115,7 @@ output/fileencryption-enterprisemgmt.html: PCI
 output/fileencryption-enterprisemgmt.html: PRF
 output/fileencryption-enterprisemgmt.html: RSADP
 output/fileencryption-enterprisemgmt.html: SKC
+output/fileencryption-enterprisemgmt.html: SPD
 output/fileencryption-enterprisemgmt.html: STO
 output/fileencryption-enterprisemgmt.html: Sanitization
 output/fileencryption-enterprisemgmt.html: SigGen
