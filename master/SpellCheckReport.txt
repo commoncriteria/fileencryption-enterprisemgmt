@@ -9,6 +9,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: 56B
 output/fileencryption-enterprisemgmt-release-linkable.html: AGD
 output/fileencryption-enterprisemgmt-release-linkable.html: Behaviour
 output/fileencryption-enterprisemgmt-release-linkable.html: CEM
+output/fileencryption-enterprisemgmt-release-linkable.html: CFG
 output/fileencryption-enterprisemgmt-release-linkable.html: CNSA
 output/fileencryption-enterprisemgmt-release-linkable.html: CNSA2
 output/fileencryption-enterprisemgmt-release-linkable.html: CSP
@@ -28,6 +29,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: SPD
 output/fileencryption-enterprisemgmt-release-linkable.html: STO
 output/fileencryption-enterprisemgmt-release-linkable.html: Sanitization
 output/fileencryption-enterprisemgmt-release-linkable.html: SigGen
+output/fileencryption-enterprisemgmt-release-linkable.html: V1
 output/fileencryption-enterprisemgmt-release-linkable.html: intra
 output/fileencryption-enterprisemgmt-release-linkable.html: keystore
 output/fileencryption-enterprisemgmt-release-linkable.html: lifecycle
@@ -42,6 +44,7 @@ output/fileencryption-enterprisemgmt-release.html: 56A
 output/fileencryption-enterprisemgmt-release.html: 56B
 output/fileencryption-enterprisemgmt-release.html: Behaviour
 output/fileencryption-enterprisemgmt-release.html: CEM
+output/fileencryption-enterprisemgmt-release.html: CFG
 output/fileencryption-enterprisemgmt-release.html: CNSA
 output/fileencryption-enterprisemgmt-release.html: CNSA2
 output/fileencryption-enterprisemgmt-release.html: CSP
@@ -55,6 +58,7 @@ output/fileencryption-enterprisemgmt-release.html: SPD
 output/fileencryption-enterprisemgmt-release.html: STO
 output/fileencryption-enterprisemgmt-release.html: Sanitization
 output/fileencryption-enterprisemgmt-release.html: SigGen
+output/fileencryption-enterprisemgmt-release.html: V1
 output/fileencryption-enterprisemgmt-release.html: administrator’
 output/fileencryption-enterprisemgmt-release.html: credential’
 output/fileencryption-enterprisemgmt-release.html: keystore
@@ -100,6 +104,7 @@ output/fileencryption-enterprisemgmt.html: 56B
 output/fileencryption-enterprisemgmt.html: AGD
 output/fileencryption-enterprisemgmt.html: Behaviour
 output/fileencryption-enterprisemgmt.html: CEM
+output/fileencryption-enterprisemgmt.html: CFG
 output/fileencryption-enterprisemgmt.html: CNSA
 output/fileencryption-enterprisemgmt.html: CNSA2
 output/fileencryption-enterprisemgmt.html: CSP
@@ -119,6 +124,7 @@ output/fileencryption-enterprisemgmt.html: SPD
 output/fileencryption-enterprisemgmt.html: STO
 output/fileencryption-enterprisemgmt.html: Sanitization
 output/fileencryption-enterprisemgmt.html: SigGen
+output/fileencryption-enterprisemgmt.html: V1
 output/fileencryption-enterprisemgmt.html: administrator’
 output/fileencryption-enterprisemgmt.html: algorithm’
 output/fileencryption-enterprisemgmt.html: credential’
