@@ -19,6 +19,7 @@ output/fileencryption-enterprisemgmt-release-linkable.html: FEs
 output/fileencryption-enterprisemgmt-release-linkable.html: KE
 output/fileencryption-enterprisemgmt-release-linkable.html: KMD
 output/fileencryption-enterprisemgmt-release-linkable.html: MBR
+output/fileencryption-enterprisemgmt-release-linkable.html: Mofule
 output/fileencryption-enterprisemgmt-release-linkable.html: OEAP
 output/fileencryption-enterprisemgmt-release-linkable.html: PBKDF
 output/fileencryption-enterprisemgmt-release-linkable.html: PCI
@@ -51,6 +52,7 @@ output/fileencryption-enterprisemgmt-release.html: CSP
 output/fileencryption-enterprisemgmt-release.html: FEKs
 output/fileencryption-enterprisemgmt-release.html: FEs
 output/fileencryption-enterprisemgmt-release.html: KE
+output/fileencryption-enterprisemgmt-release.html: Mofule
 output/fileencryption-enterprisemgmt-release.html: PBKDF
 output/fileencryption-enterprisemgmt-release.html: PRF
 output/fileencryption-enterprisemgmt-release.html: SKC
@@ -114,6 +116,7 @@ output/fileencryption-enterprisemgmt.html: FEs
 output/fileencryption-enterprisemgmt.html: KE
 output/fileencryption-enterprisemgmt.html: KMD
 output/fileencryption-enterprisemgmt.html: MBR
+output/fileencryption-enterprisemgmt.html: Mofule
 output/fileencryption-enterprisemgmt.html: OEAP
 output/fileencryption-enterprisemgmt.html: PBKDF
 output/fileencryption-enterprisemgmt.html: PCI
