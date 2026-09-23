@@ -80,6 +80,7 @@ output/fileencryption-enterprisemgmt-sd.html: CSPs
 output/fileencryption-enterprisemgmt-sd.html: FEKs
 output/fileencryption-enterprisemgmt-sd.html: KMD
 output/fileencryption-enterprisemgmt-sd.html: MBR
+output/fileencryption-enterprisemgmt-sd.html: Mofule
 output/fileencryption-enterprisemgmt-sd.html: OEAP
 output/fileencryption-enterprisemgmt-sd.html: PBKDF
 output/fileencryption-enterprisemgmt-sd.html: PCI

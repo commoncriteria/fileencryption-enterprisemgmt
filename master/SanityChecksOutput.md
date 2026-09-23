@@ -1,3 +1,8 @@
+transforms/xsl/module2html.xsl:449: namespace error : Failed to parse QName 'xsl:'
+                 --><xsl::apply-templates select="cc:cc-doc-ref[@id=cc:from-doc/
+                         ^
+compilation error: file transforms/xsl/module-commons.xsl line 70 element apply-template
+xsltStylePreCompute: unknown xsl:apply-template
 * Error: f-element .1  appears not to have an associated evaluation activity.:
         /Module[1]""/sec:Security_Requirements[1]""/base-pp[1]""/modified-sfrs[1]""/section[1]""/base-sfr-spec[1]""/replace[1]""/xpath-specified[1]""/f-element[1]""
 * Error: Detected multiple elements with an id of 'sel_all_tlsc'.
@@ -38,6 +43,8 @@
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
+Unable to make an xref for |include-pkg| /Module[1]""/include-pkg[2]""
+Unable to make an xref for |include-pkg| /Module[1]""/include-pkg[1]""
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
@@ -47,6 +54,8 @@
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
  Failed to find a reference to bibAppPP.
+Unable to make an xref for |include-pkg| /Module[1]""/include-pkg[2]""
+Unable to make an xref for |include-pkg| /Module[1]""/include-pkg[1]""
 * Warning: Since FCS_CKM_EXT.6.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_CKM_EXT.6.4 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
