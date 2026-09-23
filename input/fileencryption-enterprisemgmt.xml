@@ -23,22 +23,6 @@
       <subject>Update to CC:2022</subject>
     </entry>
   </RevisionHistory>
-  <include-pkg id="pkg-ssh">
-    <git>
-      <url>https://github.com/commoncriteria/ssh/</url>
-      <branch>master</branch>
-    </git>
-    <url>https://www.niap-ccevs.org/protectionprofiles/515</url>
-    <depends on="sel_all_ssh"/>
-  </include-pkg>
-  <include-pkg id="pkg-tls">
-    <git>
-      <url>https://github.com/commoncriteria/tls/</url>
-      <branch>master</branch>
-    </git>
-    <url>https://www.niap-ccevs.org/protectionprofiles/465</url>
-    <depends on="sel_all_tlsc"/>
-  </include-pkg>
   <pp-preferences/>
   <sec:Introduction >
     <sec:Overview title="Overview">The scope of the File Encryption Enterprise Management PP-Module is to describe the security functionality of a file encryption 
@@ -203,6 +187,7 @@
 					<branch>release-2.1</branch>
 				</git>
 				<url>https://www.niap-ccevs.org/protectionprofiles/519</url>
+				<depends on="sel_all_tlsc"/>
 			</cc-doc-ref>
 		</FP-cc-ref>
         <FP-cc-ref conf="conformant">
