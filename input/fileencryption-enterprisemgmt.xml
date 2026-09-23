@@ -153,13 +153,68 @@
       <cc-pt3-conf>extended</cc-pt3-conf>
       <cc-pp-conf/>
       <cc-pp-config-with>
-        <Mod-cc-ref>PP-Module for VPN Clients, Version 3.0</Mod-cc-ref>
-        <Mod-cc-ref>PP-Module for File Encryption, Version 2.0</Mod-cc-ref>
+		<PP-cc-ref>
+			<cc-doc-ref id="application">
+				<git>
+					<url>https://github.com/commoncriteria/application</url>
+					<branch>release-2.0</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/516</url>
+			</cc-doc-ref>
+		</PP-cc-ref>	  
+        <Mod-cc-ref>
+			<!-- PP-Module for VPN Clients, Version 3.0 -->
+			<cc-doc-ref id="vpnclient">
+				<git>
+					<url>https://github.com/commoncriteria/vpnclient</url>
+					<branch>release-3.0</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/522</url>
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<!-- PP-Module for File Encryption, Version 2.0 -->
+			<cc-doc-ref id="fileencryption">
+				<git>
+					<url>https://github.com/commoncriteria/fileencryption</url>
+					<branch>release-2.0</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/520</url>
+			</cc-doc-ref>
+		</Mod-cc-ref>
       </cc-pp-config-with>
       <cc-pkg-claim>
-        <FP-cc-ref conf="conformant">Functional Package for SSH Version 2.0</FP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for TLS Version 2.1</FP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
+        <FP-cc-ref conf="conformant">
+			<!-- Functional Package for SSH Version 2.0 -->
+			<cc-doc-ref id="ssh">
+				<git>
+					<url>https://github.com/commoncriteria/ssh</url>
+					<branch>release-2.0</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/515</url>
+				<depends on-sel="sel_all_ssh"/>
+			</cc-doc-ref>
+		</FP-cc-ref>
+        <FP-cc-ref conf="conformant">
+			<!-- Functional Package for TLS Version 2.1 -->
+			<cc-doc-ref id="tls">
+				<git>
+					<url>https://github.com/commoncriteria/tls</url>
+					<branch>release-2.1</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/519</url>
+			</cc-doc-ref>
+		</FP-cc-ref>
+        <FP-cc-ref conf="conformant">
+			<!-- Functional Package for X.509 Version 1.0 -->	
+			<cc-doc-ref id="X509">
+				<git>
+					<url>https://github.com/commoncriteria/X509</url>
+					<branch>release-1.0</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+			</cc-doc-ref>
+		</FP-cc-ref>
       </cc-pkg-claim>
     </CClaimsInfo>
   </section>
@@ -266,12 +321,7 @@
   <!-- 5.0 Security Requirements -->
   <sec:Security_Requirements title="Security Requirements">
     <!-- 5.1 App PP Security Functional Requirements Direction -->
-    <base-pp id="b-appp" name="Application Software" product="application" short="App" version="2.0">
-      <git>
-        <url>https://github.com/commoncriteria/application</url>
-        <branch>master</branch>
-      </git>
-      <url>https://github.com/commoncriteria/application</url>
+    <base-pp ref="application">
       <sec-func-req-dir>
         The TOE is expected to rely on some of the security functions implemented by the application
         as a whole and evaluated against <xref to="bibAppPP"/>.
